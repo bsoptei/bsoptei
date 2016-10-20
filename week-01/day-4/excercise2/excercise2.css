@@ -1,0 +1,19 @@
+
+.yellowBox {
+  background-color: #ffff00;
+  width:auto;
+  border: 4px solid #000;
+}
+
+.greenBox {
+  background-color: #017f02;
+  width: 300px;
+  padding: 15px;
+  margin: 10px 50px;
+}
+
+h1 {
+  color: #0000ff;
+  font-size: 30px;
+  margin-left: 20px;
+}

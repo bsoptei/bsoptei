@@ -1,0 +1,28 @@
+.greenBox {
+  background-color: #017f02;
+  width: 300px;
+  padding: 15px;
+  margin: 10px 50px;
+}
+
+.yellowBox, .turquoiseBox {
+  width:auto;
+  border: 4px solid #000;
+}
+
+.yellowBox {
+  background-color: #ffff00;
+  color: #0000ff;
+}
+
+
+
+.turquoiseBox {
+  background-color: #00ffff;
+  color: #ff0000;
+}
+
+h1 {
+  font-size: 30px;
+  margin-left: 20px;
+}
