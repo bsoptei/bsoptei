@@ -1,0 +1,17 @@
+#mainDiv {
+  margin: 10px 100px;
+  width: 250px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.textBox {
+  border-left: 2px solid #000;
+  padding-left: 15px;
+}
+
+p {
+  font-size: 18px;
+}

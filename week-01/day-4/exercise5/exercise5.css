@@ -1,0 +1,31 @@
+div {
+  margin-left: 100px;
+}
+
+h1 {
+  color: #0000ff;
+}
+
+h2 {
+  color: #f7a60c;
+}
+
+.levelOne {
+  color: #0000ff;
+  list-style-type: square;
+  margin: 0 auto;
+}
+
+.levelTwo {
+  list-style-type: disc;
+}
+
+
+ol, .levelTwo {
+  color: #000;
+  margin: 0 40px;
+}
+
+.redLi {
+  color: #ff0000;
+}
