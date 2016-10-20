@@ -1,0 +1,29 @@
+#mainDiv {
+  margin: 10px 100px;
+  width: 300px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.textBox {
+  border: 2px solid #000;
+  border-top: none;
+  padding-left: 15px;
+  margin: 0;
+  padding: 15px 20px;
+}
+
+.textBox:hover {
+  background-color: #eC6842;
+}
+
+#textBoxLast {
+  border-bottom: none;
+}
+
+p {
+  font-size: 18px;
+  margin: 0;
+}

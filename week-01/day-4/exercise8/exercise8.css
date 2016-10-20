@@ -1,0 +1,34 @@
+#mainDiv {
+  margin: 10px 100px;
+  width: 300px;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.textBox {
+  border: 2px solid #000;
+  padding-left: 15px;
+  margin: 20px 0;
+  padding: 35px 25px;
+  background-image: url("duck.png");
+  background-repeat: no-repeat;
+}
+
+#textBoxOne {
+  background-position: left center;
+}
+
+#textBoxTwo {
+  background-position: center;
+}
+
+#textBoxThree {
+  background-position: right bottom;
+}
+
+p {
+  font-size: 18px;
+  margin: 0;
+}
