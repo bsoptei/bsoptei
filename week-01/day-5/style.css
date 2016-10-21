@@ -1,0 +1,103 @@
+* {
+  font-family: Verdana, Geneva, sans-serif
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  padding:10px;
+}
+
+h1 {
+  font-size: 8vmin;
+}
+
+h2 {
+  font-size: 7vmin;
+}
+
+ul, p {
+  font-size: 4vmin;
+}
+
+.header {
+  width: 100%;
+  margin: 0 auto;
+  max-height: 400px;
+  background: url(DSC_0154_edited.jpg) no-repeat center right;
+  background-size: contain;
+}
+
+.content,
+.headerText {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.content div:nth-of-type(even){
+  background-color: #eef;
+  color: #000;
+}
+.content div:nth-of-type(odd){
+  background-color: #333;
+  color: #fff;
+}
+
+.text {
+  padding: 20px;
+}
+
+h3 {
+  font-size: 4vmin;
+  margin: 30px 0;
+  text-transform: uppercase;
+  margin: 50px 0;
+}
+
+ul {
+  list-style-type: square;
+}
+
+h4 {
+  font-size: 3vmin;
+  margin: 0;
+}
+
+h5 {
+  font-size: 3vmin;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+.videoEmbed {
+  height: 315px;
+}
+
+iframe {
+  height: 315px;
+  width: 100%;
+  border: none;
+}
+
+.contact {
+  background-color: #eef;
+}
+
+.contact ul {
+  list-style: none;
+  margin: 0;
+}
+
+.contact li  {
+  display: inline-block;
+  padding: 10px;
+}
+
+.contact li a {
+  text-decoration: none;
+  color: #000;
+}
+.contact li a:hover {
+  color: #666;
+}

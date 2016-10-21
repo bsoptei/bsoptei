@@ -1,0 +1,83 @@
+* {
+  font-family: Open Sans;
+}
+h1,
+h2 {
+  margin: 0;
+  color: #fff;
+}
+h2 {
+  font-size: 40px;
+}
+
+.header {
+  width: 95%;
+  margin: 0 auto;
+  max-height: 400px;
+  background-image: url(DeathStarLaserConstruction.jpeg);
+  background-size: cover;
+  padding: 200px 0 50px 0;
+}
+
+.headerText {
+  width: 50%;
+  margin: 0 auto;
+
+}
+
+.content {
+  width: 50%;
+  margin:auto;
+
+}
+
+p, .ulLarge {
+  font-size: 20px;
+}
+
+.text {
+  padding: 0 20px;
+  padding:0;
+}
+
+.darkSideBox {
+  background-color: #444444;
+  color: #fff;
+  margin: 40px auto;
+}
+
+h3 {
+  font-size: 42px;
+  padding: 40px ;
+  margin: auto;
+}
+.quotationMark {
+  margin: 0;
+  padding: 0;
+  font-size: 60px;
+}
+
+ul {
+  list-style-type: square;
+}
+
+h4 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.upperCase {
+  text-transform: uppercase;
+  margin: 50px 0;
+
+}
+
+.smallerParagraph {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 18px;
+  margin: 0;
+  font-style: italic;
+}
