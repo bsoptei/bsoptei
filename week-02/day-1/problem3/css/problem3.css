@@ -1,0 +1,63 @@
+.container {
+  position: relative;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header,
+.footer {
+  height: 105px;
+  flex: 12 12 auto;
+}
+
+.header {
+  background: #00ffff;
+}
+
+.left {
+  background: #fea500;
+}
+
+.main {
+  position: relative;
+  background: #fe0000;
+  flex: 0.8 1 50%;
+}
+
+.right {
+  background: #81007f;
+  float: right;
+}
+
+.left,
+.right {
+  width: 100px;
+  margin: 0;
+}
+
+.left,
+.right,
+.main {
+  height: 510px;
+}
+
+.footer {
+  clear: both;
+  background: #0000fe;
+}
+
+.small {
+  background: #000;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

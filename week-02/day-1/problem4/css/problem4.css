@@ -1,0 +1,90 @@
+.container {
+  font-size: 16px;
+  width: 500px;
+  position: absolute;
+  left: 50px;
+}
+
+.box {
+  border-bottom: 2px solid black;
+  text-align: justify;
+}
+
+.one img {
+  float: left;
+}
+
+.two img {
+  float:right;
+  margin: 0 0 20px 20px;
+}
+
+img::after { 
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 125px;
+    top: 40px;
+    width: 300px; /* Full width */
+    height: 100%;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    border-radius: 15px;
+    border: 2px solid #000;
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    z-index: 2;
+    top: -10px;
+    right: 20px;
+    font-size: 18px;
+    color: #fff;
+    background: #000;
+    border-radius: 100%;
+    padding: 0 5px;
+}
+
+.close:hover,
+.close:focus {
+    color: #777;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header,
+.modal-body {
+    padding: 2px 16px;
+    border-bottom: 2px solid #000;
+}
+
+.modal-header p {
+  color: #ff0000;
+}
+
+.modal-footer {
+  padding: 5px 20px;
+  text-align: right;
+}
+
+.modal-footer button {
+  border-radius: 10px;
+  border: none;
+  background: #aeadb2;
+  padding: 10px 5px;
+}

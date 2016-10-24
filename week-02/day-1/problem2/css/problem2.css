@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*Define container*/
+.container {
+  width: 540px;
+  margin: 0px auto;
+}
+/*Define box sizes*/
+.header,
+.footer {
+  height: 105px;
+}
+
+.left,
+.right {
+  width: 100px;
+}
+
+.left,
+.right,
+.main {
+  height: 510px;
+}
+/*Go through boxes and define colors + layout*/
+.header {
+  background: #00ffff;
+}
+
+.left {
+  background: #fea500;
+  float: left;
+}
+
+.main {
+  position: relative;
+  background: #fe0000;
+  width: 300px;
+  float: left;
+  margin-left: 20px;
+}
+
+.right {
+  background: #81007f;
+  float: right;
+}
+
+.footer {
+  clear: both;
+  background: #0000fe;
+}
+/*Define small black box*/
+.small {
+  background: #000;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
