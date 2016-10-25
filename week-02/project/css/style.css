@@ -3,9 +3,9 @@
   box-sizing: border-box;
 }
 h1,
-h2,
-h3 {
-  font-family: Times;
+h2 {
+  font-family: "Linux Libertine",Georgia,Times,serif;
+  font-weight: normal;
 }
 
 h2,
@@ -13,6 +13,10 @@ h2 + p,
 h3,
 h3 + p {
   display: inline;
+}
+
+h3 {
+  padding-bottom: 5px;
 }
 
 h2 + p,
@@ -34,14 +38,15 @@ h3 + p {
 
 .formContainer {
   position: absolute;
-  right: 0;
+  right: 10px;
   bottom:0;
 }
 
 input {
   color: #888;
   width: 250px;
-  border-right: none;
+  /*margin: 0 5px;*/
+  /*border-right: none;*/
 }
 input,
 button {
@@ -57,12 +62,14 @@ button {
 
 .sideBar {
   position: absolute;
+  line-height: 1.4;
   padding: 15px;
   left: 0;
   top: 0;
-  width: 150px;
+  width: 160px;
   font-size: 0.8em;
 }
+
 
 .sideBar ul {
   padding-left: 10px;
@@ -78,7 +85,7 @@ button {
   color: #4d4d52;
 
 }
-.sideBar a,
+
 .main a,
 .header a,
 .footer a {
@@ -87,9 +94,10 @@ button {
 }
 
 .sideBar a {
+  text-decoration: none;
   color: #8545B3;
-
 }
+
 
 .sideBar a:hover,
 .main a:hover,
@@ -107,6 +115,36 @@ button {
   list-style-type: none;
 }
 
+.gearIcon {
+  width: 20px;
+  opacity: 0.5;
+  float: right;
+}
+
+.gearIcon:hover {
+  opacity: 0.7;
+}
+
+.pencilIcon {
+  width: 12.5px;
+
+}
+
+span {
+  color: #666;
+}
+
+.editLinks {
+  float:right;
+  opacity: 0.6;
+}
+
+span:hover,
+.editLinks:hover {
+  color: #5145B3;
+  opacity: 1;
+}
+
 .categoriesBox li,
 .header li,
 .footer li {
@@ -116,18 +154,19 @@ button {
 .rightSide {
   position: relative;
   width: 88%;
-  left: 150px;
+  left: 160px;
   font-size: 0.9em;
 }
 
 .header {
-    font-size: 0.88em;
+  font-size: 0.88em;
+  height: 80px;
 }
 
 .topMenu {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
   margin-bottom: 10px;
 }
 
@@ -140,12 +179,25 @@ button {
   color: #707070;
 }
 
+.leftMenu {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+}
+.rightMenu {
+  position: absolute;
+  right: 270px;
+  bottom: 0;
+  margin: 0;
+}
+
 .main {
   background: #fff;
-  /*overflow: hidden;*/
   flex: 1 1 auto;
   padding: 10px 0 20px 20px;
   border: 1px solid #a7d7F9;
+  line-height: 1.5;
 }
 
 .photoBox,
@@ -155,6 +207,7 @@ button {
   padding: 10px;
   background: #f9f9f9;
   border: 1px solid #aaaaaa;
+  line-height: normal;
 }
 
 /*.contentsBox::after,*/
@@ -179,11 +232,21 @@ button {
   float: right;
   text-align: center;
   width: 260px;
+  font-size: 0.88em;
 }
-.secondaryPhoto p {
-  text-align: left;
+.secondaryPhoto {
+  width: 228px;
+  padding: 5px 1px;
 }
 
+.secondaryPhoto p {
+  text-align: left;
+  padding: 0 5px;
+}
+
+.legacyPhoto {
+  width: 194px;
+}
 .references {
   columns: 500px auto;
 }
@@ -214,15 +277,25 @@ table {
 .categoriesBox ul {
   padding: 0 5px;
 }
-/*
+
 .thematicOrganizer {
   border: 1px solid #aaaaaa;
+  font-size: 0.87em;
+  width: 100%;
 }
 .thematicOrganizer li {
   display: inline;
 
 }
-*/
+.thematicOrganizer th:first-of-type {
+  background: #ddddff;
+  text-align: right;
+}
+/*
+.thematicOrganizer tr:nth-of-type(even) {
+  background: #F7F7F7;
+}*/
+
 .borderizeThis {
   border-right: 1px solid #888;
   padding-right: 10px;
