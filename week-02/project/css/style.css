@@ -1,0 +1,229 @@
+* {
+  font-family: Arial;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3 {
+  font-family: Times;
+}
+
+h2,
+h2 + p,
+h3,
+h3 + p {
+  display: inline;
+}
+
+h2 + p,
+h3 + p {
+    margin-left: 15px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 2%, rgba(237,237,237,1) 100%);
+  /*align-items: stretch;*/
+}
+
+.header {
+  position: relative;
+}
+
+.formContainer {
+  position: absolute;
+  right: 0;
+  bottom:0;
+}
+
+input {
+  color: #888;
+  width: 250px;
+  border-right: none;
+}
+input,
+button {
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border-left: none;
+  background: #fff;
+}
+
+.sideBar {
+  position: absolute;
+  padding: 15px;
+  left: 0;
+  top: 0;
+  width: 150px;
+  font-size: 0.8em;
+}
+
+.sideBar ul {
+  padding-left: 10px;
+}
+
+.logo {
+  height: 150px;
+  background: url("../image/2000px-Wikipedia-logo-v2-en.svg.png") no-repeat;
+  background-size: contain;
+}
+
+.sideBar p{
+  color: #4d4d52;
+
+}
+.sideBar a,
+.main a,
+.header a,
+.footer a {
+  text-decoration: none;
+  color: #4445bc;
+}
+
+.sideBar a {
+  color: #8545B3;
+
+}
+
+.sideBar a:hover,
+.main a:hover,
+.header a:hover,
+.footer a:hover {
+  text-decoration: underline;
+}
+
+
+.sideBar ul,
+.header ul,
+.contentsBox ul,
+.footer ul,
+.categoriesBox ul {
+  list-style-type: none;
+}
+
+.categoriesBox li,
+.header li,
+.footer li {
+  display: inline;
+}
+
+.rightSide {
+  position: relative;
+  width: 88%;
+  left: 150px;
+  font-size: 0.9em;
+}
+
+.header {
+    font-size: 0.88em;
+}
+
+.topMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-bottom: 10px;
+}
+
+.topMenu ul,
+.topMenu p {
+  display: inline;
+}
+
+.topMenu p {
+  color: #707070;
+}
+
+.main {
+  background: #fff;
+  /*overflow: hidden;*/
+  flex: 1 1 auto;
+  padding: 10px 0 20px 20px;
+  border: 1px solid #a7d7F9;
+}
+
+.photoBox,
+.contentsBox,
+.categoriesBox {
+  margin: 10px;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #aaaaaa;
+}
+
+/*.contentsBox::after,*/
+.photoBox::after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
+.contentsBox {
+  width: 150px;
+  font-size: 0.9em;
+}
+
+.indentedListItem {
+  text-indent: 15px;
+}
+
+.photoBox {
+  float: right;
+  text-align: center;
+  width: 260px;
+}
+.secondaryPhoto p {
+  text-align: left;
+}
+
+.references {
+  columns: 500px auto;
+}
+
+table {
+  text-align: left;
+}
+
+
+.footer {
+  font-size: 0.7em;
+  padding: 10px 15px;
+}
+
+.contentsBox ul,
+.footer ul {
+  padding: 0;
+}
+
+.footer li {
+  padding-right: 10px;
+}
+
+.categoriesBox {
+  padding: 0;
+}
+
+.categoriesBox ul {
+  padding: 0 5px;
+}
+/*
+.thematicOrganizer {
+  border: 1px solid #aaaaaa;
+}
+.thematicOrganizer li {
+  display: inline;
+
+}
+*/
+.borderizeThis {
+  border-right: 1px solid #888;
+  padding-right: 10px;
+}

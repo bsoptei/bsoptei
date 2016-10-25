@@ -1,0 +1,157 @@
+* {
+  font-family: 'Open Sans',Arial,sans-serif;
+  box-sizing: border-box;
+}
+
+.formBox {
+  background: #dcd6cd;
+  min-width: 290px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 80px;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+form,
+.formTitle,
+  .wideBox,
+.bottomBox {
+  flex: 0 1 100%;
+}
+
+p {
+  font-size: 0.8em;
+  margin: 0;
+  padding-bottom: 20px  ;
+  color: #999;
+}
+
+.wideBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  min-height: 150px;
+  justify-content: space-between;
+}
+
+.columnSub {
+  min-height: 250px;
+  flex: 1 1 40%;
+  padding: 10px;
+}
+
+h2 {
+  background: #938c97;
+  color: #fff;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+label {
+  color: #4a4261;
+  font-weight: bold;
+}
+
+span {
+  color: red;
+}
+
+select {
+  color: #ababab;
+}
+select:focus {
+  color: black;
+}
+
+select,
+input,
+textarea {
+  width: 100%;
+  resize: none;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+select:invalid {
+  color: #999;
+}
+
+input[name="year_of_birth"] {
+  flex: 0.5 2 50%;
+}
+
+.narrowField {
+  margin: 0;
+  flex: 0.5 2 50%;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    display: inline-block;
+    margin: 3px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 20%;
+}
+
+input[type="radio"] {
+  margin-top: 23px;
+}
+
+.checkBoxColumn {
+  width: 50%;
+  margin:0;
+  min-height: 100px;
+}
+
+.termsAndConditions {
+  max-width: 60%;
+  margin: 0;
+  padding:30px 0;
+}
+
+.termsAndConditions a {
+  color: #626262;
+  padding-left: 10px;
+}
+
+.inputfile + label,
+button {
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #aaa;
+    border: none;
+    color: #4A4261;
+    font-size: 1em;
+    padding: 10px 20px;
+    border: 1px solid #4A4261;
+    border-radius: 3px;
+}
+
+.inputfile + label:hover,
+button:hover {
+  border: 1px solid #fff;
+}
+
+button[type="submit"] {
+  padding: 10px 50px;
+  background: #433c58;
+  color: #b6aFb2;
+  font-size: 1.2em;
+}
