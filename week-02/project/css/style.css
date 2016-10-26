@@ -8,6 +8,12 @@ h2 {
   font-weight: normal;
 }
 
+.thematicOrganizer li,
+.topMenu ul,
+.topMenu p,
+.categoriesBox li,
+.header li,
+.footer li,
 h2,
 h2 + p,
 h3,
@@ -29,11 +35,7 @@ h3 + p {
   flex-wrap: wrap;
   flex-direction: column;
   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 2%, rgba(237,237,237,1) 100%);
-  /*align-items: stretch;*/
-}
-
-.header {
-  position: relative;
+  align-items: stretch;
 }
 
 .formContainer {
@@ -43,10 +45,7 @@ h3 + p {
 }
 
 input {
-  color: #888;
   width: 250px;
-  /*margin: 0 5px;*/
-  /*border-right: none;*/
 }
 input,
 button {
@@ -56,7 +55,6 @@ button {
 }
 
 button {
-  border-left: none;
   background: #fff;
 }
 
@@ -66,10 +64,9 @@ button {
   padding: 15px;
   left: 0;
   top: 0;
-  flex-basis: 160px;
+  flex: 0 1 160px;
   font-size: 0.8em;
 }
-
 
 .sideBar ul {
   padding-left: 10px;
@@ -83,21 +80,17 @@ button {
 
 .sideBar p{
   color: #4d4d52;
-
 }
 
-.main a,
-.header a,
-.footer a {
+.rightSide a,
+.sideBar a {
   text-decoration: none;
   color: #4445bc;
 }
 
 .sideBar a {
-  text-decoration: none;
-  color: #8545B3;
+  color: #8545b3;
 }
-
 
 .sideBar a:hover,
 .main a:hover,
@@ -105,7 +98,6 @@ button {
 .footer a:hover {
   text-decoration: underline;
 }
-
 
 .sideBar ul,
 .header ul,
@@ -127,7 +119,6 @@ button {
 
 .pencilIcon {
   width: 12.5px;
-
 }
 
 span {
@@ -145,22 +136,12 @@ span:hover,
   opacity: 1;
 }
 
-.categoriesBox li,
-.header li,
-.footer li {
-  display: inline;
-}
-
 .rightSide {
   position: relative;
+  flex: 0 1 50%;
   max-width: 88%;
   left: 160px;
   font-size: 0.9em;
-}
-
-.header {
-  font-size: 0.88em;
-  height: 80px;
 }
 
 .topMenu {
@@ -168,11 +149,6 @@ span:hover,
   top: 0;
   right: 10px;
   margin-bottom: 10px;
-}
-
-.topMenu ul,
-.topMenu p {
-  display: inline;
 }
 
 .topMenu p {
@@ -187,23 +163,28 @@ span:hover,
 }
 .rightMenu {
   position: absolute;
-  right: 270px;
+  right: 290px;
   bottom: 0;
   margin: 0;
 }
 
 .main {
   background: #fff;
-  /*flex: 1 1 70%;*/
-  padding: 10px 0 20px 20px;
+  padding: 10px 20px;
   border: 1px solid #a7d7F9;
+  border-right: none;
   line-height: 1.5;
+}
+
+.header {
+  position: relative;
+  font-size: 0.88em;
+  height: 80px;
 }
 
 .photoBox,
 .contentsBox,
 .categoriesBox {
-  margin: 10px;
   padding: 10px;
   background: #f9f9f9;
   border: 1px solid #aaaaaa;
@@ -270,6 +251,8 @@ table {
 
 .categoriesBox {
   padding: 0;
+  width: 100%;
+  margin-top: 10px;
 }
 
 .categoriesBox ul {
@@ -281,9 +264,6 @@ table {
   border: 1px solid #aaaaaa;
   font-size: 0.87em;
   width: 100%;
-}
-.thematicOrganizer li {
-  display: inline;
 }
 
 .thematicOrganizer th,
@@ -304,7 +284,6 @@ table {
   text-align: center;
   background: #ccccff;
   font-size: 1.1em;
-
 }
 
 .thematicOrganizer tr:nth-of-type(odd){
