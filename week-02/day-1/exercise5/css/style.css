@@ -1,0 +1,34 @@
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  position: relative;
+  background: #808080;
+  width: 60%;
+  margin: 0 auto;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  justify-content: space-between;
+  flex-direction: row;
+}
+h1 {
+  margin: 0;
+}
+.inner {
+  flex: 0 4 32%;
+  background: #FF6347;
+  border: 5px solid #000;
+  margin: 7px 0;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.inner:nth-child(5) {
+  position: relative;
+  /*background: blue;*/
+  left: 30px;
+  top: 30px;
+}

@@ -1,0 +1,45 @@
+* {
+  font-family: Arial;
+  box-sizing: border-box;
+}
+.container {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  background: #00FEFE;
+  width: 60%;
+  height: 100px;
+  padding: 10px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+div {
+  position: relative;
+  top: 50px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 30px;
+}
+li {
+  display: inline;
+}
+a {
+  color: #000;
+  text-decoration: none;
+  padding: 20px;
+}
+.active {
+  background: #fff;
+  border-radius: 10px;
+}

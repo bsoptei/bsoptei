@@ -287,9 +287,27 @@ table {
   display: inline;
 
 }
-.thematicOrganizer th:first-of-type {
+/*
+.mainTableHeader {
+  text-align: center;
+}*/
+
+
+
+.thematicOrganizer th {
   background: #ddddff;
   text-align: right;
+}
+
+.thematicOrganizer thead th {
+  text-align: center;
+  background: #ccccff;
+  font-size: 1.1em;
+  
+}
+
+.thematicOrganizer tr:nth-of-type(odd){
+  background: #f7f7f7;
 }
 /*
 .thematicOrganizer tr:nth-of-type(even) {
