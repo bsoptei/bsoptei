@@ -1,0 +1,304 @@
+* {
+  font-family: Arial;
+  box-sizing: border-box;
+}
+h1,
+h2 {
+  font-family: "Linux Libertine",Georgia,Times,serif;
+  font-weight: normal;
+}
+
+.thematicOrganizer li,
+.topMenu ul,
+.topMenu p,
+.categoriesBox li,
+.header li,
+.footer li,
+h2,
+h2 + p,
+h3,
+h3 + p {
+  display: inline;
+}
+
+h3 {
+  padding-bottom: 5px;
+}
+
+h2 + p,
+h3 + p {
+    margin-left: 15px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 2%, rgba(237,237,237,1) 100%);
+  align-items: stretch;
+}
+
+.formContainer {
+  position: absolute;
+  right: 10px;
+  bottom:0;
+}
+
+input {
+  width: 250px;
+}
+input,
+button {
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: #fff;
+}
+
+.sideBar {
+  position: absolute;
+  line-height: 1.4;
+  padding: 15px;
+  left: 0;
+  top: 0;
+  flex: 0 1 160px;
+  font-size: 0.8em;
+}
+
+.sideBar ul {
+  padding-left: 10px;
+}
+
+.logo {
+  height: 150px;
+  background: url("../image/2000px-Wikipedia-logo-v2-en.svg.png") no-repeat;
+  background-size: contain;
+}
+
+.sideBar p{
+  color: #4d4d52;
+}
+
+.rightSide a,
+.sideBar a {
+  text-decoration: none;
+  color: #4445bc;
+}
+
+.sideBar a {
+  color: #8545b3;
+}
+
+.sideBar a:hover,
+.main a:hover,
+.header a:hover,
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.sideBar ul,
+.header ul,
+.contentsBox ul,
+.footer ul,
+.categoriesBox ul {
+  list-style-type: none;
+}
+
+.gearIcon {
+  width: 20px;
+  opacity: 0.5;
+  float: right;
+}
+
+.gearIcon:hover {
+  opacity: 0.7;
+}
+
+.pencilIcon {
+  width: 12.5px;
+}
+
+span {
+  color: #666;
+}
+
+.editLinks {
+  float:right;
+  opacity: 0.6;
+}
+
+span:hover,
+.editLinks:hover {
+  color: #5145B3;
+  opacity: 1;
+}
+
+.rightSide {
+  position: relative;
+  flex: 0 1 50%;
+  max-width: 88%;
+  left: 160px;
+  font-size: 0.9em;
+}
+
+.topMenu {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  margin-bottom: 10px;
+}
+
+.topMenu p {
+  color: #707070;
+}
+
+.leftMenu {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+}
+.rightMenu {
+  position: absolute;
+  right: 290px;
+  bottom: 0;
+  margin: 0;
+}
+
+.main {
+  background: #fff;
+  padding: 10px 20px;
+  border: 1px solid #a7d7F9;
+  border-right: none;
+  line-height: 1.5;
+}
+
+.header {
+  position: relative;
+  font-size: 0.88em;
+  height: 80px;
+}
+
+.photoBox,
+.contentsBox,
+.categoriesBox {
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #aaaaaa;
+  line-height: normal;
+}
+
+.photoBox::after {
+  visibility: hidden;
+  display: block;
+  content: "";
+  clear: both;
+  height: 0;
+}
+
+.contentsBox {
+  width: 150px;
+  font-size: 0.9em;
+}
+
+.indentedListItem {
+  text-indent: 15px;
+}
+
+.photoBox {
+  float: right;
+  text-align: center;
+  width: 260px;
+  font-size: 0.88em;
+}
+.secondaryPhoto {
+  width: 228px;
+  padding: 5px 1px;
+}
+
+.secondaryPhoto p {
+  text-align: left;
+  padding: 0 5px;
+}
+
+.legacyPhoto {
+  width: 194px;
+}
+.references {
+  columns: 500px auto;
+}
+
+table {
+  text-align: left;
+}
+
+.footer {
+  font-size: 0.7em;
+  padding: 10px 15px;
+}
+
+.contentsBox ul,
+.footer ul {
+  padding: 0;
+}
+
+.footer li {
+  padding-right: 10px;
+}
+
+.categoriesBox {
+  padding: 0;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.categoriesBox ul {
+  padding: 0 5px;
+}
+
+.thematicOrganizer,
+.subTable {
+  border: 1px solid #aaaaaa;
+  font-size: 0.87em;
+  width: 100%;
+}
+
+.thematicOrganizer th,
+.tableDark {
+  background: #ddddff;
+  text-align: right;
+}
+.subTable {
+  border-top: none;
+}
+.subTable th {
+  background: #ddddff;
+  text-align: center;
+  width: 15%;
+}
+
+.thematicOrganizer thead th {
+  text-align: center;
+  background: #ccccff;
+  font-size: 1.1em;
+}
+
+.thematicOrganizer tr:nth-of-type(odd){
+  background: #f7f7f7;
+}
+.thematicOrganizer tr:first-child {
+  background: none;
+}
+
+.tableDark {
+  background: #E6E6FF;
+  font-weight: bold;
+}
+
+.borderizeThis {
+  border-right: 1px solid #888;
+  padding-right: 10px;
+}
