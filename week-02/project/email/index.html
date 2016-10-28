@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Email</title>
+  <title>Email box</title>
   <meta charset="UTF-8">
+  <meta name="description" content="Your own customizable email box brought to you by your number one webmail provider">
+  <meta name="keywords" content="email, customizable">
+  <!-- Importing Bootstrap for the glyphicons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!--define stylesheet-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -11,114 +13,110 @@
   <base target="_blank">
   <!-- <script src=".js"></script> -->
 </head>
-
 <body>
   <div class="flex-box">
     <main>
-      <div class="content">
-        <form>
-          <div class="select-all">
-            <div class="select-dropdown">
-              <input type="checkbox" id="cbox1" value="all">
-              <a href="#"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
-            </div>
-            <p>09/05/2015</p>
+      <form>
+        <div class="actions">
+          <div class="select-dropdown">
+            <input type="checkbox" id="cbox1" value="0">
+            <a href="#"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
           </div>
-          <div class="message message-active">
-            <input type="checkbox" value="1">
-            <a class="sender" href="#">Mikael from Crew</a>
-            <a class="pill social" href="#">Social</a>
-            <a class="subject" href="#">Launch This Year: Please Confirm Subscription</a>
-            <time>10:19</time>
-          </div>
-          <div class="message message-active">
-            <input type="checkbox" value="2">
-            <a class="sender" href="#">The branded.me team</a>
-            <a class="pill work" href="#">Work</a>
-            <a class="subject" href="#">Progress Report</a>
-            <time>02:14</time>
-          </div>
-          <div class="message message-active">
-            <input type="checkbox" value="3">
-            <a class="sender" href="#">Pixabay</a>
-            <a class="subject" href="#">New images by friends</a>
-            <time>21:56</time>
-          </div>
-          <div class="message message-active">
-            <input type="checkbox" value="4">
-            <a class="sender" href="#">iStock</a>
-            <a class="subject" href="#">FREE OFFER: Celebrate iStock's new partership with Drop...</a>
-            <time>21:56</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="5">
-            <a class="sender" href="#">Mikael from Crew</a>
-            <a class="pill photos" href="#">Photos</a>
-            <a class="subject" href="#">Launch This Year: Please Confirm Subscription</a>
-            <time>10:19</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="6">
-            <a class="sender" href="#">The branded.me team</a>
-            <a class="pill inspiration" href="#">Inspiration</a>
-            <a class="subject" href="#">Progress Report</a>
-            <time>02:14</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="7">
-            <a class="sender" href="#">Pixabay</a>
-            <a class="subject" href="#">New images by friends</a>
-            <time>21:56</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="8">
-            <a class="sender" href="#">iStock</a>
-            <a class="subject" href="#">FREE OFFER: Celebrate iStock's new partership with Drop...</a>
-            <time>21:56</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="9">
-            <a class="sender" href="#">Mikael from Crew</a>
-            <a class="subject" href="#">Launch This Year: Please Confirm Subscription</a>
-            <time>10:19</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="10">
-            <a class="sender" href="#">The branded.me team</a>
-            <a class="subject" href="#">Progress Report</a>
-            <time>02:14</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="11">
-            <a class="sender" href="#">Pixabay</a>
-            <a class="subject" href="#">New images by friends</a>
-            <time>21:56</time>
-          </div>
-          <div class="message">
-            <input type="checkbox" value="12">
-            <a class="sender" href="#">iStock</a>
-            <a class="subject" href="#">FREE OFFER: Celebrate iStock's new partership with Drop...</a>
-            <time>21:56</time>
-          </div>
-        </form>
-      </div>
-      <div class="turn-page">
+          <time datetime="2015-09-05">09/05/2015</time>
+        </div>
+        <div class="message message-active">
+          <input type="checkbox" value="1">
+          <a class="sender" href="#">Mikael from Crew</a>
+          <a class="pill social" href="#">Social</a>
+          <a class="subject" href="#">Launch This Year: Please Confirm Subscription</a>
+          <time>10:19</time>
+        </div>
+        <div class="message message-active">
+          <input type="checkbox" value="2">
+          <a class="sender" href="#">The branded.me team</a>
+          <a class="pill work" href="#">Work</a>
+          <a class="subject" href="#">Progress Report</a>
+          <time>02:14</time>
+        </div>
+        <div class="message message-active">
+          <input type="checkbox" value="3">
+          <a class="sender" href="#">Pixabay</a>
+          <a class="subject" href="#">New images by friends</a>
+          <time>21:56</time>
+        </div>
+        <div class="message message-active">
+          <input type="checkbox" value="4">
+          <a class="sender" href="#">iStock</a>
+          <a class="subject" href="#">FREE OFFER: Celebrate iStock's new partership with Drop...</a>
+          <time>21:56</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="5">
+          <a class="sender" href="#">Mikael from Crew</a>
+          <a class="pill photos" href="#">Photos</a>
+          <a class="subject" href="#">Launch This Year: Please Confirm Subscription</a>
+          <time>10:19</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="6">
+          <a class="sender" href="#">The branded.me team</a>
+          <a class="pill inspiration" href="#">Inspiration</a>
+          <a class="subject" href="#">Progress Report</a>
+          <time>02:14</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="7">
+          <a class="sender" href="#">Pixabay</a>
+          <a class="subject" href="#">New images by friends</a>
+          <time>21:56</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="8">
+          <a class="sender" href="#">iStock</a>
+          <a class="subject" href="#">FREE OFFER: Celebrate iStock's new partership with Drop...</a>
+          <time>21:56</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="9">
+          <a class="sender" href="#">Mikael from Crew</a>
+          <a class="subject" href="#">Launch This Year: Please Confirm Subscription</a>
+          <time>10:19</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="10">
+          <a class="sender" href="#">The branded.me team</a>
+          <a class="subject" href="#">Progress Report</a>
+          <time>02:14</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="11">
+          <a class="sender" href="#">Pixabay</a>
+          <a class="subject" href="#">New images by friends</a>
+          <time>21:56</time>
+        </div>
+        <div class="message">
+          <input type="checkbox" value="12">
+          <a class="sender" href="#">iStock</a>
+          <a class="subject" href="#">FREE OFFER: Celebrate iStock's new partership with Drop...</a>
+          <time>21:56</time>
+        </div>
+
+      </form>
+      <footer>
         <p>18 of 14,446</p>
         <div>
           <a href="#"><span class="glyphicon glyphicon-menu-left"></span></a>
           <a href="#"><span class="glyphicon glyphicon-menu-right"></span></a>
         </div>
-      </div>
-
+      </footer>
     </main>
     <aside>
-      <div class="photo">
+      <header>
         <div class="image">
           <a href=""><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
         </div>
         <p>Balázs Söptei</p>
-
-      </div>
+      </header>
       <nav>
         <div id="inbox" class="menu-item menu-active">
           <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
