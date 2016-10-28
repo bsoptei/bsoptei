@@ -14,7 +14,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  background: #ffe2c4;
+  background: url("../image/Andromeda_galaxy_Ted_Van_August_2012.jpeg");
   padding: 50px 0;
   font-family: arial;
 }
@@ -139,11 +139,11 @@ aside {
 .pill:hover,
 .number:hover {
   text-decoration: none;
+  padding: 3px 0;
 }
 
 .number,
 .number:hover {
-  /*margin-right: 50px;*/
   flex-grow: 0;
   flex-basis: 10%;
 }
@@ -229,7 +229,7 @@ time {
 .image {
   height: 90px;
   width: 90px;
-  background: url("DSC_0164.jpg") no-repeat center;
+  background: url("../image/DSC_0164.jpg") no-repeat center;
   background-size: cover;
   border-radius: 100%;
   margin: 0 auto;
