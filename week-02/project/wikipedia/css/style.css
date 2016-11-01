@@ -1,7 +1,15 @@
-* {
+html {
   font-family: Arial;
   box-sizing: border-box;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
 h1,
 h2 {
   font-family: "Linux Libertine",Georgia,Times,serif;
@@ -12,8 +20,8 @@ h2 {
 .topMenu ul,
 .topMenu p,
 .categoriesBox li,
-.header li,
-.footer li,
+header li,
+footer li,
 h2,
 h2 + p,
 h3,
@@ -34,9 +42,8 @@ h3 + p {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  /*flex-direction: column;*/
+  flex-direction: row-reverse;;
   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 2%, rgba(237,237,237,1) 100%);
-  /*align-items: stretch;*/
 }
 
 .formContainer {
@@ -59,7 +66,7 @@ button {
   background: #fff;
 }
 
-.sideBar {
+aside {
   line-height: 1.4;
   padding: 15px;
   flex-basis: 160px;
@@ -67,7 +74,7 @@ button {
   font-size: 0.8em;
 }
 
-.sideBar ul {
+aside ul {
   padding-left: 10px;
 }
 
@@ -77,31 +84,31 @@ button {
   background-size: contain;
 }
 
-.sideBar p{
+aside p{
   color: #4d4d52;
 }
 
-.rightSide a,
-.sideBar a {
+main a,
+aside a {
   text-decoration: none;
   color: #4445bc;
 }
 
-.sideBar a {
+aside a {
   color: #8545b3;
 }
 
-.sideBar a:hover,
-.main a:hover,
-.header a:hover,
-.footer a:hover {
+aside a:hover,
+article a:hover,
+header a:hover,
+footer a:hover {
   text-decoration: underline;
 }
 
-.sideBar ul,
-.header ul,
+aside ul,
+header ul,
 .contentsBox ul,
-.footer ul,
+footer ul,
 .categoriesBox ul {
   list-style-type: none;
 }
@@ -135,7 +142,7 @@ span:hover,
   opacity: 1;
 }
 
-.rightSide {
+main {
   flex-basis: 500px;
   flex-grow: 1;
   font-size: 0.9em;
@@ -165,7 +172,7 @@ span:hover,
   margin: 0;
 }
 
-.main {
+article {
   background: #fff;
   padding: 10px 20px;
   border: 1px solid #a7d7F9;
@@ -173,7 +180,7 @@ span:hover,
   line-height: 1.5;
 }
 
-.header {
+header {
   position: relative;
   font-size: 0.88em;
   height: 80px;
@@ -232,17 +239,17 @@ table {
   text-align: left;
 }
 
-.footer {
+footer {
   font-size: 0.7em;
   padding: 10px 15px;
 }
 
 .contentsBox ul,
-.footer ul {
+footer ul {
   padding: 0;
 }
 
-.footer li {
+footer li {
   padding-right: 10px;
 }
 
