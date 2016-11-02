@@ -11,10 +11,8 @@ public class Workshop35 {
         String output = "";
         for (int i = 1; i <= 7; i++) {
             String newOut = "";
-
             String o = String.valueOf(i);
             output = output.concat(o);
-//            int j = 7 - i;
             for (int j = 7 - i; j > 0; j--) {
                 newOut = newOut.concat("*");
             }
