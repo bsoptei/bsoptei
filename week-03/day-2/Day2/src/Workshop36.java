@@ -26,18 +26,3 @@ public class Workshop36 {
 
     }
 }
-
-
-//    Outdated solution
-//for (int i = 1; i <=5; i++) {
-//        String output = "";
-//        for (int j = 1; j <=9; j++) {
-//        if (j % 2 == 1) {
-//        output = output.concat(Character.toString(c));
-//        }
-//        else {
-//        output = output.concat(" ");
-//        }
-//        }
-//        System.out.println(output);
-//        }

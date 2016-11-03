@@ -5,8 +5,7 @@ public class Workshop09{
         long modulo = i % 11;
         if (modulo == 0) {
             System.out.println("Yes it has it!");
-        }
-        else {
+        } else {
             System.out.println("Not.");
         }
     }

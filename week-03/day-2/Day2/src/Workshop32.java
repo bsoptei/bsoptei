@@ -3,7 +3,7 @@ public class Workshop32 {
         int ae = 4;
         String text = "Gold";
         // print content of the text variable ae times
-        for (int i = 0; i < ae; i++){
+        for (int i = 1; i <= ae; i++){
             System.out.println(text);
         }
     }

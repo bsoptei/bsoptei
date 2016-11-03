@@ -17,7 +17,6 @@ public class Workshop10{
             for (int j = 0; j < colors[i].length; j++) {
                 System.out.println(colors[i][j]);
             }
-
         }
     }
 }

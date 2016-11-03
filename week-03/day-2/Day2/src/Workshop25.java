@@ -5,8 +5,7 @@ public class Workshop25{
         // print 'Long!' otherwise print 'Short!'
         if (x.length() > 4) {
             System.out.println("Long!");
-        }
-        else {
+        } else {
             System.out.println("Short!");
         }
     }

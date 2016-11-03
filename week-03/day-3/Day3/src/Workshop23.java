@@ -6,7 +6,6 @@ public class Workshop23{
 
         PrintValues(new int[] { 3, 4, 5, 6, 7});
     }
-
     public static void PrintValues(String[] values){
         for(int i=0;i<values.length;i++){
             System.out.print(values[i] + " ");

@@ -3,6 +3,6 @@ public class Workshop17{
         String o = "pneumonoultramicroscopicsilicovolcanoconiosis";
         // tell how many letters in o
         int letterCount = o.length();
-        System.out.println(letterCount);
+        System.out.printf("There are %d letters in the string.", letterCount);
     }
 }

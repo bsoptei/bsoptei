@@ -8,11 +8,12 @@ public class Workshop29{
         // if credits are smaller than 50,
         // and is_bonus is False decrement ab by 1
         // if is_bonus is True ab should remain the same
-        if (credits >= 50 && !(is_bonus)) {
-            ab -= 2;
-        }
-        else if (credits < 50 && !(is_bonus)) {
-            ab -= 1;
+        if (!is_bonus) {
+            if (credits >= 50) {
+                ab -= 2;
+            } else {
+                ab--;
+            }
         }
         System.out.println(ab);
     }

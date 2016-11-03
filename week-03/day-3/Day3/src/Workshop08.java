@@ -10,8 +10,7 @@ public class Workshop08{
             for (int j = 0; j < 4; j++) {
                 if (i == j) {
                     myTwoDimensionalArray[i][j] = 1;
-                }
-                else {
+                } else {
                     myTwoDimensionalArray[i][j] = 0;
                 }
             }

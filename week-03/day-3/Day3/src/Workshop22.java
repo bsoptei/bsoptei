@@ -1,7 +1,11 @@
+import java.util.Scanner;
+
 public class Workshop22{
+    static Scanner newString = new Scanner(System.in);
     public static void main(String... args) {
         // create a function which prints the input String parameters (can have multiple number of arguments)
-        String myString = "Green Fox";
+        System.out.print("Enter your string: ");
+        String myString = newString.nextLine();
         stringParam(myString);
     }
     public static void stringParam(String inputString) {

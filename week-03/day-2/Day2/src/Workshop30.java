@@ -11,11 +11,9 @@ public class Workshop30{
         // otherwise set out to 'Run Forest Run!'
         if (ac % 4 == 0 && time <= 200) {
             out = "check";
-        }
-        else if (time > 200) {
+        } else if (time > 200) {
             out = "Time out";
-        }
-        else {
+        } else {
             out = "Run Forest Run!";
         }
         System.out.println(out);

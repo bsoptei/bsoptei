@@ -7,8 +7,7 @@ public class Workshop27{
         // called out, if not half it
         if (y.charAt(0) == y.charAt(y.length() - 1)) {
             out *= 2;
-        }
-        else {
+        } else {
             out /= 2;
         }
         System.out.println(out);
