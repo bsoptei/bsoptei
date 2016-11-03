@@ -3,6 +3,6 @@ public class Workshop21{
         String proverb = "If it ain't broke, don't fix it.";
         // Print the "don't fix it" part using the proverb variable
 
-        System.out.println(proverb.substring(proverb.indexOf("d"), proverb.length()));
+        System.out.println(proverb.substring(proverb.indexOf("d"), proverb.length() - 1));
     }
 }

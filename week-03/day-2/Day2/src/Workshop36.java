@@ -18,7 +18,6 @@ public class Workshop36 {
                 else {
                     output = output.concat(" ");
                 }
-
             }
             System.out.println(output);
         }
