@@ -3,7 +3,10 @@ public class Workshop15{
         int af = 123;
         // create a function that doubles it's input
         // double af with it
-
-        System.out.println();
+        af = doubler(af);
+        System.out.println(af);
+    }
+    public static int doubler(int numberToDouble) {
+        return numberToDouble * 2;
     }
 }
