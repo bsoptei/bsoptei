@@ -3,8 +3,8 @@ public class Workshop13{
         int[] ah = new int[]  {3, 4, 5, 6, 7};
         // print the sum of all numbers in ah
         int sum = 0;
-        for (int x = 0; x < ah.length; x++) {
-            sum += ah[x];
+        for (int x: ah) {
+            sum += x;
         }
         System.out.println(sum);
     }

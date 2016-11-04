@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Workshop10{
     public static void main(String[] args) {
         // Task 1: Create an array (jagged) which can contain the different shades of specified colors
@@ -11,12 +13,7 @@ public class Workshop10{
         colors[0] = green.split(",");
         colors[1] = red.split(",");
         colors[2] = pink.split(",");
-
         // Task 2: Print the values of the array to the console
-        for (int i = 0; i < colors.length; i++) {
-            for (int j = 0; j < colors[i].length; j++) {
-                System.out.println(colors[i][j]);
-            }
-        }
+        System.out.println(Arrays.deepToString(colors));
     }
 }

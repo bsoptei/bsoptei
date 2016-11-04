@@ -1,14 +1,14 @@
+import java.util.*;
+
 public class Workshop14{
     public static void main(String[] args) {
         // Reverse the order of ah
         int[] ah = new int[] {3, 4, 5, 6, 7};
-        for(int i = 0; i < ah.length / 2; i++) {
-            int temp = ah[i];
-            ah[i] = ah[ah.length - i - 1];
-            ah[ah.length - i - 1] = temp;
+        ArrayList<Integer> ahNew = new ArrayList<Integer>();
+        for (int x: ah) {
+            ahNew.add(x);
         }
-        for(int i = 0;i < ah.length;i++){
-            System.out.print(ah[i] + " ");
-        }
+        Collections.sort(ahNew, Collections.reverseOrder());
+        System.out.println(ahNew);
     }
 }
