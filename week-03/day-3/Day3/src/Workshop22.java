@@ -7,8 +7,8 @@ public class Workshop22{
         stringParam("one", "two", "three");
     }
     public static void stringParam(String... inputString) {
-        for (String s : inputString) {
-            System.out.println(s);
-        }
+//        for (String s : inputString) {
+//            System.out.println(s);
+//        }
     }
 }

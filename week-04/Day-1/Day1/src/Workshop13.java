@@ -8,11 +8,15 @@ public class Workshop13{
         for (String element: list) {
             System.out.println(element);
         }
-        System.out.println("This time I'm using an iterator.");
+        System.out.println("This time I'm using an iterator and a while loop.");
         Iterator itr = list.iterator();
         while(itr.hasNext()) {
             Object element = itr.next();
-            System.out.print(element + " ");
+            System.out.println(element + " ");
+        }
+        System.out.println("This time I'm using an iterator and a for loop.");
+        for (Iterator<String> numbersIter = list.iterator(); numbersIter.hasNext();){
+            System.out.println(numbersIter.next());
         }
     }
 }
