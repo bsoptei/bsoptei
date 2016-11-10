@@ -1,0 +1,15 @@
+VBox {
+ -fx-background-color: linear-gradient(#000 0%, #fff 15%, #fff 100%);
+}
+
+Button {
+    -fx-background-color: #000;
+}
+
+Text {
+}
+
+HBox {
+    -fx-background-size: contain;
+    -fx-background-repeat: no-repeat;
+}
