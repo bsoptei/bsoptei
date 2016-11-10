@@ -66,17 +66,21 @@ public class Workshop18 {
             while ((lineA = bufferA.readLine()) != null && (lineB = bufferB.readLine()) != null) {
                 bufferA.mark(0);
                 bufferB.mark(0);
+                lineA = bufferA.readLine();
+                lineB = bufferB.readLine();
+                System.out.println(lineA);
+                System.out.println(lineB);
                 countLine++;
-                System.out.printf("Line number %d,\n:", countLine);
-                if (Integer.parseInt(lineA) > Integer.parseInt(lineB)) {
-                    System.out.println(lineB);
-
-                    bufferA.reset();
-                } else {
-                    System.out.println(lineA);
-
-                    bufferB.reset();
-                }
+//                System.out.printf("Line number %d,\n:", countLine);
+//                if (Integer.parseInt(lineA) > Integer.parseInt(lineB)) {
+//                    System.out.println(lineB);
+//
+//                    bufferA.reset();
+//                } else {
+//                    System.out.println(lineA);
+//
+//                    bufferB.reset();
+//                }
             }
             bufferA.close();
             bufferB.close();
