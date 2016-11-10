@@ -8,7 +8,7 @@ public class HashMapper {
     public static void main(String[] args) {
         bankAccounts.put("John", 100000.00);
         bankAccounts.put("Joanna", 200000.00);
-
+        System.out.println( bankAccounts.get("John"));
         for (String client: bankAccounts.keySet()) {
             System.out.println(client);
         }
