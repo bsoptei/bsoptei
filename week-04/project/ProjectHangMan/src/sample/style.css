@@ -1,5 +1,5 @@
 VBox {
- -fx-background-color: linear-gradient(#000 0%, #fff 15%, #fff 100%);
+    -fx-background-color: linear-gradient(#000 0%, #fff 15%, #fff 100%);
 }
 
 Button {
