@@ -16,7 +16,6 @@ public class Main extends Application {
         primaryStage.setTitle("H4NGM4N!");
         primaryStage.setScene(new Scene(root, 400, 300));
         primaryStage.show();
-
     }
 
     public static void main(String[] args) {

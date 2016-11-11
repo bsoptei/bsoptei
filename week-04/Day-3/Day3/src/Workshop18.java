@@ -57,23 +57,24 @@ public class Workshop18 {
         String fileTwo = "src/W18B.txt";
         Charset charset = Charset.forName("UTF-8");
         try {
-            BufferedReader bufferA = Files.newBufferedReader(Paths.get(fileOne), charset);
-            BufferedReader bufferB = Files.newBufferedReader(Paths.get(fileTwo), charset);
-            String lineA;
-            String lineB;
+                BufferedReader bufferA = Files.newBufferedReader(Paths.get(fileOne), charset);
+                BufferedReader bufferB = Files.newBufferedReader(Paths.get(fileTwo), charset);
+                String lineA;
+                String lineB;
+            for (int i = 0; i <=5; i++) {
+                bufferA.mark(1);
+                bufferB.mark(1);
+                lineA = bufferA.readLine();
+                lineB = bufferB.readLine();
 
-            bufferA.mark(1);
-            bufferB.mark(1);
-            lineA = bufferA.readLine();
-            lineB = bufferB.readLine();
-
-            System.out.printf("Matching %s with %s \n", lineA, lineB);
-            if (Integer.parseInt(lineB) < Integer.parseInt(lineA)) {
-                System.out.println(lineB);
-                bufferA.reset();
-            } else if (Integer.parseInt(lineA) < Integer.parseInt(lineB)) {
-                System.out.println(lineA);
-                bufferB.reset();
+                System.out.printf("Matching %s with %s \n", lineA, lineB);
+                if (Integer.parseInt(lineB) < Integer.parseInt(lineA)) {
+                    System.out.println(lineB);
+                    bufferA.reset();
+                } else if (Integer.parseInt(lineA) < Integer.parseInt(lineB)) {
+                    System.out.println(lineA);
+                    bufferB.reset();
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();

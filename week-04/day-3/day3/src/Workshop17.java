@@ -8,16 +8,24 @@ public class Workshop17 {
     public static void main(String[] args) {
         System.out.print("Enter the Source filename: ");
         File sourceFile = new File(userInput.nextLine());
-        System.out.print("Enter the Destination filename: ");
-        File destinationFile = new File(userInput.nextLine());
-        try {
-            copyFileUsingApacheCommonsIO(sourceFile, destinationFile);
-        } catch (IOException e){
-            System.out.println("IOException!!!!!!!!!!");
+        if (sourceFile.exists()) {
+            System.out.print("Enter the Destination filename: ");
+            File destinationFile = new File(userInput.nextLine());
+            if (!destinationFile.exists()) {
+                try {
+                    copyFile(sourceFile, destinationFile);
+                } catch (IOException e) {
+                    System.out.println("IOException!!!!!!!!!!");
+                }
+            } else {
+                System.out.println("Sorry, Destination already exists.");
+            }
+        } else {
+            System.out.println("Sorry, the Source you gave does not exist.");
         }
     }
 
-    private static void copyFileUsingApacheCommonsIO(File source, File dest) throws IOException {
+    private static void copyFile(File source, File dest) throws IOException {
         String confirm = "";
         while (!confirm.equalsIgnoreCase("N") && !confirm.equalsIgnoreCase("Y")) {
             System.out.printf("Writing from %s to %s. Press Y to confirm, N to abort: ", source, dest);

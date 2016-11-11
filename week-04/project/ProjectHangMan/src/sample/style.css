@@ -6,9 +6,6 @@ Button {
     -fx-background-color: #000;
 }
 
-Text {
-}
-
 HBox {
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
