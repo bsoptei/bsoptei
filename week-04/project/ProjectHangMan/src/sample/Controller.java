@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -24,15 +25,26 @@ public class Controller {
     private TextField inputField = null;
     @FXML
     private HBox myHBox;
+    @FXML
+    private Button myButton;
+    @FXML
+    private Text numberOfRemainingChances;
+    @FXML
+    private Text numberOfGamesWon;
+    @FXML
+    private Text numberOfGamesLost;
 
-    private static ArrayList<String> goodRemarks = new ArrayList<>();
-    private static ArrayList<String> badRemarks = new ArrayList<>();
-    private static StringBuilder lettersHidden = new StringBuilder();
-    private static String riddle = getRiddle();
-    private static int numberOfWrongGuesses = 0;
-    private static int status = 0;
-
-    private static HashMap<Integer, String> whichBackground = new HashMap<Integer, String>() {{
+    private ArrayList<String> goodRemarks = new ArrayList<>();
+    private ArrayList<String> badRemarks = new ArrayList<>();
+    private ArrayList<String> riddles = new ArrayList<>();
+    private StringBuilder lettersHidden = new StringBuilder();
+    private String riddle;
+    private int numberOfWrongGuesses;
+    private boolean gameRunning = false;
+    private int gamesWon;
+    private int gamesLost;
+    private HashMap<Integer, String> whichBackground = new HashMap<Integer, String>() {{
+        put(0, "-fx-background-image: url(/sample/images/0.png);");
         put(1, "-fx-background-image: url(/sample/images/1.png);");
         put(2, "-fx-background-image: url(/sample/images/2.png);");
         put(3, "-fx-background-image: url(/sample/images/3.png);");
@@ -42,72 +54,98 @@ public class Controller {
         put(7, "-fx-background-image: url(/sample/images/7.png);");
     }};
 
-    public void displayRiddle() {
+    public void buttonPress() {
+        if (!gameRunning) {
+            outputText.setText("");
+            numberOfGamesWon.setText("Games won: " + gamesWon);
+            numberOfGamesLost.setText("Games lost: " + gamesLost);
+            numberOfWrongGuesses = 0;
+            myHBox.setStyle(whichBackground.get(numberOfWrongGuesses));
+            lettersHidden.delete(0, lettersHidden.length());
+            gameRunning = true;
+            myButton.setText("Submit");
+            riddle = getRiddle();
+
+        } else {
+            checkInput(inputField.getText());
+        }
+        inputField.setText("");
+        displayRiddle();
+    }
+
+    private void displayRiddle() {
         riddleText.setText(lettersHidden.toString());
+        numberOfRemainingChances.setText("Remaining chances: " + (7 - numberOfWrongGuesses));
         if (numberOfWrongGuesses > 0) {
             myHBox.setStyle(whichBackground.get(numberOfWrongGuesses));
         }
     }
 
-    public void submitUserGuess() {
-        if (lettersHidden.toString().contains("_") && inputField.getText().length() > 0 && numberOfWrongGuesses < 7) {
-            checkInput(inputField.getText());
+    private String getRiddle() {
+        if (riddles.isEmpty()) {
+            riddles = getDataFromFile(Paths.get("src/sample/docs/source.txt"));
         }
-        inputField.setText("");
-        displayRiddle();
-        outputText.setText(getFunnyRemarks());
-        if (!lettersHidden.toString().contains("_")) {
-            outputText.setText("You won the game. I am devastated.");
-        }
-        if (numberOfWrongGuesses >= 7) {
-            outputText.setText("You are dead! Hooray!");
-        }
-    }
-
-    private static String getRiddle() {
-        ArrayList<String> riddles = getDataFromFile(Paths.get("src/sample/docs/source.txt"));
         riddle = riddles.get(generateRandomNumber(riddles.size()));
-        setGameVars();
+        setHiddenContent();
         return riddle;
     }
 
-    private static void setGameVars() {
+    private void setHiddenContent() {
         for (int index = 0; index < riddle.length(); index++) {
             lettersHidden.append("_");
         }
     }
 
-    private static void checkInput(String guess) {
+    private void checkIfGameShouldEnd() {
+        if (numberOfWrongGuesses >= 7) {
+            gameEnds(false);
+        } else if (!lettersHidden.toString().contains("_")) {
+            gameEnds(true);
+        }
+    }
+
+    private void gameEnds(boolean userWon) {
+        if (userWon) {
+            outputText.setText("You won the game. I am devastated.");
+            gamesWon++;
+        } else {
+            outputText.setText("You are dead! Hooray! The word was " + riddle);
+            gamesLost++;
+        }
+        gameRunning = false;
+        myButton.setText("New game");
+    }
+
+    private void checkInput(String guess) {
         if (riddle.contains(guess.toUpperCase())) {
             for (int i = 0; i < riddle.length(); i++) {
                 if (riddle.charAt(i) == guess.toUpperCase().charAt(0)) {
                     lettersHidden.setCharAt(i, guess.toUpperCase().charAt(0));
                 }
-                status = 2;
             }
+            outputText.setText(getFunnyRemarks(true));
         } else {
             numberOfWrongGuesses++;
-            status = 1;
+            outputText.setText(getFunnyRemarks(false));
         }
+        checkIfGameShouldEnd();
     }
 
-    private static String getFunnyRemarks() {
+    private String getFunnyRemarks(boolean goodAnswer) {
         if (goodRemarks.isEmpty()) {
             goodRemarks = getDataFromFile(Paths.get("src/sample/docs/good.txt"));
         }
         if (badRemarks.isEmpty()) {
             badRemarks = getDataFromFile(Paths.get("src/sample/docs/bad.txt"));
         }
-        if (status == 2) {
+        if (goodAnswer) {
             return goodRemarks.get(generateRandomNumber(goodRemarks.size()));
-        } else if (status == 1) {
-            return badRemarks.get(generateRandomNumber(badRemarks.size()));
         } else {
-            return "Start.";
+            return badRemarks.get(generateRandomNumber(badRemarks.size()));
         }
     }
 
-    private static ArrayList<String> getDataFromFile(Path path) {
+    private ArrayList<String> getDataFromFile(Path path) {
         ArrayList<String> wordList = new ArrayList<>();
         Charset charset = Charset.forName("UTF-8");
         try (
@@ -123,7 +161,7 @@ public class Controller {
         return wordList;
     }
 
-    private static int generateRandomNumber(int upperLimit) {
+    private int generateRandomNumber(int upperLimit) {
         Random random = new Random();
         return random.nextInt(upperLimit);
     }
