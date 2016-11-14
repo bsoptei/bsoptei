@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -75,7 +74,7 @@ public class Controller {
 
     private void displayRiddle() {
         riddleText.setText(lettersHidden.toString());
-        numberOfRemainingChances.setText("Remaining chances: " + (7 - numberOfWrongGuesses));
+        numberOfRemainingChances.setText("Remaining chances of failure: " + (7 - numberOfWrongGuesses));
         if (numberOfWrongGuesses > 0) {
             myHBox.setStyle(whichBackground.get(numberOfWrongGuesses));
         }

@@ -1,12 +1,49 @@
+@font-face {
+    font-family: 'Chiller';
+    src: url(CHILLER.TTF);
+}
+
 VBox {
     -fx-background-color: linear-gradient(#000 0%, #fff 15%, #fff 100%);
+    -fx-pref-width: 600;
+    -fx-pref-height: 400;
+}
+
+#gameTitle {
+    -fx-fill: #ffffff;
 }
 
 Button {
     -fx-background-color: #000;
+    -fx-text-fill: #ffffff;
+}
+
+Button:hover {
+    -fx-text-fill: #ff0000;
 }
 
 HBox {
+    -fx-background-image: url(/sample/images/0.png);
     -fx-background-size: contain;
     -fx-background-repeat: no-repeat;
+    -fx-pref-width: 600;
+    -fx-pref-height: 260;
+    -fx-alignment: bottom-center;
+}
+
+Text {
+    -fx-min-width: 600;
+}
+
+Text,
+TextField,
+Button {
+    -fx-font-size: 28px;
+    -fx-font-family: "Chiller";
+}
+
+#numberOfRemainingChances,
+#numberOfGamesWon,
+#numberOfGamesLost {
+    -fx-font-size: 24px;
 }

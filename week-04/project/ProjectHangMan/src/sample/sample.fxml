@@ -3,57 +3,17 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox id="myBox" prefHeight="400.0" prefWidth="600.0" stylesheets="/sample/css/style.css"
-      xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-    <Text id="gameTitle" fill="WHITE" text="This is the H4NGM4N!" wrappingWidth="600.0">
-        <font>
-            <Font name="Chiller" size="32.0"/>
-        </font>
-    </Text>
+<VBox id="myBox" stylesheets="/sample/css/style.css" xmlns:fx="http://javafx.com/fxml/" fx:controller="sample.Controller">
+    <Text id="gameTitle" text="This is the H4NGM4N!" />
     <TextField id="inputField" fx:id="inputField" layoutX="120.0" layoutY="64.0"
-               promptText="Enter a letter than press submit">
-        <font>
-            <Font name="Chiller" size="32.0"/>
-        </font>
-    </TextField>
-    <Button id="myButton" fx:id="myButton" text="New game" onAction="#buttonPress" textFill="WHITE">
-        <font>
-            <Font name="Chiller" size="32.0"/>
-        </font>
-    </Button>
-    <Text id="riddleText" fx:id="riddleText" text="Press button to start." wrappingWidth="600.0">
-        <font>
-            <Font name="Chiller" size="32.0"/>
-        </font>
-    </Text>
-    <Text id="outputText" fx:id="outputText" wrappingWidth="600.0">
-        <font>
-            <Font name="Chiller" size="32.0"/>
-        </font>
-    </Text>
-
-    <HBox id="myHBox" fx:id="myHBox" alignment="BOTTOM_CENTER" prefHeight="260.0" prefWidth="600.0"
-          style="-fx-background-image: url(/sample/images/0.png)"/>
-
-    <Text id="numberOfRemainingChances" fx:id="numberOfRemainingChances" wrappingWidth="600.0">
-        <font>
-            <Font name="Chiller" size="24.0"/>
-        </font>
-    </Text>
-
-    <Text id="numberOfGamesWon" fx:id="numberOfGamesWon" wrappingWidth="600.0">
-        <font>
-            <Font name="Chiller" size="24.0"/>
-        </font>
-    </Text>
-
-    <Text id="numberOfGamesLost" fx:id="numberOfGamesLost" wrappingWidth="600.0">
-        <font>
-            <Font name="Chiller" size="24.0"/>
-        </font>
-    </Text>
-
+               promptText="Enter a letter than press submit"/>
+    <Button id="myButton" fx:id="myButton" onAction="#buttonPress" text="New game"/>
+    <Text id="riddleText" fx:id="riddleText" text="Press button to start." />
+    <Text id="outputText" fx:id="outputText" />
+    <HBox id="myHBox" fx:id="myHBox" />
+    <Text id="numberOfRemainingChances" fx:id="numberOfRemainingChances" />
+    <Text id="numberOfGamesWon" fx:id="numberOfGamesWon" />
+    <Text id="numberOfGamesLost" fx:id="numberOfGamesLost" />
 </VBox>
