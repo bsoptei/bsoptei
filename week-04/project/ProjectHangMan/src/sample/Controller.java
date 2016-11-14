@@ -67,6 +67,7 @@ public class Controller {
 
         } else {
             checkInput(inputField.getText());
+            inputField.requestFocus();
         }
         inputField.setText("");
         displayRiddle();
