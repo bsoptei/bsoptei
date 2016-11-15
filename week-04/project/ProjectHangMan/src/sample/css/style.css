@@ -1,8 +1,3 @@
-@font-face {
-    font-family: 'Chiller';
-    src: url(CHILLER.TTF);
-}
-
 VBox {
     -fx-background-color: linear-gradient(#000 0%, #fff 15%, #fff 100%);
     -fx-pref-width: 600;
