@@ -5,15 +5,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox id="myBox" stylesheets="/sample/css/style.css" xmlns:fx="http://javafx.com/fxml/" fx:controller="sample.Controller">
-    <Text id="gameTitle" text="This is the H4NGM4N!" />
+<VBox id="myBox" stylesheets="/sample/css/style.css" xmlns:fx="http://javafx.com/fxml/"
+      fx:controller="sample.Controller">
+    <Text id="gameTitle" text="This is the H4NGM4N!"/>
     <TextField id="inputField" fx:id="inputField" layoutX="120.0" layoutY="64.0"
                promptText="Enter a letter than press submit"/>
     <Button id="myButton" fx:id="myButton" onAction="#buttonPress" text="New game"/>
-    <Text id="riddleText" fx:id="riddleText" text="Press button to start." />
-    <Text id="outputText" fx:id="outputText" />
-    <HBox id="myHBox" fx:id="myHBox" />
-    <Text id="numberOfRemainingChances" fx:id="numberOfRemainingChances" />
-    <Text id="numberOfGamesWon" fx:id="numberOfGamesWon" />
-    <Text id="numberOfGamesLost" fx:id="numberOfGamesLost" />
+    <Text id="riddleText" fx:id="riddleText" text="Press button to start."/>
+    <Text id="outputText" fx:id="outputText"/>
+    <HBox id="myHBox" fx:id="myHBox"/>
+    <Text id="numberOfRemainingChances" fx:id="numberOfRemainingChances"/>
+    <Text id="numberOfGamesWon" fx:id="numberOfGamesWon"/>
+    <Text id="numberOfGamesLost" fx:id="numberOfGamesLost"/>
 </VBox>
