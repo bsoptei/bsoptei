@@ -1,6 +1,7 @@
 package sample;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -18,6 +19,7 @@ class Game {
     private int numberOfWrongGuesses = 0;
     private boolean gameRunning = false;
     private int winOrLose = 0;
+    private ArrayList<String> storedGameData = new ArrayList<>();
 
     Game() {
         this.gameRunning = true;
@@ -26,6 +28,7 @@ class Game {
         setLettersHidden();
         goodRemarks = getDataFromFile(Paths.get("src/sample/docs/good.txt"));
         badRemarks = getDataFromFile(Paths.get("src/sample/docs/bad.txt"));
+        storedGameData = getDataFromFile(Paths.get("src/sample/docs/stored.txt"));
     }
 
     boolean isGameRunning() {
@@ -61,9 +64,8 @@ class Game {
 
     private ArrayList<String> getDataFromFile(Path path) {
         ArrayList<String> wordList = new ArrayList<>();
-        Charset charset = Charset.forName("UTF-8");
         try (
-                BufferedReader reader = Files.newBufferedReader(path, charset)) {
+                BufferedReader reader = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 wordList.add(line);
@@ -74,6 +76,20 @@ class Game {
         }
         return wordList;
     }
+
+    void writeGameDataToFile() {
+        try {
+            BufferedWriter writer =  Files.newBufferedWriter(Paths.get("src/sample/docs/stored.txt"), Charset.forName("UTF-8"));
+            for (String line : storedGameData) {
+                writer.write(line);
+                writer.newLine();
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private int generateRandomNumber(int upperLimit) {
         Random random = new Random();
@@ -98,10 +114,6 @@ class Game {
         return numberOfWrongGuesses;
     }
 
-    int getWinOrLose() {
-        return winOrLose;
-    }
-
     void setWinOrLose(int winOrLose) {
         this.winOrLose = winOrLose;
     }
@@ -110,4 +122,12 @@ class Game {
         this.gameRunning = false;
     }
 
+    ArrayList<String> getStoredGameData() {
+        return storedGameData;
+    }
+
+    void setStoredGameData(int won, int lost) {
+        this.storedGameData.set(0, Integer.toString(won));
+        this.storedGameData.set(1, Integer.toString(lost));
+    }
 }

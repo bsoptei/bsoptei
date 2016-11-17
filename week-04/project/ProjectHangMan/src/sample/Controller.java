@@ -6,6 +6,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -27,6 +28,8 @@ public class Controller {
     @FXML
     private Text numberOfGamesLost;
 
+    private int gamesWon;
+    private int gamesLost;
     private ArrayList<Game> games = new ArrayList<>();
     private HashMap<Integer, String> whichBackground = new HashMap<Integer, String>() {{
         put(0, "-fx-background-image: url(/sample/images/0.png);");
@@ -39,12 +42,15 @@ public class Controller {
         put(7, "-fx-background-image: url(/sample/images/7.png);");
     }};
 
+
     public void buttonPress() {
         if (games.isEmpty() || (!games.isEmpty() && !currentGame().isGameRunning())) {
             games.add(new Game());
             outputText.setText("");
-            numberOfGamesWon.setText("Games won: " + countGamesWon());
-            numberOfGamesLost.setText("Games lost: " + countGamesLost());
+            gamesWon = Integer.parseInt(currentGame().getStoredGameData().get(0));
+            gamesLost = Integer.parseInt(currentGame().getStoredGameData().get(1));
+            numberOfGamesWon.setText("Games won: " + gamesWon);
+            numberOfGamesLost.setText("Games lost: " + gamesLost);
             myHBox.setStyle(whichBackground.get(currentGame().getNumberOfWrongGuesses()));
             myButton.setText("Submit");
         } else {
@@ -78,35 +84,19 @@ public class Controller {
         if (userWon) {
             outputText.setText("You won the game. I am devastated.");
             currentGame().setWinOrLose(1);
+            gamesWon++;
         } else {
             outputText.setText("You are dead! Hooray! The word was " + currentGame().getRiddle());
             currentGame().setWinOrLose(-1);
+            gamesLost++;
         }
         myButton.setText("New game");
+        currentGame().setStoredGameData(gamesWon, gamesLost);
+        currentGame().writeGameDataToFile();
         currentGame().terminate();
     }
 
     private Game currentGame() {
         return games.get(games.size() - 1);
-    }
-
-    private int countGamesLost() {
-        int lost = 0;
-        for (Game game : games) {
-            if (game.getWinOrLose() == -1) {
-                lost++;
-            }
-        }
-        return lost;
-    }
-
-    private int countGamesWon() {
-        int won = 0;
-        for (Game game : games) {
-            if (game.getWinOrLose() == 1) {
-                won++;
-            }
-        }
-        return won;
     }
 }
