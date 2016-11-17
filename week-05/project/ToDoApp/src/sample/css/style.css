@@ -2,14 +2,20 @@
     -fx-background-color: #000;
 }
 
+
 Button{
     -fx-background-color: #fff;
     -fx-font-weight: bold;
+    -fx-pref-width: 100px;
 }
 
 Button:hover {
     -fx-background-color: #ddd;
 
+}
+
+#helpButton {
+-fx-pref-width: 30px;
 }
 
 #titleText,
@@ -39,4 +45,8 @@ DatePicker {
     -fx-border-style: solid;
     -fx-border-width: 1px;
     -fx-border-color: #ddd;
+}
+
+#thingsToDo {
+    -fx-wrap-text: true;
 }

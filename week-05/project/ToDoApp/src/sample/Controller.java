@@ -15,6 +15,8 @@ public class Controller {
     private Text thingsToDo;
     @FXML
     private TextArea myTextArea;
+    @FXML
+    private Text titleText;
 
     private String user = null;
     private ToDoList myToDo = null;
@@ -28,6 +30,7 @@ public class Controller {
             myDatePicker.setValue(null);
             currentDate = null;
             thingsToDo.setText("Hello, " + user + "! Let's get started!");
+            titleText.setText("To Do! Currently used by " + user + ".");
         } else {
             thingsToDo.setText("Enter user name!");
         }
@@ -128,4 +131,14 @@ public class Controller {
         return contains;
     }
 
+    @FXML
+    private void showHelp() {
+        thingsToDo.setText("Hi, welcome to the To Do! \n" +
+                "How to use: \n 1. Submit your user name \n 2. Select date \n" +
+                "3. Use the box below to enter tasks, finish by hitting \"Add\" \n" +
+                "4. You can remove tasks by entering their description " +
+                "\n(without the numbering) and pressing \"Remove\" " +
+                "\n \n Version 1.0.0 beta \n" +
+                "Created by Balázs Söptei 2016.11.17.");
+    }
 }

@@ -75,7 +75,6 @@ class ToDoList {
         try {
             FileWriter fw = new FileWriter(data.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
-
             for (String line : outputContent) {
                 line = line.substring(1, line.length() - 1);
                 line = line.replaceAll("\\s+"," ");
