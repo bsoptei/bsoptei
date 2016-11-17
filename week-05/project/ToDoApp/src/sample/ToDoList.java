@@ -42,9 +42,7 @@ class ToDoList {
     }
 
     private void processContents() {
-        for (String line : rawContents) {
-            processedContents.add(line.trim().split(","));
-        }
+        processedContents.addAll(rawContents.stream().map(line -> line.trim().split(",")).collect(Collectors.toList()));
     }
 
     ArrayList<String[]> getProcessedContents() {
@@ -57,10 +55,7 @@ class ToDoList {
 
     void generateOutputContent() {
         this.outputContent = new ArrayList<>();
-        for (String [] line: processedContents) {
-            this.outputContent.add(Arrays.toString(line).trim());
-        }
-//        this.outputContent.addAll(processedContents.stream().map(Arrays::toString).collect(Collectors.toList()));
+        this.outputContent.addAll(processedContents.stream().map(line -> Arrays.toString(line).trim()).collect(Collectors.toList()));
         Collections.sort(outputContent);
     }
 
@@ -68,15 +63,13 @@ class ToDoList {
         if (data.exists()) {
             readFile();
         } else try {
+            //noinspection ResultOfMethodCallIgnored
             data.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
-
-
-
 
     void writeFile() {
         try {
@@ -85,6 +78,7 @@ class ToDoList {
 
             for (String line : outputContent) {
                 line = line.substring(1, line.length() - 1);
+                line = line.replaceAll("\\s+"," ");
                 bw.write(line);
                 bw.newLine();
             }
@@ -106,11 +100,15 @@ class ToDoList {
 
     void addTaskToDate(String date, String task) {
         // Add thing to the to do list to an existing date
-        String taskToAdd = "," + task.trim();
         String[] a = processedContents.get(findDate(date));
         this.processedContents.remove(findDate(date));
-        String temp = Arrays.toString(a).substring(1, Arrays.toString(a).length() - 1).concat(taskToAdd);
-        addToProcessedContents(temp.split(","));
+        StringBuilder temp = new StringBuilder();
+        temp.append(date);
+        for (int index = 1; index < a.length; index++) {
+            temp.append(",").append(a[index]);
+        }
+        temp.append(",").append(task.trim());
+        addToProcessedContents(temp.toString().split(","));
     }
 
     void removeTaskFromDate(String date, String task) {

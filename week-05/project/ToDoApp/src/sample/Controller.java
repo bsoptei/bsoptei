@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,6 +25,8 @@ public class Controller {
         if (userName.getText().length() > 0) {
             user = userName.getText();
             myToDo = new ToDoList(user);
+            myDatePicker.setValue(null);
+            currentDate = null;
             thingsToDo.setText("Hello, " + user + "! Let's get started!");
         } else {
             thingsToDo.setText("Enter user name!");
@@ -34,7 +35,7 @@ public class Controller {
 
     @FXML
     private void showList() {
-        if (user != null) {
+        if (user != null && myDatePicker.getValue() != null) {
             currentDate = myDatePicker.getValue().toString();
             showContents();
         } else {
