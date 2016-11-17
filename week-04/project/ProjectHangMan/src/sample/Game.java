@@ -17,6 +17,7 @@ class Game {
     private String riddle;
     private int numberOfWrongGuesses = 0;
     private boolean gameRunning = false;
+    private int winOrLose = 0;
 
     Game() {
         this.gameRunning = true;
@@ -95,6 +96,14 @@ class Game {
 
     int getNumberOfWrongGuesses() {
         return numberOfWrongGuesses;
+    }
+
+    int getWinOrLose() {
+        return winOrLose;
+    }
+
+    void setWinOrLose(int winOrLose) {
+        this.winOrLose = winOrLose;
     }
 
     void terminate() {

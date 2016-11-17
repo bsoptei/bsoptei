@@ -28,8 +28,6 @@ public class Controller {
     private Text numberOfGamesLost;
 
     private ArrayList<Game> games = new ArrayList<>();
-    private int gamesWon;
-    private int gamesLost;
     private HashMap<Integer, String> whichBackground = new HashMap<Integer, String>() {{
         put(0, "-fx-background-image: url(/sample/images/0.png);");
         put(1, "-fx-background-image: url(/sample/images/1.png);");
@@ -45,8 +43,8 @@ public class Controller {
         if (games.isEmpty() || (!games.isEmpty() && !currentGame().isGameRunning())) {
             games.add(new Game());
             outputText.setText("");
-            numberOfGamesWon.setText("Games won: " + gamesWon);
-            numberOfGamesLost.setText("Games lost: " + gamesLost);
+            numberOfGamesWon.setText("Games won: " + countGamesWon());
+            numberOfGamesLost.setText("Games lost: " + countGamesLost());
             myHBox.setStyle(whichBackground.get(currentGame().getNumberOfWrongGuesses()));
             myButton.setText("Submit");
         } else {
@@ -79,10 +77,10 @@ public class Controller {
     private void gameEnds(boolean userWon) {
         if (userWon) {
             outputText.setText("You won the game. I am devastated.");
-            gamesWon++;
+            currentGame().setWinOrLose(1);
         } else {
             outputText.setText("You are dead! Hooray! The word was " + currentGame().getRiddle());
-            gamesLost++;
+            currentGame().setWinOrLose(-1);
         }
         myButton.setText("New game");
         currentGame().terminate();
@@ -90,5 +88,25 @@ public class Controller {
 
     private Game currentGame() {
         return games.get(games.size() - 1);
+    }
+
+    private int countGamesLost() {
+        int lost = 0;
+        for (Game game : games) {
+            if (game.getWinOrLose() == -1) {
+                lost++;
+            }
+        }
+        return lost;
+    }
+
+    private int countGamesWon() {
+        int won = 0;
+        for (Game game : games) {
+            if (game.getWinOrLose() == 1) {
+                won++;
+            }
+        }
+        return won;
     }
 }
