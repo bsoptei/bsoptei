@@ -1,11 +1,5 @@
 package sample;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,12 +17,12 @@ class Game {
 
     Game() {
         this.gameRunning = true;
-        riddles = getDataFromFile(Paths.get("src/sample/docs/source.txt"));
+        riddles = FileManager.getDataFromFile(Paths.get("src/sample/docs/source.txt"), false);
         this.riddle = generateRiddle();
         setLettersHidden();
-        goodRemarks = getDataFromFile(Paths.get("src/sample/docs/good.txt"));
-        badRemarks = getDataFromFile(Paths.get("src/sample/docs/bad.txt"));
-        storedGameData = getDataFromFile(Paths.get("src/sample/docs/stored.txt"));
+        goodRemarks = FileManager.getDataFromFile(Paths.get("src/sample/docs/good.txt"), false);
+        badRemarks = FileManager.getDataFromFile(Paths.get("src/sample/docs/bad.txt"), false);
+        this.storedGameData = FileManager.getDataFromFile(Paths.get("src/sample/docs/stored.txt"), true);
     }
 
     boolean isGameRunning() {
@@ -61,35 +55,6 @@ class Game {
             this.lettersHidden.append("_");
         }
     }
-
-    private ArrayList<String> getDataFromFile(Path path) {
-        ArrayList<String> wordList = new ArrayList<>();
-        try (
-                BufferedReader reader = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                wordList.add(line);
-            }
-        } catch (
-                IOException x) {
-            System.err.format("IOException: %s%n", x);
-        }
-        return wordList;
-    }
-
-    void writeGameDataToFile() {
-        try {
-            BufferedWriter writer =  Files.newBufferedWriter(Paths.get("src/sample/docs/stored.txt"), Charset.forName("UTF-8"));
-            for (String line : storedGameData) {
-                writer.write(line);
-                writer.newLine();
-            }
-            writer.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     private int generateRandomNumber(int upperLimit) {
         Random random = new Random();
@@ -130,4 +95,16 @@ class Game {
         this.storedGameData.set(0, Integer.toString(won));
         this.storedGameData.set(1, Integer.toString(lost));
     }
+
+    int checkIfGameShouldEnd() {
+        if (numberOfWrongGuesses >= 7) {
+            return -1;
+        } else if (!lettersHidden.toString().contains("_")) {
+            return +1;
+        } else {
+            return 0;
+        }
+    }
+
+
 }

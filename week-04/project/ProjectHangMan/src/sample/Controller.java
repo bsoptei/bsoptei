@@ -5,8 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -45,31 +43,41 @@ public class Controller {
 
     public void buttonPress() {
         if (games.isEmpty() || (!games.isEmpty() && !currentGame().isGameRunning())) {
-            games.add(new Game());
-            outputText.setText("");
-            gamesWon = Integer.parseInt(currentGame().getStoredGameData().get(0));
-            gamesLost = Integer.parseInt(currentGame().getStoredGameData().get(1));
-            numberOfGamesWon.setText("Games won: " + gamesWon);
-            numberOfGamesLost.setText("Games lost: " + gamesLost);
-            myHBox.setStyle(whichBackground.get(currentGame().getNumberOfWrongGuesses()));
-            myButton.setText("Submit");
+            startNewGame();
         } else {
-            if (!inputField.getText().isEmpty()) {
-                if (currentGame().checkInput(inputField.getText())) {
-                    outputText.setText(currentGame().getFunnyRemarks(true));
-                } else {
-                    outputText.setText(currentGame().getFunnyRemarks(false));
-                }
-                if (currentGame().getNumberOfWrongGuesses() >= 7) {
-                    gameEnds(false);
-                } else if (!currentGame().getLettersHidden().toString().contains("_")) {
-                    gameEnds(true);
-                }
-            }
-            inputField.setText("");
-            inputField.requestFocus();
+            playGame();
         }
         displayRiddle();
+
+    }
+
+    private void playGame() {
+        if (!inputField.getText().isEmpty()) {
+            if (currentGame().checkInput(inputField.getText())) {
+                outputText.setText(currentGame().getFunnyRemarks(true));
+            } else {
+                outputText.setText(currentGame().getFunnyRemarks(false));
+            }
+            if (currentGame().checkIfGameShouldEnd() == -1) {
+                gameEnds(false);
+            } else if (currentGame().checkIfGameShouldEnd() == 1) {
+                gameEnds(true);
+            }
+
+        }
+        inputField.setText("");
+        inputField.requestFocus();
+    }
+
+    private void startNewGame() {
+        games.add(new Game());
+        outputText.setText("");
+        gamesWon = Integer.parseInt(currentGame().getStoredGameData().get(0));
+        gamesLost = Integer.parseInt(currentGame().getStoredGameData().get(1));
+        numberOfGamesWon.setText("Games won: " + gamesWon);
+        numberOfGamesLost.setText("Games lost: " + gamesLost);
+        myHBox.setStyle(whichBackground.get(currentGame().getNumberOfWrongGuesses()));
+        myButton.setText("Submit");
     }
 
     private void displayRiddle() {
@@ -92,7 +100,7 @@ public class Controller {
         }
         myButton.setText("New game");
         currentGame().setStoredGameData(gamesWon, gamesLost);
-        currentGame().writeGameDataToFile();
+        FileManager.writeGameDataToFile(currentGame().getStoredGameData(), true);
         currentGame().terminate();
     }
 
