@@ -18,12 +18,22 @@ class Game {
 
     Game() {
         this.gameRunning = true;
-        riddles = gameFiles.getDataFromFile(Paths.get("src/sample/docs/source.txt"), false);
+        checkData();
         this.riddle = generateRiddle();
         setLettersHidden();
-        goodRemarks = gameFiles.getDataFromFile(Paths.get("src/sample/docs/good.txt"), false);
-        badRemarks = gameFiles.getDataFromFile(Paths.get("src/sample/docs/bad.txt"), false);
         this.storedGameData = gameFiles.getDataFromFile(Paths.get("src/sample/docs/stored.txt"), true);
+    }
+
+    private void checkData() {
+        if (riddles.isEmpty()) {
+            riddles = gameFiles.getDataFromFile(Paths.get("src/sample/docs/source.txt"), false);
+        }
+        if (goodRemarks.isEmpty()) {
+            goodRemarks = gameFiles.getDataFromFile(Paths.get("src/sample/docs/good.txt"), false);
+        }
+        if (badRemarks.isEmpty()) {
+            badRemarks = gameFiles.getDataFromFile(Paths.get("src/sample/docs/bad.txt"), false);
+        }
     }
 
     boolean isGameRunning() {
