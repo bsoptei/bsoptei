@@ -14,15 +14,16 @@ class Game {
     private boolean gameRunning = false;
     private int winOrLose = 0;
     private ArrayList<String> storedGameData = new ArrayList<>();
+    private FileManager gameFiles = new FileManager();
 
     Game() {
         this.gameRunning = true;
-        riddles = FileManager.getDataFromFile(Paths.get("src/sample/docs/source.txt"), false);
+        riddles = gameFiles.getDataFromFile(Paths.get("src/sample/docs/source.txt"), false);
         this.riddle = generateRiddle();
         setLettersHidden();
-        goodRemarks = FileManager.getDataFromFile(Paths.get("src/sample/docs/good.txt"), false);
-        badRemarks = FileManager.getDataFromFile(Paths.get("src/sample/docs/bad.txt"), false);
-        this.storedGameData = FileManager.getDataFromFile(Paths.get("src/sample/docs/stored.txt"), true);
+        goodRemarks = gameFiles.getDataFromFile(Paths.get("src/sample/docs/good.txt"), false);
+        badRemarks = gameFiles.getDataFromFile(Paths.get("src/sample/docs/bad.txt"), false);
+        this.storedGameData = gameFiles.getDataFromFile(Paths.get("src/sample/docs/stored.txt"), true);
     }
 
     boolean isGameRunning() {
@@ -84,6 +85,7 @@ class Game {
     }
 
     void terminate() {
+        gameFiles.writeGameDataToFile(getStoredGameData(), true);
         this.gameRunning = false;
     }
 

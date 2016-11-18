@@ -10,14 +10,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 class FileManager {
-    static ArrayList<String> getDataFromFile(Path path, boolean shouldIDecrypt) {
+    private AESEncrp enkryptor = new AESEncrp();
+
+    ArrayList<String> getDataFromFile(Path path, boolean shouldIDecrypt) {
         ArrayList<String> wordList = new ArrayList<>();
         try (
                 BufferedReader reader = Files.newBufferedReader(path, Charset.forName("UTF-8"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (shouldIDecrypt) {
-                    line = AESEncrp.decrypt(line);
+                    line = enkryptor.decrypt(line);
                 }
                 wordList.add(line);
             }
@@ -30,12 +32,12 @@ class FileManager {
         return wordList;
     }
 
-    static void writeGameDataToFile(ArrayList<String> data, boolean shouldIEncrypt) {
+    void writeGameDataToFile(ArrayList<String> data, boolean shouldIEncrypt) {
         try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get("src/sample/docs/stored.txt"), Charset.forName("UTF-8"));
             for (String line : data) {
                 if (shouldIEncrypt) {
-                    line = AESEncrp.encrypt(line);
+                    line = enkryptor.encrypt(line);
                 }
                 writer.write(line);
                 writer.newLine();

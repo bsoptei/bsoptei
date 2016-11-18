@@ -34,7 +34,7 @@ Text,
 TextField,
 Button {
     -fx-font-size: 28px;
-    -fx-font-family: "Chiller";
+    /*-fx-font-family: "Chiller";*/
 }
 
 #numberOfRemainingChances,

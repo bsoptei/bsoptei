@@ -100,7 +100,6 @@ public class Controller {
         }
         myButton.setText("New game");
         currentGame().setStoredGameData(gamesWon, gamesLost);
-        FileManager.writeGameDataToFile(currentGame().getStoredGameData(), true);
         currentGame().terminate();
     }
 
