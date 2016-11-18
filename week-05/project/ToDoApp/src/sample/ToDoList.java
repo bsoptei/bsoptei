@@ -10,128 +10,77 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 class ToDoList {
+    private ArrayList<ToDoItem> myList;
+    private FileManager listManager;
+
     private String source;
     private ArrayList<String> rawContents = new ArrayList<>();
-    private ArrayList<String[]> processedContents = new ArrayList<>();
     private File data;
     private ArrayList<String> outputContent;
 
-    ToDoList(String userName) {
-        this.setSource(userName);
+    ToDoList(String source) {
+        this.myList = new ArrayList<>();
+        this.source = source;
         this.data = new File(source);
+        this.listManager = new FileManager();
         checkData();
-        processContents();
-    }
-
-    private void setSource(String userName) {
-        this.source = "src/sample/data/" + userName + ".txt";
-    }
-
-    private void readFile() {
-        Charset charset = Charset.forName("UTF-8");
-        try (
-                BufferedReader reader = Files.newBufferedReader(Paths.get(source), charset)) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                rawContents.add(line);
-            }
-        } catch (
-                IOException x) {
-            System.err.format("IOException: %s%n", x);
-        }
-    }
-
-    private void processContents() {
-        processedContents.addAll(rawContents.stream().map(line -> line.trim().split(",")).collect(Collectors.toList()));
-    }
-
-    ArrayList<String[]> getProcessedContents() {
-        return processedContents;
-    }
-
-    private void addToProcessedContents(String[] dataToAdd) {
-        this.processedContents.add(dataToAdd);
+        this.rawContents = listManager.readFile(source);
+        updateList();
     }
 
     void generateOutputContent() {
         this.outputContent = new ArrayList<>();
-        this.outputContent.addAll(processedContents.stream().map(line -> Arrays.toString(line).trim()).collect(Collectors.toList()));
+        for (ToDoItem item: myList) {
+            outputContent.add(item.toString());
+        }
         Collections.sort(outputContent);
     }
 
     private void checkData() {
-        if (data.exists()) {
-            readFile();
-        } else try {
-            //noinspection ResultOfMethodCallIgnored
-            data.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!data.exists()) {
+            listManager.createUserFile(data);
         }
-
+        listManager.readFile(source);
     }
 
-    void writeFile() {
-        try {
-            FileWriter fw = new FileWriter(data.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (String line : outputContent) {
-                line = line.substring(1, line.length() - 1);
-                line = line.replaceAll("\\s+"," ");
-                bw.write(line);
-                bw.newLine();
-            }
-            bw.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     int findDate(String date) {
         int indexOfDate = -1;
-        for (int index = 0; index < processedContents.size(); index++) {
-            if (processedContents.get(index)[0].equals(date)) {
-                indexOfDate = index;
-            }
-        }
+        for (ToDoItem item : myList) {
+            if (date.equals(item.dateToString())) {
+                indexOfDate = myList.indexOf(item);
+            }}
         return indexOfDate;
     }
 
-    void addTaskToDate(String date, String task) {
-        // Add thing to the to do list to an existing date
-        String[] a = processedContents.get(findDate(date));
-        this.processedContents.remove(findDate(date));
-        StringBuilder temp = new StringBuilder();
-        temp.append(date);
-        for (int index = 1; index < a.length; index++) {
-            temp.append(",").append(a[index]);
+    void addItem(ToDoItem item) {
+        this.myList.add(item);
+    }
+
+    void removeItem(ToDoItem item) {
+        this.myList.remove(item);
+    }
+
+    public void save() {
+        listManager.writeFile(outputContent, data);
+    }
+
+    void updateList() {
+        for (String line : rawContents) {
+            myList.add(new ToDoItem(line));
         }
-        temp.append(",").append(task.trim());
-        addToProcessedContents(temp.toString().split(","));
     }
 
-    void removeTaskFromDate(String date, String task) {
-        // Remove a task
-        String[] a = processedContents.get(findDate(date));
-        this.processedContents.remove(findDate(date));
-        ArrayList<String> temp = new ArrayList<>(Arrays.asList(a));
-        for (int index = 0; index < temp.size(); index++) {
-            if (temp.get(index).trim().equalsIgnoreCase(task.trim())) {
-                temp.remove(index);
-            }
-        }
-        String[] b = temp.toArray(new String[temp.size()]);
-        addToProcessedContents(temp.toArray(b));
+    public String toString() {
+        return myList.toString();
+    }
+
+    ArrayList<ToDoItem> getMyList() {
+        return myList;
     }
 
 
-    void addDateToCalendar(String date) {
-        String[] appendWith = {date};
-        addToProcessedContents(appendWith);
+    ToDoItem getItemByDate(String date) {
+        return myList.get(findDate(date));
     }
-
-    void removeDateFromCalendar(String date) {
-        this.processedContents.remove(findDate(date));
-    }
-
 }

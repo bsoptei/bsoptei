@@ -19,6 +19,7 @@ public class Controller {
     private Text titleText;
 
     private String user = null;
+    private User currentUser;
     private ToDoList myToDo = null;
     private int myIndex = -1;
     private String currentDate = null;
@@ -26,7 +27,8 @@ public class Controller {
     public void submitUser() {
         if (userName.getText().length() > 0) {
             user = userName.getText();
-            myToDo = new ToDoList(user);
+            currentUser = new User(user);
+            myToDo = currentUser.getUserToDoList();
             myDatePicker.setValue(null);
             currentDate = null;
             thingsToDo.setText("Hello, " + user + "! Let's get started!");
@@ -40,31 +42,32 @@ public class Controller {
     private void showList() {
         if (user != null && myDatePicker.getValue() != null) {
             currentDate = myDatePicker.getValue().toString();
-            showContents();
+            getContents();
         } else {
             thingsToDo.setText("Submit your user name first!");
         }
     }
 
-    private void showContents() {
-        searchForDate();
-        if (myIndex == -1) {
+    private void getContents() {
+        if (searchForDate(currentDate) == -1) {
             thingsToDo.setText("No tasks for this date.");
         } else {
-            StringBuilder currentList = new StringBuilder();
-            for (String s : myToDo.getProcessedContents().get(myIndex)) {
-                if (findIndex(s, myToDo.getProcessedContents().get(myIndex)) > 0) {
-                    currentList.append(" ").append(findIndex(s, myToDo.getProcessedContents().get(myIndex))).append(". ");
+            StringBuilder displayData = new StringBuilder();
+            int index = 0;
+            for (String dataElement : myToDo.getItemByDate(currentDate).getData()) {
+                if (index > 0) {
+                    displayData.append(Integer.toString(index)).append(". ");
                 }
-                currentList.append(s);
-                currentList.append("\n");
+                displayData.append(dataElement).append("\n");
+                index++;
             }
-            thingsToDo.setText(currentList.toString());
+            thingsToDo.setText(displayData.toString());
         }
     }
 
-    private void searchForDate() {
-        myIndex = myToDo.findDate(currentDate);
+
+    private int searchForDate(String date) {
+        return myToDo.findDate(currentDate);
     }
 
     private int findIndex(String s, String[] list) {
@@ -80,18 +83,14 @@ public class Controller {
     @FXML
     private void addTask() {
         if (myToDo != null && currentDate != null) {
-            searchForDate();
             if (myTextArea.getText().length() > 0) {
-                if (myIndex == -1) {
-                    myToDo.addDateToCalendar(currentDate.trim());
+                if (searchForDate(currentDate) == -1) {
+                    myToDo.addItem(new ToDoItem(currentDate));
                 }
-                searchForDate();
-                if (!search(myTextArea.getText().trim(), myToDo.getProcessedContents().get(myIndex))) {
-                    myToDo.addTaskToDate(currentDate, myTextArea.getText().trim());
-                }
+                myToDo.getItemByDate(currentDate).addTask(myTextArea.getText());
             }
             saveData();
-            showContents();
+            getContents();
         } else {
             thingsToDo.setText("Submit user name and select date first.");
         }
@@ -100,16 +99,13 @@ public class Controller {
     @FXML
     private void removeTask() {
         if (myToDo != null && currentDate != null) {
-            searchForDate();
-            if (myIndex != -1) {
-                if (search(myTextArea.getText().trim(), myToDo.getProcessedContents().get(myIndex))) {
-                    myToDo.removeTaskFromDate(currentDate, myTextArea.getText());
-                }
-                if (myToDo.getProcessedContents().get(myIndex).length == 1) {
-                    myToDo.removeDateFromCalendar(currentDate);
+            if (searchForDate(currentDate) != -1) {
+                myToDo.getItemByDate(currentDate).removeTask(myTextArea.getText());
+                if (myToDo.getItemByDate(currentDate).tasksToString().length() < 1) {
+                    myToDo.removeItem(myToDo.getItemByDate(currentDate));
                 }
                 saveData();
-                showContents();
+                getContents();
             }
         } else {
             thingsToDo.setText("Submit user name and select date first.");
@@ -118,7 +114,7 @@ public class Controller {
 
     private void saveData() {
         myToDo.generateOutputContent();
-        myToDo.writeFile();
+        myToDo.save();
     }
 
     private boolean search(String searchFor, String[] searchIn) {
@@ -138,7 +134,7 @@ public class Controller {
                 "3. Use the box below to enter tasks, finish by hitting \"Add\" \n" +
                 "4. You can remove tasks by entering their description " +
                 "\n(without the numbering) and pressing \"Remove\" " +
-                "\n \n Version 1.0.0 beta \n" +
+                "\n \n Version 1.0.1 beta (Needs bugFix!) \n" +
                 "Created by Balázs Söptei 2016.11.17.");
     }
 }
