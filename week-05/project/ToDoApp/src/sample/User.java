@@ -1,11 +1,11 @@
 package sample;
 
-public class User {
+class User {
     private String userName;
     private ToDoList userToDoList;
     private String sourceFile;
 
-    public User(String userName) {
+    User(String userName) {
         this.userName = userName;
         setSourceFile();
         this.userToDoList = new ToDoList(sourceFile);
@@ -17,13 +17,5 @@ public class User {
 
     ToDoList getUserToDoList() {
         return userToDoList;
-    }
-
-    void addDate (){
-        this.userToDoList.addItem(new ToDoItem(""));
-    }
-
-    public String getSourceFile() {
-        return sourceFile;
     }
 }

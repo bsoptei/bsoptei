@@ -1,11 +1,7 @@
 package sample;
 
 import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
@@ -30,9 +26,7 @@ class ToDoList {
 
     void generateOutputContent() {
         this.outputContent = new ArrayList<>();
-        for (ToDoItem item: myList) {
-            outputContent.add(item.toString());
-        }
+        outputContent.addAll(myList.stream().map(ToDoItem::toString).collect(Collectors.toList()));
         Collections.sort(outputContent);
     }
 
@@ -61,24 +55,17 @@ class ToDoList {
         this.myList.remove(item);
     }
 
-    public void save() {
+    void save() {
         listManager.writeFile(outputContent, data);
     }
 
-    void updateList() {
-        for (String line : rawContents) {
-            myList.add(new ToDoItem(line));
-        }
+    private void updateList() {
+        myList.addAll(rawContents.stream().map(ToDoItem::new).collect(Collectors.toList()));
     }
 
     public String toString() {
         return myList.toString();
     }
-
-    ArrayList<ToDoItem> getMyList() {
-        return myList;
-    }
-
 
     ToDoItem getItemByDate(String date) {
         return myList.get(findDate(date));

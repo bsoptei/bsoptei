@@ -26,6 +26,7 @@ class FileManager {
 
     void createUserFile(File data) {
         try {
+            //noinspection ResultOfMethodCallIgnored
             data.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();

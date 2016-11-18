@@ -19,15 +19,13 @@ public class Controller {
     private Text titleText;
 
     private String user = null;
-    private User currentUser;
     private ToDoList myToDo = null;
-    private int myIndex = -1;
     private String currentDate = null;
 
     public void submitUser() {
         if (userName.getText().length() > 0) {
             user = userName.getText();
-            currentUser = new User(user);
+            User currentUser = new User(user);
             myToDo = currentUser.getUserToDoList();
             myDatePicker.setValue(null);
             currentDate = null;
@@ -49,7 +47,7 @@ public class Controller {
     }
 
     private void getContents() {
-        if (searchForDate(currentDate) == -1) {
+        if (searchForDate() == -1) {
             thingsToDo.setText("No tasks for this date.");
         } else {
             StringBuilder displayData = new StringBuilder();
@@ -66,25 +64,15 @@ public class Controller {
     }
 
 
-    private int searchForDate(String date) {
+    private int searchForDate() {
         return myToDo.findDate(currentDate);
-    }
-
-    private int findIndex(String s, String[] list) {
-        int indexFound = 0;
-        for (int index = 0; index < list.length; index++) {
-            if (s.trim().equals(list[index].trim())) {
-                indexFound = index;
-            }
-        }
-        return indexFound;
     }
 
     @FXML
     private void addTask() {
         if (myToDo != null && currentDate != null) {
             if (myTextArea.getText().length() > 0) {
-                if (searchForDate(currentDate) == -1) {
+                if (searchForDate() == -1) {
                     myToDo.addItem(new ToDoItem(currentDate));
                 }
                 myToDo.getItemByDate(currentDate).addTask(myTextArea.getText());
@@ -99,7 +87,7 @@ public class Controller {
     @FXML
     private void removeTask() {
         if (myToDo != null && currentDate != null) {
-            if (searchForDate(currentDate) != -1) {
+            if (searchForDate() != -1) {
                 myToDo.getItemByDate(currentDate).removeTask(myTextArea.getText());
                 if (myToDo.getItemByDate(currentDate).tasksToString().length() < 1) {
                     myToDo.removeItem(myToDo.getItemByDate(currentDate));
@@ -115,16 +103,6 @@ public class Controller {
     private void saveData() {
         myToDo.generateOutputContent();
         myToDo.save();
-    }
-
-    private boolean search(String searchFor, String[] searchIn) {
-        boolean contains = false;
-        for (String s : searchIn) {
-            if (s.trim().equals(searchFor)) {
-                contains = true;
-            }
-        }
-        return contains;
     }
 
     @FXML
