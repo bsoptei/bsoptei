@@ -5,10 +5,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox id="myBox" stylesheets="/sample/css/style.css" xmlns:fx="http://javafx.com/fxml/"
-      fx:controller="sample.Controller">
+<VBox id="myBox" stylesheets="/sample/css/style.css" xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/8.0.112" fx:controller="sample.Controller">
     <Text id="gameTitle" text="This is the H4NGM4N!"/>
-    <TextField id="inputField" fx:id="inputField" layoutX="120.0" layoutY="64.0"
+    <TextField id="inputField" fx:id="inputField" layoutX="120.0" layoutY="64.0" onKeyPressed="#keyPress"
                promptText="Enter a letter than press submit"/>
     <Button id="myButton" fx:id="myButton" onAction="#buttonPress" text="New game"/>
     <Text id="riddleText" fx:id="riddleText" text="Press button to start."/>

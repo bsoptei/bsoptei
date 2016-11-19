@@ -3,10 +3,12 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
+import static javafx.scene.input.KeyCode.ENTER;
 
 public class Controller {
     @FXML
@@ -39,7 +41,6 @@ public class Controller {
         put(6, "-fx-background-image: url(/sample/images/6.png);");
         put(7, "-fx-background-image: url(/sample/images/7.png);");
     }};
-
 
     public void buttonPress() {
         if (games.isEmpty() || (!games.isEmpty() && !currentGame().isGameRunning())) {
@@ -81,7 +82,11 @@ public class Controller {
     }
 
     private void displayRiddle() {
-        riddleText.setText(currentGame().getLettersHidden().toString());
+        StringBuilder lettersOfRiddle = new StringBuilder();
+        for (int letterIndex = 0; letterIndex < currentGame().getLettersHidden().length(); letterIndex++) {
+            lettersOfRiddle.append(currentGame().getLettersHidden().charAt(letterIndex)).append(" ");
+        }
+        riddleText.setText(lettersOfRiddle.toString());
         numberOfRemainingChances.setText("Remaining chances of failure: " + (7 - currentGame().getNumberOfWrongGuesses()));
         if (currentGame().getNumberOfWrongGuesses() > 0) {
             myHBox.setStyle(whichBackground.get(currentGame().getNumberOfWrongGuesses()));
@@ -105,5 +110,11 @@ public class Controller {
 
     private Game currentGame() {
         return games.get(games.size() - 1);
+    }
+
+    public void keyPress(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(ENTER)) {
+            buttonPress();
+        }
     }
 }

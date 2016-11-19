@@ -11,7 +11,7 @@ class AESEncrp {
     private static final String ALGO = "AES";
     private static byte[] keyValue = new byte[]{'H', '4', 'N', 'G', 'M', '4', 'N', '!', 'H', '4', 'N', 'G', 'M', '4', 'N', '!'};
 
-    static String encrypt(String Data) throws Exception {
+    String encrypt(String Data) throws Exception {
         Key key = generateKey();
         Cipher c = Cipher.getInstance(ALGO);
         c.init(Cipher.ENCRYPT_MODE, key);
@@ -19,7 +19,7 @@ class AESEncrp {
         return new BASE64Encoder().encode(encVal);
     }
 
-    static String decrypt(String encryptedData) throws Exception {
+    String decrypt(String encryptedData) throws Exception {
         Key key = generateKey();
         Cipher c = Cipher.getInstance(ALGO);
         c.init(Cipher.DECRYPT_MODE, key);
@@ -28,7 +28,7 @@ class AESEncrp {
         return new String(decValue);
     }
 
-    private static Key generateKey() throws Exception {
+    private Key generateKey() throws Exception {
         return new SecretKeySpec(keyValue, ALGO);
     }
 

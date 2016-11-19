@@ -117,6 +117,4 @@ class Game {
             return 0;
         }
     }
-
-
 }
