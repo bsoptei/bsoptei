@@ -1,5 +1,6 @@
 package sample;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,8 +29,15 @@ class ToDoItem {
     }
 
     void removeTask(String task) {
-        if (data.contains(task)) {
-            this.data.remove(task);
+        try {
+            if (data.contains(task)) {
+                this.data.remove(task);
+            } else if (Integer.parseInt(task) < data.size()) {
+                this.data.remove(Integer.parseInt(task));
+            }
+        } catch (Exception e) {
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            toolkit.beep();
         }
     }
 

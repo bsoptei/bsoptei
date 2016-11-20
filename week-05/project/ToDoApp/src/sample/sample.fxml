@@ -33,7 +33,7 @@
                 <Text id="thingsToDo" fx:id="thingsToDo" />
             </HBox>
             <HBox id="addOrRemoveBox" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="200.0">
-                <TextArea id="myTextArea" fx:id="myTextArea" prefHeight="100.0" prefWidth="300.0" promptText="Enter task description, press Add in order to add, or Remove in order to remove" />
+                <TextArea id="myTextArea" fx:id="myTextArea" onKeyPressed="#textAreaKeyPressed" prefHeight="100.0" prefWidth="300.0" promptText="Enter task description or number" />
                 <VBox prefHeight="200.0" prefWidth="100.0">
                     <Button id="addButton" onAction="#addTask" prefHeight="100" prefWidth="100.0" text="Add" />
                     <Button id="removeButton" onAction="#removeTask" prefHeight="100" prefWidth="100.0" text="Remove" />

@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 public class Controller {
@@ -111,8 +113,14 @@ public class Controller {
                 "How to use: \n 1. Submit your user name \n 2. Select date \n" +
                 "3. Use the box below to enter tasks, finish by hitting \"Add\" \n" +
                 "4. You can remove tasks by entering their description " +
-                "\n(without the numbering) and pressing \"Remove\" " +
+                "\n(without the numbering) OR their number and pressing \"Remove\" " +
                 "\n \n Version 1.0.1 beta (Needs bugFix!) \n" +
                 "Created by Balázs Söptei 2016.11.17.");
+    }
+
+    public void textAreaKeyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            addTask();
+        }
     }
 }
