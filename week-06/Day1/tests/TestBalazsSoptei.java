@@ -5,9 +5,6 @@ import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Söp on 2016.11.21. Testing Competition
- */
 public class TestBalazsSoptei {
     private WordToolbox w;
 

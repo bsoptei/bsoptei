@@ -1,8 +1,5 @@
 import java.util.HashMap;
 
-/**
- * Created by Söp on 2016.11.21. Testing Competition
- */
 class WordToolbox implements IWordToolbox {
     private String stringHeld;
 
