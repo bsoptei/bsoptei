@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Created by Söp on 2016.11.23. ImageApp
+ */
+
+
 public class ImageAppNew extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(ImageAppNew::new);

@@ -3,6 +3,11 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * Created by Söp on 2016.11.23. Decorate Hasselhoff :D
+ */
+
+
 class DrawPanel extends JPanel {
 
     private int squareX = 0;
