@@ -27,13 +27,11 @@ public class Counter extends JFrame {
         JButton resetCount = new JButton();
         Label counterLabel = new Label();
         panel1.setBackground(Color.CYAN);
-
         panel1.add(increaseCount);
         panel1.add(resetCount);
         increaseCount.setText("Press me!");
         resetCount.setText("Reset");
         refreshCount(counterLabel);
-
         panel1.add(counterLabel);
         increaseCount.addActionListener(e -> {
             this.count++;

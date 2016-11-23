@@ -1,13 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 /**
  * Created by Söp on 2016.11.23.. UI Controls
  */
 public class UIControls extends JFrame {
     private String memory = "";
+    private String actual = "";
     private JTextField writeYourText;
     private JLabel actualInput;
     private JLabel previousInput;
@@ -35,24 +35,31 @@ public class UIControls extends JFrame {
         previousInput = new JLabel("Memory: ");
         resetMemory = new JButton("Clear memory");
         writeYourText.requestFocus();
+        resetMemory.setEnabled(false);
 
         writeYourText.addActionListener(e -> {
+            if (!writeYourText.getText().equals("")) {
+                this.memory = actual;
+                this.actual = writeYourText.getText();
+            }
+            if (!memory.equals("")) {
+                resetMemory.setEnabled(true);
+            }
             refreshFields();
-            memory = writeYourText.getText();
             writeYourText.setText("");
         });
 
         resetMemory.addActionListener(e -> {
+            actual = "";
             memory = "";
             refreshFields();
+            resetMemory.setEnabled(false);
         });
 
         addComponentsToPane(this.getContentPane());
         this.pack();
         this.setVisible(true);
-
     }
-
 
     private void addComponentsToPane(Container pane) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
@@ -64,13 +71,13 @@ public class UIControls extends JFrame {
 
     private static void addAComponent(JComponent component, Container container, float alignment) {
         component.setAlignmentX(alignment);
-
         container.add(component);
-
+        container.add(Box.createRigidArea(new Dimension(10, 20)));
+        component.setFont(new Font("Courier New", Font.ITALIC, 12));
     }
 
     private void refreshFields() {
-        this.actualInput.setText("Text: " + writeYourText.getText());
+        this.actualInput.setText("Text: " + actual);
         this.previousInput.setText("Memory: " + memory);
     }
 }
