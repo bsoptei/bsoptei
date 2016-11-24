@@ -9,8 +9,7 @@ public class UIControls extends JFrame {
     private String memory = "";
     private String actual = "";
     private JTextField writeYourText;
-    private JLabel actualInput;
-    private JLabel previousInput;
+    private JLabel actualInput, previousInput;
     private JButton resetMemory;
 
     public static void main(String[] args) {
