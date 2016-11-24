@@ -16,7 +16,7 @@ public class GameBoard extends JPanel{
         this.setLayout(new GridLayout(3,3));
 
         for (int i = 1; i <= 9; i++) {
-            
+
         }
 
     }
