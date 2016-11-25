@@ -10,18 +10,16 @@ import java.awt.event.MouseListener;
  */
 class BoardTile extends JPanel {
     private JLabel tileText;
-
     private String actualChar;
 
     BoardTile(TGame game, int id) {
         Toolkit tk = Toolkit.getDefaultToolkit();
         this.setAlignmentX(CENTER_ALIGNMENT);
         this.setAlignmentY(CENTER_ALIGNMENT);
-        this.setBackground(Color.WHITE);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 4));
         this.tileText = new JLabel();
         this.tileText.setText(" ");
-        this.tileText.setFont(new Font("", Font.BOLD, 100));
+        this.setDefaultFont();
         this.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -35,7 +33,7 @@ class BoardTile extends JPanel {
                             tileText.setForeground(Color.DARK_GRAY);
                         }
                         tileText.setText(actualChar);
-                        game.setStatus(id, actualChar);
+                        game.updateStatus(id, actualChar);
                         game.incrementRound();
                     } else {
                         tk.beep();
@@ -54,10 +52,11 @@ class BoardTile extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 if (game.getActive()) {
+                    tileText.setFont(new Font("", Font.BOLD, 110));
                     if (tileText.getText().equals(" ")) {
                         setBackground(Color.GREEN);
                     } else {
-                        setBackground(Color.RED);
+                        setBackground(Color.BLACK);
                     }
                 }
             }
@@ -65,11 +64,16 @@ class BoardTile extends JPanel {
             @Override
             public void mouseExited(MouseEvent e) {
                 if (game.getActive()) {
-                    setBackground(Color.WHITE);
+                    setRandomBackground();
+                    setDefaultFont();
                 }
             }
         });
         this.add(tileText);
+    }
+
+    void setDefaultFont() {
+        this.tileText.setFont(new Font("", Font.PLAIN, 100));
     }
 
     void setTileText(String text) {
@@ -84,4 +88,7 @@ class BoardTile extends JPanel {
         this.tileText.setForeground(foreground);
     }
 
+    void setRandomBackground() {
+        this.setBackground(Color.getHSBColor((float)Math.random(), (float)Math.random(), (float)Math.random()));
+    }
 }

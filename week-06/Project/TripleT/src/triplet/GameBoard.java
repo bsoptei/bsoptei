@@ -19,7 +19,7 @@ class GameBoard extends JPanel {
             this.board.add(new BoardTile(game, i));
             this.add(getTile(i - 1));
         }
-        setMessage("HELLO!   ");
+        setMessage("HELLO!\u2606\u2606\u2606");
 
     }
 
@@ -30,12 +30,13 @@ class GameBoard extends JPanel {
     void reset() {
         for (int i = 0; i < board.size(); i++) {
             getTile(i).setTileText(" ");
-            getTile(i).colorTileB(Color.WHITE);
+            getTile(i).setRandomBackground();
         }
     }
 
     void setMessage(String message) {
         for (int i = 0; i < board.size(); i++) {
+            getTile(i).setDefaultFont();
             getTile(i).colorTileB(Color.BLACK);
             getTile(i).colorTileF(Color.YELLOW);
             getTile(i).setTileText(String.valueOf(message.charAt(i)));
