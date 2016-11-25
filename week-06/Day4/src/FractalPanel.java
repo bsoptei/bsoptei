@@ -29,9 +29,8 @@ class FractalPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
-        g.setColor(Color.getHSBColor((float) randomizer.nextInt(2550),
-                (float) randomizer.nextInt(2550), (float) randomizer.nextInt(2550)));
-        g.fillOval(randomizer.nextInt(500) - (radius / 2), randomizer.nextInt(500) - (radius / 2), radius, radius);
+        g.setColor(Color.getHSBColor((float)Math.random(),1,(float)Math.random()));
+        g.fillOval(randomizer.nextInt(getParent().getWidth()) - (radius / 2), randomizer.nextInt(getParent().getHeight()) - (radius / 2), radius, radius);
         radius -= 1;
         if (radius - 10 > 0) {
             paintComponent(g);

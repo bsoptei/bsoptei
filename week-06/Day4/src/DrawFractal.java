@@ -12,7 +12,7 @@ public class DrawFractal extends JFrame {
         this.setTitle("Draw Fractal");
         this.setSize(500, 500);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.setResizable(false);
+//        this.setResizable(false);
         this.setLocationRelativeTo(null);
         JPanel myPanel = new JPanel();
         this.add(myPanel);
