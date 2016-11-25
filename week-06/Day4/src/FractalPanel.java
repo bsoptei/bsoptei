@@ -22,7 +22,7 @@ class FractalPanel extends JPanel {
         });
     }
 
-    public void setRadius(int newRadiusValue) {
+    private void setRadius(int newRadiusValue) {
         this.radius = newRadiusValue;
     }
 
@@ -30,11 +30,11 @@ class FractalPanel extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
         g.setColor(Color.getHSBColor((float)Math.random(),1,(float)Math.random()));
-        g.fillOval(randomizer.nextInt(getParent().getWidth()) - (radius / 2), randomizer.nextInt(getParent().getHeight()) - (radius / 2), radius, radius);
+        g.fillOval(randomizer.nextInt(getParent().getWidth()) - (radius / 2),
+                randomizer.nextInt(getParent().getHeight()) - (radius / 2), radius, radius);
         radius -= 1;
         if (radius - 10 > 0) {
             paintComponent(g);
         }
-
     }
 }
