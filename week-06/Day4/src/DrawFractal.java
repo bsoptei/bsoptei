@@ -9,7 +9,7 @@ public class DrawFractal extends JFrame {
     }
 
     private DrawFractal() {
-        this.setTitle("Draw Fractal");
+        this.setTitle("Psychedelic Circle Painter");
         this.setSize(500, 500);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
