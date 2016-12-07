@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.05.. Virtual map of the game
  */
-class Area {
+class Area implements GameMeetingPoint {
     private GameElement[][] tiles = new GameElement[10][10];
     private ArrayList<GameObject> enemies = new ArrayList();
     private Hero hero;
@@ -84,7 +84,8 @@ class Area {
     boolean isInSamePosition() {
         boolean samePosition = false;
         for (int i = 0; i < enemies.size(); i++) {
-            if (Arrays.equals(enemies.get(i).getCoordinates(), hero.getCoordinates())) {
+            if (enemies.get(i).isAlive() &&
+                    Arrays.equals(enemies.get(i).getCoordinates(), hero.getCoordinates())) {
                 identifyEnemy(i);
                 samePosition = true;
             }

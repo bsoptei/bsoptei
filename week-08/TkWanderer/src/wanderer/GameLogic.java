@@ -7,21 +7,19 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
-public class GameLogic implements GameMeetingPoint {
+class GameLogic implements GameMeetingPoint {
 
-    public boolean keyHolderKilled;
-    public boolean bossKilled;
     private Hero hero;
 
-    public GameLogic() {
+    GameLogic() {
 
     }
 
-    public boolean keyHolderIsKilled() {
+    private boolean keyHolderIsKilled() {
         return !gameArea.getKeyHolder().isAlive();
     }
 
-    public boolean bossIsKilled() {
+    private boolean bossIsKilled() {
         return !gameArea.getBoss().isAlive();
     }
 
@@ -38,8 +36,8 @@ public class GameLogic implements GameMeetingPoint {
         }
         Toolkit tk = Toolkit.getDefaultToolkit();
         if (gameArea.isInSamePosition()) {
-            tk.beep();
             hero.setCurrentOpponent(gameArea.getBattleEnemy());
+            System.out.println(gameArea.getBattleEnemy());
         } else {
             hero.setCurrentOpponent(null);
         }

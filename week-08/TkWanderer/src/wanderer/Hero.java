@@ -54,6 +54,7 @@ class Hero extends GameObject {
         if (movementIsPossible(deltaX, deltaY)) {
             xPos += deltaX;
             yPos += deltaY;
+            AudioPlayer.play("src/wanderer/wav/268758__legowanwan__footsteps.wav");
         }
         incrementNumberOfMoves();
         changeElementImage(deltaX, deltaY);
@@ -75,6 +76,7 @@ class Hero extends GameObject {
     @Override
     void strike() {
         if (currentOpponent != null) {
+            AudioPlayer.play("src/wanderer/wav/326847__johnbuhr__sword-clash-37.wav");
             currentOpponent.getHit(strikePoint);
         }
     }
@@ -98,8 +100,17 @@ class Hero extends GameObject {
     }
 
     @Override
+    boolean neighborIsObstacle(int deltaX, int deltaY) {
+            int xNeighbor = xPos + deltaX;
+            int yNeighbor = yPos + deltaY;
+            return (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].getType().equals("W")
+                    || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].getType().equals("W"));
+    }
+
+    @Override
     void getHit(int damage) {
         if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
+            AudioPlayer.play("src/wanderer/wav/19421__awfulthesample__awfultheaudio-watschn2.wav");
             decreaseHealthPoint(damage);
         }
     }

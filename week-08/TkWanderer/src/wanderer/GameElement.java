@@ -56,6 +56,11 @@ class GameElement extends GameObject {
     }
 
     @Override
+    boolean neighborIsObstacle(int deltaX, int deltaY) {
+        return false;
+    }
+
+    @Override
     void getHit(int damage) {
 
     }

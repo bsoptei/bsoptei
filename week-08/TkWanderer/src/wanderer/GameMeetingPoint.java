@@ -6,5 +6,6 @@ package wanderer;
 interface GameMeetingPoint {
     Area gameArea = Creator.gameArea;
     Board board = Creator.drawPad ;
+    GameLogic controller = Creator.controller;
 //    Hero hero = Creator.hero;
 }

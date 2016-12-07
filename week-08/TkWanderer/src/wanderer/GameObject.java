@@ -5,21 +5,21 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.05..
+ * Created by Söp on 2016.12.05.. Generic class for pretty much everything in the game
  */
 abstract class GameObject {
-    public Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
-    public String name;
+    Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
+    String name;
     public Hero hero;
     String type;
-    public boolean alive = true;
+    boolean alive = true;
     PositionedImage tileImage;
     final int imageSize = 72;
     int level;
-    public boolean obstacle;
-    public Area gameArea;
+    boolean obstacle;
+    Area gameArea;
     Random dice = new Random();
-    public final HashMap<String, String> imageSelector = new HashMap<String, String>() {{
+    final HashMap<String, String> imageSelector = new HashMap<String, String>() {{
         put("F", "src/wanderer/image/floor.png");
         put("W", "src/wanderer/image/wall.png");
         put("H", "src/wanderer/image/hero-down.png");
@@ -54,25 +54,25 @@ abstract class GameObject {
         return tileImage;
     }
 
-    public boolean isAlive() {
+    boolean isAlive() {
         return alive;
     }
 
-    public boolean isObstacle() {
+    boolean isObstacle() {
         return obstacle;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getStats() {
+    String getStats() {
         return String.format("HP: %d/%d | DP: %d | SP: %d",
                 healthPoint, defaultHealthPoint,
                 defensePoint, strikePoint);
     }
 
-    public Integer[] getCoordinates() {
+    Integer[] getCoordinates() {
         return new Integer[]{xPos, yPos};
     }
 
@@ -81,24 +81,10 @@ abstract class GameObject {
     }
 
     boolean movementIsPossible(int deltaX, int deltaY) {
-        boolean possible = true;
-        if (boundaryOfMap(deltaX, deltaY) || neighborIsObstacle(deltaX, deltaY)) {
-            possible = false;
-        }
-        return possible;
+        return (!(boundaryOfMap(deltaX, deltaY)) && !(neighborIsObstacle(deltaX, deltaY)));
     }
 
-    private boolean neighborIsObstacle(int deltaX, int deltaY) {
-        boolean obstacle = false;
-        int xNeighbor = xPos + deltaX;
-        int yNeighbor = yPos + deltaY;
-
-        if (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
-                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()) {
-            obstacle = true;
-        }
-        return obstacle;
-    }
+    abstract boolean neighborIsObstacle(int deltaX, int deltaY) ;
 
     private boolean boundaryOfMap(int deltaX, int deltaY) {
         return (xPos == 0 && deltaX == -1
@@ -119,6 +105,8 @@ abstract class GameObject {
     }
 
     abstract void getHit(int damage);
+
+    String getType(){ return type;}
 
     public void setHero(Hero hero) {
         this.hero = hero;

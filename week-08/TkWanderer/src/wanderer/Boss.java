@@ -12,7 +12,7 @@ class Boss extends GameObject {
         super("B");
         this.xPos = xPos;
         this.yPos = yPos;
-        obstacle = false;
+        obstacle = true;
         this.level = level;
         name = "Boss";
         swanSong = "src/wanderer/wav/49470__enochrooted__toni-pitchedscream.wav";
@@ -40,6 +40,16 @@ class Boss extends GameObject {
     @Override
     PositionedImage getTileImage() {
         return tileImage;
+    }
+
+    @Override
+    boolean neighborIsObstacle(int deltaX, int deltaY) {
+
+        int xNeighbor = xPos + deltaX;
+        int yNeighbor = yPos + deltaY;
+        return (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
+                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle());
+
     }
 
     @Override

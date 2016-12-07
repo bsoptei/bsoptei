@@ -10,7 +10,7 @@ import static java.awt.event.KeyEvent.*;
  */
 class ListenForKeyPress implements KeyListener, GameMeetingPoint {
     private Hero hero;
-    private GameLogic controller;
+//    private GameLogic controller;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -54,7 +54,7 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
         this.hero = hero;
     }
 
-    void setController(GameLogic controller) {
-        this.controller = controller;
-    }
+//    void setController(GameLogic controller) {
+//        this.controller = controller;
+//    }
 }

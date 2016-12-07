@@ -6,6 +6,7 @@ import java.util.Random;
  * Created by Söp on 2016.12.07.. Weak enemy
  */
 class Skeleton extends GameObject {
+
     private boolean hasKey;
 
 
@@ -13,7 +14,7 @@ class Skeleton extends GameObject {
         super("S");
         this.xPos = xPos;
         this.yPos = yPos;
-        obstacle = false;
+        obstacle = true;
         this.level = level;
         this.hasKey = hasKey;
         name = "Skeleton";
@@ -55,6 +56,14 @@ class Skeleton extends GameObject {
     @Override
     PositionedImage getTileImage() {
         return tileImage;
+    }
+
+    @Override
+    boolean neighborIsObstacle(int deltaX, int deltaY) {
+        int xNeighbor = xPos + deltaX;
+        int yNeighbor = yPos + deltaY;
+        return (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
+                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle());
     }
 
     @Override
