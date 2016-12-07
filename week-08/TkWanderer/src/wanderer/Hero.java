@@ -1,32 +1,37 @@
 package wanderer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.07.. The hero
  */
-public class Hero extends GameObject {
-    public HashMap<String, PositionedImage> heroDirectionImages = new HashMap<String, PositionedImage>() {{
+class Hero extends GameObject {
+    private HashMap<String, PositionedImage> heroDirectionImages = new HashMap<String, PositionedImage>() {{
         put("down", new PositionedImage("src/wanderer/image/hero-down.png", 0, 0));
         put("up", new PositionedImage("src/wanderer/image/hero-up.png", 0, 0));
         put("left", new PositionedImage("src/wanderer/image/hero-left.png", 0, 0));
         put("right", new PositionedImage("src/wanderer/image/hero-right.png", 0, 0));
     }};
 
-    public int numberOfMoves;
 
-    public GameObject currentOpponent;
+    private int numberOfMoves;
 
-    public void reset() {
+    private GameObject currentOpponent;
+    private int heroLevel = 1;
+
+    void reset() {
         xPos = 0;
         yPos = 0;
         moveElementImage();
         numberOfMoves = 0;
+
+//        when entering a new area the hero has
+//        10% chance to restore all his HP
+//        40% chance to restore the third of his HP
+//        50% chance to restore 10% of his HP
     }
 
-    public Hero(int xPos, int yPos) {
+    Hero(int xPos, int yPos) {
         super("H");
         this.xPos = xPos;
         this.yPos = yPos;
@@ -92,16 +97,26 @@ public class Hero extends GameObject {
         }
     }
 
-    public void incrementNumberOfMoves() {
+    private void incrementNumberOfMoves() {
         numberOfMoves++;
     }
 
-    public int getNumberOfMoves() {
+    int getNumberOfMoves() {
         return numberOfMoves;
     }
 
-    public void setCurrentOpponent(GameObject currentOpponent) {
+    void setCurrentOpponent(GameObject currentOpponent) {
         this.currentOpponent = currentOpponent;
     }
 
+    void levelUp() {
+        heroLevel++;
+        defaultHealthPoint += (dice.nextInt(6) + 1);
+        defensePoint += (dice.nextInt(6) + 1);
+        strikePoint += (dice.nextInt(6) + 1);
+    }
+
+    int getHeroLevel() {
+        return heroLevel;
+    }
 }

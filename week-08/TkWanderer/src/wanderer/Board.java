@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 
 class Board extends JFrame implements GameMeetingPoint{
-//    private Area gameArea;
     private Hero hero;
 
     Board() {
@@ -31,30 +30,29 @@ class Board extends JFrame implements GameMeetingPoint{
                 gameArea.getTiles()[i][j].getTileImage().draw(graphics);
             }
         }
-        hero.getTileImage().draw(graphics);
-        gameArea.getEnemies().stream().filter(GameObject::isAlive).forEach(enemy -> enemy.getTileImage().draw(graphics));
-
         graphics.setColor(Color.WHITE);
         graphics.fillRect(720, 0, 200, 720);
 
         graphics.setColor(Color.BLACK);
         graphics.setFont(new Font("Arial", Font.BOLD, 18));
-        String levelIndicator = String.format("Level %d", Area.level);
+        String levelIndicator = String.format("Area %d", Area.level);
         graphics.drawString(levelIndicator, 720, 20);
         graphics.setFont(new Font("Arial", Font.BOLD, 14));
 
         int textY = 50;
         for (GameObject character : gameArea.getCharacters()) {
             if (character.isAlive()) {
-                textY += 30;
+
+                character.getTileImage().draw(graphics);
                 graphics.drawString(character.getName(), 720, textY);
-                textY += 20;
+                textY += 30;
+                if (character.equals(hero)) {
+                    graphics.drawString(String.format("Level %d", hero.getHeroLevel()), 720, textY);
+                    textY += 20;
+                }
                 graphics.drawString(character.getStats(), 720, textY);
+                textY += 30;
             }
         }
     }
-
-//    void setGameArea(Area gameArea) {
-//        this.gameArea = gameArea;
-//    }
 }

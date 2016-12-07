@@ -111,10 +111,11 @@ abstract class GameObject {
         return defensePoint;
     }
 
-    public void decreaseHealthPoint(int damage) {
+    void decreaseHealthPoint(int damage) {
         healthPoint -= damage;
         if (healthPoint <= 0) {
             alive = false;
+            hero.levelUp();
         }
     }
 

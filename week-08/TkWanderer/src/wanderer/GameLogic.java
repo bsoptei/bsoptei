@@ -1,14 +1,14 @@
 package wanderer;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
-public class GameLogic {
+public class GameLogic  implements GameMeetingPoint{
 
-    private Area gameArea;
     public boolean keyHolderKilled;
     public boolean bossKilled;
     private Hero hero;
@@ -25,12 +25,10 @@ public class GameLogic {
         return !gameArea.getBoss().isAlive();
     }
 
-
-    public void setGameArea(Area gameArea) {
-        this.gameArea = gameArea;
-    }
-
     void update() {
+        if (!hero.isAlive()) {
+            JOptionPane.showMessageDialog(null, "Game Over!");
+        }
         if (hero.getNumberOfMoves() % 2 == 0) {
             moveEnemiesRandomly();
         }

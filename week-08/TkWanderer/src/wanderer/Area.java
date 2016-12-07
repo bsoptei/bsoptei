@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.05..r
+ * Created by Söp on 2016.12.05.. Virtual map of the game
  */
 class Area {
     private GameElement[][] tiles = new GameElement[10][10];
@@ -22,7 +22,7 @@ class Area {
         generateEnemies();
     }
 
-    public void reset() {
+    void reset() {
         level++;
         hero.reset();
         enemies.clear();
@@ -31,7 +31,7 @@ class Area {
         fillCharacters();
     }
 
-    public void fillCharacters() {
+    void fillCharacters() {
         characters.add(hero);
         characters.addAll(enemies);
         for (GameObject character : characters) {
@@ -77,11 +77,11 @@ class Area {
         this.hero = hero;
     }
 
-    public ArrayList<GameObject> getCharacters() {
+    ArrayList<GameObject> getCharacters() {
         return characters;
     }
 
-    public boolean isInSamePosition() {
+    boolean isInSamePosition() {
         boolean samePosition = false;
         for (int i = 0; i < enemies.size(); i++) {
             if (Arrays.equals(enemies.get(i).getCoordinates(), hero.getCoordinates())) {
@@ -92,19 +92,19 @@ class Area {
         return samePosition;
     }
 
-    public void identifyEnemy(int i) {
+    private void identifyEnemy(int i) {
         battleEnemy = enemies.get(i);
     }
 
-    public GameObject getBattleEnemy() {
+    GameObject getBattleEnemy() {
         return battleEnemy;
     }
 
-    public GameObject getBoss() {
+    GameObject getBoss() {
         return enemies.get(enemies.size() - 1);
     }
 
-    public GameObject getKeyHolder() {
+    GameObject getKeyHolder() {
         return enemies.get(enemies.size() - 2);
     }
 

@@ -4,8 +4,6 @@ package wanderer;
  * Created by Söp on 2016.12.05.. Tiles of the map
  */
 class GameElement extends GameObject {
-    private PositionedImage tileImage;
-
 
     GameElement(int xPos, int yPos, String type) {
         super(type);
@@ -41,8 +39,6 @@ class GameElement extends GameObject {
     void changeElementImage(int deltaX, int deltaY) {
 
     }
-
-
 
     @Override
     public void moveElementImage() {

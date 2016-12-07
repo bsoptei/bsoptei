@@ -5,10 +5,10 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.07.. The strongest enemy
  */
-public class Boss extends GameObject {
+class Boss extends GameObject {
 
 
-    public Boss(int xPos, int yPos, int level) {
+    Boss(int xPos, int yPos, int level) {
         super("B");
         this.xPos = xPos;
         this.yPos = yPos;
