@@ -6,15 +6,16 @@ import java.util.Random;
  * Created by Söp on 2016.12.07..
  */
 public class Skeleton extends GameObject {
+    public boolean hasKey;
 
-
-    public Skeleton(int xPos, int yPos, int level) {
+    public Skeleton(int xPos, int yPos, int level, boolean hasKey) {
         super("S");
         this.xPos = xPos;
         this.yPos = yPos;
         obstacle = false;
         this.level = level;
-        name ="Skeleton";
+        this.hasKey = hasKey;
+        name = "Skeleton";
         createElementImage();
         setStartingStats();
     }
@@ -43,11 +44,13 @@ public class Skeleton extends GameObject {
     }
 
 
-
     @Override
     PositionedImage getTileImage() {
         return tileImage;
     }
 
+    public boolean isKeyHolder(){
+        return hasKey;
+    }
 
 }

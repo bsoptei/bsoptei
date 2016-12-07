@@ -12,13 +12,12 @@ public class Area {
     public Hero hero;
     public ArrayList<GameObject> characters = new ArrayList();
 
-    public static int level = 0;
+    public static int level = 10;
 
     public Area() {
         generateMap();
-        generateEnemies();
-
         level++;
+        generateEnemies();
     }
 
     public void fillCharacters() {
@@ -35,8 +34,10 @@ public class Area {
             if (tiles[xPos][yPos].getType().equals("F")) {
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
+                } else if (enemies.size() == numberOfEnemies - 2) {
+                    enemies.add(new Skeleton(xPos, yPos, level, true));
                 } else {
-                    enemies.add(new Skeleton(xPos, yPos, level));
+                    enemies.add(new Skeleton(xPos, yPos, level, false));
                 }
             }
         }
