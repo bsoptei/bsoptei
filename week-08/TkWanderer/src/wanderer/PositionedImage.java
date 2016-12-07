@@ -30,4 +30,12 @@ public class PositionedImage {
             graphics.drawImage(image, posX, posY, null);
         }
     }
+
+    public void setPosX(int posX){
+        this.posX = posX;
+    }
+
+    public void setPosY(int posY){
+        this.posY = posY;
+    }
 }

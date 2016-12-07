@@ -9,38 +9,51 @@ import java.util.Random;
  */
 public class GameElement extends GameObject {
     public PositionedImage tileImage;
-    public int xPos, yPos;
     public String type;
     public HashMap<String, String> imageSelector = new HashMap<String, String>() {{
         put("F", "src/wanderer/image/floor.png");
         put("W", "src/wanderer/image/wall.png");
-        put("H", "src/wanderer/image/hero-down.png");
         put("S", "src/wanderer/image/skeleton.png");
         put("B", "src/wanderer/image/boss.png");
     }};
+//    public HashMap<String, String> heroDirectionImages = new HashMap<String, String>() {{
+//        put("10","src/wanderer/image/hero-down.png");
+//    }};
+
+
 
 
     public GameElement(int xPos, int yPos, String type) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.type = type;
-        setElementImage();
+        createElementImage();
+    }
+
+    @Override
+    public void createElementImage() {
+        this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
     }
 
     @Override
     void move(int deltaX, int deltaY) {
         xPos += deltaX;
         yPos += deltaY;
-        setElementImage();
+//        changeElementImage(deltaX, deltaY);
+        moveElementImage();
     }
+
 
     void fight() {
     }
 
-    public void setElementImage() {
-        int imageX = xPos * imageSize;
-        int imageY = yPos * imageSize;
-        this.tileImage = new PositionedImage(imageSelector.get(type), imageX, imageY);
+    @Override
+    public void moveElementImage() {
+        tileImage.setPosX(xPos * imageSize);
+        tileImage.setPosY(yPos * imageSize);
+//        int imageX = xPos * imageSize;
+//        int imageY = yPos * imageSize;
+
     }
 
     @Override

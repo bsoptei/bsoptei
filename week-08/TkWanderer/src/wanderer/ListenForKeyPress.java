@@ -5,11 +5,11 @@ import java.awt.event.KeyListener;
 import static java.awt.event.KeyEvent.*;
 
 /**
- * Created by Söp on 2016.12.05..
+ * Created by Söp on 2016.12.05.. n
  */
 public class ListenForKeyPress implements KeyListener {
     private Board board;
-    private GameObject objectToMove;
+    private Hero hero;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -24,16 +24,16 @@ public class ListenForKeyPress implements KeyListener {
             case VK_SPACE:
                 break;
             case VK_LEFT:
-                objectToMove.move(-1, 0);
+                hero.move(-1, 0);
                 break;
             case VK_RIGHT:
-                objectToMove.move(1, 0);
+                hero.move(1, 0);
                 break;
             case VK_UP:
-                objectToMove.move(0, -1);
+                hero.move(0, -1);
                 break;
             case VK_DOWN:
-                objectToMove.move(0, 1);
+                hero.move(0, 1);
                 break;
         }
         board.repaint();
@@ -48,7 +48,7 @@ public class ListenForKeyPress implements KeyListener {
         this.board = board;
     }
 
-    public void setGameObject(GameObject objectToMove) {
-        this.objectToMove = objectToMove;
+    public void setGameObject(Hero hero ) {
+        this.hero = hero;
     }
 }

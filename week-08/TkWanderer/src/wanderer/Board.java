@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Board extends JFrame {
-    public Area gameArea = new Area(1);
-    public GameObject hero = gameArea.getHero();
+    public Area gameArea = new Area();
+    public Hero hero = gameArea.getHero();
 
     public Board() {
         setProperties();
@@ -16,8 +16,8 @@ public class Board extends JFrame {
         JLabel statText = new JLabel();
 
 
-        statPanel.setLocation(720, 200);
-        statText.setText("kurvaanyad");
+//        statPanel.setLocation(720, 200);
+//        statText.setText("kurvaanyad");
 
         statPanel.add(statText);
 
@@ -31,7 +31,7 @@ public class Board extends JFrame {
         this.setPreferredSize(new Dimension(720, 720));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-//        this.setUndecorated(true);
+        this.setUndecorated(true);
     }
 
     private void addKeyListenerToBoard() {

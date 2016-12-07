@@ -9,13 +9,13 @@ import java.util.Random;
 public class Area {
     public ArrayList<GameElement> tiles = new ArrayList<>();
     public ArrayList<GameElement> enemies = new ArrayList();
-    public GameElement hero = new GameElement(0, 0 , "H");
-    public int level;
+    public Hero hero = new Hero(0, 0);
+    public static int level = 0;
 
 
-    public Area(int level) {
+    public Area() {
         generateMap();
-        this.level = level;
+        level++;
     }
 
     public void generateMap() {
@@ -38,7 +38,7 @@ public class Area {
         return true;
     }
 
-    public GameElement getHero() {
+    public Hero getHero() {
         return hero;
     }
 }

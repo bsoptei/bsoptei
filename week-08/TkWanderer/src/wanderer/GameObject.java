@@ -6,17 +6,18 @@ import java.util.ArrayList;
  * Created by Söp on 2016.12.05..
  */
 abstract class GameObject {
-    public Integer healthPoint, defensePoint, strikePoint, xPosition, yPosition;
+    public Integer healthPoint, defensePoint, strikePoint, xPos, yPos;
     public String type;
     boolean alive;
-    PositionedImage elementImage;
+    PositionedImage tileImage;
     public final int imageSize = 72;
     public int level;
 
 
     abstract void move(int deltaX, int deltaY);
     abstract void fight();
-    abstract void setElementImage();
+    abstract void createElementImage();
+    abstract void moveElementImage();
     abstract void setStartingStats();
     abstract ArrayList<GameElement> inspectNeighbors();
 
@@ -27,4 +28,5 @@ abstract class GameObject {
     abstract Integer getStrikePoint();
     abstract GameElement getNeighbor();
     abstract  PositionedImage getTileImage();
+
 }

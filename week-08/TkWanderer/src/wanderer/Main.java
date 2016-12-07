@@ -5,8 +5,8 @@ package wanderer;
  */
 public class Main {
     public static void main(String[] args) {
+        new Creator();
 
-        final Board drawPad = new Board();
 
 
 
