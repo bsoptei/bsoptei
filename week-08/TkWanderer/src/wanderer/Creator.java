@@ -20,12 +20,12 @@ public class Creator {
         gameArea.setHero(hero);
 
         hero.setGameArea(gameArea);
+        drawPad = new Board();
 
         boardKeyListener = new ListenForKeyPress();
         boardKeyListener.setBoard(drawPad);
         boardKeyListener.setHero(hero);
 
-        drawPad = new Board();
         drawPad.setHero(hero);
         drawPad.setGameArea(gameArea);
 
