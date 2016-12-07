@@ -5,4 +5,5 @@ package wanderer;
  */
 interface GameMeetingPoint {
     Area gameArea = Creator.gameArea;
+//    Hero hero = Creator.hero;
 }

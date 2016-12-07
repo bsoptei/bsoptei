@@ -59,5 +59,10 @@ class GameElement extends GameObject {
         return tileImage;
     }
 
+    @Override
+    void getHit(int damage) {
+
+    }
+
 
 }

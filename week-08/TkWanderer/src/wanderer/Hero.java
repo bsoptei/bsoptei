@@ -63,10 +63,7 @@ public class Hero extends GameObject {
     @Override
     void strike() {
         if (currentOpponent != null) {
-            boolean success = (strikePoint + (dice.nextInt(6) + 1) * 2 > currentOpponent.getDefensePoint());
-            if (success) {
-                currentOpponent.decreaseHealthPoint(strikePoint - currentOpponent.getDefensePoint());
-            }
+            currentOpponent.getHit(strikePoint);
         }
     }
 
@@ -86,6 +83,13 @@ public class Hero extends GameObject {
 
     public void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
+    }
+
+    @Override
+    void getHit(int damage) {
+        if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
+            decreaseHealthPoint(damage);
+        }
     }
 
     public void incrementNumberOfMoves() {

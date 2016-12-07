@@ -36,7 +36,7 @@ class Skeleton extends GameObject {
 
     @Override
     void strike() {
-
+        hero.getHit(strikePoint);
     }
 
 
@@ -53,6 +53,16 @@ class Skeleton extends GameObject {
     @Override
     PositionedImage getTileImage() {
         return tileImage;
+    }
+
+    @Override
+    void getHit(int damage) {
+        if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
+            decreaseHealthPoint(damage);
+        }
+        if (alive) {
+            strike();
+        }
     }
 
 }

@@ -55,7 +55,9 @@ class Area {
                 }
             }
         }
-
+        for (GameObject enemy: enemies) {
+            enemy.setHero(hero);
+        }
     }
 
     private void generateMap() {
@@ -105,4 +107,5 @@ class Area {
     public GameObject getKeyHolder() {
         return enemies.get(enemies.size() - 2);
     }
+
 }

@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public class GameLogic {
 
-    public Area gameArea;
+    private Area gameArea;
     public boolean keyHolderKilled;
     public boolean bossKilled;
     private Hero hero;
