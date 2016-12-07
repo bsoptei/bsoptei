@@ -5,6 +5,7 @@ package wanderer;
  */
 class Creator {
     static Area gameArea = new Area();
+    static Board drawPad = new Board();
 
     Creator() {
         createObjects();
@@ -17,10 +18,9 @@ class Creator {
         gameArea.fillCharacters();
 
         hero.setGameArea(gameArea);
-        Board drawPad = new Board();
+
 
         ListenForKeyPress boardKeyListener = new ListenForKeyPress();
-        boardKeyListener.setBoard(drawPad);
         boardKeyListener.setHero(hero);
 
 

@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
-public class GameLogic  implements GameMeetingPoint{
+public class GameLogic implements GameMeetingPoint {
 
     public boolean keyHolderKilled;
     public boolean bossKilled;
@@ -40,7 +40,9 @@ public class GameLogic  implements GameMeetingPoint{
         if (gameArea.isInSamePosition()) {
             tk.beep();
             hero.setCurrentOpponent(gameArea.getBattleEnemy());
-        } else {hero.setCurrentOpponent(null);}
+        } else {
+            hero.setCurrentOpponent(null);
+        }
     }
 
     private void moveEnemiesRandomly() {

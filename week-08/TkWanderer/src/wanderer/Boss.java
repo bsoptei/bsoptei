@@ -15,6 +15,7 @@ class Boss extends GameObject {
         obstacle = false;
         this.level = level;
         name = "Boss";
+        swanSong = "src/wanderer/wav/49470__enochrooted__toni-pitchedscream.wav";
         createElementImage();
         setDefaultStats();
     }

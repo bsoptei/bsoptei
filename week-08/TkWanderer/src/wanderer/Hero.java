@@ -19,18 +19,6 @@ class Hero extends GameObject {
     private GameObject currentOpponent;
     private int heroLevel = 1;
 
-    void reset() {
-        xPos = 0;
-        yPos = 0;
-        moveElementImage();
-        numberOfMoves = 0;
-
-//        when entering a new area the hero has
-//        10% chance to restore all his HP
-//        40% chance to restore the third of his HP
-//        50% chance to restore 10% of his HP
-    }
-
     Hero(int xPos, int yPos) {
         super("H");
         this.xPos = xPos;
@@ -38,8 +26,27 @@ class Hero extends GameObject {
         obstacle = false;
         numberOfMoves = 0;
         name = "Hero";
+        swanSong = "src/wanderer/wav/56901__syna-max__wilhelm-scream-outtake";
         createElementImage();
         setDefaultStats();
+    }
+
+    void reset() {
+        xPos = 0;
+        yPos = 0;
+        moveElementImage();
+        numberOfMoves = 0;
+        restoreHealth(dice.nextInt(10) + 1);
+    }
+
+    private void restoreHealth(int diceThrow) {
+        if (diceThrow > 9) {
+            healthPoint = defaultHealthPoint;
+        } else if (healthPoint > 5) {
+            healthPoint = (healthPoint < defaultHealthPoint * 0.75) ? (int) (healthPoint * 1.333) : defaultHealthPoint;
+        } else {
+            healthPoint = (healthPoint < defaultHealthPoint * 0.9) ? (int) (healthPoint * 1.1) : defaultHealthPoint;
+        }
     }
 
     @Override

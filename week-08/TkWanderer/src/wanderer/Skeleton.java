@@ -8,6 +8,7 @@ import java.util.Random;
 class Skeleton extends GameObject {
     private boolean hasKey;
 
+
     Skeleton(int xPos, int yPos, int level, boolean hasKey) {
         super("S");
         this.xPos = xPos;
@@ -16,6 +17,7 @@ class Skeleton extends GameObject {
         this.level = level;
         this.hasKey = hasKey;
         name = "Skeleton";
+        swanSong = "src/wanderer/wav/348310__redafs__zombie-monster-scream.wav";
         createElementImage();
         setDefaultStats();
     }

@@ -26,6 +26,7 @@ abstract class GameObject {
         put("S", "src/wanderer/image/skeleton.png");
         put("B", "src/wanderer/image/boss.png");
     }};
+    String swanSong;
 
     GameObject(String type) {
         this.type = type;
@@ -106,14 +107,12 @@ abstract class GameObject {
                 || yPos == 9 && deltaY == 1);
     }
 
-
-    public int getDefensePoint() {
-        return defensePoint;
-    }
-
     void decreaseHealthPoint(int damage) {
         healthPoint -= damage;
         if (healthPoint <= 0) {
+            if (!(swanSong == null)) {
+                AudioPlayer.play(swanSong);
+            }
             alive = false;
             hero.levelUp();
         }
