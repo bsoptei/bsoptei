@@ -1,11 +1,7 @@
 package wanderer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-
 /**
- * Created by Söp on 2016.12.05.. 
+ * Created by Söp on 2016.12.05..
  */
 class GameElement extends GameObject {
     private PositionedImage tileImage;

@@ -7,11 +7,12 @@ import java.util.Random;
  */
 public class Skeleton extends GameObject {
 
-    public Skeleton(int xPos, int yPos) {
+    public Skeleton(int xPos, int yPos, int level) {
         super("S");
         this.xPos = xPos;
         this.yPos = yPos;
         obstacle = false;
+        this.level = level;
         createElementImage();
         setStartingStats();
     }
@@ -56,6 +57,6 @@ public class Skeleton extends GameObject {
 
     @Override
     PositionedImage getTileImage() {
-        return null;
+        return tileImage;
     }
 }

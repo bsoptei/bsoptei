@@ -7,8 +7,15 @@ import java.util.Random;
  */
 public class Boss extends GameObject {
 
-    Boss(String type) {
-        super(type);
+
+    public Boss(int xPos, int yPos, int level) {
+        super("B");
+        this.xPos = xPos;
+        this.yPos = yPos;
+        obstacle = false;
+        this.level = level;
+        createElementImage();
+        setStartingStats();
     }
 
     @Override
@@ -51,6 +58,6 @@ public class Boss extends GameObject {
 
     @Override
     PositionedImage getTileImage() {
-        return null;
+        return tileImage;
     }
 }

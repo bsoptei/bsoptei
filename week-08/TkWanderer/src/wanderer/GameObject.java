@@ -24,6 +24,7 @@ abstract class GameObject {
 
     GameObject(String type) {
         this.type = type;
+        
     }
 
 
@@ -46,7 +47,7 @@ abstract class GameObject {
 
     abstract String getSP();
 
-    abstract PositionedImage getTileImage();
+    PositionedImage getTileImage() {return  tileImage;}
 
     public String getType() {
         return type;

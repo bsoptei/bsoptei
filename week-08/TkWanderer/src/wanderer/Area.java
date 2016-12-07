@@ -8,13 +8,33 @@ import java.util.Random;
  */
 public class Area {
     public GameElement[][] tiles = new GameElement[10][10];
-    public ArrayList<GameElement> enemies = new ArrayList();
+    public ArrayList<GameObject> enemies = new ArrayList();
     public Hero hero;
+    public ArrayList<GameObject> characters = new ArrayList();
+
     public static int level = 0;
 
     public Area() {
         generateMap();
+        generateEnemies();
         level++;
+    }
+
+    private void generateEnemies() {
+        Random superDice = new Random();
+        int numberOfEnemies = superDice.nextInt(4) + 3;
+        while (enemies.size() < numberOfEnemies) {
+            int xPos = superDice.nextInt(9) + 1;
+            int yPos = superDice.nextInt(9) + 1;
+            if (tiles[xPos][yPos].getType().equals("F")) {
+                if (enemies.size() == numberOfEnemies - 1) {
+                    enemies.add(new Boss(xPos, yPos, level));
+                } else {
+                    enemies.add(new Skeleton(xPos, yPos, level));
+                }
+            }
+        }
+
     }
 
     public void generateMap() {
@@ -26,7 +46,11 @@ public class Area {
         return tiles;
     }
 
-    public void setHero(Hero hero){
+    public ArrayList<GameObject> getEnemies() {
+        return enemies;
+    }
+
+    public void setHero(Hero hero) {
         this.hero = hero;
     }
 
