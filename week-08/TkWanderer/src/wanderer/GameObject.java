@@ -12,8 +12,9 @@ abstract class GameObject {
     PositionedImage tileImage;
     public final int imageSize = 72;
     public int level;
+    public boolean obstacle;
 
-    public GameObject(String type){
+    public GameObject(String type) {
         this.type = type;
     }
 
@@ -34,13 +35,11 @@ abstract class GameObject {
 
     abstract Integer getYPosition();
 
-    abstract Integer getHealthPoint();
+    abstract String getHP();
 
-    abstract Integer getDefensePoint();
+    abstract String getDP();
 
-    abstract Integer getStrikePoint();
-
-    abstract GameElement getNeighbor();
+    abstract String getSP();
 
     abstract PositionedImage getTileImage();
 
@@ -48,4 +47,9 @@ abstract class GameObject {
         return type;
     }
 
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public boolean isObstacle(){return obstacle;}
 }

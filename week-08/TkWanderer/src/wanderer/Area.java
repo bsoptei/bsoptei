@@ -9,37 +9,25 @@ import java.util.Random;
 public class Area {
     public GameElement[][] tiles = new GameElement[10][10];
     public ArrayList<GameElement> enemies = new ArrayList();
-    public Hero hero = new Hero(0, 0);
+    public Hero hero;
     public static int level = 0;
-
 
     public Area() {
         generateMap();
         level++;
-        hero.setGameArea(this);
     }
 
     public void generateMap() {
-        Random r = new Random();
-
         Maze gameMaze = new Maze(10, 10);
-
         tiles = gameMaze.generate();
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                String currentType = (r.nextInt(10) < 7) ? "F" : "W";
-                tiles[i][j] = (new GameElement(i, j, currentType));
-            }
-        }
     }
 
     public GameElement[][] getTiles() {
         return tiles;
     }
 
-    public boolean checkIfMapIsSolvable() {
-
-        return true;
+    public void setHero(Hero hero){
+        this.hero = hero;
     }
 
     public Hero getHero() {

@@ -27,7 +27,6 @@ public class Hero extends GameObject {
     @Override
     void move(int deltaX, int deltaY) {
         if (movementIsPossible(deltaX, deltaY)) {
-
             xPos += deltaX;
             yPos += deltaY;
         }
@@ -108,26 +107,6 @@ public class Hero extends GameObject {
 
     @Override
     Integer getYPosition() {
-        return null;
-    }
-
-    @Override
-    Integer getHealthPoint() {
-        return null;
-    }
-
-    @Override
-    Integer getDefensePoint() {
-        return null;
-    }
-
-    @Override
-    Integer getStrikePoint() {
-        return null;
-    }
-
-    @Override
-    GameElement getNeighbor() {
         return null;
     }
 

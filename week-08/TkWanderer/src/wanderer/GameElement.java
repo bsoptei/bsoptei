@@ -51,11 +51,8 @@ public class GameElement extends GameObject {
     @Override
     void setStartingStats() {
         Random dice = new Random();
-        if (type.equals("H")) {
-            healthPoint = 20 + 3 * (dice.nextInt(5) + 1);
-            defensePoint = 2 * (dice.nextInt(5) + 1);
-            strikePoint = 5 + (dice.nextInt(5) + 1);
-        } else if (type.equals("S")) {
+
+        if (type.equals("S")) {
             healthPoint = 2 * level * (dice.nextInt(5) + 1);
             defensePoint = level / 2 * (dice.nextInt(5) + 1);
             strikePoint = level * (dice.nextInt(5) + 1);
@@ -82,22 +79,17 @@ public class GameElement extends GameObject {
     }
 
     @Override
-    Integer getHealthPoint() {
+    String getHP() {
         return null;
     }
 
     @Override
-    Integer getDefensePoint() {
+    String getDP() {
         return null;
     }
 
     @Override
-    Integer getStrikePoint() {
-        return null;
-    }
-
-    @Override
-    GameElement getNeighbor() {
+    String getSP() {
         return null;
     }
 

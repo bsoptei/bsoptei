@@ -48,7 +48,7 @@ public class ListenForKeyPress implements KeyListener {
         this.board = board;
     }
 
-    public void setGameObject(Hero hero ) {
+    public void setHero(Hero hero ) {
         this.hero = hero;
     }
 }
