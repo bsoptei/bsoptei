@@ -46,9 +46,11 @@ public class Hero extends GameObject {
 
     private boolean neighborIsObstacle(int deltaX, int deltaY) {
         boolean obstacle = false;
+        int xNeighbor = xPos + deltaX;
+        int yNeighbor = yPos + deltaY;
 
-        if (deltaX != 0 && gameArea.getTiles()[xPos + deltaX][yPos].getType().equals("W")
-                || deltaY != 0 && gameArea.getTiles()[xPos][yPos + deltaY].getType().equals("W")) {
+        if (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
+                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()) {
             obstacle = true;
         }
         return obstacle;

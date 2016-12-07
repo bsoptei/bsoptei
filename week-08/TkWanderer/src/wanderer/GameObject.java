@@ -10,7 +10,7 @@ abstract class GameObject {
     public Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
     public String name;
     String type;
-    private boolean alive;
+    public boolean alive = true;
     PositionedImage tileImage;
     final int imageSize = 72;
     int level;
@@ -43,10 +43,6 @@ abstract class GameObject {
 
     PositionedImage getTileImage() {
         return tileImage;
-    }
-
-    public String getType() {
-        return type;
     }
 
     public boolean isAlive() {

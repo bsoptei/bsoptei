@@ -50,13 +50,13 @@ public class Board extends JFrame {
 
         int textY = 50;
         for (GameObject character : gameArea.getCharacters()) {
-            textY += 30;
-            graphics.drawString(character.getName(), 720, textY);
-            textY += 20;
-            graphics.drawString(character.getStats(), 720, textY);
+            if (character.isAlive()) {
+                textY += 30;
+                graphics.drawString(character.getName(), 720, textY);
+                textY += 20;
+                graphics.drawString(character.getStats(), 720, textY);
+            }
         }
-
-
     }
 
     public void setGameArea(Area gameArea) {

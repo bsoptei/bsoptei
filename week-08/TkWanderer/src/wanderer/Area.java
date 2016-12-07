@@ -31,7 +31,7 @@ public class Area {
         while (enemies.size() < numberOfEnemies) {
             int xPos = superDice.nextInt(9) + 1;
             int yPos = superDice.nextInt(9) + 1;
-            if (tiles[xPos][yPos].getType().equals("F")) {
+            if (!tiles[xPos][yPos].isObstacle()) {
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
                 } else if (enemies.size() == numberOfEnemies - 2) {
@@ -63,5 +63,10 @@ public class Area {
 
     public ArrayList<GameObject> getCharacters() {
         return characters;
+    }
+
+    public boolean isInSamePosition() {
+
+        return true;
     }
 }

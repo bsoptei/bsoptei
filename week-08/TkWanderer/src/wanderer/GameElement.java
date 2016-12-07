@@ -1,7 +1,7 @@
 package wanderer;
 
 /**
- * Created by Söp on 2016.12.05..
+ * Created by Söp on 2016.12.05.. 
  */
 class GameElement extends GameObject {
     private PositionedImage tileImage;
@@ -13,6 +13,11 @@ class GameElement extends GameObject {
         this.yPos = yPos;
         this.type = type;
         createElementImage();
+        setObstacle();
+    }
+
+    private void setObstacle() {
+        obstacle = (type.equals("W"));
     }
 
     @Override
