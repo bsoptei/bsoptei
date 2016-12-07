@@ -17,7 +17,13 @@ public class Area {
     public Area() {
         generateMap();
         generateEnemies();
+
         level++;
+    }
+
+    public void fillCharacters() {
+        characters.add(hero);
+        characters.addAll(enemies);
     }
 
     private void generateEnemies() {
@@ -54,7 +60,7 @@ public class Area {
         this.hero = hero;
     }
 
-    public Hero getHero() {
-        return hero;
+    public ArrayList<GameObject> getCharacters() {
+        return characters;
     }
 }

@@ -11,9 +11,6 @@ public class Board extends JFrame {
 
     public Board() {
         setProperties();
-
-        addKeyListenerToBoard();
-
         this.setVisible(true);
     }
 
@@ -22,13 +19,6 @@ public class Board extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setUndecorated(true);
-    }
-
-    private void addKeyListenerToBoard() {
-//        ListenForKeyPress boardKeyListener = new ListenForKeyPress();
-//        this.addKeyListener(boardKeyListener);
-//        boardKeyListener.setBoard(this);
-//        boardKeyListener.setHero(hero);
     }
 
     public void setHero(Hero hero) {
@@ -57,13 +47,21 @@ public class Board extends JFrame {
         String levelIndicator = String.format("Level %d", Area.level);
         graphics.drawString(levelIndicator, 720, 20);
         graphics.setFont(new Font("Arial", Font.BOLD, 14));
-        ArrayList<String> heroStats = new ArrayList<>(Arrays.asList(hero.getHP(), hero.getSP(), hero.getDP()));
+
         int textY = 50;
-        graphics.drawString("Your hero:", 720, textY);
-        for (String point : heroStats) {
-            textY += 20;
-            graphics.drawString(point, 720, textY);
+        for (GameObject character: gameArea.getCharacters()) {
+            ArrayList<String> stats = new ArrayList<>(Arrays.asList(character.getHP(), character.getSP(), character.getDP()));
+            textY += 30;
+            graphics.drawString(character.getName(), 720, textY);
+            for (String point : stats) {
+                textY += 20;
+                graphics.drawString(point, 720, textY);
+            }
         }
+
+
+
+
 
     }
 

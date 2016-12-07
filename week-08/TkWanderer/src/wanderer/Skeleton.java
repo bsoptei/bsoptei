@@ -7,12 +7,14 @@ import java.util.Random;
  */
 public class Skeleton extends GameObject {
 
+
     public Skeleton(int xPos, int yPos, int level) {
         super("S");
         this.xPos = xPos;
         this.yPos = yPos;
         obstacle = false;
         this.level = level;
+        name ="Skeleton";
         createElementImage();
         setStartingStats();
     }
@@ -40,23 +42,12 @@ public class Skeleton extends GameObject {
         strikePoint = level * (dice.nextInt(5) + 1);
     }
 
-    @Override
-    String getHP() {
-        return null;
-    }
 
-    @Override
-    String getDP() {
-        return null;
-    }
-
-    @Override
-    String getSP() {
-        return null;
-    }
 
     @Override
     PositionedImage getTileImage() {
         return tileImage;
     }
+
+
 }

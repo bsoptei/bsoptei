@@ -41,20 +41,7 @@ class GameElement extends GameObject {
     void setStartingStats() {
     }
 
-    @Override
-    String getHP() {
-        return null;
-    }
 
-    @Override
-    String getDP() {
-        return null;
-    }
-
-    @Override
-    String getSP() {
-        return null;
-    }
 
     public PositionedImage getTileImage() {
         return tileImage;

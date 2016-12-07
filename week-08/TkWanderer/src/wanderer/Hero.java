@@ -21,6 +21,7 @@ public class Hero extends GameObject {
         this.xPos = xPos;
         this.yPos = yPos;
         obstacle = false;
+        name = "Hero";
         createElementImage();
         setStartingStats();
     }
@@ -100,15 +101,4 @@ public class Hero extends GameObject {
         this.gameArea = gameArea;
     }
 
-    public String getHP() {
-        return String.format("HP: %d", healthPoint);
-    }
-
-    public String getSP() {
-        return String.format("SP: %d", strikePoint);
-    }
-
-    public String getDP() {
-        return String.format("DP: %d", defensePoint);
-    }
 }

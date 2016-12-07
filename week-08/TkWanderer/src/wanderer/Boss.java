@@ -14,6 +14,7 @@ public class Boss extends GameObject {
         this.yPos = yPos;
         obstacle = false;
         this.level = level;
+        name = "Boss";
         createElementImage();
         setStartingStats();
     }
@@ -41,20 +42,7 @@ public class Boss extends GameObject {
         strikePoint = level * (dice.nextInt(5) + 1) + level;
     }
 
-    @Override
-    String getHP() {
-        return null;
-    }
 
-    @Override
-    String getDP() {
-        return null;
-    }
-
-    @Override
-    String getSP() {
-        return null;
-    }
 
     @Override
     PositionedImage getTileImage() {

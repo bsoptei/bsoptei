@@ -14,6 +14,7 @@ class Creator {
 
         Area gameArea = new Area();
         gameArea.setHero(hero);
+        gameArea.fillCharacters();
 
         hero.setGameArea(gameArea);
         Board drawPad = new Board();

@@ -8,6 +8,7 @@ import java.util.HashMap;
  */
 abstract class GameObject {
     public Integer healthPoint, defensePoint, strikePoint, xPos, yPos;
+    public String name;
     String type;
     private boolean alive;
     PositionedImage tileImage;
@@ -24,7 +25,7 @@ abstract class GameObject {
 
     GameObject(String type) {
         this.type = type;
-        
+
     }
 
 
@@ -36,18 +37,25 @@ abstract class GameObject {
         this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
     }
 
-
     abstract void moveElementImage();
 
     abstract void setStartingStats();
 
-    abstract String getHP();
+    public String getHP() {
+        return String.format("HP: %d", healthPoint);
+    }
 
-    abstract String getDP();
+    public String getSP() {
+        return String.format("SP: %d", strikePoint);
+    }
 
-    abstract String getSP();
+    public String getDP() {
+        return String.format("DP: %d", defensePoint);
+    }
 
-    PositionedImage getTileImage() {return  tileImage;}
+    PositionedImage getTileImage() {
+        return tileImage;
+    }
 
     public String getType() {
         return type;
@@ -59,5 +67,9 @@ abstract class GameObject {
 
     public boolean isObstacle() {
         return obstacle;
+    }
+
+    public String getName() {
+        return name;
     }
 }
