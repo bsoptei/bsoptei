@@ -16,7 +16,7 @@ public class Boss extends GameObject {
         this.level = level;
         name = "Boss";
         createElementImage();
-        setStartingStats();
+        setDefaultStats();
     }
 
     @Override
@@ -35,9 +35,10 @@ public class Boss extends GameObject {
     }
 
     @Override
-    void setStartingStats() {
+    void setDefaultStats() {
         Random dice = new Random();
-        healthPoint = 2 * level * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1);
+        defaultHealthPoint = 2 * level * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1);
+        healthPoint = defaultHealthPoint;
         defensePoint = level / 2 * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1) / 2;
         strikePoint = level * (dice.nextInt(5) + 1) + level;
     }

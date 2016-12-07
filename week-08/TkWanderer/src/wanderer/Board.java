@@ -34,7 +34,7 @@ public class Board extends JFrame {
             }
         }
         hero.getTileImage().draw(graphics);
-        for (GameObject enemy: gameArea.getEnemies()){
+        for (GameObject enemy : gameArea.getEnemies()) {
             enemy.getTileImage().draw(graphics);
         }
 
@@ -49,23 +49,17 @@ public class Board extends JFrame {
         graphics.setFont(new Font("Arial", Font.BOLD, 14));
 
         int textY = 50;
-        for (GameObject character: gameArea.getCharacters()) {
-            ArrayList<String> stats = new ArrayList<>(Arrays.asList(character.getHP(), character.getSP(), character.getDP()));
+        for (GameObject character : gameArea.getCharacters()) {
             textY += 30;
             graphics.drawString(character.getName(), 720, textY);
-            for (String point : stats) {
-                textY += 20;
-                graphics.drawString(point, 720, textY);
-            }
+            textY += 20;
+            graphics.drawString(character.getStats(), 720, textY);
         }
-
-
-
 
 
     }
 
-    public void setGameArea(Area gameArea){
+    public void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
     }
 }

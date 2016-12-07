@@ -23,7 +23,7 @@ public class Hero extends GameObject {
         obstacle = false;
         name = "Hero";
         createElementImage();
-        setStartingStats();
+        setDefaultStats();
     }
 
     @Override
@@ -85,9 +85,10 @@ public class Hero extends GameObject {
     }
 
     @Override
-    void setStartingStats() {
+    void setDefaultStats() {
         Random dice = new Random();
-        healthPoint = 20 + 3 * (dice.nextInt(5) + 1);
+        defaultHealthPoint = 20 + 3 * (dice.nextInt(5) + 1);
+        healthPoint = defaultHealthPoint;
         defensePoint = 2 * (dice.nextInt(5) + 1);
         strikePoint = 5 + (dice.nextInt(5) + 1);
     }

@@ -7,7 +7,7 @@ import java.util.HashMap;
  * Created by Söp on 2016.12.05..
  */
 abstract class GameObject {
-    public Integer healthPoint, defensePoint, strikePoint, xPos, yPos;
+    public Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
     public String name;
     String type;
     private boolean alive;
@@ -39,19 +39,7 @@ abstract class GameObject {
 
     abstract void moveElementImage();
 
-    abstract void setStartingStats();
-
-    public String getHP() {
-        return String.format("HP: %d", healthPoint);
-    }
-
-    public String getSP() {
-        return String.format("SP: %d", strikePoint);
-    }
-
-    public String getDP() {
-        return String.format("DP: %d", defensePoint);
-    }
+    abstract void setDefaultStats();
 
     PositionedImage getTileImage() {
         return tileImage;
@@ -71,5 +59,11 @@ abstract class GameObject {
 
     public String getName() {
         return name;
+    }
+
+    public String getStats() {
+        return String.format("HP: %d/%d | DP: %d | SP: %d",
+                healthPoint, defaultHealthPoint,
+                defensePoint, strikePoint);
     }
 }

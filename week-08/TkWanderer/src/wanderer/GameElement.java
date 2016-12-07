@@ -38,10 +38,9 @@ class GameElement extends GameObject {
     }
 
     @Override
-    void setStartingStats() {
+    void setDefaultStats() {
+
     }
-
-
 
     public PositionedImage getTileImage() {
         return tileImage;

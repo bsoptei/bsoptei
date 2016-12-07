@@ -17,7 +17,7 @@ public class Skeleton extends GameObject {
         this.hasKey = hasKey;
         name = "Skeleton";
         createElementImage();
-        setStartingStats();
+        setDefaultStats();
     }
 
     @Override
@@ -36,9 +36,10 @@ public class Skeleton extends GameObject {
     }
 
     @Override
-    void setStartingStats() {
+    void setDefaultStats() {
         Random dice = new Random();
-        healthPoint = 2 * level * (dice.nextInt(5) + 1);
+        defaultHealthPoint = 2 * level * (dice.nextInt(5) + 1);
+        healthPoint = defaultHealthPoint;
         defensePoint = level / 2 * (dice.nextInt(5) + 1);
         strikePoint = level * (dice.nextInt(5) + 1);
     }
@@ -49,7 +50,7 @@ public class Skeleton extends GameObject {
         return tileImage;
     }
 
-    public boolean isKeyHolder(){
+    public boolean isKeyHolder() {
         return hasKey;
     }
 

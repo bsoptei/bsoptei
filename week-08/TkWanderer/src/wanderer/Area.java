@@ -12,7 +12,7 @@ public class Area {
     public Hero hero;
     public ArrayList<GameObject> characters = new ArrayList();
 
-    public static int level = 10;
+    public static int level = 0;
 
     public Area() {
         generateMap();
