@@ -2,71 +2,50 @@ package wanderer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import static java.awt.event.KeyEvent.*;
 
 public class Board extends JFrame {
-    public Integer xPos = 0;
-    public Integer yPos = 0;
-    public Area gameArea = new Area();
+    public Area gameArea = new Area(1);
+    public GameObject hero = gameArea.getHero();
 
     public Board() {
+        setProperties();
+        this.setLayout(new BorderLayout());
+
         JPanel statPanel = new JPanel();
-        this.setPreferredSize(new Dimension(720, 720));
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.add(statPanel);
-        xPos = 0;
-        yPos = 0;
+        statPanel.setPreferredSize(new Dimension(200,300));
+        JLabel statText = new JLabel();
+
+
+        statPanel.setLocation(720, 200);
+        statText.setText("kurvaanyad");
+
+        statPanel.add(statText);
+
+        this.add(statPanel, BorderLayout.EAST);
         addKeyListenerToBoard();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setUndecorated(true);
+
         this.setVisible(true);
     }
 
+    public void setProperties(){
+        this.setPreferredSize(new Dimension(720, 720));
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setUndecorated(true);
+    }
+
     private void addKeyListenerToBoard() {
-        this.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-            @Override
-            public void keyPressed(KeyEvent e) {
-                int key = e.getKeyCode();
-                switch (key) {
-                    case VK_ESCAPE:
-                        System.exit(0);
-                    case VK_SPACE:
-                        break;
-                    case VK_LEFT:
-                        xPos -= 72;
-                        break;
-                    case VK_RIGHT:
-                        xPos += 72;
-                        break;
-                    case VK_UP:
-                        yPos -= 72;
-                        break;
-                    case VK_DOWN:
-                        yPos += 72;
-                        break;
-                }
-                repaint();
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
+        ListenForKeyPress boardKeyListener = new ListenForKeyPress();
+        this.addKeyListener(boardKeyListener);
+        boardKeyListener.setBoard(this);
+        boardKeyListener.setGameObject(hero);
     }
 
     @Override
     public void paint(Graphics graphics) {
-        for( GameElement gameElement : gameArea.getGameElements()) {
+        for( GameElement gameElement : gameArea.getTiles()) {
             gameElement.getTileImage().draw(graphics);
         }
-        PositionedImage hero = new PositionedImage("src/wanderer/image/hero-down.png", xPos, yPos);
-        hero.draw(graphics);
+        hero.getTileImage().draw(graphics);
     }
 }
