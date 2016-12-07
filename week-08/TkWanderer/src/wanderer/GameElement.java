@@ -33,13 +33,16 @@ class GameElement extends GameObject {
     }
 
     @Override
+    void strike() {
+
+    }
+
+    @Override
     void changeElementImage(int deltaX, int deltaY) {
 
     }
 
 
-    void fight() {
-    }
 
     @Override
     public void moveElementImage() {

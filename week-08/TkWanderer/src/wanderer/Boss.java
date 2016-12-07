@@ -22,7 +22,7 @@ public class Boss extends GameObject {
 
 
     @Override
-    void fight() {
+    void strike() {
 
     }
 

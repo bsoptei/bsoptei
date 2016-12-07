@@ -2,6 +2,7 @@ package wanderer;
 
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.05..
@@ -16,6 +17,7 @@ abstract class GameObject {
     int level;
     public boolean obstacle;
     public Area gameArea;
+    Random dice = new Random();
     public final HashMap<String, String> imageSelector = new HashMap<String, String>() {{
         put("F", "src/wanderer/image/floor.png");
         put("W", "src/wanderer/image/wall.png");
@@ -33,7 +35,7 @@ abstract class GameObject {
 
     abstract void move(int deltaX, int deltaY);
 
-    abstract void fight();
+    abstract void strike();
 
     public void createElementImage() {
         this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
@@ -101,5 +103,17 @@ abstract class GameObject {
                 || xPos == 9 && deltaX == 1
                 || yPos == 0 && deltaY == -1
                 || yPos == 9 && deltaY == 1);
+    }
+
+
+    public int getDefensePoint() {
+        return defensePoint;
+    }
+
+    public void decreaseHealthPoint(int damage) {
+        healthPoint -= damage;
+        if (healthPoint <0) {
+            alive = false;
+        }
     }
 }

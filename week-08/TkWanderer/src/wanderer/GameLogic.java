@@ -41,8 +41,8 @@ public class GameLogic {
         Toolkit tk = Toolkit.getDefaultToolkit();
         if (gameArea.isInSamePosition()) {
             tk.beep();
-            System.out.println(gameArea.getBattleEnemy());
-        }
+            hero.setCurrentOpponent(gameArea.getBattleEnemy());
+        } else {hero.setCurrentOpponent(null);}
     }
 
     private void moveEnemiesRandomly() {

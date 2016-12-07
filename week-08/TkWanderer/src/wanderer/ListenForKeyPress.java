@@ -23,7 +23,7 @@ class ListenForKeyPress implements KeyListener {
             case VK_ESCAPE:
                 System.exit(0);
             case VK_SPACE:
-
+                hero.strike();
                 break;
             case VK_LEFT:
                 hero.move(-1, 0);

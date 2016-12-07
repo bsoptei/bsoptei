@@ -17,9 +17,11 @@ public class Hero extends GameObject {
 
     public int numberOfMoves;
 
+    public GameObject currentOpponent;
+
     public void reset() {
-        xPos =0;
-        yPos =0;
+        xPos = 0;
+        yPos = 0;
         moveElementImage();
         numberOfMoves = 0;
     }
@@ -59,17 +61,22 @@ public class Hero extends GameObject {
     }
 
     @Override
-    void fight() {
-
+    void strike() {
+        if (currentOpponent != null) {
+            boolean success = (strikePoint + (dice.nextInt(6) + 1) * 2 > currentOpponent.getDefensePoint());
+            if (success) {
+                currentOpponent.decreaseHealthPoint(strikePoint - currentOpponent.getDefensePoint());
+            }
+        }
     }
 
     @Override
     void setDefaultStats() {
-        Random dice = new Random();
-        defaultHealthPoint = 20 + 3 * (dice.nextInt(5) + 1);
+
+        defaultHealthPoint = 20 + 3 * (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
-        defensePoint = 2 * (dice.nextInt(5) + 1);
-        strikePoint = 5 + (dice.nextInt(5) + 1);
+        defensePoint = 2 * (dice.nextInt(6) + 1);
+        strikePoint = 5 + (dice.nextInt(6) + 1);
     }
 
     @Override
@@ -85,8 +92,12 @@ public class Hero extends GameObject {
         numberOfMoves++;
     }
 
-    public int getNumberOfMoves(){
+    public int getNumberOfMoves() {
         return numberOfMoves;
+    }
+
+    public void setCurrentOpponent(GameObject currentOpponent) {
+        this.currentOpponent = currentOpponent;
     }
 
 }

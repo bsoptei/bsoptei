@@ -32,9 +32,9 @@ public class Board extends JFrame {
             }
         }
         hero.getTileImage().draw(graphics);
-        for (GameObject enemy : gameArea.getEnemies()) {
+        gameArea.getEnemies().stream().filter(GameObject::isAlive).forEach(enemy -> {
             enemy.getTileImage().draw(graphics);
-        }
+        });
 
         graphics.setColor(Color.WHITE);
         graphics.fillRect(720, 0, 200, 720);

@@ -35,7 +35,7 @@ class Skeleton extends GameObject {
     }
 
     @Override
-    void fight() {
+    void strike() {
 
     }
 
