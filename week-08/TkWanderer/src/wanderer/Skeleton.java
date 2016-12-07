@@ -22,6 +22,15 @@ public class Skeleton extends GameObject {
 
     @Override
     void move(int deltaX, int deltaY) {
+//        if (movementIsPossible(deltaX, deltaY)) {
+//            xPos += deltaX;
+//            yPos += deltaY;
+//        }
+//        moveElementImage();
+    }
+
+    @Override
+    void changeElementImage(int deltaX, int deltaY) {
 
     }
 
@@ -32,7 +41,8 @@ public class Skeleton extends GameObject {
 
     @Override
     void moveElementImage() {
-
+        tileImage.setPosX(xPos * imageSize);
+        tileImage.setPosY(yPos * imageSize);
     }
 
     @Override

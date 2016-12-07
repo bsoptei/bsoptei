@@ -15,12 +15,14 @@ public class Hero extends GameObject {
         put("right", new PositionedImage("src/wanderer/image/hero-right.png", 0, 0));
     }};
     public Area gameArea;
+    public int numberOfMoves;
 
     public Hero(int xPos, int yPos) {
         super("H");
         this.xPos = xPos;
         this.yPos = yPos;
         obstacle = false;
+        numberOfMoves = 0;
         name = "Hero";
         createElementImage();
         setDefaultStats();
@@ -32,6 +34,7 @@ public class Hero extends GameObject {
             xPos += deltaX;
             yPos += deltaY;
         }
+        incrementNumberOfMoves();
         changeElementImage(deltaX, deltaY);
         moveElementImage();
     }
@@ -63,7 +66,7 @@ public class Hero extends GameObject {
                 || yPos == 9 && deltaY == 1);
     }
 
-    private void changeElementImage(int deltaX, int deltaY) {
+    void changeElementImage(int deltaX, int deltaY) {
         if (deltaX == -1) {
             tileImage = heroDirectionImages.get("left");
         } else if (deltaX == 1) {
@@ -102,6 +105,14 @@ public class Hero extends GameObject {
 
     public void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
+    }
+
+    public void incrementNumberOfMoves() {
+        numberOfMoves++;
+    }
+
+    public int getNumberOfMoves(){
+        return numberOfMoves;
     }
 
 }

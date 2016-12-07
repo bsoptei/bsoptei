@@ -2,8 +2,6 @@ package wanderer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Board extends JFrame {
     public Area gameArea;
@@ -37,7 +35,6 @@ public class Board extends JFrame {
         for (GameObject enemy : gameArea.getEnemies()) {
             enemy.getTileImage().draw(graphics);
         }
-
 
         graphics.setColor(Color.WHITE);
         graphics.fillRect(720, 0, 200, 720);

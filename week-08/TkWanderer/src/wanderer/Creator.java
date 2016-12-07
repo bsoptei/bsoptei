@@ -23,6 +23,14 @@ class Creator {
         boardKeyListener.setBoard(drawPad);
         boardKeyListener.setHero(hero);
 
+
+        GameLogic controller = new GameLogic();
+
+        boardKeyListener.setController(controller);
+
+        controller.setGameArea(gameArea);
+        controller.setHero(hero);
+
         drawPad.setHero(hero);
         drawPad.setGameArea(gameArea);
 

@@ -10,6 +10,7 @@ import static java.awt.event.KeyEvent.*;
 public class ListenForKeyPress implements KeyListener {
     private Board board;
     private Hero hero;
+    private GameLogic controller;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -37,6 +38,8 @@ public class ListenForKeyPress implements KeyListener {
                 break;
         }
         board.repaint();
+        controller.update();
+        hero.incrementNumberOfMoves();
     }
 
     @Override
@@ -51,4 +54,6 @@ public class ListenForKeyPress implements KeyListener {
     public void setHero(Hero hero ) {
         this.hero = hero;
     }
+
+    public void setController(GameLogic controller) {this.controller = controller;}
 }

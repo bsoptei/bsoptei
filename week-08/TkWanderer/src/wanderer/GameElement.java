@@ -1,7 +1,7 @@
 package wanderer;
 
 /**
- * Created by Söp on 2016.12.05.. 
+ * Created by Söp on 2016.12.05..
  */
 class GameElement extends GameObject {
     private PositionedImage tileImage;
@@ -30,6 +30,11 @@ class GameElement extends GameObject {
         xPos += deltaX;
         yPos += deltaY;
         moveElementImage();
+    }
+
+    @Override
+    void changeElementImage(int deltaX, int deltaY) {
+
     }
 
 

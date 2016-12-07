@@ -19,10 +19,7 @@ public class Boss extends GameObject {
         setDefaultStats();
     }
 
-    @Override
-    void move(int deltaX, int deltaY) {
 
-    }
 
     @Override
     void fight() {
@@ -31,7 +28,8 @@ public class Boss extends GameObject {
 
     @Override
     void moveElementImage() {
-
+        tileImage.setPosX(xPos * imageSize);
+        tileImage.setPosY(yPos * imageSize);
     }
 
     @Override
@@ -48,5 +46,15 @@ public class Boss extends GameObject {
     @Override
     PositionedImage getTileImage() {
         return tileImage;
+    }
+
+    @Override
+    void changeElementImage(int deltaX, int deltaY) {
+
+    }
+
+    @Override
+    void move(int deltaX, int deltaY) {
+
     }
 }

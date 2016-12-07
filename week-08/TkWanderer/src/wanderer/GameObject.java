@@ -15,6 +15,7 @@ abstract class GameObject {
     final int imageSize = 72;
     int level;
     public boolean obstacle;
+    public Area gameArea;
     public final HashMap<String, String> imageSelector = new HashMap<String, String>() {{
         put("F", "src/wanderer/image/floor.png");
         put("W", "src/wanderer/image/wall.png");
@@ -27,6 +28,7 @@ abstract class GameObject {
         this.type = type;
 
     }
+    abstract void changeElementImage(int deltaX, int deltaY);
 
 
     abstract void move(int deltaX, int deltaY);
@@ -61,5 +63,13 @@ abstract class GameObject {
         return String.format("HP: %d/%d | DP: %d | SP: %d",
                 healthPoint, defaultHealthPoint,
                 defensePoint, strikePoint);
+    }
+
+    public Integer[] getCoordinates() {
+        return new Integer[] {xPos, yPos};
+    }
+
+    public void setGameArea(Area gameArea) {
+        this.gameArea = gameArea;
     }
 }
