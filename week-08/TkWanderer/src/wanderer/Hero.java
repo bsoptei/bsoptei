@@ -20,6 +20,7 @@ public class Hero extends GameObject {
         super("H");
         this.xPos = xPos;
         this.yPos = yPos;
+        obstacle = false;
         createElementImage();
         setStartingStats();
     }
@@ -76,7 +77,6 @@ public class Hero extends GameObject {
 
     }
 
-
     @Override
     void moveElementImage() {
         tileImage.setPosX(xPos * imageSize);
@@ -89,21 +89,6 @@ public class Hero extends GameObject {
         healthPoint = 20 + 3 * (dice.nextInt(5) + 1);
         defensePoint = 2 * (dice.nextInt(5) + 1);
         strikePoint = 5 + (dice.nextInt(5) + 1);
-    }
-
-    @Override
-    ArrayList<GameElement> inspectNeighbors() {
-        return null;
-    }
-
-    @Override
-    Integer getXPosition() {
-        return null;
-    }
-
-    @Override
-    Integer getYPosition() {
-        return null;
     }
 
     @Override

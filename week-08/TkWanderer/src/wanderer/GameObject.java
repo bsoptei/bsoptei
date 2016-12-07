@@ -13,7 +13,7 @@ abstract class GameObject {
     PositionedImage tileImage;
     final int imageSize = 72;
     int level;
-    private boolean obstacle;
+    public boolean obstacle;
     public final HashMap<String, String> imageSelector = new HashMap<String, String>() {{
         put("F", "src/wanderer/image/floor.png");
         put("W", "src/wanderer/image/wall.png");
@@ -39,12 +39,6 @@ abstract class GameObject {
     abstract void moveElementImage();
 
     abstract void setStartingStats();
-
-    abstract ArrayList<GameElement> inspectNeighbors();
-
-    abstract Integer getXPosition();
-
-    abstract Integer getYPosition();
 
     abstract String getHP();
 
