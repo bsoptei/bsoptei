@@ -1,7 +1,7 @@
 package wanderer;
 
 /**
- * Created by Söp on 2016.12.05..
+ * Created by Söp on 2016.12.05.. Tiles of the map
  */
 class GameElement extends GameObject {
     private PositionedImage tileImage;

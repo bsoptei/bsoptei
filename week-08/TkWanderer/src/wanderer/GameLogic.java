@@ -4,7 +4,7 @@ import java.awt.*;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.05..
+ * Created by Söp on 2016.12.05.. The logic behind the game
  */
 public class GameLogic {
 
@@ -31,9 +31,13 @@ public class GameLogic {
         this.gameArea = gameArea;
     }
 
-    public void update() {
+    void update() {
         if (hero.getNumberOfMoves() % 2 == 0) {
             moveEnemiesRandomly();
+        }
+
+        if (hero.getNumberOfMoves() == 10) {
+            gameArea.reset();
         }
         Toolkit tk = Toolkit.getDefaultToolkit();
         if (gameArea.isInSamePosition()) {

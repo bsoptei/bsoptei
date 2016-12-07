@@ -22,6 +22,15 @@ public class Area {
         generateEnemies();
     }
 
+    public void reset() {
+        level++;
+        hero.reset();
+        enemies.clear();
+        characters.clear();
+        generateEnemies();
+        fillCharacters();
+    }
+
     public void fillCharacters() {
         characters.add(hero);
         characters.addAll(enemies);

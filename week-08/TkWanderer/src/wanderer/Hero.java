@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.07..
+ * Created by Söp on 2016.12.07.. The hero
  */
 public class Hero extends GameObject {
     public HashMap<String, PositionedImage> heroDirectionImages = new HashMap<String, PositionedImage>() {{
@@ -16,6 +16,13 @@ public class Hero extends GameObject {
     }};
 
     public int numberOfMoves;
+
+    public void reset() {
+        xPos =0;
+        yPos =0;
+        moveElementImage();
+        numberOfMoves = 0;
+    }
 
     public Hero(int xPos, int yPos) {
         super("H");
