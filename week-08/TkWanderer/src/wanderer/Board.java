@@ -9,25 +9,13 @@ public class Board extends JFrame {
 
     public Board() {
         setProperties();
-        this.setLayout(new BorderLayout());
 
-        JPanel statPanel = new JPanel();
-        statPanel.setPreferredSize(new Dimension(200,300));
-        JLabel statText = new JLabel();
-
-
-//        statPanel.setLocation(720, 200);
-//        statText.setText("kurvaanyad");
-
-        statPanel.add(statText);
-
-        this.add(statPanel, BorderLayout.EAST);
         addKeyListenerToBoard();
 
         this.setVisible(true);
     }
 
-    public void setProperties(){
+    public void setProperties() {
         this.setPreferredSize(new Dimension(720, 720));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -43,9 +31,13 @@ public class Board extends JFrame {
 
     @Override
     public void paint(Graphics graphics) {
-        for( GameElement gameElement : gameArea.getTiles()) {
-            gameElement.getTileImage().draw(graphics);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                gameArea.getTiles()[i][j].getTileImage().draw(graphics);
+            }
         }
+
         hero.getTileImage().draw(graphics);
+
     }
 }

@@ -1,7 +1,7 @@
 package wanderer;
 
 /**
- * Created by Söp on 2016.12.07..
+ * Created by Söp on 2016.12.07../
  */
 public class Creator {
     public Board drawPad;

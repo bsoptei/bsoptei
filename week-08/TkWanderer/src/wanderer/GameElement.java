@@ -16,14 +16,10 @@ public class GameElement extends GameObject {
         put("S", "src/wanderer/image/skeleton.png");
         put("B", "src/wanderer/image/boss.png");
     }};
-//    public HashMap<String, String> heroDirectionImages = new HashMap<String, String>() {{
-//        put("10","src/wanderer/image/hero-down.png");
-//    }};
-
-
 
 
     public GameElement(int xPos, int yPos, String type) {
+        super(type);
         this.xPos = xPos;
         this.yPos = yPos;
         this.type = type;
@@ -39,7 +35,6 @@ public class GameElement extends GameObject {
     void move(int deltaX, int deltaY) {
         xPos += deltaX;
         yPos += deltaY;
-//        changeElementImage(deltaX, deltaY);
         moveElementImage();
     }
 
@@ -51,9 +46,6 @@ public class GameElement extends GameObject {
     public void moveElementImage() {
         tileImage.setPosX(xPos * imageSize);
         tileImage.setPosY(yPos * imageSize);
-//        int imageX = xPos * imageSize;
-//        int imageY = yPos * imageSize;
-
     }
 
     @Override
@@ -112,4 +104,6 @@ public class GameElement extends GameObject {
     public PositionedImage getTileImage() {
         return tileImage;
     }
+
+
 }
