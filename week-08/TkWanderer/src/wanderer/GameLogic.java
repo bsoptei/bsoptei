@@ -1,5 +1,6 @@
 package wanderer;
 
+import java.awt.*;
 import java.util.Random;
 
 /**
@@ -31,14 +32,20 @@ public class GameLogic {
     }
 
     public void update() {
-        Random randomMove = new Random();
         if (hero.getNumberOfMoves() % 2 == 0) {
-            for (GameObject enemy : gameArea.getEnemies()) {
-                if (randomMove.nextInt(2) == 0) {
-                    enemy.move(randomMove.nextInt(3) - 1, 0);
-                } else {
-                    enemy.move(0, randomMove.nextInt(3) - 1);
-                }
+            moveEnemiesRandomly();
+        }
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        if (gameArea.isInSamePosition()) {tk.beep();}
+    }
+
+    private void moveEnemiesRandomly() {
+        Random randomMove = new Random();
+        for (GameObject enemy : gameArea.getEnemies()) {
+            if (randomMove.nextInt(2) == 0) {
+                enemy.move(randomMove.nextInt(3) - 1, 0);
+            } else {
+                enemy.move(0, randomMove.nextInt(3) - 1);
             }
         }
     }

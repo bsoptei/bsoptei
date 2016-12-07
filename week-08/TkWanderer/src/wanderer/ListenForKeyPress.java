@@ -43,7 +43,6 @@ public class ListenForKeyPress implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     public void setBoard(Board board) {

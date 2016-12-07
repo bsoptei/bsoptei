@@ -3,12 +3,12 @@ package wanderer;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.07..
+ * Created by Söp on 2016.12.07.. Weak enemy
  */
-public class Skeleton extends GameObject {
-    public boolean hasKey;
+class Skeleton extends GameObject {
+    private boolean hasKey;
 
-    public Skeleton(int xPos, int yPos, int level, boolean hasKey) {
+    Skeleton(int xPos, int yPos, int level, boolean hasKey) {
         super("S");
         this.xPos = xPos;
         this.yPos = yPos;

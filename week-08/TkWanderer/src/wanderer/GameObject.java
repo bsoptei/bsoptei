@@ -31,7 +31,6 @@ abstract class GameObject {
 
     abstract void changeElementImage(int deltaX, int deltaY);
 
-
     abstract void move(int deltaX, int deltaY);
 
     abstract void fight();

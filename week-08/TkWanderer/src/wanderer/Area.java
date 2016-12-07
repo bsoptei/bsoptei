@@ -1,6 +1,7 @@
 package wanderer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -71,7 +72,7 @@ public class Area {
     public boolean isInSamePosition() {
         boolean samePosition = false;
         for (GameObject enemy: enemies) {
-            if (enemy.getCoordinates() == hero.getCoordinates()) {
+            if (Arrays.equals(enemy.getCoordinates(), hero.getCoordinates())) {
                 samePosition = true;
             }
         }

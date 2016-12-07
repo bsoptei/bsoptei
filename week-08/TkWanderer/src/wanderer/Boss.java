@@ -3,7 +3,7 @@ package wanderer;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.07..
+ * Created by Söp on 2016.12.07.. The strongest enemy
  */
 public class Boss extends GameObject {
 
