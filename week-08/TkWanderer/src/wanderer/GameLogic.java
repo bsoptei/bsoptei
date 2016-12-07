@@ -12,7 +12,7 @@ public class GameLogic {
     public boolean bossKilled;
     private Hero hero;
 
-    public GameLogic(){
+    public GameLogic() {
 
     }
 
@@ -26,7 +26,6 @@ public class GameLogic {
     }
 
 
-
     public void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
     }
@@ -34,8 +33,12 @@ public class GameLogic {
     public void update() {
         Random randomMove = new Random();
         if (hero.getNumberOfMoves() % 2 == 0) {
-            for (GameObject enemy: gameArea.getEnemies()) {
-                enemy.move(randomMove.nextInt(3) - 1, randomMove.nextInt(3) - 1);
+            for (GameObject enemy : gameArea.getEnemies()) {
+                if (randomMove.nextInt(2) == 0) {
+                    enemy.move(randomMove.nextInt(3) - 1, 0);
+                } else {
+                    enemy.move(0, randomMove.nextInt(3) - 1);
+                }
             }
         }
     }

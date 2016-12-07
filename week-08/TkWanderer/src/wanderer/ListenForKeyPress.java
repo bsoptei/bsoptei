@@ -39,7 +39,6 @@ public class ListenForKeyPress implements KeyListener {
         }
         board.repaint();
         controller.update();
-        hero.incrementNumberOfMoves();
     }
 
     @Override
