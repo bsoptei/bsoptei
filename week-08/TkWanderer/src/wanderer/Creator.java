@@ -4,6 +4,8 @@ package wanderer;
  * Created by Söp on 2016.12.07. Creates and links the necessary objects
  */
 class Creator {
+public static Area gameArea;
+
 
     Creator() {
         createObjects();

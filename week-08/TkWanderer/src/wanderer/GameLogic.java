@@ -36,7 +36,10 @@ public class GameLogic {
             moveEnemiesRandomly();
         }
         Toolkit tk = Toolkit.getDefaultToolkit();
-        if (gameArea.isInSamePosition()) {tk.beep();}
+        if (gameArea.isInSamePosition()) {
+            tk.beep();
+            System.out.println(gameArea.getBattleEnemy());
+        }
     }
 
     private void moveEnemiesRandomly() {

@@ -12,6 +12,7 @@ public class Area {
     public ArrayList<GameObject> enemies = new ArrayList();
     public Hero hero;
     public ArrayList<GameObject> characters = new ArrayList();
+    public GameObject battleEnemy;
 
     public static int level = 0;
 
@@ -71,11 +72,20 @@ public class Area {
 
     public boolean isInSamePosition() {
         boolean samePosition = false;
-        for (GameObject enemy: enemies) {
-            if (Arrays.equals(enemy.getCoordinates(), hero.getCoordinates())) {
+        for (int i = 0; i < enemies.size(); i++ ) {
+            if (Arrays.equals(enemies.get(i).getCoordinates(), hero.getCoordinates())) {
+                identifyEnemy(i);
                 samePosition = true;
             }
         }
         return samePosition;
+    }
+
+    public void identifyEnemy(int i) {
+        battleEnemy = enemies.get(i);
+    }
+
+    public GameObject getBattleEnemy() {
+        return  battleEnemy;
     }
 }

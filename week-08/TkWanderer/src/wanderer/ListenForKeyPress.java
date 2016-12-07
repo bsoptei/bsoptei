@@ -7,7 +7,7 @@ import static java.awt.event.KeyEvent.*;
 /**
  * Created by Söp on 2016.12.05.. n
  */
-public class ListenForKeyPress implements KeyListener {
+class ListenForKeyPress implements KeyListener {
     private Board board;
     private Hero hero;
     private GameLogic controller;
@@ -23,6 +23,7 @@ public class ListenForKeyPress implements KeyListener {
             case VK_ESCAPE:
                 System.exit(0);
             case VK_SPACE:
+
                 break;
             case VK_LEFT:
                 hero.move(-1, 0);
@@ -45,13 +46,13 @@ public class ListenForKeyPress implements KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
-    public void setBoard(Board board) {
+    void setBoard(Board board) {
         this.board = board;
     }
 
-    public void setHero(Hero hero ) {
+    void setHero(Hero hero) {
         this.hero = hero;
     }
 
-    public void setController(GameLogic controller) {this.controller = controller;}
+    void setController(GameLogic controller) {this.controller = controller;}
 }
