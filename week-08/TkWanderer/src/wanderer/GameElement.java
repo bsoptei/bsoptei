@@ -5,20 +5,14 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.05..drtktseriogjaeigoeajgweiogewjoiaj
+ * Created by Söp on 2016.12.05..  
  */
-public class GameElement extends GameObject {
-    public PositionedImage tileImage;
-    public String type;
-    public HashMap<String, String> imageSelector = new HashMap<String, String>() {{
-        put("F", "src/wanderer/image/floor.png");
-        put("W", "src/wanderer/image/wall.png");
-        put("S", "src/wanderer/image/skeleton.png");
-        put("B", "src/wanderer/image/boss.png");
-    }};
+class GameElement extends GameObject {
+    private PositionedImage tileImage;
 
 
-    public GameElement(int xPos, int yPos, String type) {
+
+    GameElement(int xPos, int yPos, String type) {
         super(type);
         this.xPos = xPos;
         this.yPos = yPos;

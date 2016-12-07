@@ -76,10 +76,6 @@ public class Hero extends GameObject {
 
     }
 
-    @Override
-    void createElementImage() {
-        changeElementImage(0, 1);
-    }
 
     @Override
     void moveElementImage() {
