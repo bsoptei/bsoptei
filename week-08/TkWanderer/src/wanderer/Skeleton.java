@@ -22,11 +22,11 @@ public class Skeleton extends GameObject {
 
     @Override
     void move(int deltaX, int deltaY) {
-//        if (movementIsPossible(deltaX, deltaY)) {
-//            xPos += deltaX;
-//            yPos += deltaY;
-//        }
-//        moveElementImage();
+        if (movementIsPossible(deltaX, deltaY)) {
+            xPos += deltaX;
+            yPos += deltaY;
+        }
+        moveElementImage();
     }
 
     @Override

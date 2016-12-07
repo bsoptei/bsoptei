@@ -76,4 +76,31 @@ abstract class GameObject {
     public void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
     }
+
+    boolean movementIsPossible(int deltaX, int deltaY) {
+        boolean possible = true;
+        if (boundaryOfMap(deltaX, deltaY) || neighborIsObstacle(deltaX, deltaY)) {
+            possible = false;
+        }
+        return possible;
+    }
+
+    private boolean neighborIsObstacle(int deltaX, int deltaY) {
+        boolean obstacle = false;
+        int xNeighbor = xPos + deltaX;
+        int yNeighbor = yPos + deltaY;
+
+        if (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
+                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()) {
+            obstacle = true;
+        }
+        return obstacle;
+    }
+
+    private boolean boundaryOfMap(int deltaX, int deltaY) {
+        return (xPos == 0 && deltaX == -1
+                || xPos == 9 && deltaX == 1
+                || yPos == 0 && deltaY == -1
+                || yPos == 9 && deltaY == 1);
+    }
 }
