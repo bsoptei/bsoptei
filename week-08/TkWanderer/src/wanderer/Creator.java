@@ -3,26 +3,22 @@ package wanderer;
 /**
  * Created by Söp on 2016.12.07../
  */
-public class Creator {
-    public Board drawPad;
-    public Hero hero;
-    public Area gameArea;
-    public static ListenForKeyPress boardKeyListener;
+class Creator {
 
-    public Creator() {
+    Creator() {
         createObjects();
     }
 
-    public void createObjects() {
-        hero = new Hero(0, 0);
+    private void createObjects() {
+        Hero hero = new Hero(0, 0);
 
-        gameArea = new Area();
+        Area gameArea = new Area();
         gameArea.setHero(hero);
 
         hero.setGameArea(gameArea);
-        drawPad = new Board();
+        Board drawPad = new Board();
 
-        boardKeyListener = new ListenForKeyPress();
+        ListenForKeyPress boardKeyListener = new ListenForKeyPress();
         boardKeyListener.setBoard(drawPad);
         boardKeyListener.setHero(hero);
 
