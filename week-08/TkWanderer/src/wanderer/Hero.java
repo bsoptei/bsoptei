@@ -2,6 +2,7 @@ package wanderer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.07..
@@ -20,6 +21,7 @@ public class Hero extends GameObject {
         this.xPos = xPos;
         this.yPos = yPos;
         createElementImage();
+        setStartingStats();
     }
 
     @Override
@@ -88,7 +90,10 @@ public class Hero extends GameObject {
 
     @Override
     void setStartingStats() {
-
+        Random dice = new Random();
+        healthPoint = 20 + 3 * (dice.nextInt(5) + 1);
+        defensePoint = 2 * (dice.nextInt(5) + 1);
+        strikePoint = 5 + (dice.nextInt(5) + 1);
     }
 
     @Override
@@ -133,5 +138,17 @@ public class Hero extends GameObject {
 
     public void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
+    }
+
+    public String getHP() {
+        return String.format("HP: %d", healthPoint);
+    }
+
+    public String getSP() {
+        return String.format("SP: %d", strikePoint);
+    }
+
+    public String getDP() {
+        return String.format("DP: %d", defensePoint);
     }
 }
