@@ -28,6 +28,7 @@ abstract class GameObject {
         this.type = type;
 
     }
+
     abstract void changeElementImage(int deltaX, int deltaY);
 
 
@@ -39,7 +40,10 @@ abstract class GameObject {
         this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
     }
 
-    abstract void moveElementImage();
+    public void moveElementImage() {
+        tileImage.setPosX(xPos * imageSize);
+        tileImage.setPosY(yPos * imageSize);
+    }
 
     abstract void setDefaultStats();
 
@@ -66,7 +70,7 @@ abstract class GameObject {
     }
 
     public Integer[] getCoordinates() {
-        return new Integer[] {xPos, yPos};
+        return new Integer[]{xPos, yPos};
     }
 
     public void setGameArea(Area gameArea) {

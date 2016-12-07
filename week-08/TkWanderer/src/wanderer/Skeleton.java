@@ -39,11 +39,6 @@ public class Skeleton extends GameObject {
 
     }
 
-    @Override
-    void moveElementImage() {
-        tileImage.setPosX(xPos * imageSize);
-        tileImage.setPosY(yPos * imageSize);
-    }
 
     @Override
     void setDefaultStats() {

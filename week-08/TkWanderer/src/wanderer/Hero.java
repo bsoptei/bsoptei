@@ -84,12 +84,6 @@ public class Hero extends GameObject {
     }
 
     @Override
-    void moveElementImage() {
-        tileImage.setPosX(xPos * imageSize);
-        tileImage.setPosY(yPos * imageSize);
-    }
-
-    @Override
     void setDefaultStats() {
         Random dice = new Random();
         defaultHealthPoint = 20 + 3 * (dice.nextInt(5) + 1);
