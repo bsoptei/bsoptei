@@ -3,23 +3,23 @@ package wanderer;
 import javax.swing.*;
 import java.awt.*;
 
-public class Board extends JFrame {
-    public Area gameArea;
-    public Hero hero;
+class Board extends JFrame implements GameMeetingPoint{
+//    private Area gameArea;
+    private Hero hero;
 
-    public Board() {
+    Board() {
         setProperties();
         this.setVisible(true);
     }
 
-    public void setProperties() {
+    private void setProperties() {
         this.setPreferredSize(new Dimension(720, 720));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setUndecorated(true);
     }
 
-    public void setHero(Hero hero) {
+    void setHero(Hero hero) {
         this.hero = hero;
     }
 
@@ -32,9 +32,7 @@ public class Board extends JFrame {
             }
         }
         hero.getTileImage().draw(graphics);
-        gameArea.getEnemies().stream().filter(GameObject::isAlive).forEach(enemy -> {
-            enemy.getTileImage().draw(graphics);
-        });
+        gameArea.getEnemies().stream().filter(GameObject::isAlive).forEach(enemy -> enemy.getTileImage().draw(graphics));
 
         graphics.setColor(Color.WHITE);
         graphics.fillRect(720, 0, 200, 720);
@@ -56,7 +54,7 @@ public class Board extends JFrame {
         }
     }
 
-    public void setGameArea(Area gameArea) {
-        this.gameArea = gameArea;
-    }
+//    void setGameArea(Area gameArea) {
+//        this.gameArea = gameArea;
+//    }
 }

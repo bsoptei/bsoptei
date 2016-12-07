@@ -7,16 +7,16 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.05..r
  */
-public class Area {
-    public GameElement[][] tiles = new GameElement[10][10];
-    public ArrayList<GameObject> enemies = new ArrayList();
-    public Hero hero;
-    public ArrayList<GameObject> characters = new ArrayList();
-    public GameObject battleEnemy;
+class Area {
+    private GameElement[][] tiles = new GameElement[10][10];
+    private ArrayList<GameObject> enemies = new ArrayList();
+    private Hero hero;
+    private ArrayList<GameObject> characters = new ArrayList();
+    private GameObject battleEnemy;
 
-    public static int level = 0;
+    static int level = 0;
 
-    public Area() {
+    Area() {
         generateMap();
         level++;
         generateEnemies();
@@ -58,20 +58,20 @@ public class Area {
 
     }
 
-    public void generateMap() {
+    private void generateMap() {
         Maze gameMaze = new Maze(10, 10);
         tiles = gameMaze.generate();
     }
 
-    public GameElement[][] getTiles() {
+    GameElement[][] getTiles() {
         return tiles;
     }
 
-    public ArrayList<GameObject> getEnemies() {
+    ArrayList<GameObject> getEnemies() {
         return enemies;
     }
 
-    public void setHero(Hero hero) {
+    void setHero(Hero hero) {
         this.hero = hero;
     }
 

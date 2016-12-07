@@ -55,8 +55,4 @@ class Skeleton extends GameObject {
         return tileImage;
     }
 
-    public boolean isKeyHolder() {
-        return hasKey;
-    }
-
 }
