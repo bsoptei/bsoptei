@@ -21,6 +21,10 @@ public class Area {
 
     public void generateMap() {
         Random r = new Random();
+
+        Maze gameMaze = new Maze(10, 10);
+
+        tiles = gameMaze.generate();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 String currentType = (r.nextInt(10) < 7) ? "F" : "W";
@@ -33,7 +37,7 @@ public class Area {
         return tiles;
     }
 
-    public boolean checkIfMapIsSolvable(){
+    public boolean checkIfMapIsSolvable() {
 
         return true;
     }
