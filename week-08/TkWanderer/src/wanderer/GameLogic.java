@@ -17,13 +17,12 @@ public class GameLogic {
 
     }
 
-    public boolean isKeyHolderKilled() {
-
-        return keyHolderKilled;
+    public boolean keyHolderIsKilled() {
+        return !gameArea.getKeyHolder().isAlive();
     }
 
-    public boolean isBossKilled() {
-        return bossKilled;
+    public boolean bossIsKilled() {
+        return !gameArea.getBoss().isAlive();
     }
 
 
@@ -36,7 +35,7 @@ public class GameLogic {
             moveEnemiesRandomly();
         }
 
-        if (hero.getNumberOfMoves() == 10) {
+        if (bossIsKilled() && keyHolderIsKilled()) {
             gameArea.reset();
         }
         Toolkit tk = Toolkit.getDefaultToolkit();

@@ -34,7 +34,7 @@ public class Area {
     public void fillCharacters() {
         characters.add(hero);
         characters.addAll(enemies);
-        for (GameObject character: characters) {
+        for (GameObject character : characters) {
             character.setGameArea(this);
         }
     }
@@ -81,7 +81,7 @@ public class Area {
 
     public boolean isInSamePosition() {
         boolean samePosition = false;
-        for (int i = 0; i < enemies.size(); i++ ) {
+        for (int i = 0; i < enemies.size(); i++) {
             if (Arrays.equals(enemies.get(i).getCoordinates(), hero.getCoordinates())) {
                 identifyEnemy(i);
                 samePosition = true;
@@ -95,6 +95,14 @@ public class Area {
     }
 
     public GameObject getBattleEnemy() {
-        return  battleEnemy;
+        return battleEnemy;
+    }
+
+    public GameObject getBoss() {
+        return enemies.get(enemies.size() - 1);
+    }
+
+    public GameObject getKeyHolder() {
+        return enemies.get(enemies.size() - 2);
     }
 }
