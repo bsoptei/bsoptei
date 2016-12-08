@@ -118,10 +118,6 @@ class Hero extends GameObject {
         }
     }
 
-    @Override
-    void setHero(Hero hero) {
-    }
-
     private void decreaseHealthPoint(int damage) {
         healthPoint -= damage;
         if (healthPoint <= 0) {

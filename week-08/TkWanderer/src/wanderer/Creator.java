@@ -12,12 +12,7 @@ class Creator {
     static GameLogic controller = new GameLogic();
     private static ListenForKeyPress boardKeyListener = new ListenForKeyPress();
 
-    Creator() {
-        createObjects();
-    }
-
-    static void createObjects() {
-
+    static void initialize() {
         gameArea.reset();
         drawPad.addKeyListener(boardKeyListener);
         JOptionPane.showMessageDialog(null, "Welcome");

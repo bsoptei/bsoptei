@@ -41,7 +41,7 @@ class Board extends JFrame implements GameMeetingPoint{
         graphics.setFont(new Font("Arial", Font.BOLD, 14));
 
         int textY = 50;
-        for (GameObject character : gameArea.getCharacters()) {
+        for (GameObject character : gameArea.getPlayers()) {
             if (character.isAlive()) {
                 character.getTileImage().draw(graphics);
                 ArrayList<String> stats = new ArrayList<>(Arrays.asList(character.getName(),

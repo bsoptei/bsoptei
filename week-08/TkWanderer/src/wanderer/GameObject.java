@@ -40,8 +40,6 @@ abstract class GameObject implements GameMeetingPoint {
 
     abstract void getHit(int damage);
 
-    abstract void setHero(Hero hero);
-
     abstract boolean neighborIsObstacle(int deltaX, int deltaY);
 
     abstract String getLevelToString();

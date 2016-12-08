@@ -70,10 +70,4 @@ class Tile extends GameObject {
 
     }
 
-    @Override
-    void setHero(Hero hero) {
-
-    }
-
-
 }

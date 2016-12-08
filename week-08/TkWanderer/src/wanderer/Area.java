@@ -12,8 +12,8 @@ class Area implements GameMeetingPoint {
     @SuppressWarnings("unchecked")
     private ArrayList<GameObject> enemies = new ArrayList();
     @SuppressWarnings("unchecked")
-    private ArrayList<GameObject> characters = new ArrayList();
-    private StringBuilder[][] characterPositions;
+    private ArrayList<GameObject> players = new ArrayList();
+    private StringBuilder[][] playerPositions;
     private GameObject battleEnemy;
     static int level = 0;
 
@@ -21,7 +21,7 @@ class Area implements GameMeetingPoint {
         this.width = width;
         this.height = height;
         tiles = new Tile[width][height];
-        characterPositions = new StringBuilder[width][height];
+        playerPositions = new StringBuilder[width][height];
         generateMap();
         AudioPlayer.play("src/wanderer/wav/321937__pel2na__two-kazoo-fanfare.wav");
     }
@@ -30,16 +30,16 @@ class Area implements GameMeetingPoint {
         level++;
         hero.reset();
         enemies.clear();
-        characters.clear();
-        initCharacterPositions();
+        players.clear();
+        initPlayerPositions();
         generateEnemies();
-        fillCharacters();
+        administerPlayers();
     }
 
-    private void fillCharacters() {
-        characters.add(hero);
-        characters.addAll(enemies);
-        for (GameObject character : characters) {
+    private void administerPlayers() {
+        players.add(hero);
+        players.addAll(enemies);
+        for (GameObject character : players) {
             character.setGameArea(this);
         }
     }
@@ -50,7 +50,7 @@ class Area implements GameMeetingPoint {
             int xPos = dice.nextInt(9) + 1;
             int yPos = dice.nextInt(9) + 1;
             if (!tiles[xPos][yPos].isObstacle() &&
-                    characterPositions[xPos][yPos].toString().equals("")) {
+                    playerPositions[xPos][yPos].toString().equals("")) {
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
                 } else if (enemies.size() == numberOfEnemies - 2) {
@@ -60,9 +60,6 @@ class Area implements GameMeetingPoint {
                 }
                 updateCharacterPositions();
             }
-        }
-        for (GameObject enemy : enemies) {
-            enemy.setHero(hero);
         }
     }
 
@@ -79,8 +76,8 @@ class Area implements GameMeetingPoint {
         return enemies;
     }
 
-    ArrayList<GameObject> getCharacters() {
-        return characters;
+    ArrayList<GameObject> getPlayers() {
+        return players;
     }
 
     boolean isInSamePosition() {
@@ -112,21 +109,21 @@ class Area implements GameMeetingPoint {
     }
 
     void updateCharacterPositions() {
-        initCharacterPositions();
-        characters.forEach(character ->
-                characterPositions[character.getX()][character.getY()].append(character.getType()));
+        initPlayerPositions();
+        players.forEach(character ->
+                playerPositions[character.getX()][character.getY()].append(character.getType()));
     }
 
-    private void initCharacterPositions() {
-        for (int i = 0; i < characterPositions.length; i++) {
-            for (int j = 0; j < characterPositions[i].length; j++) {
-                characterPositions[i][j] = new StringBuilder("");
+    private void initPlayerPositions() {
+        for (int i = 0; i < playerPositions.length; i++) {
+            for (int j = 0; j < playerPositions[i].length; j++) {
+                playerPositions[i][j] = new StringBuilder("");
             }
         }
     }
 
-    StringBuilder[][] getCharacterPositions() {
-        return characterPositions;
+    StringBuilder[][] getPlayerPositions() {
+        return playerPositions;
     }
 
     int getWidth() {

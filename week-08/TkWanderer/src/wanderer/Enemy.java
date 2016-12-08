@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 class Enemy extends GameObject {
     private boolean hasKey;
-    private Hero hero;
 
     Enemy(String type, int xPos, int yPos, int level, boolean hasKey) {
         super(type);
@@ -62,7 +61,7 @@ class Enemy extends GameObject {
     }
 
     private boolean neighborIsEnemy(int deltaX, int deltaY) {
-        String id = gameArea.getCharacterPositions()[deltaX][deltaY].toString();
+        String id = gameArea.getPlayerPositions()[deltaX][deltaY].toString();
         return id.equals("B") || id.equals("S");
     }
 
@@ -75,11 +74,6 @@ class Enemy extends GameObject {
         if (alive) {
             strike();
         }
-    }
-
-    @Override
-    void setHero(Hero hero) {
-        this.hero = hero;
     }
 
     private void decreaseHealthPoint(int damage) {
