@@ -10,6 +10,7 @@ class Creator {
     static Hero hero = new Hero(0, 0);
     static Board drawPad = new Board();
     static GameLogic controller = new GameLogic();
+    private static ListenForKeyPress boardKeyListener = new ListenForKeyPress();
 
     Creator() {
         createObjects();
@@ -18,10 +19,6 @@ class Creator {
     static void createObjects() {
 
         gameArea.reset();
-
-        ListenForKeyPress boardKeyListener = new ListenForKeyPress();
-        controller.setHero(hero);
-
         drawPad.addKeyListener(boardKeyListener);
         JOptionPane.showMessageDialog(null, "Welcome");
     }

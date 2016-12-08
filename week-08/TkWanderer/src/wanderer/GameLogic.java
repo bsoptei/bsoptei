@@ -6,7 +6,6 @@ import javax.swing.*;
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
 class GameLogic implements GameMeetingPoint {
-    private Hero hero;
 
     private boolean keyHolderIsKilled() {
         return !gameArea.getKeyHolder().isAlive();
@@ -44,9 +43,5 @@ class GameLogic implements GameMeetingPoint {
                 enemy.move(0, dice.nextInt(3) - 1);
             }
         }
-    }
-
-    void setHero(Hero hero) {
-        this.hero = hero;
     }
 }
