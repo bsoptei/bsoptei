@@ -52,11 +52,11 @@ class Hero extends GameObject {
             xPos += deltaX;
             yPos += deltaY;
             AudioPlayer.play("src/wanderer/wav/268758__legowanwan__footsteps.wav");
-            changeElementImage(deltaX, deltaY);
-            moveElementImage();
         } else {
             AudioPlayer.play("src/wanderer/wav/8838__churd-tzu__water-bottle-snare-15-bonk.wav");
         }
+        changeElementImage(deltaX, deltaY);
+        moveElementImage();
         incrementNumberOfMoves();
     }
 

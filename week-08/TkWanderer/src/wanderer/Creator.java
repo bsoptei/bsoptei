@@ -20,7 +20,6 @@ class Creator {
         gameArea.reset();
 
         ListenForKeyPress boardKeyListener = new ListenForKeyPress();
-        boardKeyListener.setHero(hero);
         controller.setHero(hero);
 
         drawPad.addKeyListener(boardKeyListener);

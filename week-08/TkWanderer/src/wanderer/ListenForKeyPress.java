@@ -9,7 +9,6 @@ import static java.awt.event.KeyEvent.*;
  * Created by Söp on 2016.12.05.. Tracks user key events
  */
 class ListenForKeyPress implements KeyListener, GameMeetingPoint {
-    private Hero hero;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -48,7 +47,4 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
     public void keyReleased(KeyEvent e) {
     }
 
-    void setHero(Hero hero) {
-        this.hero = hero;
-    }
 }
