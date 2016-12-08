@@ -2,7 +2,6 @@ package wanderer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.05.. Virtual map of the game
@@ -22,7 +21,6 @@ class Area implements GameMeetingPoint {
     Area(int width, int height) {
         this.width = width;
         this.height = height;
-        tiles = new Tile[width][height];
         characterPositions  = new StringBuilder[width][height];
         generateMap();
     }
@@ -32,6 +30,7 @@ class Area implements GameMeetingPoint {
         hero.reset();
         enemies.clear();
         characters.clear();
+        generateMap();
         generateEnemies();
         fillCharacters();
     }
@@ -45,11 +44,11 @@ class Area implements GameMeetingPoint {
     }
 
     private void generateEnemies() {
-        Random superDice = new Random();
-        int numberOfEnemies = superDice.nextInt(4) + 3;
+
+        int numberOfEnemies = dice.nextInt(4) + 3;
         while (enemies.size() < numberOfEnemies) {
-            int xPos = superDice.nextInt(9) + 1;
-            int yPos = superDice.nextInt(9) + 1;
+            int xPos = dice.nextInt(9) + 1;
+            int yPos = dice.nextInt(9) + 1;
             if (!tiles[xPos][yPos].isObstacle()) {
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
@@ -66,6 +65,7 @@ class Area implements GameMeetingPoint {
     }
 
     private void generateMap() {
+//        tiles = new Tile[width][height];
         Maze gameMaze = new Maze(width, height);
         tiles = gameMaze.generate();
     }

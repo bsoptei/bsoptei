@@ -44,6 +44,8 @@ abstract class GameObject implements GameMeetingPoint {
 
     abstract boolean neighborIsObstacle(int deltaX, int deltaY);
 
+    abstract String getLevelToString();
+
     public void createElementImage() {
         this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
     }

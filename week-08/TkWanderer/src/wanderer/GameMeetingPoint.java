@@ -1,5 +1,7 @@
 package wanderer;
 
+import java.util.Random;
+
 /**
  * Created by Söp on 2016.12.07. Contains essential data
  */
@@ -8,4 +10,5 @@ interface GameMeetingPoint {
     Board board = Creator.drawPad ;
     GameLogic controller = Creator.controller;
     int imageSize = 40;
+    Random dice = new Random();
 }

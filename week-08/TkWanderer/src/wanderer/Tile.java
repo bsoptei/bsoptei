@@ -61,6 +61,11 @@ class Tile extends GameObject {
     }
 
     @Override
+    String getLevelToString() {
+        return null;
+    }
+
+    @Override
     void getHit(int damage) {
 
     }

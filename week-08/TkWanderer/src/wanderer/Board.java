@@ -12,7 +12,6 @@ class Board extends JFrame implements GameMeetingPoint{
     }
 
     private void setProperties() {
-//        this.setPreferredSize(new Dimension(720, 720));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setUndecorated(true);
@@ -51,10 +50,8 @@ class Board extends JFrame implements GameMeetingPoint{
                 character.getTileImage().draw(graphics);
                 graphics.drawString(character.getName(), textX, textY);
                 textY += 30;
-                if (character.equals(hero)) {
-                    graphics.drawString(String.format("Level %d", hero.getHeroLevel()), textX, textY);
-                    textY += 20;
-                }
+                graphics.drawString(character.getLevelToString(), textX, textY);
+                textY += 20;
                 graphics.drawString(character.getStats(), textX, textY);
                 textY += 30;
             }

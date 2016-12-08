@@ -105,6 +105,11 @@ class Hero extends GameObject {
     }
 
     @Override
+    String getLevelToString() {
+        return String.format("Level %s", String.valueOf(level));
+    }
+
+    @Override
     void getHit(int damage) {
         if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
             AudioPlayer.play("src/wanderer/wav/19421__awfulthesample__awfultheaudio-watschn2.wav");

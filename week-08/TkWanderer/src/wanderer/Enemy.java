@@ -51,6 +51,11 @@ class Enemy extends GameObject {
         );
     }
 
+    @Override
+    String getLevelToString() {
+        return "";
+    }
+
     private boolean neighborIsEnemy(int deltaX, int deltaY) {
         String id = gameArea.getCharacterPositions()[deltaX][deltaY].toString();
         return id.equals("B") || id.equals("S");

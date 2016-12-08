@@ -1,5 +1,7 @@
 package wanderer;
 
+import java.util.Random;
+
 /*
 Copyright (c) 2015, Joe Wingbermuehle
 All rights reserved.
@@ -27,18 +29,16 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 class Maze {
-    private Tile[][] tiles;
     private static final int WALL = 0;
     private static final int SPACE = 1;
     private byte[][] data;
     private int width;
     private int height;
-    private java.util.Random rand = new java.util.Random();
+    private Random rand = new Random();
 
     Maze(int width, int height) {
         this.width = width;
         this.height = height;
-        tiles = new Tile[width][height];
         data = new byte[width][];
     }
 
@@ -86,6 +86,7 @@ class Maze {
     }
 
     private Tile[][] convert() {
+        Tile[][] tiles = new Tile[width][height];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (data[x][y] == WALL) {

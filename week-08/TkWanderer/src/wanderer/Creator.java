@@ -18,16 +18,8 @@ class Creator {
 
         gameArea.setHero(hero);
         gameArea.reset();
-
-        hero.setGameArea(gameArea);
-
-
         ListenForKeyPress boardKeyListener = new ListenForKeyPress();
         boardKeyListener.setHero(hero);
-
-
-//        boardKeyListener.setController(controller);
-
         controller.setHero(hero);
 
         drawPad.setHero(hero);
