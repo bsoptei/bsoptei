@@ -19,6 +19,7 @@ class GameLogic implements GameMeetingPoint {
     }
 
     void update() {
+        gameArea.updateCharacterPositions();
         if (!hero.isAlive()) {
             JOptionPane.showMessageDialog(null, "Game Over!");
         }

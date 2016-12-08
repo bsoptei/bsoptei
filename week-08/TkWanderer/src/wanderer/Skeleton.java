@@ -21,18 +21,4 @@ class Skeleton extends Enemy {
         strikePoint = level * (dice.nextInt(5) + 1);
     }
 
-
-    @Override
-    boolean neighborIsObstacle(int deltaX, int deltaY) {
-        int xNeighbor = xPos + deltaX;
-        int yNeighbor = yPos + deltaY;
-        return (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
-                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle());
-    }
-
-    @Override
-    void getHit(int damage) {
-
-    }
-
 }

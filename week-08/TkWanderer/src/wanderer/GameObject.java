@@ -84,7 +84,7 @@ abstract class GameObject {
         return (!(boundaryOfMap(deltaX, deltaY)) && !(neighborIsObstacle(deltaX, deltaY)));
     }
 
-    abstract boolean neighborIsObstacle(int deltaX, int deltaY) ;
+    abstract boolean neighborIsObstacle(int deltaX, int deltaY);
 
     private boolean boundaryOfMap(int deltaX, int deltaY) {
         return (xPos == 0 && deltaX == -1
@@ -95,7 +95,17 @@ abstract class GameObject {
 
     abstract void getHit(int damage);
 
-    String getType(){ return type;}
+    String getType() {
+        return type;
+    }
 
-    abstract void setHero(Hero hero) ;
+    abstract void setHero(Hero hero);
+
+    int getX() {
+        return xPos;
+    }
+
+    int getY() {
+        return yPos;
+    }
 }

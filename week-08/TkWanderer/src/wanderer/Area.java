@@ -11,9 +11,9 @@ class Area implements GameMeetingPoint {
     private Tile[][] tiles = new Tile[10][10];
     private ArrayList<GameObject> enemies = new ArrayList();
     private ArrayList<GameObject> characters = new ArrayList();
+    private StringBuilder[][] characterPositions = new StringBuilder[10][10];
     private Hero hero;
     private GameObject battleEnemy;
-
     static int level = 0;
 
     Area() {
@@ -53,7 +53,7 @@ class Area implements GameMeetingPoint {
                 }
             }
         }
-        for (GameObject enemy: enemies) {
+        for (GameObject enemy : enemies) {
             enemy.setHero(hero);
         }
     }
@@ -107,4 +107,20 @@ class Area implements GameMeetingPoint {
         return enemies.get(enemies.size() - 2);
     }
 
+    void updateCharacterPositions() {
+        initcharacterPositions();
+        characters.forEach(character ->
+                characterPositions[character.getX()][character.getY()].append(character.getType()));
+//        System.out.println(Arrays.deepToString(characterPositions));
+    }
+
+    private void initcharacterPositions() {
+        for (int i = 0; i < characterPositions.length; i++) {
+            for (int j = 0; j < characterPositions[i].length; j++) {
+                characterPositions[i][j] = new StringBuilder("");
+            }
+        }
+    }
+
+    StringBuilder[][] getCharacterPositions(){return characterPositions;}
 }

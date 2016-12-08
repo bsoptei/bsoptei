@@ -21,9 +21,5 @@ class Boss extends Enemy {
     }
 
 
-    @Override
-    void changeElementImage(int deltaX, int deltaY) {
-
-    }
 
 }
