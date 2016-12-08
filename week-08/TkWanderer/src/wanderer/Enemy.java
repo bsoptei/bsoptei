@@ -28,7 +28,7 @@ class Enemy extends GameObject {
         if (movementIsPossible(deltaX, deltaY)) {
             xPos += deltaX;
             yPos += deltaY;
-            if ( Arrays.equals(hero.getCoordinates(), new Integer[]{deltaX, deltaY})) {
+            if (Arrays.equals(hero.getCoordinates(), new Integer[]{xPos, yPos}) && alive) {
                 strike();
             }
         }
@@ -65,7 +65,6 @@ class Enemy extends GameObject {
         String id = gameArea.getCharacterPositions()[deltaX][deltaY].toString();
         return id.equals("B") || id.equals("S");
     }
-
 
 
     @Override

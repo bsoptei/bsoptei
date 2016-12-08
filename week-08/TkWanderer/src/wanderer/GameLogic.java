@@ -1,8 +1,6 @@
 package wanderer;
 
 import javax.swing.*;
-//import java.awt.*;
-import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
@@ -39,12 +37,11 @@ class GameLogic implements GameMeetingPoint {
     }
 
     private void moveEnemiesRandomly() {
-        Random randomMove = new Random();
         for (GameObject enemy : gameArea.getEnemies()) {
-            if (randomMove.nextInt(2) == 0) {
-                enemy.move(randomMove.nextInt(3) - 1, 0);
+            if (dice.nextInt(2) == 0) {
+                enemy.move(dice.nextInt(3) - 1, 0);
             } else {
-                enemy.move(0, randomMove.nextInt(3) - 1);
+                enemy.move(0, dice.nextInt(3) - 1);
             }
         }
     }

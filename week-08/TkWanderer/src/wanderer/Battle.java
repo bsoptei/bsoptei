@@ -6,6 +6,8 @@ package wanderer;
 public class Battle {
 
     void fight(GameObject fighterOne, GameObject fighterTwo) {
-        
+        while (fighterOne.isAlive() && fighterTwo.isAlive()) {
+
+        }
     }
 }
