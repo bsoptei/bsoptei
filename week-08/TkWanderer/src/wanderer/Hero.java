@@ -106,7 +106,7 @@ class Hero extends GameObject {
 
     @Override
     String getLevelToString() {
-        return String.format("Level %s", String.valueOf(level));
+        return String.format("Level %s", String.valueOf(heroLevel));
     }
 
     @Override
@@ -148,7 +148,7 @@ class Hero extends GameObject {
         defaultHealthPoint += (dice.nextInt(6) + 1);
         defensePoint += (dice.nextInt(6) + 1);
         strikePoint += (dice.nextInt(6) + 1);
-        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
+//        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
     }
 
     int getHeroLevel() {

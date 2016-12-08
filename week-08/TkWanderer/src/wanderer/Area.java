@@ -21,8 +21,18 @@ class Area implements GameMeetingPoint {
     Area(int width, int height) {
         this.width = width;
         this.height = height;
-        characterPositions  = new StringBuilder[width][height];
-        generateMap();
+        tiles = new Tile[width][height];
+        characterPositions = new StringBuilder[width][height];
+        generateInitialMap();
+    }
+
+    private void generateInitialMap() {
+
+        for (int x = 0; x < tiles.length; x++) {
+            for (int y = 0; y< tiles[x].length; y++){
+                tiles[x][y] = new Tile(x,y,"F");
+            }
+        }
     }
 
     void reset() {
@@ -31,6 +41,7 @@ class Area implements GameMeetingPoint {
         enemies.clear();
         characters.clear();
         generateMap();
+        initCharacterPositions();
         generateEnemies();
         fillCharacters();
     }
@@ -44,12 +55,12 @@ class Area implements GameMeetingPoint {
     }
 
     private void generateEnemies() {
-
         int numberOfEnemies = dice.nextInt(4) + 3;
         while (enemies.size() < numberOfEnemies) {
             int xPos = dice.nextInt(9) + 1;
             int yPos = dice.nextInt(9) + 1;
-            if (!tiles[xPos][yPos].isObstacle()) {
+            if (!tiles[xPos][yPos].isObstacle() &&
+                    characterPositions[xPos][yPos].toString().equals("")) {
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
                 } else if (enemies.size() == numberOfEnemies - 2) {
@@ -65,7 +76,6 @@ class Area implements GameMeetingPoint {
     }
 
     private void generateMap() {
-//        tiles = new Tile[width][height];
         Maze gameMaze = new Maze(width, height);
         tiles = gameMaze.generate();
     }
@@ -115,13 +125,12 @@ class Area implements GameMeetingPoint {
     }
 
     void updateCharacterPositions() {
-        initcharacterPositions();
+        initCharacterPositions();
         characters.forEach(character ->
                 characterPositions[character.getX()][character.getY()].append(character.getType()));
-//        System.out.println(Arrays.deepToString(characterPositions));
     }
 
-    private void initcharacterPositions() {
+    private void initCharacterPositions() {
         for (int i = 0; i < characterPositions.length; i++) {
             for (int j = 0; j < characterPositions[i].length; j++) {
                 characterPositions[i][j] = new StringBuilder("");
@@ -129,7 +138,9 @@ class Area implements GameMeetingPoint {
         }
     }
 
-    StringBuilder[][] getCharacterPositions(){return characterPositions;}
+    StringBuilder[][] getCharacterPositions() {
+        return characterPositions;
+    }
 
     int getWidth() {
         return width;
