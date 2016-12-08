@@ -28,11 +28,11 @@ class Enemy extends GameObject {
         if (movementIsPossible(deltaX, deltaY)) {
             xPos += deltaX;
             yPos += deltaY;
+            moveElementImage();
             if (Arrays.equals(hero.getCoordinates(), new Integer[]{xPos, yPos}) && alive) {
                 strike();
             }
         }
-        moveElementImage();
     }
 
     @Override
