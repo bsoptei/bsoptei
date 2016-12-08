@@ -1,5 +1,7 @@
 package wanderer;
 
+import java.util.Arrays;
+
 /**
  * Created by Söp on 2016.12.08.. Common class for skeletons and boss
  */
@@ -26,6 +28,9 @@ class Enemy extends GameObject {
         if (movementIsPossible(deltaX, deltaY)) {
             xPos += deltaX;
             yPos += deltaY;
+            if ( Arrays.equals(hero.getCoordinates(), new Integer[]{deltaX, deltaY})) {
+                strike();
+            }
         }
         moveElementImage();
     }
