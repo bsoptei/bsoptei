@@ -12,7 +12,7 @@ class Board extends JFrame implements GameMeetingPoint{
     }
 
     private void setProperties() {
-        this.setPreferredSize(new Dimension(720, 720));
+//        this.setPreferredSize(new Dimension(720, 720));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setUndecorated(true);

@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by Söp on 2016.12.05. Image manager for game objects
  */
-class PositionedImage {
+class PositionedImage implements GameMeetingPoint {
 
     private BufferedImage image;
     private int posX, posY;
@@ -26,15 +26,15 @@ class PositionedImage {
 
     void draw(Graphics graphics) {
         if (image != null) {
-            graphics.drawImage(image, posX, posY, null);
+            graphics.drawImage(image, posX, posY, imageSize, imageSize, null);
         }
     }
 
-    void setPosX(int posX){
+    void setPosX(int posX) {
         this.posX = posX;
     }
 
-    void setPosY(int posY){
+    void setPosY(int posY) {
         this.posY = posY;
     }
 }

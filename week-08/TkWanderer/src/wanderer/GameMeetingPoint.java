@@ -7,5 +7,5 @@ interface GameMeetingPoint {
     Area gameArea = Creator.gameArea;
     Board board = Creator.drawPad ;
     GameLogic controller = Creator.controller;
-    int imageSize = 72;
+    int imageSize = 40;
 }

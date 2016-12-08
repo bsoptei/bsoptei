@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 /**
- * Created by Söp on 2016.12.05.. Generic class for pretty much everything in the game
+ * Created by Söp on 2016.12.05.. Generic class for pretty much everything (tiles & characters) in the game
  */
 abstract class GameObject implements GameMeetingPoint {
     Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
@@ -12,7 +12,7 @@ abstract class GameObject implements GameMeetingPoint {
     String type;
     boolean alive = true;
     PositionedImage tileImage;
-    final int imageSize = 72;
+
     int level;
     boolean obstacle;
     Area gameArea;
