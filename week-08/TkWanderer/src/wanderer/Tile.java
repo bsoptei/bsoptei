@@ -3,9 +3,9 @@ package wanderer;
 /**
  * Created by Söp on 2016.12.05.. Tiles of the map
  */
-class GameElement extends GameObject {
+class Tile extends GameObject {
 
-    GameElement(int xPos, int yPos, String type) {
+    Tile(int xPos, int yPos, String type) {
         super(type);
         this.xPos = xPos;
         this.yPos = yPos;

@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Söp on 2016.12.05.. Virtual map of the game
  */
 class Area implements GameMeetingPoint {
-    private GameElement[][] tiles = new GameElement[10][10];
+    private Tile[][] tiles = new Tile[10][10];
     private ArrayList<GameObject> enemies = new ArrayList();
     private ArrayList<GameObject> characters = new ArrayList();
     private Hero hero;
@@ -63,7 +63,7 @@ class Area implements GameMeetingPoint {
         tiles = gameMaze.generate();
     }
 
-    GameElement[][] getTiles() {
+    Tile[][] getTiles() {
         return tiles;
     }
 

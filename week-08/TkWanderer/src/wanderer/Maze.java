@@ -27,7 +27,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 class Maze {
-    public GameElement[][] tiles;
+    public Tile[][] tiles;
 
 
     private static final int WALL = 0;
@@ -40,7 +40,7 @@ class Maze {
     public Maze(int width, int height) {
         this.width = width;
         this.height = height;
-        tiles = new GameElement[width][height];
+        tiles = new Tile[width][height];
         data = new byte[width][];
     }
 
@@ -67,7 +67,7 @@ class Maze {
         }
     }
 
-    public GameElement[][] generate() {
+    public Tile[][] generate() {
         for (int x = 0; x < width; x++) {
             data[x] = new byte[height];
             for (int y = 0; y < height; y++) {
@@ -91,13 +91,13 @@ class Maze {
         return convert();
     }
 
-    public GameElement[][] convert() {
+    public Tile[][] convert() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (data[x][y] == WALL) {
-                    tiles[x][y] = (new GameElement(x, y, "W"));
+                    tiles[x][y] = (new Tile(x, y, "W"));
                 } else {
-                    tiles[x][y] = (new GameElement(x, y, "F"));
+                    tiles[x][y] = (new Tile(x, y, "F"));
                 }
             }
         }
