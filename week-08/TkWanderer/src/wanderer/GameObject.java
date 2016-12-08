@@ -71,7 +71,7 @@ abstract class GameObject implements GameMeetingPoint {
         return name;
     }
 
-    String getStats() {
+    String getStatsToString() {
         return String.format("HP: %d/%d | DP: %d | SP: %d",
                 healthPoint, defaultHealthPoint,
                 defensePoint, strikePoint);

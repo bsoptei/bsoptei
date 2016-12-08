@@ -11,4 +11,5 @@ interface GameMeetingPoint {
     GameLogic controller = Creator.controller;
     int imageSize = 40;
     Random dice = new Random();
+    Hero hero = Creator.hero;
 }

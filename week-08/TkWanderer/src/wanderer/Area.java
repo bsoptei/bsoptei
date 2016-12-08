@@ -14,7 +14,6 @@ class Area implements GameMeetingPoint {
     @SuppressWarnings("unchecked")
     private ArrayList<GameObject> characters = new ArrayList();
     private StringBuilder[][] characterPositions;
-    private Hero hero;
     private GameObject battleEnemy;
     static int level = 0;
 
@@ -68,6 +67,7 @@ class Area implements GameMeetingPoint {
                 } else {
                     enemies.add(new Skeleton(xPos, yPos, level, false));
                 }
+                updateCharacterPositions();
             }
         }
         for (GameObject enemy : enemies) {
@@ -86,10 +86,6 @@ class Area implements GameMeetingPoint {
 
     ArrayList<GameObject> getEnemies() {
         return enemies;
-    }
-
-    void setHero(Hero hero) {
-        this.hero = hero;
     }
 
     ArrayList<GameObject> getCharacters() {

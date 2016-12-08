@@ -1,5 +1,7 @@
 package wanderer;
 
+import javax.swing.*;
+
 /**
  * Created by Söp on 2016.12.07. Creates and links the necessary objects
  */
@@ -15,8 +17,6 @@ class Creator {
 
     static void createObjects() {
 
-
-        gameArea.setHero(hero);
         gameArea.reset();
 
         ListenForKeyPress boardKeyListener = new ListenForKeyPress();
@@ -26,7 +26,7 @@ class Creator {
         drawPad.setHero(hero);
 
         drawPad.addKeyListener(boardKeyListener);
-
+        JOptionPane.showMessageDialog(null, "Welcome");
     }
 
 }
