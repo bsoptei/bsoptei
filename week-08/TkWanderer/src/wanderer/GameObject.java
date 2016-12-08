@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.05.. Generic class for pretty much everything in the game
  */
-abstract class GameObject {
+abstract class GameObject implements GameMeetingPoint {
     Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
     String name;
     String type;
@@ -89,9 +89,9 @@ abstract class GameObject {
 
     private boolean boundaryOfMap(int deltaX, int deltaY) {
         return (xPos == 0 && deltaX == -1
-                || xPos == 9 && deltaX == 1
+                || xPos == gameArea.getWidth() - 1 && deltaX == 1
                 || yPos == 0 && deltaY == -1
-                || yPos == 9 && deltaY == 1);
+                || yPos == gameArea.getHeight() - 1 && deltaY == 1);
     }
 
     String getType() {

@@ -49,7 +49,7 @@ class GameLogic implements GameMeetingPoint {
         }
     }
 
-    public void setHero(Hero hero) {
+    void setHero(Hero hero) {
         this.hero = hero;
     }
 }

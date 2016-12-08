@@ -27,9 +27,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 class Maze {
-    public Tile[][] tiles;
-
-
+    private Tile[][] tiles;
     private static final int WALL = 0;
     private static final int SPACE = 1;
     private byte[][] data;
@@ -37,7 +35,7 @@ class Maze {
     private int height;
     private java.util.Random rand = new java.util.Random();
 
-    public Maze(int width, int height) {
+    Maze(int width, int height) {
         this.width = width;
         this.height = height;
         tiles = new Tile[width][height];
@@ -45,10 +43,8 @@ class Maze {
     }
 
     private void carve(int x, int y) {
-
         final int[] upx = {1, -1, 0, 0};
         final int[] upy = {0, 0, 1, -1};
-
         int dir = rand.nextInt(4);
         int count = 0;
         while (count < 4) {
@@ -67,7 +63,7 @@ class Maze {
         }
     }
 
-    public Tile[][] generate() {
+    Tile[][] generate() {
         for (int x = 0; x < width; x++) {
             data[x] = new byte[height];
             for (int y = 0; y < height; y++) {
@@ -82,16 +78,14 @@ class Maze {
             data[0][y] = SPACE;
             data[width - 1][y] = SPACE;
         }
-
         data[2][2] = SPACE;
         carve(2, 2);
-
         data[2][1] = SPACE;
         data[width - 3][height - 2] = SPACE;
         return convert();
     }
 
-    public Tile[][] convert() {
+    private Tile[][] convert() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 if (data[x][y] == WALL) {
@@ -103,5 +97,4 @@ class Maze {
         }
         return tiles;
     }
-
 }

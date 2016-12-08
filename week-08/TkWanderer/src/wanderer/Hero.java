@@ -12,10 +12,7 @@ class Hero extends GameObject {
         put("left", new PositionedImage("src/wanderer/image/hero-left.png", 0, 0));
         put("right", new PositionedImage("src/wanderer/image/hero-right.png", 0, 0));
     }};
-
-
     private int numberOfMoves;
-
     private GameObject currentOpponent;
     private int heroLevel = 1;
 
@@ -101,10 +98,10 @@ class Hero extends GameObject {
 
     @Override
     boolean neighborIsObstacle(int deltaX, int deltaY) {
-            int xNeighbor = xPos + deltaX;
-            int yNeighbor = yPos + deltaY;
-            return ((deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle())
-                    || (deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()));
+        int xNeighbor = xPos + deltaX;
+        int yNeighbor = yPos + deltaY;
+        return ((deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle())
+                || (deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()));
     }
 
     @Override
@@ -117,7 +114,6 @@ class Hero extends GameObject {
 
     @Override
     void setHero(Hero hero) {
-
     }
 
     private void decreaseHealthPoint(int damage) {
@@ -129,6 +125,7 @@ class Hero extends GameObject {
             alive = false;
         }
     }
+
     private void incrementNumberOfMoves() {
         numberOfMoves++;
     }
@@ -143,10 +140,10 @@ class Hero extends GameObject {
 
     void levelUp() {
         heroLevel++;
-        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
         defaultHealthPoint += (dice.nextInt(6) + 1);
         defensePoint += (dice.nextInt(6) + 1);
         strikePoint += (dice.nextInt(6) + 1);
+        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
     }
 
     int getHeroLevel() {

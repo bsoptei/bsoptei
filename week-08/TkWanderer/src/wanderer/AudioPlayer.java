@@ -5,7 +5,7 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 /**
- * Created by Söp on 2016.12.07..
+ * Created by Söp on 2016.12.07.. Plays .wav files for the game
  */
 class AudioPlayer {
     static void play(String wavSource){

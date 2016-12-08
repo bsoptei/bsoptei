@@ -8,15 +8,22 @@ import java.util.Random;
  * Created by Söp on 2016.12.05.. Virtual map of the game
  */
 class Area implements GameMeetingPoint {
-    private Tile[][] tiles = new Tile[10][10];
+    private int width, height;
+    private Tile[][] tiles;
+    @SuppressWarnings("unchecked")
     private ArrayList<GameObject> enemies = new ArrayList();
+    @SuppressWarnings("unchecked")
     private ArrayList<GameObject> characters = new ArrayList();
-    private StringBuilder[][] characterPositions = new StringBuilder[10][10];
+    private StringBuilder[][] characterPositions;
     private Hero hero;
     private GameObject battleEnemy;
     static int level = 0;
 
-    Area() {
+    Area(int width, int height) {
+        this.width = width;
+        this.height = height;
+        tiles = new Tile[width][height];
+        characterPositions  = new StringBuilder[width][height];
         generateMap();
     }
 
@@ -29,7 +36,7 @@ class Area implements GameMeetingPoint {
         fillCharacters();
     }
 
-    void fillCharacters() {
+    private void fillCharacters() {
         characters.add(hero);
         characters.addAll(enemies);
         for (GameObject character : characters) {
@@ -59,7 +66,7 @@ class Area implements GameMeetingPoint {
     }
 
     private void generateMap() {
-        Maze gameMaze = new Maze(10, 10);
+        Maze gameMaze = new Maze(width, height);
         tiles = gameMaze.generate();
     }
 
@@ -123,4 +130,12 @@ class Area implements GameMeetingPoint {
     }
 
     StringBuilder[][] getCharacterPositions(){return characterPositions;}
+
+    int getWidth() {
+        return width;
+    }
+
+    int getHeight() {
+        return height;
+    }
 }

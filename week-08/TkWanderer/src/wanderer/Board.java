@@ -30,13 +30,18 @@ class Board extends JFrame implements GameMeetingPoint{
                 gameArea.getTiles()[i][j].getTileImage().draw(graphics);
             }
         }
+        int textX = gameArea.getWidth() * imageSize;
+        int statsPanelWidth = 300;
+        int statsPanelHeight = gameArea.getHeight() * imageSize;
+
         graphics.setColor(Color.WHITE);
-        graphics.fillRect(720, 0, 200, 720);
+
+        graphics.fillRect(textX, 0, statsPanelWidth, statsPanelHeight);
 
         graphics.setColor(Color.BLACK);
         graphics.setFont(new Font("Arial", Font.BOLD, 18));
         String levelIndicator = String.format("Area %d", Area.level);
-        graphics.drawString(levelIndicator, 720, 20);
+        graphics.drawString(levelIndicator, textX, 20);
         graphics.setFont(new Font("Arial", Font.BOLD, 14));
 
         int textY = 50;
@@ -44,13 +49,13 @@ class Board extends JFrame implements GameMeetingPoint{
             if (character.isAlive()) {
 
                 character.getTileImage().draw(graphics);
-                graphics.drawString(character.getName(), 720, textY);
+                graphics.drawString(character.getName(), textX, textY);
                 textY += 30;
                 if (character.equals(hero)) {
-                    graphics.drawString(String.format("Level %d", hero.getHeroLevel()), 720, textY);
+                    graphics.drawString(String.format("Level %d", hero.getHeroLevel()), textX, textY);
                     textY += 20;
                 }
-                graphics.drawString(character.getStats(), 720, textY);
+                graphics.drawString(character.getStats(), textX, textY);
                 textY += 30;
             }
         }

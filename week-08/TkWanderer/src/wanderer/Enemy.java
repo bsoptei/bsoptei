@@ -5,7 +5,7 @@ package wanderer;
  */
 class Enemy extends GameObject {
     private boolean hasKey;
-    Hero hero;
+    private Hero hero;
 
     Enemy(String type, int xPos, int yPos, int level, boolean hasKey) {
         super(type);

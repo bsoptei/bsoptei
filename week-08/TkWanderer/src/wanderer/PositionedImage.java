@@ -7,14 +7,14 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by Söp on 2016.12.05. stbbsrthsrhtstrh
+ * Created by Söp on 2016.12.05. Image manager for game objects
  */
-public class PositionedImage {
+class PositionedImage {
 
-    BufferedImage image;
-    int posX, posY;
+    private BufferedImage image;
+    private int posX, posY;
 
-    public PositionedImage(String filename, int posX, int posY) {
+    PositionedImage(String filename, int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
         try {
@@ -22,20 +22,19 @@ public class PositionedImage {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
-    public void draw(Graphics graphics) {
+    void draw(Graphics graphics) {
         if (image != null) {
             graphics.drawImage(image, posX, posY, null);
         }
     }
 
-    public void setPosX(int posX){
+    void setPosX(int posX){
         this.posX = posX;
     }
 
-    public void setPosY(int posY){
+    void setPosY(int posY){
         this.posY = posY;
     }
 }
