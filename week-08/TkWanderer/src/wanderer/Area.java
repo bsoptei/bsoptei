@@ -10,16 +10,14 @@ import java.util.Random;
 class Area implements GameMeetingPoint {
     private GameElement[][] tiles = new GameElement[10][10];
     private ArrayList<GameObject> enemies = new ArrayList();
-    private Hero hero;
     private ArrayList<GameObject> characters = new ArrayList();
+    private Hero hero;
     private GameObject battleEnemy;
 
     static int level = 0;
 
     Area() {
         generateMap();
-        level++;
-        generateEnemies();
     }
 
     void reset() {

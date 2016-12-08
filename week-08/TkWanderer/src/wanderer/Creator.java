@@ -17,6 +17,7 @@ class Creator {
 
 
         gameArea.setHero(hero);
+        gameArea.reset();
         gameArea.fillCharacters();
 
         hero.setGameArea(gameArea);
