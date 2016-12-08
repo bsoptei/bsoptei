@@ -4,7 +4,7 @@ package wanderer;
  * Created by Söp on 2016.12.07. Creates and links the necessary objects
  */
 class Creator {
-    static Area gameArea = new Area(18, 18);
+    static Area gameArea = new Area(28, 18);
     static Board drawPad = new Board();
     static Hero hero = new Hero(0, 0);
     static GameLogic controller = new GameLogic();
@@ -13,11 +13,12 @@ class Creator {
         createObjects();
     }
 
-    private void createObjects() {
+    static void createObjects() {
 
 
         gameArea.setHero(hero);
         gameArea.reset();
+
         ListenForKeyPress boardKeyListener = new ListenForKeyPress();
         boardKeyListener.setHero(hero);
         controller.setHero(hero);

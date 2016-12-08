@@ -5,8 +5,8 @@ package wanderer;
  */
 public class Main {
 
-    private static Creator creator;
+//    private static Creator creator;
     public static void main(String[] args) {
-        creator = new Creator();
+        Creator.createObjects();
     }
 }

@@ -2,6 +2,8 @@ package wanderer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 class Board extends JFrame implements GameMeetingPoint{
     private Hero hero;
@@ -46,14 +48,13 @@ class Board extends JFrame implements GameMeetingPoint{
         int textY = 50;
         for (GameObject character : gameArea.getCharacters()) {
             if (character.isAlive()) {
-
+                ArrayList<String> stats = new ArrayList<>(Arrays.asList(character.getName(),
+                        character.getLevelToString(), character.getStats()));
                 character.getTileImage().draw(graphics);
-                graphics.drawString(character.getName(), textX, textY);
-                textY += 30;
-                graphics.drawString(character.getLevelToString(), textX, textY);
-                textY += 20;
-                graphics.drawString(character.getStats(), textX, textY);
-                textY += 30;
+                for (String stat:stats) {
+                    graphics.drawString(character.getName(), textX, textY);
+                    textY += (stat.equals(""))? 0: 30;
+                }
             }
         }
     }
