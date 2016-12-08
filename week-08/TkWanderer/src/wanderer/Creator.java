@@ -7,8 +7,8 @@ import javax.swing.*;
  */
 class Creator {
     static Area gameArea = new Area(28, 19);
-    static Board drawPad = new Board();
     static Hero hero = new Hero(0, 0);
+    static Board drawPad = new Board();
     static GameLogic controller = new GameLogic();
 
     Creator() {
@@ -22,8 +22,6 @@ class Creator {
         ListenForKeyPress boardKeyListener = new ListenForKeyPress();
         boardKeyListener.setHero(hero);
         controller.setHero(hero);
-
-        drawPad.setHero(hero);
 
         drawPad.addKeyListener(boardKeyListener);
         JOptionPane.showMessageDialog(null, "Welcome");

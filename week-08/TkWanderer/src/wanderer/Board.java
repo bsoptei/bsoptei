@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class Board extends JFrame implements GameMeetingPoint{
-    private Hero hero;
 
     Board() {
         setProperties();
@@ -17,10 +16,6 @@ class Board extends JFrame implements GameMeetingPoint{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setUndecorated(true);
-    }
-
-    void setHero(Hero hero) {
-        this.hero = hero;
     }
 
     @Override
