@@ -26,7 +26,7 @@ class Hero extends GameObject {
         obstacle = false;
         numberOfMoves = 0;
         name = "Hero";
-        swanSong = "src/wanderer/wav/56901__syna-max__wilhelm-scream-outtake";
+        swanSong = "src/wanderer/wav/56901__syna-max__wilhelm-scream-outtake.wav";
         createElementImage();
         setDefaultStats();
     }
@@ -143,6 +143,7 @@ class Hero extends GameObject {
 
     void levelUp() {
         heroLevel++;
+        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
         defaultHealthPoint += (dice.nextInt(6) + 1);
         defensePoint += (dice.nextInt(6) + 1);
         strikePoint += (dice.nextInt(6) + 1);

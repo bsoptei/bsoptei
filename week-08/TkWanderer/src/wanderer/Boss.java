@@ -20,6 +20,4 @@ class Boss extends Enemy {
         strikePoint = level * (dice.nextInt(5) + 1) + level;
     }
 
-
-
 }

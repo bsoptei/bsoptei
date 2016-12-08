@@ -20,9 +20,6 @@ class GameLogic implements GameMeetingPoint {
 
     void update() {
         gameArea.updateCharacterPositions();
-        if (!hero.isAlive()) {
-            JOptionPane.showMessageDialog(null, "Game Over!");
-        }
         if (hero.getNumberOfMoves() % 2 == 0) {
             moveEnemiesRandomly();
         }
@@ -30,12 +27,14 @@ class GameLogic implements GameMeetingPoint {
         if (bossIsKilled() && keyHolderIsKilled()) {
             gameArea.reset();
         }
-//        Toolkit tk = Toolkit.getDefaultToolkit();
         if (gameArea.isInSamePosition()) {
+            gameArea.getBattleEnemy().strike();
             hero.setCurrentOpponent(gameArea.getBattleEnemy());
-//            System.out.println(gameArea.getBattleEnemy());
         } else {
             hero.setCurrentOpponent(null);
+        }
+        if (!hero.isAlive()) {
+            JOptionPane.showMessageDialog(null, "Game Over!");
         }
     }
 

@@ -19,7 +19,6 @@ class Enemy extends GameObject {
 
     @Override
     void changeElementImage(int deltaX, int deltaY) {
-
     }
 
     @Override
@@ -56,6 +55,8 @@ class Enemy extends GameObject {
         String id = gameArea.getCharacterPositions()[deltaX][deltaY].toString();
         return id.equals("B") || id.equals("S");
     }
+
+
 
     @Override
     void getHit(int damage) {

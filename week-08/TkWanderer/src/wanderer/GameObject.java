@@ -1,6 +1,5 @@
 package wanderer;
 
-
 import java.util.HashMap;
 import java.util.Random;
 
@@ -10,7 +9,6 @@ import java.util.Random;
 abstract class GameObject {
     Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
     String name;
-
     String type;
     boolean alive = true;
     PositionedImage tileImage;
@@ -30,14 +28,21 @@ abstract class GameObject {
 
     GameObject(String type) {
         this.type = type;
-
     }
+
+    abstract void setDefaultStats();
 
     abstract void changeElementImage(int deltaX, int deltaY);
 
     abstract void move(int deltaX, int deltaY);
 
     abstract void strike();
+
+    abstract void getHit(int damage);
+
+    abstract void setHero(Hero hero);
+
+    abstract boolean neighborIsObstacle(int deltaX, int deltaY);
 
     public void createElementImage() {
         this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
@@ -47,8 +52,6 @@ abstract class GameObject {
         tileImage.setPosX(xPos * imageSize);
         tileImage.setPosY(yPos * imageSize);
     }
-
-    abstract void setDefaultStats();
 
     PositionedImage getTileImage() {
         return tileImage;
@@ -84,8 +87,6 @@ abstract class GameObject {
         return (!(boundaryOfMap(deltaX, deltaY)) && !(neighborIsObstacle(deltaX, deltaY)));
     }
 
-    abstract boolean neighborIsObstacle(int deltaX, int deltaY);
-
     private boolean boundaryOfMap(int deltaX, int deltaY) {
         return (xPos == 0 && deltaX == -1
                 || xPos == 9 && deltaX == 1
@@ -93,13 +94,9 @@ abstract class GameObject {
                 || yPos == 9 && deltaY == 1);
     }
 
-    abstract void getHit(int damage);
-
     String getType() {
         return type;
     }
-
-    abstract void setHero(Hero hero);
 
     int getX() {
         return xPos;
