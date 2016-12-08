@@ -22,6 +22,7 @@ class GameLogic implements GameMeetingPoint {
         }
 
         if (bossIsKilled() && keyHolderIsKilled()) {
+            gameArea.generateMap();
             gameArea.reset();
         }
         if (gameArea.isInSamePosition()) {

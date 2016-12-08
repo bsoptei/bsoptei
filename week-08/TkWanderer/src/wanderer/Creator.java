@@ -3,7 +3,7 @@ package wanderer;
 import javax.swing.*;
 
 /**
- * Created by Söp on 2016.12.07. Creates and links the necessary objects
+ * Created by Söp on 2016.12.07. Creates the necessary objects
  */
 class Creator {
     static Area gameArea = new Area(28, 19);
@@ -22,5 +22,4 @@ class Creator {
         drawPad.addKeyListener(boardKeyListener);
         JOptionPane.showMessageDialog(null, "Welcome");
     }
-
 }

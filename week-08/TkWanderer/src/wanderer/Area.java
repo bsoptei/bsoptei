@@ -22,16 +22,8 @@ class Area implements GameMeetingPoint {
         this.height = height;
         tiles = new Tile[width][height];
         characterPositions = new StringBuilder[width][height];
-        generateInitialMap();
+        generateMap();
         AudioPlayer.play("src/wanderer/wav/321937__pel2na__two-kazoo-fanfare.wav");
-    }
-
-    private void generateInitialMap() {
-        for (int x = 0; x < tiles.length; x++) {
-            for (int y = 0; y< tiles[x].length; y++){
-                tiles[x][y] = new Tile(x,y,"F");
-            }
-        }
     }
 
     void reset() {
@@ -39,7 +31,6 @@ class Area implements GameMeetingPoint {
         hero.reset();
         enemies.clear();
         characters.clear();
-        generateMap();
         initCharacterPositions();
         generateEnemies();
         fillCharacters();
@@ -75,7 +66,7 @@ class Area implements GameMeetingPoint {
         }
     }
 
-    private void generateMap() {
+    void generateMap() {
         Maze gameMaze = new Maze(width, height);
         tiles = gameMaze.generate();
     }
