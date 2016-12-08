@@ -1,35 +1,19 @@
 package wanderer;
 
-import java.util.Random;
-
 /**
  * Created by Söp on 2016.12.07.. The strongest enemy
  */
-class Boss extends GameObject {
-
+class Boss extends Enemy {
 
     Boss(int xPos, int yPos, int level) {
-        super("B");
-        this.xPos = xPos;
-        this.yPos = yPos;
-        obstacle = true;
-        this.level = level;
+        super("B", xPos, yPos, level, false);
         name = "Boss";
         swanSong = "src/wanderer/wav/49470__enochrooted__toni-pitchedscream.wav";
-        createElementImage();
         setDefaultStats();
     }
 
-
-    @Override
-    void strike() {
-        hero.getHit(strikePoint);
-    }
-
-
     @Override
     void setDefaultStats() {
-        Random dice = new Random();
         defaultHealthPoint = 2 * level * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1);
         healthPoint = defaultHealthPoint;
         defensePoint = level / 2 * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1) / 2;
@@ -38,42 +22,8 @@ class Boss extends GameObject {
 
 
     @Override
-    PositionedImage getTileImage() {
-        return tileImage;
-    }
-
-    @Override
-    boolean neighborIsObstacle(int deltaX, int deltaY) {
-
-        int xNeighbor = xPos + deltaX;
-        int yNeighbor = yPos + deltaY;
-        return (deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle()
-                || deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle());
-
-    }
-
-    @Override
-    void getHit(int damage) {
-        if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
-            decreaseHealthPoint(damage);
-        }
-        if (alive) {
-            strike();
-        }
-    }
-
-    @Override
     void changeElementImage(int deltaX, int deltaY) {
 
-    }
-
-    @Override
-    void move(int deltaX, int deltaY) {
-        if (movementIsPossible(deltaX, deltaY)) {
-            xPos += deltaX;
-            yPos += deltaY;
-        }
-        moveElementImage();
     }
 
 }

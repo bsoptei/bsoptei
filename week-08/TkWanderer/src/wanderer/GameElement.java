@@ -65,5 +65,10 @@ class GameElement extends GameObject {
 
     }
 
+    @Override
+    void setHero(Hero hero) {
+
+    }
+
 
 }

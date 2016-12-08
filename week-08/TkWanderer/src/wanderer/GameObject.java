@@ -10,7 +10,7 @@ import java.util.Random;
 abstract class GameObject {
     Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
     String name;
-    public Hero hero;
+
     String type;
     boolean alive = true;
     PositionedImage tileImage;
@@ -93,22 +93,9 @@ abstract class GameObject {
                 || yPos == 9 && deltaY == 1);
     }
 
-    void decreaseHealthPoint(int damage) {
-        healthPoint -= damage;
-        if (healthPoint <= 0) {
-            if (!(swanSong == null)) {
-                AudioPlayer.play(swanSong);
-            }
-            alive = false;
-            hero.levelUp();
-        }
-    }
-
     abstract void getHit(int damage);
 
     String getType(){ return type;}
 
-    public void setHero(Hero hero) {
-        this.hero = hero;
-    }
+    abstract void setHero(Hero hero) ;
 }
