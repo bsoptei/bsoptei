@@ -14,10 +14,10 @@ class Boss extends Enemy {
 
     @Override
     void setDefaultStats() {
-        defaultHealthPoint = 2 * level * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1);
+        defaultHealthPoint = 2 * level * (dice.nextInt(6) + 1) + (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
-        defensePoint = level / 2 * (dice.nextInt(5) + 1) + (dice.nextInt(5) + 1) / 2;
-        strikePoint = level * (dice.nextInt(5) + 1) + level;
+        defensePoint = level / 2 * (dice.nextInt(6) + 1) + (dice.nextInt(6) + 1) / 2;
+        strikePoint = level * (dice.nextInt(6) + 1) + level;
     }
 
 }

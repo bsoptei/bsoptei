@@ -24,10 +24,10 @@ class Area implements GameMeetingPoint {
         tiles = new Tile[width][height];
         characterPositions = new StringBuilder[width][height];
         generateInitialMap();
+        AudioPlayer.play("src/wanderer/wav/321937__pel2na__two-kazoo-fanfare.wav");
     }
 
     private void generateInitialMap() {
-
         for (int x = 0; x < tiles.length; x++) {
             for (int y = 0; y< tiles[x].length; y++){
                 tiles[x][y] = new Tile(x,y,"F");

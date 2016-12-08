@@ -52,6 +52,8 @@ class Hero extends GameObject {
             xPos += deltaX;
             yPos += deltaY;
             AudioPlayer.play("src/wanderer/wav/268758__legowanwan__footsteps.wav");
+        } else {
+            AudioPlayer.play("src/wanderer/wav/8838__churd-tzu__water-bottle-snare-15-bonk.wav");
         }
         incrementNumberOfMoves();
         changeElementImage(deltaX, deltaY);
@@ -80,7 +82,6 @@ class Hero extends GameObject {
 
     @Override
     void setDefaultStats() {
-
         defaultHealthPoint = 20 + 3 * (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
         defensePoint = 2 * (dice.nextInt(6) + 1);

@@ -88,5 +88,4 @@ class Enemy extends GameObject {
             hero.levelUp();
         }
     }
-
 }

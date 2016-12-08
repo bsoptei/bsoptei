@@ -14,10 +14,10 @@ class Skeleton extends Enemy {
 
     @Override
     void setDefaultStats() {
-        defaultHealthPoint = 2 * level * (dice.nextInt(5) + 1);
+        defaultHealthPoint = 2 * level * (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
-        defensePoint = level / 2 * (dice.nextInt(5) + 1);
-        strikePoint = level * (dice.nextInt(5) + 1);
+        defensePoint = level / 2 * (dice.nextInt(6) + 1);
+        strikePoint = level * (dice.nextInt(6) + 1);
     }
 
 }
