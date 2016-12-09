@@ -42,12 +42,12 @@ class Tile extends GameObject {
 
     @Override
     public void moveElementImage() {
-        tileImage.setPosX(xPos * imageSize);
-        tileImage.setPosY(yPos * imageSize);
+        tileImage.setXPos(xPos * imageSize);
+        tileImage.setYPos(yPos * imageSize);
     }
 
     @Override
-    void setDefaultStats() {
+    void initStats() {
 
     }
 

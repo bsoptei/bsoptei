@@ -29,7 +29,7 @@ abstract class GameObject implements GameMeetingPoint {
         this.type = type;
     }
 
-    abstract void setDefaultStats();
+    abstract void initStats();
 
     abstract void changeElementImage(int deltaX, int deltaY);
 
@@ -48,8 +48,8 @@ abstract class GameObject implements GameMeetingPoint {
     }
 
     public void moveElementImage() {
-        tileImage.setPosX(xPos * imageSize);
-        tileImage.setPosY(yPos * imageSize);
+        tileImage.setXPos(xPos * imageSize);
+        tileImage.setYPos(yPos * imageSize);
     }
 
     PositionedImage getTileImage() {

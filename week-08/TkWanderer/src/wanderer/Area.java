@@ -56,7 +56,7 @@ class Area implements GameMeetingPoint {
                 } else {
                     enemies.add(new Skeleton(xPos, yPos, level, false));
                 }
-                updateCharacterPositions();
+                updatePlayerPositions();
             }
         }
     }
@@ -106,10 +106,10 @@ class Area implements GameMeetingPoint {
         return enemies.get(enemies.size() - 2);
     }
 
-    void updateCharacterPositions() {
+    void updatePlayerPositions() {
         initPlayerPositions();
-        players.forEach(character ->
-                playerPositions[character.getX()][character.getY()].append(character.getType()));
+        players.forEach(player ->
+                playerPositions[player.getX()][player.getY()].append(player.getType()));
     }
 
     private void initPlayerPositions() {

@@ -25,7 +25,7 @@ class Hero extends GameObject {
         name = "Hero";
         swanSong = "src/wanderer/wav/56901__syna-max__wilhelm-scream-outtake.wav";
         createElementImage();
-        setDefaultStats();
+        initStats();
     }
 
     void reset() {
@@ -81,7 +81,7 @@ class Hero extends GameObject {
     }
 
     @Override
-    void setDefaultStats() {
+    void initStats() {
         defaultHealthPoint = 20 + 3 * (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
         defensePoint = 2 * (dice.nextInt(6) + 1);

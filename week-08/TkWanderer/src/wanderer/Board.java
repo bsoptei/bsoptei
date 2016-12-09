@@ -8,11 +8,11 @@ import java.util.Arrays;
 class Board extends JFrame implements GameMeetingPoint{
 
     Board() {
-        setProperties();
+        initProperties();
         this.setVisible(true);
     }
 
-    private void setProperties() {
+    private void initProperties() {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setUndecorated(true);
@@ -41,11 +41,11 @@ class Board extends JFrame implements GameMeetingPoint{
         graphics.setFont(new Font("Arial", Font.BOLD, 14));
 
         int textY = 50;
-        for (GameObject character : gameArea.getPlayers()) {
-            if (character.isAlive()) {
-                character.getTileImage().draw(graphics);
-                ArrayList<String> stats = new ArrayList<>(Arrays.asList(character.getName(),
-                        character.levelToString(), character.statsToString()));
+        for (GameObject player : gameArea.getPlayers()) {
+            if (player.isAlive()) {
+                player.getTileImage().draw(graphics);
+                ArrayList<String> stats = new ArrayList<>(Arrays.asList(player.getName(),
+                        player.levelToString(), player.statsToString()));
                 for (String stat:stats) {
                     graphics.drawString(stat, textX, textY);
                     textY += (stat.equals(""))? 0: 30;

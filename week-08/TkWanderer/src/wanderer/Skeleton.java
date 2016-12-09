@@ -9,11 +9,11 @@ class Skeleton extends Enemy {
         super("S", xPos, yPos, level, hasKey);
         name = "Skeleton";
         swanSong = "src/wanderer/wav/348310__redafs__zombie-monster-scream.wav";
-        setDefaultStats();
+        initStats();
     }
 
     @Override
-    void setDefaultStats() {
+    void initStats() {
         defaultHealthPoint = 2 * level * (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
         defensePoint = level / 2 * (dice.nextInt(6) + 1);

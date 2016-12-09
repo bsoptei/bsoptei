@@ -9,11 +9,11 @@ class Boss extends Enemy {
         super("B", xPos, yPos, level, false);
         name = "Boss";
         swanSong = "src/wanderer/wav/49470__enochrooted__toni-pitchedscream.wav";
-        setDefaultStats();
+        initStats();
     }
 
     @Override
-    void setDefaultStats() {
+    void initStats() {
         defaultHealthPoint = 2 * level * (dice.nextInt(6) + 1) + (dice.nextInt(6) + 1);
         healthPoint = defaultHealthPoint;
         defensePoint = level / 2 * (dice.nextInt(6) + 1) + (dice.nextInt(6) + 1) / 2;

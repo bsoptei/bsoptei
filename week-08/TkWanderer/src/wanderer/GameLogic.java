@@ -16,7 +16,7 @@ class GameLogic implements GameMeetingPoint {
     }
 
     void update() {
-        gameArea.updateCharacterPositions();
+        gameArea.updatePlayerPositions();
         if (hero.getNumberOfMoves() % 2 == 0) {
             moveEnemiesRandomly();
         }

@@ -12,11 +12,11 @@ import java.io.IOException;
 class PositionedImage implements GameMeetingPoint {
 
     private BufferedImage image;
-    private int posX, posY;
+    private int xPos, yPos;
 
-    PositionedImage(String filename, int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
+    PositionedImage(String filename, int xPos, int yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
         try {
             image = ImageIO.read(new File(filename));
         } catch (IOException e) {
@@ -26,15 +26,15 @@ class PositionedImage implements GameMeetingPoint {
 
     void draw(Graphics graphics) {
         if (image != null) {
-            graphics.drawImage(image, posX, posY, imageSize, imageSize, null);
+            graphics.drawImage(image, xPos, yPos, imageSize, imageSize, null);
         }
     }
 
-    void setPosX(int posX) {
-        this.posX = posX;
+    void setXPos(int xPos) {
+        this.xPos = xPos;
     }
 
-    void setPosY(int posY) {
-        this.posY = posY;
+    void setYPos(int yPos) {
+        this.yPos = yPos;
     }
 }

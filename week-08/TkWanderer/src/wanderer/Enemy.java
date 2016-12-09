@@ -40,7 +40,7 @@ class Enemy extends GameObject {
     }
 
     @Override
-    void setDefaultStats() {
+    void initStats() {
 
     }
 
