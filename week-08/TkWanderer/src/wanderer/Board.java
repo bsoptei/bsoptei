@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class Board extends JFrame implements GameMeetingPoint {
-    private final String fontFamily = "Arial";
+    private final String fontFamily = "Courier New";
 
     Board() {
         initProperties();
@@ -52,7 +52,7 @@ class Board extends JFrame implements GameMeetingPoint {
     }
 
     private void drawPlayers(Graphics graphics, int textX, int textY) {
-        graphics.setFont(new Font(fontFamily, Font.BOLD, 11));
+        graphics.setFont(new Font(fontFamily, Font.BOLD, 12));
         for (GameObject player : gameArea.getPlayers()) {
             if (player.isAlive()) {
                 drawPlayerImage(graphics, player);
@@ -60,7 +60,7 @@ class Board extends JFrame implements GameMeetingPoint {
                         player.levelToString(), player.statsToString()));
                 for (String stat : stats) {
                     graphics.drawString(stat, textX, textY);
-                    textY += (stat.equals("")) ? 0 : 12;
+                    textY += (stat.equals("")) ? 0 : 15;
                 }
             }
         }

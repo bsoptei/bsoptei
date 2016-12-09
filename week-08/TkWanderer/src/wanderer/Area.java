@@ -70,6 +70,7 @@ class Area implements GameMeetingPoint {
             if (enemies.get(i).isAlive() &&
                     Arrays.equals(enemies.get(i).getCoordinates(), hero.getCoordinates())) {
                 identifyEnemy(i);
+
                 samePosition = true;
             }
         }

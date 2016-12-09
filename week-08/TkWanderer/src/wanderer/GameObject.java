@@ -93,7 +93,7 @@ abstract class GameObject implements GameMeetingPoint, Battle{
     }
 
     String statsToString() {
-        return String.format("HP: %d/%d | DP: %d | SP: %d",
+        return String.format("HP: %d/%d|DP: %d|SP: %d",
                 healthPoint, defaultHealthPoint,
                 defensePoint, strikePoint);
     }
