@@ -8,4 +8,6 @@ interface Battle {
     void strike();
 
     void sufferDamage(int damage);
+
+    void decreaseHealthPoint(int damage);
 }

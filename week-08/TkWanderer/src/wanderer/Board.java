@@ -33,7 +33,7 @@ class Board extends JFrame implements GameMeetingPoint {
     private void drawTiles(Graphics graphics) {
         for (int i = 0; i < gameArea.getTiles().length; i++) {
             for (int j = 0; j < gameArea.getTiles()[i].length; j++) {
-                gameArea.getTiles()[i][j].getTileImage().draw(graphics);
+                gameArea.getTiles()[i][j].getGameObjectImage().draw(graphics);
             }
         }
     }
@@ -67,6 +67,12 @@ class Board extends JFrame implements GameMeetingPoint {
     }
 
     private void drawPlayerImage(Graphics graphics, GameObject player) {
-        player.getTileImage().draw(graphics);
+        player.getGameObjectImage().draw(graphics);
+    }
+
+    void showHelp() {
+        JOptionPane.showMessageDialog(null, "You are the blond fella. \n" +
+                "You can move with the arrow keys.\n" +
+                "When you're on ");
     }
 }

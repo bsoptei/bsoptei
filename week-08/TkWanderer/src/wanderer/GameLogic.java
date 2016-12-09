@@ -7,14 +7,6 @@ import javax.swing.*;
  */
 class GameLogic implements GameMeetingPoint {
 
-    private boolean keyHolderIsKilled() {
-        return !gameArea.getKeyHolder().isAlive();
-    }
-
-    private boolean bossIsKilled() {
-        return !gameArea.getBoss().isAlive();
-    }
-
     void update() {
         gameArea.updatePlayerPositions();
         if (hero.getNumberOfMoves() % 2 == 0) {
@@ -34,6 +26,14 @@ class GameLogic implements GameMeetingPoint {
         if (!hero.isAlive()) {
             JOptionPane.showMessageDialog(null, "Game Over!");
         }
+    }
+
+    private boolean keyHolderIsKilled() {
+        return !gameArea.getKeyHolder().isAlive();
+    }
+
+    private boolean bossIsKilled() {
+        return !gameArea.getBoss().isAlive();
     }
 
     private void moveEnemiesRandomly() {

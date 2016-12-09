@@ -11,10 +11,6 @@ import static java.awt.event.KeyEvent.*;
 class ListenForKeyPress implements KeyListener, GameMeetingPoint {
 
     @Override
-    public void keyTyped(KeyEvent e) {
-    }
-
-    @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (hero.isAlive()) {
@@ -34,6 +30,8 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
                 case VK_DOWN:
                     hero.move(0, 1);
                     break;
+                case VK_F1:
+                    board.showHelp();
             }
             board.repaint();
             controller.update();
@@ -41,6 +39,10 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
         if (key == VK_ESCAPE) {
             System.exit(0);
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
     }
 
     @Override

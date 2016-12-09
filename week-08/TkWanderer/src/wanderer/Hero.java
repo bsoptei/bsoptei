@@ -38,6 +38,14 @@ class Hero extends GameObject {
         restoreHealth(dice.nextInt(10) + 1);
     }
 
+    @Override
+    void initStats() {
+        defaultHealthPoint = 20 + 3 * (dice.nextInt(6) + 1);
+        healthPoint = defaultHealthPoint;
+        defensePoint = 2 * (dice.nextInt(6) + 1);
+        strikePoint = 5 + (dice.nextInt(6) + 1);
+    }
+
     private void restoreHealth(int diceThrow) {
         if (diceThrow > 9) {
             healthPoint = defaultHealthPoint;
@@ -70,14 +78,26 @@ class Hero extends GameObject {
 
     void changeElementDirectionImage(int deltaX, int deltaY) {
         if (deltaY == -1) {
-            tileImage = directionImages.get("up");
+            gameObjectImage = directionImages.get("up");
         } else if (deltaY == 1) {
-            tileImage = directionImages.get("down");
+            gameObjectImage = directionImages.get("down");
         } else if (deltaX == 1) {
-            tileImage = directionImages.get("right");
+            gameObjectImage = directionImages.get("right");
         } else {
-            tileImage = directionImages.get("left");
+            gameObjectImage = directionImages.get("left");
         }
+    }
+
+    @Override
+    boolean neighborIsObstacle(int deltaX, int deltaY) {
+        int xNeighbor = xPos + deltaX;
+        int yNeighbor = yPos + deltaY;
+        return ((deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle())
+                || (deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()));
+    }
+
+    private void incrementNumberOfMoves() {
+        numberOfMoves++;
     }
 
     @Override
@@ -89,32 +109,6 @@ class Hero extends GameObject {
     }
 
     @Override
-    void initStats() {
-        defaultHealthPoint = 20 + 3 * (dice.nextInt(6) + 1);
-        healthPoint = defaultHealthPoint;
-        defensePoint = 2 * (dice.nextInt(6) + 1);
-        strikePoint = 5 + (dice.nextInt(6) + 1);
-    }
-
-    @Override
-    PositionedImage getTileImage() {
-        return tileImage;
-    }
-
-    @Override
-    boolean neighborIsObstacle(int deltaX, int deltaY) {
-        int xNeighbor = xPos + deltaX;
-        int yNeighbor = yPos + deltaY;
-        return ((deltaX != 0 && gameArea.getTiles()[xNeighbor][yPos].isObstacle())
-                || (deltaY != 0 && gameArea.getTiles()[xPos][yNeighbor].isObstacle()));
-    }
-
-    @Override
-    String levelToString() {
-        return String.format("Level %s", String.valueOf(heroLevel));
-    }
-
-    @Override
     public void sufferDamage(int damage) {
         if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
             AudioPlayer.play("src/wanderer/wav/19421__awfulthesample__awfultheaudio-watschn2.wav");
@@ -122,7 +116,8 @@ class Hero extends GameObject {
         }
     }
 
-    private void decreaseHealthPoint(int damage) {
+    @Override
+    public void decreaseHealthPoint(int damage) {
         healthPoint -= damage;
         if (healthPoint <= 0) {
             if (!(swanSong == null)) {
@@ -130,18 +125,6 @@ class Hero extends GameObject {
             }
             alive = false;
         }
-    }
-
-    private void incrementNumberOfMoves() {
-        numberOfMoves++;
-    }
-
-    int getNumberOfMoves() {
-        return numberOfMoves;
-    }
-
-    void setCurrentOpponent(GameObject currentOpponent) {
-        this.currentOpponent = currentOpponent;
     }
 
     void levelUp() {
@@ -152,7 +135,21 @@ class Hero extends GameObject {
         AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
     }
 
-    int getHeroLevel() {
-        return heroLevel;
+    @Override
+    PositionedImage getGameObjectImage() {
+        return gameObjectImage;
+    }
+
+    int getNumberOfMoves() {
+        return numberOfMoves;
+    }
+
+    void setCurrentOpponent(GameObject currentOpponent) {
+        this.currentOpponent = currentOpponent;
+    }
+
+    @Override
+    String levelToString() {
+        return String.format("Level %s", String.valueOf(heroLevel));
     }
 }

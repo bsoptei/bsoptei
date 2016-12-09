@@ -19,7 +19,7 @@ class Enemy extends GameObject {
     }
 
     @Override
-    void changeElementDirectionImage(int deltaX, int deltaY) {
+    void initStats() {
     }
 
     @Override
@@ -35,16 +35,6 @@ class Enemy extends GameObject {
     }
 
     @Override
-    public void strike() {
-        hero.sufferDamage(strikePoint);
-    }
-
-    @Override
-    void initStats() {
-
-    }
-
-    @Override
     boolean neighborIsObstacle(int deltaX, int deltaY) {
         int xNeighbor = xPos + deltaX;
         int yNeighbor = yPos + deltaY;
@@ -55,16 +45,19 @@ class Enemy extends GameObject {
         );
     }
 
-    @Override
-    String levelToString() {
-        return "";
-    }
-
     private boolean neighborIsEnemy(int deltaX, int deltaY) {
         String id = gameArea.getPlayerPositions()[deltaX][deltaY].toString();
         return enemyTypes.contains(id);
     }
 
+    @Override
+    void changeElementDirectionImage(int deltaX, int deltaY) {
+    }
+
+    @Override
+    public void strike() {
+        hero.sufferDamage(strikePoint);
+    }
 
     @Override
     public void sufferDamage(int damage) {
@@ -76,7 +69,8 @@ class Enemy extends GameObject {
         }
     }
 
-    private void decreaseHealthPoint(int damage) {
+    @Override
+    public void decreaseHealthPoint(int damage) {
         healthPoint -= damage;
         if (healthPoint <= 0) {
             if (!(swanSong == null)) {
@@ -85,5 +79,10 @@ class Enemy extends GameObject {
             alive = false;
             hero.levelUp();
         }
+    }
+
+    @Override
+    String levelToString() {
+        return "";
     }
 }

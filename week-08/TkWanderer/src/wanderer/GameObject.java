@@ -13,9 +13,8 @@ abstract class GameObject implements GameMeetingPoint, Battle{
     String name;
     String type;
     boolean alive = true;
-    PositionedImage tileImage;
+    PositionedImage gameObjectImage;
     static final ArrayList<String> enemyTypes = new ArrayList<>(Arrays.asList("S", "B"));
-
     int level;
     boolean obstacle;
     Random dice = new Random();
@@ -35,58 +34,34 @@ abstract class GameObject implements GameMeetingPoint, Battle{
 
     abstract void initStats();
 
-    abstract void changeElementDirectionImage(int deltaX, int deltaY);
+    public void createElementImage() {
+        this.gameObjectImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
+    }
 
     abstract void move(int deltaX, int deltaY);
 
-    abstract boolean neighborIsObstacle(int deltaX, int deltaY);
-
-    abstract String levelToString();
-
-    public void createElementImage() {
-        this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
-    }
-
-    public void moveElementImage() {
-        tileImage.setXPos(xPos * imageSize);
-        tileImage.setYPos(yPos * imageSize);
-    }
-
-    PositionedImage getTileImage() {
-        return tileImage;
-    }
-
-    boolean isAlive() {
-        return alive;
-    }
-
-    boolean isObstacle() {
-        return obstacle;
-    }
-
-    String getName() {
-        return name;
-    }
-
-    String statsToString() {
-        return String.format("HP: %d/%d | DP: %d | SP: %d",
-                healthPoint, defaultHealthPoint,
-                defensePoint, strikePoint);
-    }
-
-    Integer[] getCoordinates() {
-        return new Integer[]{xPos, yPos};
-    }
-
     boolean movementIsPossible(int deltaX, int deltaY) {
-        return (!(boundaryOfMap(deltaX, deltaY)) && !(neighborIsObstacle(deltaX, deltaY)));
+        return (!(isAtboundaryOfMap(deltaX, deltaY)) && !(neighborIsObstacle(deltaX, deltaY)));
     }
 
-    private boolean boundaryOfMap(int deltaX, int deltaY) {
+    private boolean isAtboundaryOfMap(int deltaX, int deltaY) {
         return (xPos == 0 && deltaX == -1
                 || xPos == gameArea.getWidth() - 1 && deltaX == 1
                 || yPos == 0 && deltaY == -1
                 || yPos == gameArea.getHeight() - 1 && deltaY == 1);
+    }
+
+    abstract boolean neighborIsObstacle(int deltaX, int deltaY);
+
+    void moveElementImage() {
+        gameObjectImage.setXPos(xPos * imageSize);
+        gameObjectImage.setYPos(yPos * imageSize);
+    }
+
+    abstract void changeElementDirectionImage(int deltaX, int deltaY);
+
+    String getName() {
+        return name;
     }
 
     String getType() {
@@ -100,4 +75,28 @@ abstract class GameObject implements GameMeetingPoint, Battle{
     int getY() {
         return yPos;
     }
+
+    Integer[] getCoordinates() {
+        return new Integer[]{xPos, yPos};
+    }
+
+    PositionedImage getGameObjectImage() {
+        return gameObjectImage;
+    }
+
+    boolean isAlive() {
+        return alive;
+    }
+
+    boolean isObstacle() {
+        return obstacle;
+    }
+
+    String statsToString() {
+        return String.format("HP: %d/%d | DP: %d | SP: %d",
+                healthPoint, defaultHealthPoint,
+                defensePoint, strikePoint);
+    }
+
+    abstract String levelToString();
 }

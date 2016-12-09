@@ -46,8 +46,8 @@ class Area implements GameMeetingPoint {
         int numberOfEnemies = dice.nextInt(4) + 3;
         while (enemies.size() < numberOfEnemies) {
             updatePlayerPositions();
-            int xPos = dice.nextInt(9) + 1;
-            int yPos = dice.nextInt(9) + 1;
+            int xPos = dice.nextInt(width - 1) + 1;
+            int yPos = dice.nextInt(height - 1) + 1;
             if (!tiles[xPos][yPos].isObstacle() &&
                     playerPositions[xPos][yPos].toString().equals("")) {
                 if (enemies.size() == numberOfEnemies - 1) {
@@ -66,18 +66,6 @@ class Area implements GameMeetingPoint {
         tiles = gameMaze.generate();
     }
 
-    Tile[][] getTiles() {
-        return tiles;
-    }
-
-    ArrayList<GameObject> getEnemies() {
-        return enemies;
-    }
-
-    ArrayList<GameObject> getPlayers() {
-        return players;
-    }
-
     boolean isInSamePosition() {
         boolean samePosition = false;
         for (int i = 0; i < enemies.size(); i++) {
@@ -94,19 +82,8 @@ class Area implements GameMeetingPoint {
         battleEnemy = enemies.get(i);
     }
 
-    GameObject getBattleEnemy() {
-        return battleEnemy;
-    }
-
-    GameObject getBoss() {
-        return enemies.get(enemies.size() - 1);
-    }
-
-    GameObject getKeyHolder() {
-        return enemies.get(enemies.size() - 2);
-    }
-
     void updatePlayerPositions() {
+        playerPositions = new StringBuilder[width][height];
         initPlayerPositions();
         players.forEach(player ->
                 playerPositions[player.getX()][player.getY()].append(player.getType()));
@@ -122,6 +99,30 @@ class Area implements GameMeetingPoint {
 
     StringBuilder[][] getPlayerPositions() {
         return playerPositions;
+    }
+
+    Tile[][] getTiles() {
+        return tiles;
+    }
+
+    ArrayList<GameObject> getEnemies() {
+        return enemies;
+    }
+
+    ArrayList<GameObject> getPlayers() {
+        return players;
+    }
+
+    GameObject getBattleEnemy() {
+        return battleEnemy;
+    }
+
+    GameObject getBoss() {
+        return enemies.get(enemies.size() - 1);
+    }
+
+    GameObject getKeyHolder() {
+        return enemies.get(enemies.size() - 2);
     }
 
     int getWidth() {

@@ -8,13 +8,13 @@ import javax.swing.*;
 class Creator {
     static Area gameArea = new Area(28, 19);
     static Hero hero = new Hero(0, 0);
-    static Board drawPad = new Board();
+    static Board board = new Board();
     static GameLogic controller = new GameLogic();
     private static ListenForKeyPress boardKeyListener = new ListenForKeyPress();
 
     static void initialize() {
         gameArea.reset();
-        drawPad.addKeyListener(boardKeyListener);
-        JOptionPane.showMessageDialog(null, "Welcome");
+        board.addKeyListener(boardKeyListener);
+        JOptionPane.showMessageDialog(null, "Welcome to my maze!");
     }
 }
