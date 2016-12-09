@@ -8,7 +8,10 @@ import static java.awt.event.KeyEvent.*;
 /**
  * Created by Söp on 2016.12.05.. Tracks user key events
  */
-class ListenForKeyPress implements KeyListener, GameMeetingPoint {
+class ListenForKeyPress implements KeyListener {
+    private GameLogic controller = Creator.controller;
+    private Board board = Creator.board;
+    private Hero hero = Creator.hero;
 
     @Override
     public void keyPressed(KeyEvent e) {

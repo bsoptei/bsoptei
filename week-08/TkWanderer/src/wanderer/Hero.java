@@ -143,7 +143,6 @@ class Hero extends GameObject {
         defaultHealthPoint += (dice.nextInt(6) + 1);
         defensePoint += (dice.nextInt(6) + 1);
         strikePoint += (dice.nextInt(6) + 1);
-        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
     }
 
     @Override
@@ -162,5 +161,9 @@ class Hero extends GameObject {
     @Override
     String levelToString() {
         return String.format("Level %s", String.valueOf(heroLevel));
+    }
+
+    public void setGameArea(Area gameArea) {
+        this.gameArea = gameArea;
     }
 }

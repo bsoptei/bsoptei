@@ -5,8 +5,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class Board extends JFrame implements GameMeetingPoint {
+class Board extends JFrame {
     private final String fontFamily = "Courier New";
+    private static int imageSize = Creator.imageSize;
+    private Area gameArea = Creator.gameArea;
 
     Board() {
         initProperties();

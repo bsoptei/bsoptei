@@ -9,7 +9,8 @@ import java.io.IOException;
 /**
  * Created by Söp on 2016.12.05. Image manager for game objects
  */
-class PositionedImage implements GameMeetingPoint {
+class PositionedImage {
+    private static int imageSize = Creator.imageSize;
     private BufferedImage image;
     private int xPos, yPos;
 

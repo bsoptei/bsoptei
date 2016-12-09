@@ -2,24 +2,28 @@ package wanderer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by Söp on 2016.12.05.. Virtual map of the game
  */
-class Area implements GameMeetingPoint {
+class Area {
+//    private Hero hero = Creator.hero;
     private int width, height;
     private Tile[][] tiles;
-    @SuppressWarnings("unchecked")
+    private Random dice = new Random();
     private ArrayList<GameObject> enemies = new ArrayList();
-    @SuppressWarnings("unchecked")
+    private Hero hero;
     private ArrayList<GameObject> players = new ArrayList();
     private StringBuilder[][] playerPositions;
     private GameObject battleEnemy;
     static int level = 0;
 
-    Area(int width, int height) {
+    Area(int width, int height, Hero hero) {
         this.width = width;
         this.height = height;
+        this.hero = hero;
+        hero.setGameArea(this);
         tiles = new Tile[width][height];
         playerPositions = new StringBuilder[width][height];
         generateMap();
@@ -47,7 +51,7 @@ class Area implements GameMeetingPoint {
             updatePlayerPositions();
             int xPos = dice.nextInt(width - 1) + 1;
             int yPos = dice.nextInt(height - 1) + 1;
-            if (!tiles[xPos][yPos].isObstacle()){
+            if (!tiles[xPos][yPos].isObstacle()) {
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
                 } else if (enemies.size() == numberOfEnemies - 2) {

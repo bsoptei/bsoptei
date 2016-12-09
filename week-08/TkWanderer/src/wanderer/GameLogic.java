@@ -1,12 +1,17 @@
 package wanderer;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
-class GameLogic implements GameMeetingPoint {
+class GameLogic {
+    private Area gameArea = Creator.gameArea;
+    private Hero hero = Creator.hero;
+    private Random dice = new Random();
+    private FileManager fileManager = new FileManager();
 
     void update() {
         gameArea.updatePlayerPositions();
