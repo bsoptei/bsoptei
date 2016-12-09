@@ -76,7 +76,7 @@ class Hero extends GameObject {
     void strike() {
         if (currentOpponent != null) {
             AudioPlayer.play("src/wanderer/wav/326847__johnbuhr__sword-clash-37.wav");
-            currentOpponent.getHit(strikePoint);
+            currentOpponent.sufferDamage(strikePoint);
         }
     }
 
@@ -93,10 +93,6 @@ class Hero extends GameObject {
         return tileImage;
     }
 
-    public void setGameArea(Area gameArea) {
-        this.gameArea = gameArea;
-    }
-
     @Override
     boolean neighborIsObstacle(int deltaX, int deltaY) {
         int xNeighbor = xPos + deltaX;
@@ -106,12 +102,12 @@ class Hero extends GameObject {
     }
 
     @Override
-    String getLevelToString() {
+    String levelToString() {
         return String.format("Level %s", String.valueOf(heroLevel));
     }
 
     @Override
-    void getHit(int damage) {
+    void sufferDamage(int damage) {
         if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
             AudioPlayer.play("src/wanderer/wav/19421__awfulthesample__awfultheaudio-watschn2.wav");
             decreaseHealthPoint(damage);

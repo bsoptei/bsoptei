@@ -45,7 +45,7 @@ class Board extends JFrame implements GameMeetingPoint{
             if (character.isAlive()) {
                 character.getTileImage().draw(graphics);
                 ArrayList<String> stats = new ArrayList<>(Arrays.asList(character.getName(),
-                        character.getLevelToString(), character.getStatsToString()));
+                        character.levelToString(), character.statsToString()));
                 for (String stat:stats) {
                     graphics.drawString(stat, textX, textY);
                     textY += (stat.equals(""))? 0: 30;
@@ -53,4 +53,6 @@ class Board extends JFrame implements GameMeetingPoint{
             }
         }
     }
+
+
 }

@@ -36,7 +36,7 @@ class Enemy extends GameObject {
 
     @Override
     void strike() {
-        hero.getHit(strikePoint);
+        hero.sufferDamage(strikePoint);
     }
 
     @Override
@@ -56,7 +56,7 @@ class Enemy extends GameObject {
     }
 
     @Override
-    String getLevelToString() {
+    String levelToString() {
         return "";
     }
 
@@ -67,7 +67,7 @@ class Enemy extends GameObject {
 
 
     @Override
-    void getHit(int damage) {
+    void sufferDamage(int damage) {
         if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
             decreaseHealthPoint(damage);
         }

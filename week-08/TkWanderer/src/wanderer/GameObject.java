@@ -15,7 +15,6 @@ abstract class GameObject implements GameMeetingPoint {
 
     int level;
     boolean obstacle;
-    Area gameArea;
     Random dice = new Random();
     final HashMap<String, String> imageSelector = new HashMap<String, String>() {{
         put("F", "src/wanderer/image/floor.png");
@@ -38,11 +37,11 @@ abstract class GameObject implements GameMeetingPoint {
 
     abstract void strike();
 
-    abstract void getHit(int damage);
+    abstract void sufferDamage(int damage);
 
     abstract boolean neighborIsObstacle(int deltaX, int deltaY);
 
-    abstract String getLevelToString();
+    abstract String levelToString();
 
     public void createElementImage() {
         this.tileImage = new PositionedImage(imageSelector.get(type), xPos * imageSize, yPos * imageSize);
@@ -69,7 +68,7 @@ abstract class GameObject implements GameMeetingPoint {
         return name;
     }
 
-    String getStatsToString() {
+    String statsToString() {
         return String.format("HP: %d/%d | DP: %d | SP: %d",
                 healthPoint, defaultHealthPoint,
                 defensePoint, strikePoint);
@@ -77,10 +76,6 @@ abstract class GameObject implements GameMeetingPoint {
 
     Integer[] getCoordinates() {
         return new Integer[]{xPos, yPos};
-    }
-
-    public void setGameArea(Area gameArea) {
-        this.gameArea = gameArea;
     }
 
     boolean movementIsPossible(int deltaX, int deltaY) {
