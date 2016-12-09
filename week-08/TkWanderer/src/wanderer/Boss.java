@@ -8,7 +8,7 @@ class Boss extends Enemy {
     Boss(int xPos, int yPos, int level) {
         super("B", xPos, yPos, level, false);
         name = "Boss";
-        swanSong = "src/wanderer/wav/49470__enochrooted__toni-pitchedscream.wav";
+        swanSong = "src/wanderer/wav/79__plagasul__long-scream.wav";
         initStats();
     }
 

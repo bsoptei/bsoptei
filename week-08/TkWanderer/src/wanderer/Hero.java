@@ -78,9 +78,9 @@ class Hero extends GameObject {
         if (movementIsPossible(deltaX, deltaY)) {
             xPos += deltaX;
             yPos += deltaY;
-//            AudioPlayer.play("src/wanderer/wav/268758__legowanwan__footsteps.wav");
+            AudioPlayer.play("src/wanderer/wav/268758__legowanwan__footsteps.wav");
         } else {
-//            AudioPlayer.play("src/wanderer/wav/8838__churd-tzu__water-bottle-snare-15-bonk.wav");
+            AudioPlayer.play("src/wanderer/wav/8838__churd-tzu__water-bottle-snare-15-bonk.wav");
         }
         changeElementDirectionImage(deltaX, deltaY);
         moveElementImage();

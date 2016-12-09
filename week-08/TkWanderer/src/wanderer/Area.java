@@ -42,7 +42,7 @@ class Area implements GameMeetingPoint {
     }
 
     private void generateEnemies() {
-        int numberOfEnemies = dice.nextInt(20) + 3;
+        int numberOfEnemies = dice.nextInt(4) + 3;
         while (enemies.size() < numberOfEnemies) {
             updatePlayerPositions();
             int xPos = dice.nextInt(width - 1) + 1;
