@@ -71,7 +71,7 @@ class Board extends JFrame implements GameMeetingPoint {
     }
 
     void showWelcome() {
-        JOptionPane.showMessageDialog(this, "Welcome to my maze!");
+        JOptionPane.showMessageDialog(this, "Welcome to my maze!\nNeed help? Press F1 any time during the game.");
     }
 
     void showHelp() {
@@ -79,7 +79,8 @@ class Board extends JFrame implements GameMeetingPoint {
                 "You can move with the arrow keys.\n" +
                 "When you're on the same tile with an enemy,\n" +
                 "you can use spacebar to strike.\n" +
-                "F2 starts new game");
+                "If you kill the keyholder and the boss, you can move to the next area.\n" +
+                "F2 starts new game.");
     }
 
     void showGameOver() {
