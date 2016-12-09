@@ -19,11 +19,6 @@ class Board extends JFrame implements GameMeetingPoint {
         this.setUndecorated(true);
     }
 
-    private void addMenus(){
-        JMenuBar menu = new JMenuBar();
-        JMenu gameMenu = new JMenu("Game");
-    }
-
     @Override
     public void paint(Graphics graphics) {
         drawTiles(graphics);
@@ -31,7 +26,7 @@ class Board extends JFrame implements GameMeetingPoint {
         int textY = 50;
         int statsPanelWidth = 300;
         drawPanel(graphics, textX, statsPanelWidth);
-        drawTextOnPanel(graphics,textX,textY);
+        drawTextOnPanel(graphics, textX, textY);
         drawPlayers(graphics, textX, textY);
     }
 
@@ -80,7 +75,7 @@ class Board extends JFrame implements GameMeetingPoint {
     }
 
     void showHelp() {
-        JOptionPane.showMessageDialog(this, "You are the green-haired fella. \n" +
+        JOptionPane.showMessageDialog(this, "Help:\nYou are the green-haired fella. \n" +
                 "You can move with the arrow keys.\n" +
                 "When you're on the same tile with an enemy,\n" +
                 "you can use spacebar to strike.");

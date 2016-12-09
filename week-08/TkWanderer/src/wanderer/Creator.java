@@ -1,12 +1,10 @@
 package wanderer;
 
-import javax.swing.*;
-
 /**
  * Created by Söp on 2016.12.07. Creates the necessary objects
  */
 class Creator {
-    static Area gameArea = new Area(28, 19);
+    static Area gameArea = new Area(4, 4);
     static Hero hero = new Hero(0, 0);
     static Board board = new Board();
     static GameLogic controller = new GameLogic();

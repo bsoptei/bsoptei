@@ -15,7 +15,7 @@ class Hero extends GameObject {
     private HashMap<String, PositionedImage> directionImages = new HashMap<>();
     private int numberOfMoves;
     private GameObject currentOpponent;
-    private int heroLevel = 1;
+    private int heroLevel;
 
     Hero(int xPos, int yPos) {
         super("H");
@@ -27,15 +27,26 @@ class Hero extends GameObject {
         swanSong = "src/wanderer/wav/56901__syna-max__wilhelm-scream-outtake.wav";
         createElementImage();
         createDirectionImages();
+        initHero();
+    }
+
+    void initHero() {
+        heroLevel = 1;
+        alive = true;
         initStats();
+        moveToCorner();
     }
 
     void reset() {
-        xPos = 0;
-        yPos = 0;
+        moveToCorner();
         moveElementImage();
         numberOfMoves = 0;
         restoreHealth(dice.nextInt(10) + 1);
+    }
+
+    private void moveToCorner() {
+        xPos = 0;
+        yPos = 0;
     }
 
     @Override

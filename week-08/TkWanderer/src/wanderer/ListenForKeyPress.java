@@ -32,6 +32,9 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
                     break;
                 case VK_F1:
                     board.showHelp();
+                    break;
+                case VK_F2:
+                    controller.startNewGame();
             }
             board.repaint();
             controller.update();

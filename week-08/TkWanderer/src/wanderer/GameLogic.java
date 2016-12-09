@@ -1,7 +1,5 @@
 package wanderer;
 
-import javax.swing.*;
-
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
@@ -44,5 +42,11 @@ class GameLogic implements GameMeetingPoint {
                 enemy.move(0, dice.nextInt(3) - 1);
             }
         }
+    }
+
+    void startNewGame() {
+        hero.initHero();
+        Area.level = 0;
+        gameArea.reset();
     }
 }
