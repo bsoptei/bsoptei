@@ -47,8 +47,7 @@ class Area implements GameMeetingPoint {
             updatePlayerPositions();
             int xPos = dice.nextInt(width - 1) + 1;
             int yPos = dice.nextInt(height - 1) + 1;
-            if (!tiles[xPos][yPos].isObstacle() &&
-                    playerPositions[xPos][yPos].toString().equals("")) {
+            if (!tiles[xPos][yPos].isObstacle()){
                 if (enemies.size() == numberOfEnemies - 1) {
                     enemies.add(new Boss(xPos, yPos, level));
                 } else if (enemies.size() == numberOfEnemies - 2) {

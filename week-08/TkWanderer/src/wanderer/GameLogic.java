@@ -1,5 +1,8 @@
 package wanderer;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 /**
  * Created by Söp on 2016.12.05.. The logic behind the game
  */
@@ -14,6 +17,7 @@ class GameLogic implements GameMeetingPoint {
         if (bossIsKilled() && keyHolderIsKilled()) {
             gameArea.generateMap();
             gameArea.reset();
+            board.showAreaClearedMessage();
         }
         if (gameArea.isInSamePosition()) {
             gameArea.getBattleEnemy().strike();
@@ -51,8 +55,12 @@ class GameLogic implements GameMeetingPoint {
     }
 
     void saveGame() {
+        ArrayList<Integer> numericDataToSave = new ArrayList<>();
     }
 
     void loadGame() {
+        ArrayList<String> loadedRawData = FileManager.readFile("src/wanderer/savedgame/savedgame.txt");
+        ArrayList<Integer> loadedNumericData =
+                loadedRawData.stream().map(Integer::parseInt).collect(Collectors.toCollection(ArrayList::new));
     }
 }

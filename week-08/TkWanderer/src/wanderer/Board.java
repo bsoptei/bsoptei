@@ -85,4 +85,8 @@ class Board extends JFrame implements GameMeetingPoint {
     void showGameOver() {
         JOptionPane.showMessageDialog(this, "Game Over!\n You can start new game by pressing F2");
     }
+
+    void showAreaClearedMessage() {
+        JOptionPane.showMessageDialog(this, "Congrats! You have cleared the area!\n Get ready for the next one!");
+    }
 }

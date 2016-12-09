@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 class FileManager {
 
-    ArrayList<String> readFile(String source) {
+    static ArrayList<String> readFile(String source) {
         ArrayList<String> contents = new ArrayList<>();
         Charset charset = Charset.forName("UTF-8");
         try (
@@ -24,16 +24,7 @@ class FileManager {
         return contents;
     }
 
-    void createUserFile(File data) {
-        try {
-            //noinspection ResultOfMethodCallIgnored
-            data.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void writeFile(ArrayList<String> content, File data) {
+    static void writeFile(ArrayList<String> content, File data) {
         try {
             FileWriter fw = new FileWriter(data.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
