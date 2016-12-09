@@ -38,17 +38,14 @@ class Enemy extends GameObject {
     boolean neighborIsObstacle(int deltaX, int deltaY) {
         int xNeighbor = xPos + deltaX;
         int yNeighbor = yPos + deltaY;
-        return ((deltaX != 0 && (gameArea.getTiles()[xNeighbor][yPos].isObstacle() ||
-                neighborIsEnemy(xNeighbor, yPos)))
-                || (deltaY != 0 && (gameArea.getTiles()[xPos][yNeighbor].isObstacle() ||
-                neighborIsEnemy(xPos, yNeighbor)))
-        );
+        return ((gameArea.getTiles()[xNeighbor][yNeighbor].isObstacle()) ||
+                neighborIsEnemy(xNeighbor, yNeighbor));
+
     }
 
 
-    private boolean neighborIsEnemy(int deltaX, int deltaY) {
-        String id = gameArea.getPlayerPositions()[deltaX][deltaY].toString();
-        System.out.println(id);
+    private boolean neighborIsEnemy(int xNeighbor, int yNeighbor) {
+        String id = gameArea.getPlayerPositions()[xNeighbor][yNeighbor].toString();
         return enemyTypes.contains(id);
     }
 
