@@ -13,6 +13,6 @@ class Creator {
     static void initialize() {
         gameArea.reset();
         board.addKeyListener(boardKeyListener);
-        board.showWelcome();
+        Courier.showWelcome();
     }
 }

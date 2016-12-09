@@ -15,7 +15,7 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
         int key = e.getKeyCode();
         switch (key) {
             case VK_F1:
-                board.showHelp();
+                Courier.showHelp();
                 break;
             case VK_F2:
                 controller.startNewGame();
@@ -27,19 +27,19 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
         if (hero.isAlive()) {
             switch (key) {
                 case VK_SPACE:
-                    hero.strike();
+                    controller.heroStrike();
                     break;
                 case VK_LEFT:
-                    hero.move(-1, 0);
+                    controller.heroMove(-1, 0);
                     break;
                 case VK_RIGHT:
-                    hero.move(1, 0);
+                    controller.heroMove(1, 0);
                     break;
                 case VK_UP:
-                    hero.move(0, -1);
+                    controller.heroMove(0, -1);
                     break;
                 case VK_DOWN:
-                    hero.move(0, 1);
+                    controller.heroMove(0, 1);
                     break;
             }
             board.repaint();

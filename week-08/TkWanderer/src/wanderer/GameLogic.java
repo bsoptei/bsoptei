@@ -17,7 +17,7 @@ class GameLogic implements GameMeetingPoint {
         if (bossIsKilled() && keyHolderIsKilled()) {
             gameArea.generateMap();
             gameArea.reset();
-            board.showAreaClearedMessage();
+            Courier.showAreaClearedMessage();
         }
         if (gameArea.isInSamePosition()) {
             gameArea.getBattleEnemy().strike();
@@ -26,7 +26,7 @@ class GameLogic implements GameMeetingPoint {
             hero.setCurrentOpponent(null);
         }
         if (!hero.isAlive()) {
-            board.showGameOver();
+            Courier.showGameOver();
         }
     }
 
@@ -36,6 +36,14 @@ class GameLogic implements GameMeetingPoint {
 
     private boolean bossIsKilled() {
         return !gameArea.getBoss().isAlive();
+    }
+
+    void heroMove(int xDirection, int yDirection) {
+        hero.move(xDirection, yDirection);
+    }
+
+    void heroStrike() {
+        hero.strike();
     }
 
     private void moveEnemiesRandomly() {
