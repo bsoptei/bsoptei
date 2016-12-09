@@ -31,7 +31,7 @@ abstract class GameObject implements GameMeetingPoint {
 
     abstract void initStats();
 
-    abstract void changeElementImage(int deltaX, int deltaY);
+    abstract void changeElementImageCoordinates(int deltaX, int deltaY);
 
     abstract void move(int deltaX, int deltaY);
 

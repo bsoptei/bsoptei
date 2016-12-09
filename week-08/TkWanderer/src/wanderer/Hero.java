@@ -55,12 +55,12 @@ class Hero extends GameObject {
         } else {
             AudioPlayer.play("src/wanderer/wav/8838__churd-tzu__water-bottle-snare-15-bonk.wav");
         }
-        changeElementImage(deltaX, deltaY);
+        changeElementImageCoordinates(deltaX, deltaY);
         moveElementImage();
         incrementNumberOfMoves();
     }
 
-    void changeElementImage(int deltaX, int deltaY) {
+    void changeElementImageCoordinates(int deltaX, int deltaY) {
         if (deltaX == -1) {
             tileImage = heroDirectionImages.get("left");
         } else if (deltaX == 1) {

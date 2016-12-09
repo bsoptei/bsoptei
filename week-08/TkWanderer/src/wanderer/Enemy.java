@@ -19,7 +19,7 @@ class Enemy extends GameObject {
     }
 
     @Override
-    void changeElementImage(int deltaX, int deltaY) {
+    void changeElementImageCoordinates(int deltaX, int deltaY) {
     }
 
     @Override
