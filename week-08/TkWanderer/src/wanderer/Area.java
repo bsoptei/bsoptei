@@ -39,7 +39,6 @@ class Area implements GameMeetingPoint {
     private void administerPlayers() {
         players.add(hero);
         players.addAll(enemies);
-
     }
 
     private void generateEnemies() {

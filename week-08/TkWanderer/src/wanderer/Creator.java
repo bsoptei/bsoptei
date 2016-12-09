@@ -15,6 +15,6 @@ class Creator {
     static void initialize() {
         gameArea.reset();
         board.addKeyListener(boardKeyListener);
-        JOptionPane.showMessageDialog(null, "Welcome to my maze!");
+        board.showWelcome();
     }
 }

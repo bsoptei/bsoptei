@@ -19,6 +19,11 @@ class Board extends JFrame implements GameMeetingPoint {
         this.setUndecorated(true);
     }
 
+    private void addMenus(){
+        JMenuBar menu = new JMenuBar();
+        JMenu gameMenu = new JMenu("Game");
+    }
+
     @Override
     public void paint(Graphics graphics) {
         drawTiles(graphics);
@@ -70,9 +75,18 @@ class Board extends JFrame implements GameMeetingPoint {
         player.getGameObjectImage().draw(graphics);
     }
 
+    void showWelcome() {
+        JOptionPane.showMessageDialog(this, "Welcome to my maze!");
+    }
+
     void showHelp() {
-        JOptionPane.showMessageDialog(null, "You are the blond fella. \n" +
+        JOptionPane.showMessageDialog(this, "You are the green-haired fella. \n" +
                 "You can move with the arrow keys.\n" +
-                "When you're on ");
+                "When you're on the same tile with an enemy,\n" +
+                "you can use spacebar to strike.");
+    }
+
+    void showGameOver() {
+        JOptionPane.showMessageDialog(this, "Game Over!");
     }
 }

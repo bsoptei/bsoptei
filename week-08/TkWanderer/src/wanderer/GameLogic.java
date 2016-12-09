@@ -24,7 +24,7 @@ class GameLogic implements GameMeetingPoint {
             hero.setCurrentOpponent(null);
         }
         if (!hero.isAlive()) {
-            JOptionPane.showMessageDialog(null, "Game Over!");
+            board.showGameOver();
         }
     }
 
