@@ -8,7 +8,7 @@ import java.util.Random;
 /**
  * Created by Söp on 2016.12.05.. Generic class for pretty much everything (tiles & characters) in the game
  */
-abstract class GameObject implements Battle{
+abstract class GameObject implements Battle {
     Integer defaultHealthPoint, healthPoint, defensePoint, strikePoint, xPos, yPos;
     Area gameArea = Creator.gameArea;
     static int imageSize = Creator.imageSize;

@@ -14,11 +14,9 @@ class GameLogic {
     private FileManager fileManager = new FileManager();
 
     void update() {
-        gameArea.updatePlayerPositions();
         if (hero.getNumberOfMoves() % 2 == 0) {
             moveEnemiesRandomly();
         }
-
         if (bossIsKilled() && keyHolderIsKilled()) {
             gameArea.generateMap();
             gameArea.reset();

@@ -9,6 +9,8 @@ class Board extends JFrame {
     private final String fontFamily = "Courier New";
     private static int imageSize = Creator.imageSize;
     private Area gameArea = Creator.gameArea;
+    private Hero hero = Creator.hero;
+    private int textX, textY;
 
     Board() {
         initProperties();
@@ -24,12 +26,12 @@ class Board extends JFrame {
     @Override
     public void paint(Graphics graphics) {
         drawTiles(graphics);
-        int textX = gameArea.getWidth() * imageSize;
-        int textY = 50;
+        textX = gameArea.getWidth() * imageSize;
+        textY = 50;
         int statsPanelWidth = 300;
-        drawPanel(graphics, textX, statsPanelWidth);
-        drawTextOnPanel(graphics, textX, textY);
-        drawPlayers(graphics, textX, textY);
+        drawPanel(graphics, statsPanelWidth);
+        drawTextOnPanel(graphics);
+        drawPlayers(graphics);
     }
 
     private void drawTiles(Graphics graphics) {
@@ -40,31 +42,35 @@ class Board extends JFrame {
         }
     }
 
-    private void drawPanel(Graphics graphics, int textX, int statsPanelWidth) {
+    private void drawPanel(Graphics graphics, int statsPanelWidth) {
         int statsPanelHeight = gameArea.getHeight() * imageSize;
         graphics.setColor(Color.BLACK);
         graphics.fillRect(textX, 0, statsPanelWidth, statsPanelHeight);
     }
 
-    private void drawTextOnPanel(Graphics graphics, int textX, int textY) {
+    private void drawTextOnPanel(Graphics graphics) {
         graphics.setColor(Color.YELLOW);
         graphics.setFont(new Font(fontFamily, Font.BOLD, 18));
         String levelIndicator = String.format("Area %d", Area.level);
         graphics.drawString(levelIndicator, textX, 20);
     }
 
-    private void drawPlayers(Graphics graphics, int textX, int textY) {
+    private void drawPlayers(Graphics graphics) {
         graphics.setFont(new Font(fontFamily, Font.BOLD, 12));
-        for (GameObject player : gameArea.getPlayers()) {
-            if (player.isAlive()) {
-                drawPlayerImage(graphics, player);
-                ArrayList<String> stats = new ArrayList<>(Arrays.asList(player.getName(),
-                        player.levelToString(), player.statsToString()));
-                for (String stat : stats) {
-                    graphics.drawString(stat, textX, textY);
-                    textY += (stat.equals("")) ? 0 : 15;
-                }
-            }
+        gameArea.getPlayers().stream().filter(GameObject::isAlive).forEach(player ->
+                drawPlayerImage(graphics, player));
+        drawPlayerStats(graphics,hero);
+        if (hero.getCurrentOpponent() != null) {
+            drawPlayerStats(graphics, hero.getCurrentOpponent());
+        }
+    }
+
+    private void drawPlayerStats(Graphics graphics, GameObject player) {
+        ArrayList<String> stats = new ArrayList<>(Arrays.asList(player.getName(),
+                player.levelToString(), player.statsToString()));
+        for (String stat : stats) {
+            graphics.drawString(stat, textX, textY);
+            textY += (stat.equals("")) ? 0 : 15;
         }
     }
 

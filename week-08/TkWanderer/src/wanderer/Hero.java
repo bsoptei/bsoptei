@@ -163,7 +163,11 @@ class Hero extends GameObject {
         return String.format("Level %s", String.valueOf(heroLevel));
     }
 
-    public void setGameArea(Area gameArea) {
+    void setGameArea(Area gameArea) {
         this.gameArea = gameArea;
+    }
+
+    GameObject getCurrentOpponent() {
+        return currentOpponent;
     }
 }

@@ -8,7 +8,6 @@ import java.util.Random;
  * Created by Söp on 2016.12.05.. Virtual map of the game
  */
 class Area {
-//    private Hero hero = Creator.hero;
     private int width, height;
     private Tile[][] tiles;
     private Random dice = new Random();
@@ -35,7 +34,6 @@ class Area {
         hero.reset();
         enemies.clear();
         players.clear();
-        initPlayerPositions();
         generateEnemies();
         administerPlayers();
     }
@@ -48,7 +46,6 @@ class Area {
     private void generateEnemies() {
         int numberOfEnemies = dice.nextInt(4) + 3;
         while (enemies.size() < numberOfEnemies) {
-            updatePlayerPositions();
             int xPos = dice.nextInt(width - 1) + 1;
             int yPos = dice.nextInt(height - 1) + 1;
             if (!tiles[xPos][yPos].isObstacle()) {
@@ -83,21 +80,6 @@ class Area {
 
     private void identifyEnemy(int i) {
         battleEnemy = enemies.get(i);
-    }
-
-    void updatePlayerPositions() {
-        playerPositions = new StringBuilder[width][height];
-        initPlayerPositions();
-        players.forEach(player ->
-                playerPositions[player.getX()][player.getY()].append(player.getType()));
-    }
-
-    private void initPlayerPositions() {
-        for (int i = 0; i < playerPositions.length; i++) {
-            for (int j = 0; j < playerPositions[i].length; j++) {
-                playerPositions[i][j] = new StringBuilder("");
-            }
-        }
     }
 
     StringBuilder[][] getPlayerPositions() {
