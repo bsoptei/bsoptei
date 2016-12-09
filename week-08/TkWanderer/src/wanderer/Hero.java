@@ -73,7 +73,7 @@ class Hero extends GameObject {
     }
 
     @Override
-    void strike() {
+    public void strike() {
         if (currentOpponent != null) {
             AudioPlayer.play("src/wanderer/wav/326847__johnbuhr__sword-clash-37.wav");
             currentOpponent.sufferDamage(strikePoint);
@@ -107,7 +107,7 @@ class Hero extends GameObject {
     }
 
     @Override
-    void sufferDamage(int damage) {
+    public void sufferDamage(int damage) {
         if (damage + (dice.nextInt(6) + 1) * 2 > defensePoint) {
             AudioPlayer.play("src/wanderer/wav/19421__awfulthesample__awfultheaudio-watschn2.wav");
             decreaseHealthPoint(damage);
@@ -141,7 +141,7 @@ class Hero extends GameObject {
         defaultHealthPoint += (dice.nextInt(6) + 1);
         defensePoint += (dice.nextInt(6) + 1);
         strikePoint += (dice.nextInt(6) + 1);
-//        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
+        AudioPlayer.play("src/wanderer/wav/345111__toiletrolltube__rec034-guitar-1-p-1.wav");
     }
 
     int getHeroLevel() {

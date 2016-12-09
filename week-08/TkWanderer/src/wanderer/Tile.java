@@ -30,10 +30,6 @@ class Tile extends GameObject {
         moveElementImage();
     }
 
-    @Override
-    void strike() {
-
-    }
 
     @Override
     void changeElementImageCoordinates(int deltaX, int deltaY) {
@@ -65,9 +61,14 @@ class Tile extends GameObject {
         return null;
     }
 
+
     @Override
-    void sufferDamage(int damage) {
+    public void strike() {
 
     }
 
+    @Override
+    public void sufferDamage(int damage) {
+
+    }
 }
