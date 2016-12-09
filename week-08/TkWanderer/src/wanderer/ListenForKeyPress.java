@@ -13,6 +13,17 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
+        switch (key) {
+            case VK_F1:
+                board.showHelp();
+                break;
+            case VK_F2:
+                controller.startNewGame();
+                break;
+            case VK_ESCAPE:
+                System.exit(0);
+                break;
+        }
         if (hero.isAlive()) {
             switch (key) {
                 case VK_SPACE:
@@ -30,17 +41,9 @@ class ListenForKeyPress implements KeyListener, GameMeetingPoint {
                 case VK_DOWN:
                     hero.move(0, 1);
                     break;
-                case VK_F1:
-                    board.showHelp();
-                    break;
-                case VK_F2:
-                    controller.startNewGame();
             }
             board.repaint();
             controller.update();
-        }
-        if (key == VK_ESCAPE) {
-            System.exit(0);
         }
     }
 

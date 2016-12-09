@@ -49,4 +49,10 @@ class GameLogic implements GameMeetingPoint {
         Area.level = 0;
         gameArea.reset();
     }
+
+    void saveGame() {
+    }
+
+    void loadGame() {
+    }
 }

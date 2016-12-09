@@ -78,10 +78,11 @@ class Board extends JFrame implements GameMeetingPoint {
         JOptionPane.showMessageDialog(this, "Help:\nYou are the green-haired fella. \n" +
                 "You can move with the arrow keys.\n" +
                 "When you're on the same tile with an enemy,\n" +
-                "you can use spacebar to strike.");
+                "you can use spacebar to strike.\n" +
+                "F2 starts new game");
     }
 
     void showGameOver() {
-        JOptionPane.showMessageDialog(this, "Game Over!");
+        JOptionPane.showMessageDialog(this, "Game Over!\n You can start new game by pressing F2");
     }
 }

@@ -45,8 +45,10 @@ class Enemy extends GameObject {
         );
     }
 
+
     private boolean neighborIsEnemy(int deltaX, int deltaY) {
         String id = gameArea.getPlayerPositions()[deltaX][deltaY].toString();
+        System.out.println(id);
         return enemyTypes.contains(id);
     }
 
