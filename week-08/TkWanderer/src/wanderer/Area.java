@@ -45,6 +45,7 @@ class Area implements GameMeetingPoint {
     private void generateEnemies() {
         int numberOfEnemies = dice.nextInt(4) + 3;
         while (enemies.size() < numberOfEnemies) {
+            updatePlayerPositions();
             int xPos = dice.nextInt(9) + 1;
             int yPos = dice.nextInt(9) + 1;
             if (!tiles[xPos][yPos].isObstacle() &&
@@ -56,7 +57,6 @@ class Area implements GameMeetingPoint {
                 } else {
                     enemies.add(new Skeleton(xPos, yPos, level, false));
                 }
-                updatePlayerPositions();
             }
         }
     }

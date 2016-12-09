@@ -1,5 +1,7 @@
 package wanderer;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -12,6 +14,7 @@ abstract class GameObject implements GameMeetingPoint {
     String type;
     boolean alive = true;
     PositionedImage tileImage;
+    static final ArrayList<String> enemyTypes = new ArrayList<>(Arrays.asList("S", "B"));
 
     int level;
     boolean obstacle;
