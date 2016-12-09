@@ -6,12 +6,13 @@ import java.util.HashMap;
  * Created by Söp on 2016.12.07.. The hero
  */
 class Hero extends GameObject {
-    private HashMap<String, PositionedImage> heroDirectionImages = new HashMap<String, PositionedImage>() {{
-        put("down", new PositionedImage("src/wanderer/image/hero-down.png", 0, 0));
-        put("up", new PositionedImage("src/wanderer/image/hero-up.png", 0, 0));
-        put("left", new PositionedImage("src/wanderer/image/hero-left.png", 0, 0));
-        put("right", new PositionedImage("src/wanderer/image/hero-right.png", 0, 0));
+    private HashMap<String, String> directionImageSelector = new HashMap<String, String>() {{
+        put("down", "src/wanderer/image/hero-down.png");
+        put("up", "src/wanderer/image/hero-up.png");
+        put("left", "src/wanderer/image/hero-left.png");
+        put("right", "src/wanderer/image/hero-right.png");
     }};
+    private HashMap<String, PositionedImage> directionImages = new HashMap<>();
     private int numberOfMoves;
     private GameObject currentOpponent;
     private int heroLevel = 1;
@@ -25,6 +26,7 @@ class Hero extends GameObject {
         name = "Hero";
         swanSong = "src/wanderer/wav/56901__syna-max__wilhelm-scream-outtake.wav";
         createElementImage();
+        createDirectionImages();
         initStats();
     }
 
@@ -46,6 +48,12 @@ class Hero extends GameObject {
         }
     }
 
+    private void createDirectionImages() {
+        for (String direction : directionImageSelector.keySet()) {
+            directionImages.put(direction, new PositionedImage(directionImageSelector.get(direction), 0, 0));
+        }
+    }
+
     @Override
     void move(int deltaX, int deltaY) {
         if (movementIsPossible(deltaX, deltaY)) {
@@ -55,20 +63,20 @@ class Hero extends GameObject {
         } else {
             AudioPlayer.play("src/wanderer/wav/8838__churd-tzu__water-bottle-snare-15-bonk.wav");
         }
-        changeElementImageCoordinates(deltaX, deltaY);
+        changeElementDirectionImage(deltaX, deltaY);
         moveElementImage();
         incrementNumberOfMoves();
     }
 
-    void changeElementImageCoordinates(int deltaX, int deltaY) {
-        if (deltaX == -1) {
-            tileImage = heroDirectionImages.get("left");
+    void changeElementDirectionImage(int deltaX, int deltaY) {
+        if (deltaY == -1) {
+            tileImage = directionImages.get("up");
+        } else if (deltaY == 1) {
+            tileImage = directionImages.get("down");
         } else if (deltaX == 1) {
-            tileImage = heroDirectionImages.get("right");
-        } else if (deltaY == -1) {
-            tileImage = heroDirectionImages.get("up");
+            tileImage = directionImages.get("right");
         } else {
-            tileImage = heroDirectionImages.get("down");
+            tileImage = directionImages.get("left");
         }
     }
 

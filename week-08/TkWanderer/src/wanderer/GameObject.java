@@ -25,6 +25,7 @@ abstract class GameObject implements GameMeetingPoint, Battle{
         put("H", "src/wanderer/image/hero-down.png");
         put("S", "src/wanderer/image/skeleton.png");
         put("B", "src/wanderer/image/boss.png");
+
     }};
     String swanSong;
 
@@ -34,7 +35,7 @@ abstract class GameObject implements GameMeetingPoint, Battle{
 
     abstract void initStats();
 
-    abstract void changeElementImageCoordinates(int deltaX, int deltaY);
+    abstract void changeElementDirectionImage(int deltaX, int deltaY);
 
     abstract void move(int deltaX, int deltaY);
 
