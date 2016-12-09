@@ -29,9 +29,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 class Maze {
-    private static final int WALL = 0;
-    private static final int SPACE = 1;
-    private byte[][] data;
+    private Tile[][] data;
     private int width;
     private int height;
     private Random rand = new Random();
@@ -39,7 +37,7 @@ class Maze {
     Maze(int width, int height) {
         this.width = width;
         this.height = height;
-        data = new byte[width][];
+        data = new Tile[width][];
     }
 
     private void carve(int x, int y) {
@@ -52,9 +50,9 @@ class Maze {
             final int y1 = y + upy[dir];
             final int x2 = x1 + upx[dir];
             final int y2 = y1 + upy[dir];
-            if (data[x1][y1] == WALL && data[x2][y2] == WALL) {
-                data[x1][y1] = SPACE;
-                data[x2][y2] = SPACE;
+            if (data[x1][y1].getType().equals("W") && data[x2][y2].getType().equals("W")) {
+                data[x1][y1] = new Tile(x1,y1, "F");
+                data[x2][y2] = new Tile(x2, y2, "F");
                 carve(x2, y2);
             } else {
                 dir = (dir + 1) % 4;
@@ -65,37 +63,24 @@ class Maze {
 
     Tile[][] generate() {
         for (int x = 0; x < width; x++) {
-            data[x] = new byte[height];
+            data[x] = new Tile[height];
             for (int y = 0; y < height; y++) {
-                data[x][y] = WALL;
+                data[x][y] = new Tile(x,y, "W");
             }
         }
         for (int x = 0; x < width; x++) {
-            data[x][0] = SPACE;
-            data[x][height - 1] = SPACE;
+            data[x][0] = new Tile(x,0, "F");
+            data[x][height - 1] = new Tile(x, height -1, "F");
         }
         for (int y = 0; y < height; y++) {
-            data[0][y] = SPACE;
-            data[width - 1][y] = SPACE;
+            data[0][y] = new Tile(0, y, "F");
+            data[width - 1][y] = new Tile(width -1, y, "F");
         }
-        data[2][2] = SPACE;
+        data[2][2] = new Tile(2, 2, "F");
         carve(2, 2);
-        data[2][1] = SPACE;
-        data[width - 3][height - 2] = SPACE;
-        return convert();
+        data[2][1] = new Tile(2,1, "F");
+        data[width - 3][height - 2] = new Tile(width-3, height-2, "F");
+        return data;
     }
 
-    private Tile[][] convert() {
-        Tile[][] tiles = new Tile[width][height];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (data[x][y] == WALL) {
-                    tiles[x][y] = (new Tile(x, y, "W"));
-                } else {
-                    tiles[x][y] = (new Tile(x, y, "F"));
-                }
-            }
-        }
-        return tiles;
-    }
 }
