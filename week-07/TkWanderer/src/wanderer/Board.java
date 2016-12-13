@@ -37,7 +37,7 @@ class Board extends JFrame {
     private void drawTiles(Graphics graphics) {
         for (int i = 0; i < gameArea.getTiles().length; i++) {
             for (int j = 0; j < gameArea.getTiles()[i].length; j++) {
-                gameArea.getTiles()[i][j].getGameObjectImage().draw(graphics);
+                gameArea.getTiles()[i][j].getGameObjectImage().paint(graphics);
             }
         }
     }
@@ -75,6 +75,6 @@ class Board extends JFrame {
     }
 
     private void drawPlayerImage(Graphics graphics, GameObject player) {
-        player.getGameObjectImage().draw(graphics);
+        player.getGameObjectImage().paint(graphics);
     }
 }

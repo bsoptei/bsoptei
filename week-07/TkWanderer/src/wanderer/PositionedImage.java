@@ -1,6 +1,7 @@
 package wanderer;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,10 +10,11 @@ import java.io.IOException;
 /**
  * Created by Söp on 2016.12.05. Image manager for game objects
  */
-class PositionedImage {
+class PositionedImage extends JComponent {
     private static int imageSize = Creator.imageSize;
     private BufferedImage image;
     private int xPos, yPos;
+
 
     PositionedImage(String filename, int xPos, int yPos) {
         this.xPos = xPos;
@@ -24,10 +26,17 @@ class PositionedImage {
         }
     }
 
-    void draw(Graphics graphics) {
+    void draw() {
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
+//        super.paint(g);
         if (image != null) {
-            graphics.drawImage(image, xPos, yPos, imageSize, imageSize, null);
+            g.drawImage(image, xPos, yPos, imageSize, imageSize, null);
         }
+
     }
 
     void setXPos(int xPos) {
