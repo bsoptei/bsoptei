@@ -17,6 +17,8 @@ public class DrawFractal extends JFrame {
         this.add(myPanel);
         FractalPanel fp = new FractalPanel();
         this.add(fp);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setUndecorated(true);
         this.setVisible(true);
     }
 }
