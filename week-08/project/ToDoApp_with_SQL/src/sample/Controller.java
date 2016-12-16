@@ -36,7 +36,7 @@ public class Controller {
     private Dao<ToDoItem, String> toDoItemDao;
     private ConnectionSource connectionSource;
     private StringBuilder databaseUrl = new StringBuilder();
-
+    @FXML
     public void submitUser() {
         if (userNameField.getText().length() > 0 && passwordField.getText().length() > 0) {
             user = userNameField.getText();
