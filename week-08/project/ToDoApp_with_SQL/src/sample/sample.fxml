@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.PasswordField?>
+<VBox id="container" prefHeight="400.0" prefWidth="500.0" stylesheets="/sample/css/style.css"
+      xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+
+    <HBox id="titleBox" minWidth="500.0" prefHeight="50.0" prefWidth="500.0">
+        <Text id="titleText" fx:id="titleText" text="ToDo!"/>
+    </HBox>
+    <HBox id="mainBox" layoutX="10.0" layoutY="10.0" minWidth="500.0" prefHeight="350.0" prefWidth="500.0"
+          GridPane.rowIndex="1">
+        <VBox id="menuBox" minHeight="350.0" minWidth="100.0" prefHeight="350.0" prefWidth="100.0">
+            <Text text="Your user name:"/>
+            <TextField id="userName" fx:id="userNameField" promptText="Enter user name..."/>
+            <Text text="Password:"/>
+            <PasswordField id="passwordField" fx:id="passwordField" promptText="Enter password..."/>
+
+            <Button id="submitButton" onAction="#submitUser" text="Submit"/>
+            <Text text="Select date:"/>
+            <DatePicker id="myDatePicker" fx:id="myDatePicker" onAction="#showList"/>
+            <Button id="helpButton" onAction="#showHelp" text="?">
+                <VBox.margin>
+                    <Insets top="180.0"/>
+                </VBox.margin>
+            </Button>
+
+        </VBox>
+        <VBox id="contentsBox" minHeight="350.0" minWidth="400.0" prefHeight="350.0" prefWidth="400.0">
+            <HBox id="showTextBox" minHeight="200.0" minWidth="250.0" prefHeight="250.0" prefWidth="200.0">
+                <Text id="thingsToDo" fx:id="thingsToDo"/>
+            </HBox>
+            <HBox id="addOrRemoveBox" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="200.0">
+                <TextArea id="myTextArea" fx:id="myTextArea" onKeyPressed="#textAreaKeyPressed" prefHeight="100.0"
+                          prefWidth="300.0" promptText="Enter task description or number"/>
+                <VBox prefHeight="200.0" prefWidth="100.0">
+                    <Button id="addButton" onAction="#addTask" prefHeight="100" prefWidth="100.0" text="Add"/>
+                    <Button id="removeButton" onAction="#removeTask" prefHeight="100" prefWidth="100.0" text="Remove"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
