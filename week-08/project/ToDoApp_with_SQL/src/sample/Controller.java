@@ -35,6 +35,7 @@ public class Controller {
     private String currentDate = null;
     private Dao<ToDoItem, String> toDoItemDao;
     private ConnectionSource connectionSource;
+    private StringBuilder databaseUrl = new StringBuilder();
 
     public void submitUser() {
         if (userNameField.getText().length() > 0 && passwordField.getText().length() > 0) {
@@ -50,15 +51,9 @@ public class Controller {
     }
 
     private void connectToDatabase(String passWord) {
-        StringBuilder databaseUrl = new StringBuilder();
         databaseUrl.append("jdbc:mysql://127.0.0.1:3306/todoapp?user=root&password=")
                 .append(passWord);
-        try {
-            connectionSource = new JdbcConnectionSource(databaseUrl.toString());
-            createUser();
-        } catch (SQLException e) {
-            informUserAboutSQLError();
-        }
+        SQLHandler("connect");
     }
 
     private void createUser() throws SQLException {
@@ -72,11 +67,7 @@ public class Controller {
     private void showList() {
         if (user != null && myDatePicker.getValue() != null) {
             currentDate = myDatePicker.getValue().toString();
-            try {
-                queryShowList();
-            } catch (SQLException e) {
-                informUserAboutSQLError();
-            }
+            SQLHandler("show");
         } else {
             thingsToDo.setText("Submit user first!");
         }
@@ -105,11 +96,7 @@ public class Controller {
 
     @FXML
     private void addTask() throws SQLException {
-        try {
-            queryAddTask();
-        } catch (SQLException e) {
-            informUserAboutSQLError();
-        }
+       SQLHandler("add");
     }
 
     private void queryAddTask() throws SQLException {
@@ -122,7 +109,7 @@ public class Controller {
             if (toDoItemDao.queryForEq("description", description).size() == 0) {
                 toDoItemDao.create(myTodo);
             }
-            showList();
+            queryShowList();
         } else {
             thingsToDo.setText("Submit user and select date first.");
         }
@@ -130,11 +117,7 @@ public class Controller {
 
     @FXML
     private void removeTask() {
-        try {
-            queryRemoveTask();
-        } catch (SQLException e) {
-            informUserAboutSQLError();
-        }
+        SQLHandler("remove");
     }
 
     private void queryRemoveTask() throws SQLException {
@@ -151,7 +134,7 @@ public class Controller {
                     .eq("description", description);
             PreparedDelete<ToDoItem> preparedDeleteQuery = deleteBuilder.prepare();
             toDoItemDao.delete(preparedDeleteQuery);
-            showList();
+            queryShowList();
         } else {
             thingsToDo.setText("Submit user name and select date first.");
         }
@@ -171,6 +154,23 @@ public class Controller {
     private void createAccountIfNotExists(Dao<User, String> accountDao, User user) throws SQLException {
         if (accountDao.queryForId(user.getName()) == null) {
             accountDao.create(user);
+        }
+    }
+
+    private void SQLHandler(String option) {
+        try {
+            if (option.equals("connect")) {
+                connectionSource = new JdbcConnectionSource(databaseUrl.toString());
+                createUser();
+            } else if (option.equals("remove")) {
+                queryRemoveTask();
+            } else if (option.equals("add")) {
+                queryAddTask();
+            } else if (option.equals("show")) {
+                queryShowList();
+            }
+        } catch (SQLException e) {
+            informUserAboutSQLError();
         }
     }
 
