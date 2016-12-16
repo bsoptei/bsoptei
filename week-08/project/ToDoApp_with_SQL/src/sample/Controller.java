@@ -58,6 +58,7 @@ public class Controller {
 
     private void createUser() throws SQLException {
         Dao<User, String> userDao = DaoManager.createDao(connectionSource, User.class);
+        toDoItemDao = DaoManager.createDao(connectionSource, ToDoItem.class);
         TableUtils.createTableIfNotExists(connectionSource, User.class);
         User actualUser = new User(user);
         createAccountIfNotExists(userDao, actualUser);
@@ -74,8 +75,6 @@ public class Controller {
     }
 
     private void queryShowList() throws SQLException {
-        toDoItemDao = DaoManager.createDao(connectionSource, ToDoItem.class);
-        TableUtils.createTableIfNotExists(connectionSource, ToDoItem.class);
         List<ToDoItem> toDoList = toDoItemDao.queryBuilder()
                 .selectColumns("description", "date")
                 .where()
@@ -103,7 +102,6 @@ public class Controller {
         String description = myTextArea.getText();
         if (currentDate != null && myTextArea.getText().length() > 0) {
             ToDoItem myTodo = new ToDoItem(userNameField.getText(), description, currentDate);
-            System.out.println();
             toDoItemDao = DaoManager.createDao(connectionSource, ToDoItem.class);
             TableUtils.createTableIfNotExists(connectionSource, ToDoItem.class);
             if (toDoItemDao.queryForEq("description", description).size() == 0) {
