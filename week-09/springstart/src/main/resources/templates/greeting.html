@@ -6,6 +6,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="name" type="com.greenfoxacademy.springstart.controllers.HelloWebController"*/-->
-<p th:text="'Hello, ' + ${name} + '!'" />
+<!--/*@thymesVar id="count" type="com.greenfoxacademy.springstart.controllers.HelloWebController"*/-->
+<p th:text="'Hello, ' + ${name} + '!' + ${count}" />
 </body>
 </html>
