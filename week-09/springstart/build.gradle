@@ -11,7 +11,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
 jar {
@@ -27,9 +26,10 @@ repositories {
 
 
 dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	runtime('org.springframework.boot:spring-boot-devtools')
 	compileOnly('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	runtime('org.springframework.boot:spring-boot-devtools')
 }
