@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Multiple hellos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--/*@thymesVar id="hellos" type="com.greenfoxacademy.springstart.controllers.HelloMultiplier"*/-->
+<p th:each="hello: ${hellos}" th:text="${hello}"></p>
+<!--<ul>-->
+  <!---->
+    <!--<li th:each="hello : ${hellos}" th:text="${hello}">hello</li>-->
+<!--</ul>-->
+</body>
+</html>

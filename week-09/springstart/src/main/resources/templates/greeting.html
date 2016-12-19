@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Hello you, plus counter</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <!--/*@thymesVar id="name" type="com.greenfoxacademy.springstart.controllers.HelloWebController"*/-->
 <!--/*@thymesVar id="count" type="com.greenfoxacademy.springstart.controllers.HelloWebController"*/-->
-<p th:text="'Hello, ' + ${name} + '!' + ${count}" />
+<p th:text="'Hello, ' + ${name} + '! This site was loaded '+ ${count} +' times since last server start.' " />
 </body>
 </html>
