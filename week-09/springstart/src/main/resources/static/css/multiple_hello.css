@@ -1,0 +1,14 @@
+p:nth-child(odd) {
+    font-size: 16px;
+    color: steelblue;
+}
+
+p:nth-child(even) {
+    font-size: 21px;
+    color: #abcdef;
+}
+
+p:nth-child(3n+3) {
+    color: #00EF99;
+    font-size: 36px;
+}
