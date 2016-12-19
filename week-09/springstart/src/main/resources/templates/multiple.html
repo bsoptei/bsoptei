@@ -8,6 +8,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="hellos" type="com.greenfoxacademy.springstart.controllers.HelloMultiplier"*/-->
-<p th:each="hello: ${hellos}" th:text="${hello}"></p>
+<p th:each="hello, iterStat: ${hellos}" th:text="${hello}"
+   th:style="'font-size:'+${iterStat.count}+'px; color:#'+${iterStat.count}+${iterStat.count}+${iterStat.count}+''" ></p>
 </body>
 </html>
