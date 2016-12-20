@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>List of todos</title>
+</head>
+<body>
+<h1>Your Todos:</h1>
+<!--/*@thymesVar id="todos" type="com.greenfoxacademy.TodoController"*/-->
+<ul th:each="todo: ${todos}">
+    <!--/*@thymesVar id="listActive" type="com.greenfoxacademy.TodoController"*/-->
+    <li th:if="(${listActive} and !${todo.isDone}) or !${listActive}" th:text="${todo.title}"></li>
+</ul>
+</body>
+</html>
