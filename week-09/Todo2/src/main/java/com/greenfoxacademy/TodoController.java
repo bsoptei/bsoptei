@@ -2,10 +2,7 @@ package com.greenfoxacademy;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Söp on 2016.12.20..
@@ -26,5 +23,17 @@ public class TodoController {
     public String showDetails(@PathVariable("id") int id, Model model){
         model.addAttribute("currentTodo", myTodoService.getTodoById(id));
         return "todo/showDetails";
+    }
+
+    @GetMapping("/add")
+    public String addTodo(Model model) {
+        model.addAttribute("todo", new Todo());
+        return "todo/addTodo";
+    }
+
+    @PostMapping("/add")
+    public String showResults(@ModelAttribute Todo todo) {
+        myTodoService.addTodo(todo);
+        return "redirect:todo/listTodos";
     }
 }

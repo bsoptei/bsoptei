@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Results</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Todo successfully added</h1>
+<p th:text="'Id: ' + ${todo.id}"></p>
+<p th:text="'Description: ' + ${todo.title}"></p>
+<p th:text="'Urgent: ' + ${todo.isUrgent}"></p>
+<a href="#" th:href="@{'/todo/list'}" th:text="'Show list'">Show list</a>
+</body>
+</html>

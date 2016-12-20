@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>List of todos</title>
+    <title>Show details</title>
 </head>
 <body>
 <h1>Details</h1>
@@ -20,6 +20,14 @@
         <td th:text="${currentTodo.title}">1</td>
     </tr>
 </table>
+<div>
+    <label th:text="'Urgent'">Urgent</label>
+    <input type="checkbox" disabled="true" th:if="${currentTodo.isUrgent}" th:checked="${true}"/>
+</div>
+<div>
+    <label th:text="'Done'">Done</label>
+    <input type="checkbox" disabled="true" th:if="${currentTodo.isDone}" th:checked="${true}"/>
+</div>
 <a href="#" th:href="@{'/todo/list'}" th:text="'Back'">Back</a>
 </body>
 </html>

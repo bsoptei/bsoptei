@@ -12,5 +12,6 @@
     <li th:if="(${listActive} and !${todo.isDone}) or !${listActive}" th:text="${todo.title}"></li>
     <a href="#" th:href="@{'/todo/details/'+${todo.id}}">Show details</a>
 </ul>
+<a href="/todo/add">Add new todo</a>
 </body>
 </html>
