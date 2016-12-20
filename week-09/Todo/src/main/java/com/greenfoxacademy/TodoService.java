@@ -24,4 +24,14 @@ public class TodoService {
         }
         fakeTodoStore.add(todo);
     }
+
+    public Todo getTodoById(int id){
+        Todo outputItem = new Todo();
+        for(Todo todoItem: fakeTodoStore){
+            if (todoItem.getId() == id){
+                outputItem = todoItem;
+            }
+        }
+        return outputItem;
+    }
 }

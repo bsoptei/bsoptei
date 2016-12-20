@@ -10,6 +10,7 @@
 <ul th:each="todo: ${todos}">
     <!--/*@thymesVar id="listActive" type="com.greenfoxacademy.TodoController"*/-->
     <li th:if="(${listActive} and !${todo.isDone}) or !${listActive}" th:text="${todo.title}"></li>
+    <a href="#" th:href="@{'/todo/details/'+${todo.id}}">Show details</a>
 </ul>
 </body>
 </html>

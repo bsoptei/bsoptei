@@ -2,12 +2,14 @@ package com.greenfoxacademy;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
  * Created by Söp on 2016.12.20..
  */
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @ToString
 public class Todo {
