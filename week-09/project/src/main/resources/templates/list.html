@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>The Calorie Counter - Your meals</title>
+</head>
+<body>
+<header>
+    <h1>The Calorie Counter</h1>
+</header>
+<a class="btn btn-primary" th:href="@{'/new'}" href="#">Add new Meal</a>
+
+<table class="table table-striped" id="posts_list">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Calories</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="meal : ${meals}">
+        <td class="id" data-th-text="${meal.id}"></td>
+        <td class="date" data-th-text="${meal.date}"></td>
+        <td class="type" data-th-text="${meal.type}"></td>
+        <td class="description" data-th-text="${meal.description}"></td>
+        <td class="calories" data-th-text="${meal.calories}"></td>
+
+        <td>
+            <a th:href="@{'/{id}/delete'(id=${meal.id})}" class="delete" th:attr="name=${meal.description}">
+                Delete
+            </a>
+        </td>
+
+        <td>
+            <a th:href="@{'/{id}/edit'(id=${meal.id})}" class="edit" th:attr="name=${meal.description}">
+                Edit
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

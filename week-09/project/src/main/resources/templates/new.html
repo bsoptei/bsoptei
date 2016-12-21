@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>The Calorie Counter - Add new meal</title>
+</head>
+
+<body>
+<form action="#" th:action="@{'/new'}" th:object="${meal}" method="post">
+    <label for="date" th:text="'Date'"></label>
+    <input id="date" type="datetime-local" th:field="*{date}"/>
+    <label for="type" th:text="Type"></label>
+    <select id="type" th:field="*{type}" th:remove="all-but-first">
+        <option th:each="typeOption : ${typeOptions}"
+                th:value="${typeOption}" th:text="${typeOption}"></option>
+    </select>
+    <label for="description" th:text="'Description'"></label>
+    <input id="description" type="text" th:field="*{description}"/>
+    <label for="calories" th:text="'Calories'"></label>
+    <input id="calories" type="number" min="1" max="1000000" th:field="*{calories}"/>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+
+</form>
+
+</body>
+
+
+</html>
+
