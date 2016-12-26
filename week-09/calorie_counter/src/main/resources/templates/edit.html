@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>The Calorie Counter - Edit meal</title>
+</head>
+
+<body>
+<form action="#" th:action="@{'/edit'}" th:object="${meal}" method="post">
+    <label for="date" th:text="'Date'">Date</label>
+    <input id="date" type="datetime-local" th:value="${meal.date}" th:field="*{date}" th:required="required" required="true"/>
+    <label for="type" th:text="Type">Type</label>
+    <select id="type" th:field="*{type}" th:remove="all-but-first" th:required="required" required="true">
+        <option th:each="typeOption : ${typeOptions}"
+                th:value="${typeOption}"
+                th:selected="${meal.type}"
+                th:text="${typeOption}">One option</option>
+        <option>Another option</option>
+        <option>Another option</option>
+    </select>
+    <label for="description" th:text="'Description'">Description</label>
+    <input id="description" type="text" th:text="${meal.description}" th:field="*{description}" th:required="required" required="true"/>
+    <label for="calories" th:text="'Calories'">Calories</label>
+    <input id="calories" type="number" min="1" max="1000000" th:text="${meal.calories}" th:field="*{calories}" th:required="required" required="true"/>
+    <input type="hidden" id="id" rows="5" class="form-control" name="id" th:value="${meal.id}"/>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+
+</body>
+
+</html>
