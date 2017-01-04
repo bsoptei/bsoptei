@@ -58,9 +58,9 @@ public class RedditController {
         return "redirect:/posts/";
     }
 
-    @PostMapping(value = "/posts/changescore/")
-    public String changeScore(@RequestParam("id") Long id,
-                              @RequestParam("difference") Integer difference) {
+    @RequestMapping(value = "/posts/changescore/{id}/{difference}")
+    public String changeScore(@PathVariable Long id,
+                              @PathVariable Integer difference) {
         postService.changePostScore(id, difference);
         return "redirect:/posts/";
     }

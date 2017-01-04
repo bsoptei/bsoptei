@@ -16,23 +16,8 @@
     <tbody>
     <tr th:each="post: ${posts}">
         <td th:text="${post.score}"></td>
-        <td>
-            <form action="#" th:action="@{'/posts/changescore/'}" th:object="${post}" method="post">
-                <input type="hidden" id="id" class="form-control" name="id" th:value="${post.id}"/>
-                <input type="hidden" id="difference" class="form-control" name="difference" th:value="${post.score + 1}"/>
-                <input type="submit" value="+"/>
-            </form>
-        </td>
-        <td>
-            <form action="#" th:action="@{'/posts/changescore/'}" th:object="${post}" method="post">
-                <input type="hidden" id="id" class="form-control" name="id" th:value="${post.id}"/>
-                <input type="hidden" id="difference" class="form-control" name="difference" th:value="${post.score - 1}"/>
-                <input type="submit" value="-"/>
-            </form>
-        </td>
-
-        <!--<td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='1')}">+</a></td>-->
-        <!--<td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='-1')}">-</a></td>-->
+        <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='1')}">+</a></td>
+        <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='-1')}">-</a></td>
         <td th:text="${post.content}"></td>
     </tr>
     </tbody>

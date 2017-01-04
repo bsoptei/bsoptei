@@ -32,7 +32,7 @@ public class PostService {
 
     public void changePostScore(Long id, Integer difference) {
         Post currentPost = postRepo.findOne(id);
-        currentPost.setScore(difference);
+        currentPost.setScore(currentPost.getScore() + difference);
         postRepo.save(currentPost);
     }
 }
