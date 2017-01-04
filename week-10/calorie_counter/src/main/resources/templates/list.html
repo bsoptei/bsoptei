@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet"></link>
+  <link rel="stylesheet" type="text/css" href="/css/main_style.css"></link>
+  <link rel="icon" type="image/png" href="/images/apple.png"></link>
+  <title>The Calorie Counter - Your meals</title>
+</head>
+<body>
+  <header>
+    <h1>The Calorie Counter</h1>
+  </header>
+  <nav>
+    <form action="#" th:action="@{'/editfilter'}" th:object="${listFilter}"
+    method="get">
+    <h2>Filter results</h2>
+    <div class="form_wrapper">
+      <div class="form_element">
+        <label for="start_date" th:text="'Start date'">Start date</label>
+        <input type="date" id="start_date" th:value="${listFilter.startDate}" th:field="*{startDate}"
+        max="2999-12-31" min="2001-01-01"/>
+      </div>
+      <div class="form_element">
+        <label for="end_date" th:text="'End date'">End date</label>
+        <input type="date" id="end_date" pattern="yyyy-MM-dd" th:value="${listFilter.endDate}"
+        th:field="*{endDate}"
+        max="2999-12-31" min="2001-01-01"/>
+      </div>
+      <div class="form_element">
+        <label for="type" th:text="Type">Type</label>
+        <select id="type" th:field="*{type}">
+          <option th:value="'%'" th:text="'All'">All</option>
+          <option th:each="typeOption : ${typeOptions}"
+          th:value="${typeOption}" th:text="${typeOption}">One option
+        </option>
+      </select>
+    </div>
+    <div class="form_element">
+      <label for="limit" th:text="'Number of meals per page'">Number of meals per page</label>
+      <select id="limit" th:field="*{itemsPerPage}">
+        <option th:text="5" th:value="'5'">5</option>
+        <option th:text="10" th:value="'10'">10</option>
+        <option th:text="50" th:value="'50'">50</option>
+      </select>
+    </div>
+    <div class="form_element">
+      <label for="sorting" th:text="'Sort by'">Order by</label>
+      <select id="sorting" th:field="*{sortCriteria}">
+        <option th:text="'Select'" th:value="''" >Select</option>
+        <option th:text="'Date, descending'" th:value="'desc date'">Date, descending</option>
+        <option th:text="'Date, ascending'" th:value="'asc date'">Date, ascending</option>
+        <option th:text="'Calories, descending'" th:value="'desc calories'">Calories, descending</option>
+        <option th:text="'Calories, ascending'" th:value="'asc calories'">Calories, ascending</option>
+      </select>
+    </div>
+  </div>
+  <input type="submit" value="Apply filter"/>
+  <input type="reset" value="Try again"/>
+  <a href="#" th:href="@{'/resetfilter'}"> Remove filter</a>
+</form>
+<a class="" th:href="@{'/new'}" href="#">Add new Meal</a>
+</nav>
+<main>
+  <article>
+    <h2>Your meals</h2>
+    <table id="meals_list" th:if="${meals.size() gt 0}">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Calories</th>
+          <th colspan="2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-th-each="meal, iterStat : ${meals}"
+        th:if="${iterStat.count} gt (${currentPage} -1) * ${listFilter.getItemsPerPage()}
+        and ${iterStat.count} le (${currentPage} -1) * ${listFilter.getItemsPerPage()} + ${listFilter.getItemsPerPage()}">
+        <td class="date" data-th-text="${meal.date}">2017-09-28</td>
+        <td class="type" data-th-text="${meal.type}">Lunch</td>
+        <td class="description" data-th-text="${meal.description}">French fries</td>
+        <td class="calories" data-th-text="${meal.calories}">500</td>
+
+        <td>
+          <a href="#" th:href="@{'/{id}/edit'(id=${meal.id})}" class="edit"
+          th:attr="name=${meal.description}">
+          Edit
+        </a>
+      </td>
+      <td>
+        <a href="#" th:href="@{'/{id}/confirmdelete'(id=${meal.id})}" class="delete"
+        th:attr="name=${meal.description}">
+        Delete
+      </a>
+    </td>
+  </tr>
+</tbody>
+</table>
+</article>
+<article>
+  <h2>Summary</h2>
+  <p th:text="'Number of meals: ' + ${meals.size()}">Number of meals: 1</p>
+  <p th:text="${listFilter.calculateTotalCalories() eq null} ? 'Total calories: 0' : 'Total calories: '+ ${listFilter.calculateTotalCalories()}" >Total calories: 100</p>
+  <table th:if="${typeCount.size() gt 0}">
+    <thead th:unless="${typeCount.get(0)[1] eq 0}">
+      <tr>
+        <th>Type</th>
+        <th>Number of meals</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-th-each="type : ${typeCount}" th:if="${type[1] gt 0}">
+        <td class="type" data-th-text="${type[0]}">Breakfast</td>
+        <td class="type_count" data-th-text="${type[1]}">20</td>
+      </tr>
+
+    </tbody>
+  </table>
+</article>
+</main>
+<footer>
+  <p th:text="'Page ' + ${currentPage} + ' / ' + ${maxNumberOfPages}">Page 1/1</p>
+  <ul>
+    <li th:unless="${currentPage} eq 1"><a href="#" th:href="@{'/list/{pageNumber}'(pageNumber=1)}">First</a></li>
+    <li th:unless="${currentPage} eq 1"><a href="#" th:href="@{'/list/{pageNumber}'(pageNumber=${currentPage} -1)}">Previous
+      page</a></li>
+      <li th:if="${currentPage} lt ${maxNumberOfPages}"><a href="#"
+        th:href="@{'/list/{pageNumber}'(pageNumber=${currentPage} +1)}">Next
+        page</a></li>
+        <li th:if="${currentPage} lt ${maxNumberOfPages}"><a href="#"
+          th:href="@{'/list/{pageNumber}'(pageNumber=${maxNumberOfPages})}">Last
+          page</a></li>
+        </ul>
+      </footer>
+    </body>
+    </html>
