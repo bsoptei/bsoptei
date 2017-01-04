@@ -2,25 +2,58 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Reddit Clone</title>
+    <title>tH3 w4Ll!</title>
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"></link>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"></link>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Score</th>
-        <th colspan="2">Action</th>
-        <th>Content</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="post: ${posts}">
-        <td th:text="${post.score}"></td>
-        <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='1')}">+</a></td>
-        <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='-1')}">-</a></td>
-        <td th:text="${post.content}"></td>
-    </tr>
-    </tbody>
-</table>
+<header>
+    <h1>The wall.</h1>
+</header>
+<main>
+    <article>
+        <h2>Posts</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Score</th>
+                <th colspan="2">Action</th>
+                <th>Content</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post, iterStat: ${posts}">
+                <td th:text="${iterStat.count}">1</td>
+                <td th:text="${post.score}">10</td>
+                <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='1')}">+</a>
+                </td>
+                <td><a href="#"
+                       th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='-1')}">-</a></td>
+                <td th:text="${post.content}">Blah-blah-blah</td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="#" th:href="@{'/posts/add'}">Add post!</a>
+    </article>
+</main>
+<footer>
+    <ul>
+        <li>
+            <a th:if="${not posts.isFirst()}" th:href="@{'/posts/'}">← First</a>
+        </li>
+        <li>
+            <a th:if="${not posts.isFirst()}" th:href="@{'/posts/'}">← Previous</a>
+        </li>
+        <li>
+            <a th:if="${not posts.isLast()}" th:href="@{'/posts/'}">Next →</a>
+        </li>
+        <li>
+            <a th:if="${not posts.isLast()}" th:href="@{'/posts/'}">Last →</a>
+        </li>
+
+    </ul>
+</footer>
+
 </body>
 </html>

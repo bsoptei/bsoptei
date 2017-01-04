@@ -18,13 +18,12 @@ public class Post {
     @Setter(AccessLevel.NONE)
     private Long id;
     private String content;
-    private Integer score;
+    private Integer score = 0;
 
     public Post(){
     }
 
     public Post(String content) {
         this.content = content;
-        this.score = 0;
     }
 }

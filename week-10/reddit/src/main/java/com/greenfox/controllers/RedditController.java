@@ -1,11 +1,9 @@
 package com.greenfox.controllers;
 
 import com.greenfox.domain.Post;
-import com.greenfox.domain.PostRepository;
 import com.greenfox.domain.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,10 +27,14 @@ public class RedditController {
         return "redirect:/posts/";
     }
 
-    @RequestMapping(value = "/posts/")
-    public String showPosts(Model model) {
+    @RequestMapping(value = "/posts/{pageNumber}")
+    public String showPosts(Model model,
+    @PathVariable int pageNumber) {
 
         Page<Post> page = postService.obtainPage();
+
+
+
         model.addAttribute("posts", page);
 
         int current = page.getNumber() + 1;
@@ -42,6 +44,7 @@ public class RedditController {
         model.addAttribute("beginIndex", begin);
         model.addAttribute("endIndex", end);
         model.addAttribute("currentIndex", current);
+
         model.addAttribute("posts", postService.obtainPage());
         return "posts";
     }

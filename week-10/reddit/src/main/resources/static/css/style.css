@@ -1,0 +1,51 @@
+* {
+    font-family: 'Rock Salt', cursive;
+    background-color: #000;
+    color: #FFF;
+}
+
+main,
+footer {
+    width: 60%;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+td, th {
+    border-bottom: 1px solid #FFF;
+    padding: 10px 30px;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover,
+th {
+    font-weight: bold;
+
+    text-shadow: 0 0 25px #FFF;
+}
+
+th {
+    font-size: 18px;
+}
+
+ul {
+  display: inline-flex;
+}
+
+ul li {
+    padding: 0 20px;
+    list-style-type: none;
+}

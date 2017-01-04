@@ -23,7 +23,8 @@ public class PostService {
 
 
     public Page<Post> obtainPage() {
-        return postRepo.findAll(new PageRequest(0, 5));
+        postRepo.findAll(new PageRequest(1,1));
+        return postRepo.findByOrderByScoreDesc(new PageRequest(0, 10));
     }
 
     public void addPost(Post post) {
@@ -34,5 +35,9 @@ public class PostService {
         Post currentPost = postRepo.findOne(id);
         currentPost.setScore(currentPost.getScore() + difference);
         postRepo.save(currentPost);
+    }
+
+    public void removePost(Long id) {
+        postRepo.delete(postRepo.findOne(id));
     }
 }
