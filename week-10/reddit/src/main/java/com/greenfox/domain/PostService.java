@@ -22,9 +22,9 @@ public class PostService {
     }
 
 
-    public Page<Post> obtainPage() {
+    public Page<Post> obtainPage(Integer pageNumber, Integer pageSize) {
         postRepo.findAll(new PageRequest(1,1));
-        return postRepo.findByOrderByScoreDesc(new PageRequest(0, 10));
+        return postRepo.findByOrderByScoreDesc(new PageRequest(pageNumber, pageSize));
     }
 
     public void addPost(Post post) {

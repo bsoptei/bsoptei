@@ -13,6 +13,7 @@
 <main>
     <article>
         <h2>Posts</h2>
+        <a href="#" th:href="@{'/posts/add'}">Add new post!</a>
         <table>
             <thead>
             <tr>
@@ -26,30 +27,29 @@
             <tr th:each="post, iterStat: ${posts}">
                 <td th:text="${iterStat.count}">1</td>
                 <td th:text="${post.score}">10</td>
-                <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='1')}">+</a>
+                <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='1', goBackTo=${currentIndex})}">+</a>
                 </td>
                 <td><a href="#"
-                       th:href="@{'/posts/changescore/{id}/{difference}'(id=${post.id}, difference='-1')}">-</a></td>
+                       th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='-1', goBackTo=${currentIndex})}">-</a></td>
                 <td th:text="${post.content}">Blah-blah-blah</td>
             </tr>
             </tbody>
         </table>
-        <a href="#" th:href="@{'/posts/add'}">Add post!</a>
     </article>
 </main>
 <footer>
     <ul>
         <li>
-            <a th:if="${not posts.isFirst()}" th:href="@{'/posts/'}">← First</a>
+            <a th:if="${not posts.isFirst()}" th:href="@{'/posts/1'}">← First</a>
         </li>
         <li>
-            <a th:if="${not posts.isFirst()}" th:href="@{'/posts/'}">← Previous</a>
+            <a th:if="${not posts.isFirst()}" th:href="@{'/posts/{pageNumber}'(pageNumber=${currentIndex - 1})}">← Previous</a>
         </li>
         <li>
-            <a th:if="${not posts.isLast()}" th:href="@{'/posts/'}">Next →</a>
+            <a th:if="${not posts.isLast()}" th:href="@{'/posts/{pageNumber}'(pageNumber=${currentIndex + 1})}">Next →</a>
         </li>
         <li>
-            <a th:if="${not posts.isLast()}" th:href="@{'/posts/'}">Last →</a>
+            <a th:if="${not posts.isLast()}" th:href="@{'/posts/{pageNumber}'(pageNumber=${endIndex})}">Last →</a>
         </li>
 
     </ul>

@@ -24,28 +24,23 @@ public class RedditController {
 
     @RequestMapping
     public String emptyUrlRedirect() {
-        return "redirect:/posts/";
+        return "redirect:/posts/1";
     }
 
     @RequestMapping(value = "/posts/{pageNumber}")
     public String showPosts(Model model,
-    @PathVariable int pageNumber) {
-
-        Page<Post> page = postService.obtainPage();
-
-
-
+                            @PathVariable Integer pageNumber) {
+        Page<Post> page = postService.obtainPage(pageNumber - 1, 10);
         model.addAttribute("posts", page);
 
         int current = page.getNumber() + 1;
-        int begin = Math.max(1, current - 5);
+        int begin = Math.max(1, current - 10);
         int end = Math.min(begin + 10, page.getTotalPages());
 
-        model.addAttribute("beginIndex", begin);
         model.addAttribute("endIndex", end);
         model.addAttribute("currentIndex", current);
 
-        model.addAttribute("posts", postService.obtainPage());
+
         return "posts";
     }
 
@@ -58,13 +53,14 @@ public class RedditController {
     @RequestMapping(value = "/posts/add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute Post post) {
         postService.addPost(post);
-        return "redirect:/posts/";
+        return "redirect:/";
     }
 
-    @RequestMapping(value = "/posts/changescore/{id}/{difference}")
+    @RequestMapping(value = "/posts/changescore/{id}/{difference}/{goBackTo}")
     public String changeScore(@PathVariable Long id,
-                              @PathVariable Integer difference) {
+                              @PathVariable Integer difference,
+                              @PathVariable Integer goBackTo) {
         postService.changePostScore(id, difference);
-        return "redirect:/posts/";
+        return "redirect:/posts/" + String.valueOf(goBackTo);
     }
 }
