@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Reddit Clone</title>
+</head>
+<body>
+<form action="#" th:action="@{'/posts/add'}" th:object="${post}" method="post">
+    <label for="content" th:text="'Content'">Content</label>
+    <input id="content" type="text" th:field="*{content}" th:required="required" required="true"/>
+    <input type="submit" value="Submit"/>
+    <input type="reset" value="Reset"/>
+    <a href="javascript:history.back()">Cancel</a>
+</form>
+</body>
+</html>
