@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>tH3 w4Ll!</title>
@@ -9,6 +9,12 @@
 <body>
 <header>
     <h1>The wall.</h1>
+    <div>
+        <p>Welcome <span sec:authentication="name">Guest</span></p>
+        <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{'/logout'}" method="post" class="form-inline">
+            <input type="submit" value="Logout"/>
+        </form>
+    </div>
 </header>
 <main>
     <article>
@@ -18,6 +24,7 @@
             <thead>
             <tr>
                 <th>#</th>
+                <th>Posted by</th>
                 <th>Score</th>
                 <th colspan="2">Action</th>
                 <th>Content</th>
@@ -26,6 +33,7 @@
             <tbody>
             <tr th:each="post, iterStat: ${posts}">
                 <td th:text="${iterStat.count}">1</td>
+                <td th:text="${post.userName}">John Doe</td>
                 <td th:text="${post.score}">10</td>
                 <td><a href="#" th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='1', goBackTo=${currentIndex})}">+</a>
                 </td>

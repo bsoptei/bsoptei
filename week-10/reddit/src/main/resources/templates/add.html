@@ -9,8 +9,9 @@
 <body>
 <main>
     <form action="#" th:action="@{'/posts/add'}" th:object="${post}" method="post">
-        <label for="content" th:text="'Content'">Content</label>
+        <label for="content" th:text="'New post by ' + ${userName}">New post by John Doe</label>
         <input id="content" type="text" th:field="*{content}" th:required="required" required="true"/>
+        <input type="hidden" id="userName" rows="5" class="form-control" name="userName" th:value="${userName}"/>
         <input type="submit" value="Submit"/>
         <input type="reset" value="Reset"/>
         <a href="javascript:history.back()">Cancel</a>

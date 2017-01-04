@@ -6,9 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-/**
- * Created by Lenovo on 2017. 01. 04..
- */
 @Entity
 @Table(name = "posts")
 @Data
@@ -19,11 +16,14 @@ public class Post {
     private Long id;
     private String content;
     private Integer score = 0;
+    private String userName;
 
     public Post(){
     }
 
-    public Post(String content) {
+    public Post(String content, String userName) {
         this.content = content;
+        this.userName = userName;
     }
+
 }
