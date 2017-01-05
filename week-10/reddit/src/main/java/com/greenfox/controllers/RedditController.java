@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/")
-@Secured({"ROLE_ADMIN"})
 public class RedditController {
 
     private PostService postService;
@@ -81,6 +80,6 @@ public class RedditController {
 
     @RequestMapping(value = "/login")
     public String showLogin() {
-        return "redirect:/";
+        return "login";
     }
 }
