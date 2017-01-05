@@ -8,6 +8,8 @@
 </head>
 <body>
 <main>
+    <article>
+        <h1>Add post!</h1>
     <form action="#" th:action="@{'/posts/add'}" th:object="${post}" method="post">
         <label for="content" th:text="'New post by ' + ${userName}">New post by John Doe</label>
         <input id="content" type="text" th:field="*{content}" th:required="required" required="true"/>
@@ -16,6 +18,7 @@
         <input type="reset" value="Reset"/>
         <a href="javascript:history.back()">Cancel</a>
     </form>
+    </article>
 </main>
 </body>
 </html>
