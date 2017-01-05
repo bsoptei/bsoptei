@@ -53,14 +53,16 @@ public class RedditController {
 
     @RequestMapping(value = "/posts/add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute Post post) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        post.setUserName(auth.getName());
         postService.addPost(post);
         return "redirect:/";
     }
 
     @RequestMapping(value = "/posts/add")
     public String addPost(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("userName", auth.getName());
+
         model.addAttribute("post", new Post());
         return "add";
     }
