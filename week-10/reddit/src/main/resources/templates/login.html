@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<head>
-    <title>l0G 1n!</title>
-    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"></link>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"></link>
-</head>
-<body>
-
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
 <main>
     <article>
-        <h1>Log in!</h1>
+        <h2>Log in!</h2>
     <form th:action="@{/login}" method="post">
         <div>
             <label for="username" th:text="'User name:'">User name:</label>
@@ -28,5 +22,5 @@
         <p>You have been logged out.</p>
     </div>
 </main>
-</body>
+</div>
 </html>

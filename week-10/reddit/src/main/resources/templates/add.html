@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>4dD n3W P05T!</title>
-    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"></link>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"></link>
-</head>
-<body>
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
 <main>
     <article>
-        <h1>Add post!</h1>
+        <h2>Add post!</h2>
     <form action="#" th:action="@{'/posts/add'}" th:object="${post}" method="post">
         <label for="content" th:text="'New post:'">New post:</label>
         <input id="content" type="text" th:field="*{content}" th:required="required" required="true"/>
@@ -19,5 +13,5 @@
     </form>
     </article>
 </main>
-</body>
+</div>
 </html>
