@@ -85,22 +85,21 @@ public class CalorieController {
     }
 
     @PostMapping("/edit")
-    public String update(@RequestParam("id") Long id,
-                         @RequestParam("date") String date,
+    public String update(@RequestParam("date") String date,
                          @RequestParam("type") String type,
                          @RequestParam("description") String description,
                          @RequestParam("calories") Integer calories) {
-        mealService.editMeal(id,
-                date,
-                type,
-                description,
-                calories);
+        mealService.editMeal(date,
+                            type,
+                            description,
+                            calories);
         return "redirect:/index";
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     public String edit(@PathVariable Long id,
                        Model model) {
+        mealService.setCurrentMeal(mealService.findMealById(id));
         pageManager.manageEditOrNewPage(model, mealService.findMealById(id));
         return "edit";
     }

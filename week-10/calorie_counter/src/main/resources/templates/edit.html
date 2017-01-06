@@ -43,7 +43,6 @@
                        th:required="required" required="true"/>
             </div>
         </div>
-        <input type="hidden" id="id" rows="5" class="form-control" name="id" th:value="${meal.id}"/>
         <input type="submit" value="Submit"/> <input type="reset" value="Reset"/>
         <a href="#" th:href="@{'/{id}/confirmdelete'(id=${meal.id})}" class="delete" th:attr="name=${meal.description}">
             Delete
