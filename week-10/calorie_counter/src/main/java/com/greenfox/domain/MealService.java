@@ -1,6 +1,5 @@
 package com.greenfox.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ public class MealService {
 
     @Getter
     @Setter
-    private Meal currentMeal;
+    private Meal currentMeal = new Meal();
 
     @Autowired
     public MealService(MealRepository repository) {

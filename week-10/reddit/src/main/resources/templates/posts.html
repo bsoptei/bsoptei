@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://www.w3.org/1999/xhtml">
-<div layout:fragment="content">
+<div class="content" layout:fragment="content">
     <nav>
         <div>
             <p>Welcome, <span sec:authentication="name">Guest</span>!</p>
@@ -27,7 +27,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="post, iterStat: ${posts}">
-                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${iterStat.count} + 10*(${currentIndex} - 1)">1</td>
                     <td th:text="${post.userName}">John Doe</td>
                     <td th:text="${post.score}">10</td>
                     <td><a href="#"

@@ -52,7 +52,6 @@ public class RedditController {
 
     @RequestMapping(value = "/posts/add")
     public String addPost(Model model) {
-
         model.addAttribute("post", new Post());
         return "add";
     }
