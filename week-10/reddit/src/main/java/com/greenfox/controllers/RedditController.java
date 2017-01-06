@@ -28,14 +28,9 @@ public class RedditController {
         this.userService = userService;
     }
 
-    @RequestMapping
+    @RequestMapping(value = {"", "/index"})
     public String emptyUrlRedirect() {
         return "redirect:/posts/1";
-    }
-
-    @RequestMapping(value = "/index")
-    public String index() {
-        return "redirect:/";
     }
 
     @RequestMapping(value = "/posts/{pageNumber}")
@@ -54,7 +49,6 @@ public class RedditController {
     @RequestMapping(value = "/posts/add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute Post post) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
         post.setUserName(auth.getName());
         postService.addPost(post);
         return "redirect:/";
@@ -73,15 +67,5 @@ public class RedditController {
                               @PathVariable Integer goBackTo) {
         postService.changePostScore(id, difference);
         return "redirect:/posts/" + String.valueOf(goBackTo);
-    }
-
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
-        return "redirect:/";
-    }
-
-    @RequestMapping(value = "/login")
-    public String showLogin() {
-        return "login";
     }
 }

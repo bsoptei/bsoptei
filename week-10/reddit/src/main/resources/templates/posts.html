@@ -12,14 +12,14 @@
     <div>
         <p>Welcome, <span sec:authentication="name">Guest</span>!</p>
         <form sec:authorize="isAuthenticated()" id="frmlogout" th:action="@{'/logout'}" method="post" class="form-inline">
-            <input type="submit" value="Logout"/>
+            <input type="submit" value="[Logout!]"/>
         </form>
     </div>
 </header>
 <main>
     <article>
         <h2>Posts</h2>
-        <a href="#" th:href="@{'/posts/add'}">Click here to add a new post!</a>
+        <a href="#" th:href="@{'/posts/add'}">[Add a new post!]</a>
         <table>
             <thead>
             <tr>
