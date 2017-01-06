@@ -1,38 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet"></link>
-    <link rel="stylesheet" type="text/css" href="/css/main_style.css"></link>
-    <link rel="icon" type="image/png" href="/images/apple.png"></link>
-    <title>The Calorie Counter - Confirm delete</title>
-</head>
-
-<body>
-<main>
-    <form action="#" th:action="@{'/{id}/delete'(id=${meal.id})}" th:object="${meal}" method="get">
-        <h2>Are you sure you want to delete the following meal?</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Calories</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="date" data-th-text="${meal.date}">2017-09-28</td>
-                <td class="type" data-th-text="${meal.type}">Lunch</td>
-                <td class="description" data-th-text="${meal.description}">French fries</td>
-                <td class="calories" data-th-text="${meal.calories}">500</td>
-            </tr>
-            </tbody>
-        </table>
-        <input type="submit" value="Confirm delete"/>
-        <a href="javascript:history.back()">Cancel</a>
-    </form>
-</main>
-</body>
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
+    <main>
+        <form action="#" th:action="@{'/{id}/delete'(id=${meal.id})}" th:object="${meal}" method="get">
+            <h2>Are you sure you want to delete the following meal?</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Calories</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="date" data-th-text="${meal.date}">2017-09-28</td>
+                    <td class="type" data-th-text="${meal.type}">Lunch</td>
+                    <td class="description" data-th-text="${meal.description}">French fries</td>
+                    <td class="calories" data-th-text="${meal.calories}">500</td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="submit" value="Confirm delete"/>
+            <a href="javascript:history.back()">Cancel</a>
+        </form>
+    </main>
+</div>
 </html>

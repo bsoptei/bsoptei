@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("")
+@RequestMapping
 public class CalorieController {
 
     private final FilterManager filterManager;
@@ -26,7 +26,7 @@ public class CalorieController {
         this.mealService = mealService;
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"})
     public String index() {
         return "redirect:/list/1";
     }
@@ -90,9 +90,9 @@ public class CalorieController {
                          @RequestParam("description") String description,
                          @RequestParam("calories") Integer calories) {
         mealService.editMeal(date,
-                            type,
-                            description,
-                            calories);
+                type,
+                description,
+                calories);
         return "redirect:/index";
     }
 

@@ -1,14 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai" rel="stylesheet"></link>
-    <link rel="stylesheet" type="text/css" href="/css/main_style.css"></link>
-    <link rel="icon" type="image/png" href="/images/apple.png"></link>
-    <title>The Calorie Counter - Add new meal</title>
-</head>
-
-<body>
+<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:fragment="content">
 <main>
     <form action="#" th:action="@{'/new'}" th:object="${meal}" method="post">
         <h2>Add new meal</h2>
@@ -44,8 +36,5 @@
         <a th:href="@{'/index'}" href="#">Cancel</a>
     </form>
 </main>
-
-</body>
-
-
+</div>
 </html>
