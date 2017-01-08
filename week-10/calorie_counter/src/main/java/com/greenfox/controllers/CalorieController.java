@@ -43,7 +43,7 @@ public class CalorieController {
         return "confirm";
     }
 
-    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/delete")
     public String delete(@PathVariable long id) {
         mealService.deleteMeal(id);
         return "redirect:/index";
@@ -96,7 +96,7 @@ public class CalorieController {
         return "redirect:/index";
     }
 
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/edit")
     public String edit(@PathVariable Long id,
                        Model model) {
         mealService.setCurrentMeal(mealService.findMealById(id));

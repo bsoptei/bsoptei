@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
-<div layout:fragment="content">
+<div layout:decorator="layout" layout:fragment="content" xmlns:layout="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml ">
 <main>
     <form action="#" th:action="@{'/new'}" th:object="${meal}" method="post">
         <h2>Add new meal</h2>
@@ -37,4 +36,3 @@
     </form>
 </main>
 </div>
-</html>

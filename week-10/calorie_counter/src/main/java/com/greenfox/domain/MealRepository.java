@@ -14,13 +14,13 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
 
     List<Meal> findByDateBetweenAndTypeLike(LocalDate start, LocalDate end, String type, Sort sort);
 
-    @Query(value = "select sum(calories) from meals where (date between :startDate and :endDate) and type like :type", nativeQuery = true)
+    @Query(value = "select sum(calories) from Meal where (date between :startDate and :endDate) and type like :type")
     Integer sumCaloriesFilterByDateAndType(@Param("startDate")LocalDate start,
                                            @Param("endDate") LocalDate end,
                                            @Param("type") String type);
 
 
-    @Query(value = "select type, count(type) from meals where (date between :startDate and :endDate) and type like :type group by type", nativeQuery = true)
+    @Query(value = "select type, count(type) from Meal where (date between :startDate and :endDate) and type like :type group by type")
     List<Object[]> typeCountFilterByDateAndType(@Param("startDate")LocalDate start,
                                                 @Param("endDate") LocalDate end,
                                                 @Param("type") String type);
