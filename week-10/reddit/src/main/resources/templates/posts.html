@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html layout:decorator="layout" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
-<div class="content" layout:fragment="content">
+<div layout:decorator="layout" class="content" layout:fragment="content" xmlns:sec="http://www.w3.org/1999/xhtml"
+     xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
     <nav>
         <div>
             <p>Welcome, <span sec:authentication="name">Guest</span>!</p>
@@ -43,23 +41,29 @@
         </article>
     </main>
     <footer>
-        <ul>
-            <li>
-                <a th:if="${not posts.isFirst()}" th:href="@{'/posts/1'}">← First</a>
-            </li>
-            <li>
-                <a th:if="${not posts.isFirst()}" th:href="@{'/posts/{pageNumber}'(pageNumber=${currentIndex - 1})}">←
-                    Previous</a>
-            </li>
-            <li>
-                <a th:if="${not posts.isLast()}" th:href="@{'/posts/{pageNumber}'(pageNumber=${currentIndex + 1})}">Next
-                    →</a>
-            </li>
-            <li>
-                <a th:if="${not posts.isLast()}" th:href="@{'/posts/{pageNumber}'(pageNumber=${endIndex})}">Last →</a>
-            </li>
+        <div th:if="${not posts.isFirst()}">
+            <ul>
 
-        </ul>
+                <li>
+                    <a th:href="@{'/posts/1'}">← First</a>
+                </li>
+                <li>
+                    <a th:href="@{'/posts/{pageNumber}'(pageNumber=${currentIndex - 1})}">←
+                        Previous</a>
+                </li>
+            </ul>
+        </div>
+        <div th:if="${not posts.isLast()}">
+            <ul>
+                <li>
+                    <a th:href="@{'/posts/{pageNumber}'(pageNumber=${currentIndex + 1})}">Next
+                        →</a>
+                </li>
+                <li>
+                    <a th:href="@{'/posts/{pageNumber}'(pageNumber=${endIndex})}">Last
+                        →</a>
+                </li>
+            </ul>
+        </div>
     </footer>
 </div>
-</html>
