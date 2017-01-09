@@ -1,6 +1,9 @@
 package com.greenfox.controllers;
 
 import com.greenfox.domain.*;
+import com.greenfox.page.FilterManager;
+import com.greenfox.page.PageManager;
+import com.greenfox.services.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,15 +15,12 @@ public class CalorieController {
 
     private final FilterManager filterManager;
     private final PageManager pageManager;
-    private ListFilter listFilter;
     private final MealService mealService;
 
     @Autowired
-    public CalorieController(ListFilter listFilter,
-                             PageManager pageManager,
+    public CalorieController(PageManager pageManager,
                              FilterManager filterManager,
                              MealService mealService) {
-        this.listFilter = listFilter;
         this.pageManager = pageManager;
         this.filterManager = filterManager;
         this.mealService = mealService;
@@ -80,7 +80,7 @@ public class CalorieController {
 
     @RequestMapping("/resetfilter")
     public String resetFilter() {
-        listFilter.initializeFilter();
+        filterManager.initializeListFilter();
         return "redirect:/index";
     }
 

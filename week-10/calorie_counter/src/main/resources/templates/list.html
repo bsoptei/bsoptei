@@ -99,12 +99,14 @@
                 <tr>
                     <th>Type</th>
                     <th>Number of meals</th>
+                    <th>Total calories</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr data-th-each="type : ${typeCount}" th:if="${type[1] gt 0}">
                     <td class="type" data-th-text="${type[0]}">Breakfast</td>
                     <td class="type_count" data-th-text="${type[1]}">20</td>
+                    <td class="type_sum" data-th-text="${type[2]}">20</td>
                 </tr>
 
                 </tbody>

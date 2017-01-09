@@ -1,4 +1,4 @@
-package com.greenfox.domain;
+package com.greenfox.page;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -16,7 +16,7 @@ public class FilterManager {
         this.listFilter = listFilter;
     }
 
-    public void changeListFilterDateCriteria(String startDate, String endDate) {
+    private void changeListFilterDateCriteria(String startDate, String endDate) {
         if (!startDate.equals("")) {
             listFilter.setStartDate(LocalDate.parse(startDate));
         }
@@ -25,11 +25,11 @@ public class FilterManager {
         }
     }
 
-    public void changeListFilterTypeCriteria(String type) {
+    private void changeListFilterTypeCriteria(String type) {
         listFilter.setType(type);
     }
 
-    public void changeListFilterSort(String sortBy) {
+    private void changeListFilterSort(String sortBy) {
         if (!sortBy.equals("")) {
             String[] sortDirectionAndProperty = sortBy.split(" ");
             listFilter.setSortCriteria((new Sort(
@@ -38,7 +38,7 @@ public class FilterManager {
         }
     }
 
-    public void changeListFilterItemsPerPage(String itemsPerPage) {
+    private void changeListFilterItemsPerPage(String itemsPerPage) {
         listFilter.setItemsPerPage(Integer.parseInt(itemsPerPage));
     }
 
@@ -47,5 +47,9 @@ public class FilterManager {
         changeListFilterTypeCriteria(type);
         changeListFilterItemsPerPage(itemsPerPage);
         changeListFilterSort(sortBy);
+    }
+
+    public void initializeListFilter(){
+        listFilter.initializeFilter();
     }
 }

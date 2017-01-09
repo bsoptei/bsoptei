@@ -1,5 +1,7 @@
-package com.greenfox.domain;
+package com.greenfox.services;
 
+import com.greenfox.domain.Meal;
+import com.greenfox.repository.MealRepository;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;

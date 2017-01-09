@@ -1,5 +1,6 @@
-package com.greenfox.domain;
+package com.greenfox.page;
 
+import com.greenfox.domain.Meal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ public class PageManager {
     private final ArrayList<String> typeOptions = new ArrayList<>(
             Arrays.asList("Breakfast", "Elevenses", "Lunch", "Snack", "Dinner", "Midnight Snack"));
 
-    private final ListFilter  listFilter;
+    private final ListFilter listFilter;
 
     @Autowired
     public PageManager(ListFilter listFilter) {

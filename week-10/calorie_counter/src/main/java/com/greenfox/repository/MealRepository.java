@@ -1,6 +1,7 @@
-package com.greenfox.domain;
+package com.greenfox.repository;
 
 
+import com.greenfox.domain.Meal;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,7 +21,7 @@ public interface MealRepository extends JpaRepository<Meal, Long> {
                                            @Param("type") String type);
 
 
-    @Query(value = "select type, count(type) from Meal where (date between :startDate and :endDate) and type like :type group by type")
+    @Query(value = "select type, count(type), sum(calories) from Meal where (date between :startDate and :endDate) and type like :type group by type")
     List<Object[]> typeCountFilterByDateAndType(@Param("startDate")LocalDate start,
                                                 @Param("endDate") LocalDate end,
                                                 @Param("type") String type);

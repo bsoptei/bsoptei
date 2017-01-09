@@ -1,5 +1,7 @@
-package com.greenfox.domain;
+package com.greenfox.page;
 
+import com.greenfox.domain.Meal;
+import com.greenfox.repository.MealRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
