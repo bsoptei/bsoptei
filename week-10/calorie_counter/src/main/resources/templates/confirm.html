@@ -1,5 +1,4 @@
-<div layout:decorator="layout" layout:fragment="content" xmlns:layout="http://www.w3.org/1999/xhtml"
-     xmlns:th="http://www.w3.org/1999/xhtml">
+<div layout:decorator="layout" layout:fragment="content">
     <main>
         <form action="#" th:action="@{'/{id}/delete'(id=${meal.id})}" th:object="${meal}" method="get">
             <h2>Are you sure you want to delete the following meal?</h2>
