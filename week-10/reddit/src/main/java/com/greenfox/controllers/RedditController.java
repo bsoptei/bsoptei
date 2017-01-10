@@ -3,7 +3,6 @@ package com.greenfox.controllers;
 import com.greenfox.domain.Post;
 import com.greenfox.service.PostService;
 import com.greenfox.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
@@ -76,6 +75,12 @@ public class RedditController {
     @RequestMapping(value = "/posts/edit", method = RequestMethod.POST)
     public String editPost(@RequestParam("content") String content){
         postService.editPost(content);
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/posts/delete/{id}")
+    public String deletePost(@PathVariable Long id){
+        postService.deletePost(id);
         return "redirect:/index";
     }
 }

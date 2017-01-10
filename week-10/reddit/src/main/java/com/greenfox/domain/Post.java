@@ -20,10 +20,4 @@ public class Post {
 
     public Post(){
     }
-
-    public Post(String content, String userName) {
-        this.content = content;
-        this.userName = userName;
-    }
-
 }

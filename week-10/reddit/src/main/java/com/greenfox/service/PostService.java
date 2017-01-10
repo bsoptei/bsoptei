@@ -48,4 +48,8 @@ public class PostService {
         currentPost.setContent(content);
         postRepo.save(currentPost);
     }
+
+    public void deletePost(Long id) {
+        postRepo.delete(id);
+    }
 }
