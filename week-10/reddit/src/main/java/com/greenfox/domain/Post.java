@@ -17,7 +17,4 @@ public class Post {
     private String content;
     private Integer score = 0;
     private String userName;
-
-    public Post(){
-    }
 }
