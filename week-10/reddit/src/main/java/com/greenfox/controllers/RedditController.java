@@ -3,6 +3,7 @@ package com.greenfox.controllers;
 import com.greenfox.domain.Post;
 import com.greenfox.service.PostService;
 import com.greenfox.service.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
@@ -62,5 +63,19 @@ public class RedditController {
                               @PathVariable Integer goBackTo) {
         postService.changePostScore(id, difference);
         return "redirect:/posts/" + String.valueOf(goBackTo);
+    }
+
+    @RequestMapping(value = "/posts/edit/{id}")
+    public String goToEditPage(Model model, @PathVariable Long id){
+        Post currentPost = postService.findById(id);
+        postService.setCurrentPost(currentPost);
+        model.addAttribute("post", currentPost);
+        return "edit";
+    }
+
+    @RequestMapping(value = "/posts/edit", method = RequestMethod.POST)
+    public String editPost(@RequestParam("content") String content){
+        postService.editPost(content);
+        return "redirect:/index";
     }
 }

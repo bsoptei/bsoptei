@@ -2,6 +2,8 @@ package com.greenfox.service;
 
 import com.greenfox.domain.Post;
 import com.greenfox.repository.PostRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +13,9 @@ import org.springframework.stereotype.Service;
 public class PostService {
 
     private PostRepository postRepo;
+    @Getter
+    @Setter
+    private Post currentPost;
 
     @Autowired
     public PostService(PostRepository postRepo) {
@@ -33,5 +38,14 @@ public class PostService {
 
     public void removePost(Long id) {
         postRepo.delete(postRepo.findOne(id));
+    }
+
+    public Post findById(Long id) {
+        return postRepo.findOne(id);
+    }
+
+    public void editPost(String content) {
+        currentPost.setContent(content);
+        postRepo.save(currentPost);
     }
 }
