@@ -26,18 +26,14 @@ public class PostService {
         return postRepo.findByOrderByScoreDesc(new PageRequest(pageNumber, pageSize));
     }
 
-    public void addPost(Post post) {
+    public void savePost(Post post) {
         postRepo.save(post);
     }
 
     public void changePostScore(Long id, Integer difference) {
         Post currentPost = postRepo.findOne(id);
         currentPost.setScore(currentPost.getScore() + difference);
-        postRepo.save(currentPost);
-    }
-
-    public void removePost(Long id) {
-        postRepo.delete(postRepo.findOne(id));
+        savePost(currentPost);
     }
 
     public Post findById(Long id) {
@@ -46,7 +42,7 @@ public class PostService {
 
     public void editPost(String content) {
         currentPost.setContent(content);
-        postRepo.save(currentPost);
+        savePost(currentPost);
     }
 
     public void deletePost(Long id) {

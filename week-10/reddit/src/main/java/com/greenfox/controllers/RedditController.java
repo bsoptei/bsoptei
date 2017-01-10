@@ -46,7 +46,7 @@ public class RedditController {
     public String addPost(@ModelAttribute Post post) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         post.setUserName(auth.getName());
-        postService.addPost(post);
+        postService.savePost(post);
         return "redirect:/";
     }
 
