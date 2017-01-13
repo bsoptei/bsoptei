@@ -18,7 +18,7 @@
                     <th>#</th>
                     <th>Posted by</th>
                     <th>Score</th>
-                    <th colspan="4">Action</th>
+                    <th colspan="2">Action</th>
                     <th>Content</th>
                 </tr>
                 </thead>
@@ -27,17 +27,20 @@
                     <td th:text="${iterStat.count} + 10*(${currentIndex} - 1)">1</td>
                     <td th:text="${post.userName}">John Doe</td>
                     <td th:text="${post.score}">10</td>
-                    <td><a href="#"
-                           th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='1', goBackTo=${currentIndex})}">+</a>
+                    <td>
+                        <div>
+                            <a href="#"
+                               th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='1', goBackTo=${currentIndex})}">+</a>
+
+                            <a href="#"
+                               th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='-1', goBackTo=${currentIndex})}">-</a>
+                        </div>
                     </td>
-                    <td><a href="#"
-                           th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='-1', goBackTo=${currentIndex})}">-</a>
-                    </td>
-                    <td><a href="#"
-                           th:if="${post.userName eq #authentication.name}" th:href="@{'/posts/edit/{id}'(id=${post.id})}">Edit</a>
-                    </td>
-                    <td><a href="#"
-                           th:if="${post.userName eq #authentication.name}" th:href="@{'/posts/delete/{id}'(id=${post.id})}">Remove</a>
+                    <td>
+                        <div class="post_action" th:if="${post.userName eq #authentication.name}">
+                            <a href="#" th:href="@{'/posts/edit/{id}'(id=${post.id})}">Edit</a>
+                            <a href="#" th:href="@{'/posts/delete/{id}'(id=${post.id})}">Remove</a>
+                        </div>
                     </td>
                     <td th:text="${post.content}">Blah-blah-blah</td>
                 </tr>
