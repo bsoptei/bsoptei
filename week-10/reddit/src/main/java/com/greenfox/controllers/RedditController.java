@@ -5,8 +5,6 @@ import com.greenfox.service.PostService;
 import com.greenfox.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,8 +42,7 @@ public class RedditController {
 
     @RequestMapping(value = "/posts/add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute Post post) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        post.setUserName(auth.getName());
+
         postService.savePost(post);
         return "redirect:/";
     }
@@ -83,4 +80,5 @@ public class RedditController {
         postService.deletePost(id);
         return "redirect:/index";
     }
+
 }

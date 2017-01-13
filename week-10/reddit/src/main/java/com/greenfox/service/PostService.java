@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,6 +28,7 @@ public class PostService {
     }
 
     public void savePost(Post post) {
+        post.setUserName(obtainUserNameFromSecurity());
         postRepo.save(post);
     }
 
@@ -41,11 +43,24 @@ public class PostService {
     }
 
     public void editPost(String content) {
-        currentPost.setContent(content);
+        if (currentPost.getUserName().
+                equals(obtainUserNameFromSecurity())) {
+            currentPost.setContent(content);
+        }
         savePost(currentPost);
     }
 
     public void deletePost(Long id) {
-        postRepo.delete(id);
+        if (postRepo.findOne(id).getUserName().
+                equals(obtainUserNameFromSecurity())) {
+            postRepo.delete(id);
+        }
+    }
+
+    private String obtainUserNameFromSecurity() {
+        return SecurityContextHolder.
+                getContext().
+                getAuthentication().
+                getName();
     }
 }

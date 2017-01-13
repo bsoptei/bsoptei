@@ -34,10 +34,10 @@
                            th:href="@{'/posts/changescore/{id}/{difference}/{goBackTo}'(id=${post.id}, difference='-1', goBackTo=${currentIndex})}">-</a>
                     </td>
                     <td><a href="#"
-                           th:href="@{'/posts/edit/{id}'(id=${post.id})}">Edit</a>
+                           th:if="${post.userName eq #authentication.name}" th:href="@{'/posts/edit/{id}'(id=${post.id})}">Edit</a>
                     </td>
                     <td><a href="#"
-                           th:href="@{'/posts/delete/{id}'(id=${post.id})}">Remove</a>
+                           th:if="${post.userName eq #authentication.name}" th:href="@{'/posts/delete/{id}'(id=${post.id})}">Remove</a>
                     </td>
                     <td th:text="${post.content}">Blah-blah-blah</td>
                 </tr>
