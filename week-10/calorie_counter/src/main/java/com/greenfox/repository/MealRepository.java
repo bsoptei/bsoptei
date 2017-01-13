@@ -1,6 +1,5 @@
 package com.greenfox.repository;
 
-
 import com.greenfox.domain.Meal;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
