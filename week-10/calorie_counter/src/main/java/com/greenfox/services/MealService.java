@@ -2,8 +2,6 @@ package com.greenfox.services;
 
 import com.greenfox.domain.Meal;
 import com.greenfox.repository.MealRepository;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,16 +12,12 @@ public class MealService {
 
     private final MealRepository repository;
 
-    @Getter
-    @Setter
-    private Meal currentMeal = new Meal();
-
     @Autowired
     public MealService(MealRepository repository) {
         this.repository = repository;
     }
 
-    public void addMeal(Meal meal) {
+    public void saveMeal(Meal meal) {
         repository.save(meal);
     }
 
@@ -31,17 +25,18 @@ public class MealService {
         return repository.findOne(id);
     }
 
-    public void editMeal(String date,
+    public void editMeal(Meal meal,
+                         String date,
                          String type,
                          String description,
                          Integer calories
 
     ) {
-        currentMeal.setDate(LocalDate.parse(date));
-        currentMeal.setType(type);
-        currentMeal.setDescription(description);
-        currentMeal.setCalories(calories);
-        repository.save(currentMeal);
+        meal.setDate(LocalDate.parse(date));
+        meal.setType(type);
+        meal.setDescription(description);
+        meal.setCalories(calories);
+        saveMeal(meal);
     }
 
     public void deleteMeal(long id) {

@@ -1,6 +1,6 @@
 <div layout:decorator="layout" layout:fragment="content" >
 <main>
-    <form action="#" th:action="@{'/edit'}" th:object="${meal}" method="post">
+    <form action="#" th:object="${meal}" th:action="@{'/{id}/edit'(id=${meal.id})}" method="post">
         <h2>Edit meal</h2>
         <div class="form_wrapper">
             <div class="form_element">

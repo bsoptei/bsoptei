@@ -58,7 +58,7 @@ public class CalorieController {
     @PostMapping("/new")
     public String addNewMeal(@ModelAttribute Meal meal,
                              @RequestParam(value = "addAnother", defaultValue = "") String addAnother) {
-        mealService.addMeal(meal);
+        mealService.saveMeal(meal);
         return (addAnother.equals("Submit and add another")) ? "redirect:/new" : "redirect:/index";
     }
 
@@ -84,12 +84,15 @@ public class CalorieController {
         return "redirect:/index";
     }
 
-    @PostMapping("/edit")
-    public String update(@RequestParam("date") String date,
+    @PostMapping("/{id}/edit")
+    public String update(@PathVariable Long id,
+                         @RequestParam("date") String date,
                          @RequestParam("type") String type,
                          @RequestParam("description") String description,
-                         @RequestParam("calories") Integer calories) {
-        mealService.editMeal(date,
+                         @RequestParam("calories") Integer calories
+    ) {
+        mealService.editMeal(mealService.findMealById(id),
+                date,
                 type,
                 description,
                 calories);
@@ -99,9 +102,9 @@ public class CalorieController {
     @RequestMapping(value = "/{id}/edit")
     public String edit(@PathVariable Long id,
                        Model model) {
-        mealService.setCurrentMeal(mealService.findMealById(id));
         pageManager.manageEditOrNewPage(model, mealService.findMealById(id));
         return "edit";
     }
 
 }
+

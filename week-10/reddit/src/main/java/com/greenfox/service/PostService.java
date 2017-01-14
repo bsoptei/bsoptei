@@ -2,8 +2,6 @@ package com.greenfox.service;
 
 import com.greenfox.domain.Post;
 import com.greenfox.repository.PostRepository;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,9 +12,6 @@ import org.springframework.stereotype.Service;
 public class PostService {
 
     private PostRepository postRepo;
-    @Getter
-    @Setter
-    private Post currentPost;
 
     @Autowired
     public PostService(PostRepository postRepo) {
@@ -42,12 +37,13 @@ public class PostService {
         return postRepo.findOne(id);
     }
 
-    public void editPost(String content) {
-        if (currentPost.getUserName().
+    public void editPost(Long id, String content) {
+        Post postToEdit = postRepo.findOne(id);
+        if (postToEdit.getUserName().
                 equals(obtainUserNameFromSecurity())) {
-            currentPost.setContent(content);
+            postToEdit.setContent(content);
         }
-        savePost(currentPost);
+        savePost(postToEdit);
     }
 
     public void deletePost(Long id) {

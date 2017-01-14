@@ -2,7 +2,7 @@
     <main>
         <article>
             <h2>Add post!</h2>
-            <form action="#" th:action="@{'/posts/edit'}" th:object="${post}" method="post">
+            <form action="#" th:action="@{'/posts/edit/{id}'(id=${post.id})}" th:object="${post}" method="post">
                 <label for="content" th:text="'New post:'">Content:</label>
                 <input id="content" type="text" th:value="${post.content}" th:field="*{content}" th:required="required" required="true"/>
                 <input type="submit" value="Submit"/>

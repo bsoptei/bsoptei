@@ -64,14 +64,14 @@ public class RedditController {
     @RequestMapping(value = "/posts/edit/{id}")
     public String goToEditPage(Model model, @PathVariable Long id){
         Post currentPost = postService.findById(id);
-        postService.setCurrentPost(currentPost);
         model.addAttribute("post", currentPost);
         return "edit";
     }
 
-    @RequestMapping(value = "/posts/edit", method = RequestMethod.POST)
-    public String editPost(@RequestParam("content") String content){
-        postService.editPost(content);
+    @RequestMapping(value = "/posts/edit/{id}", method = RequestMethod.POST)
+    public String editPost(@PathVariable Long id,
+                           @RequestParam("content") String content){
+        postService.editPost(id, content);
         return "redirect:/index";
     }
 
