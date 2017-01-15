@@ -25,18 +25,12 @@ public class MealService {
         return repository.findOne(id);
     }
 
-    public void editMeal(Meal meal,
-                         String date,
-                         String type,
-                         String description,
-                         Integer calories
-
-    ) {
-        meal.setDate(LocalDate.parse(date));
-        meal.setType(type);
-        meal.setDescription(description);
-        meal.setCalories(calories);
-        saveMeal(meal);
+    public void editMeal(Meal oldMeal, Meal newMeal) {
+        oldMeal.setDate(newMeal.getDate());
+        oldMeal.setType(newMeal.getType());
+        oldMeal.setDescription(newMeal.getDescription());
+        oldMeal.setCalories(newMeal.getCalories());
+        saveMeal(oldMeal);
     }
 
     public void deleteMeal(long id) {

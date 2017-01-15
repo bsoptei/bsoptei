@@ -85,17 +85,8 @@ public class CalorieController {
     }
 
     @PostMapping("/{id}/edit")
-    public String update(@PathVariable Long id,
-                         @RequestParam("date") String date,
-                         @RequestParam("type") String type,
-                         @RequestParam("description") String description,
-                         @RequestParam("calories") Integer calories
-    ) {
-        mealService.editMeal(mealService.findMealById(id),
-                date,
-                type,
-                description,
-                calories);
+    public String update(@PathVariable Long id, @ModelAttribute Meal newMeal) {
+        mealService.editMeal(mealService.findMealById(id), newMeal);
         return "redirect:/index";
     }
 
